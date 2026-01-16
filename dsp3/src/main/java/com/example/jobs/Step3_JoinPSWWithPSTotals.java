@@ -13,30 +13,53 @@ import java.util.List;
 
 /**
  * Step 3:
- * Join :
- *  - Step1: pred \t slot \t word \t cpsw
- *  - Step2(PS only): PS \t pred \t slot \t cps
+ * Join:
+ *  - Step1 output lines:  <pred \t slot \t word> \t <cpsw>
+ *  - Step2 output lines:  <PS \t pred \t slot> \t <cps>
  *
  * Output:
- *  pred \t slot \t word \t cpsw \t cps
+ *  <pred \t slot \t word> \t <cpsw \t cps>
  */
 public class Step3_JoinPSWWithPSTotals {
 
-    /** Mapper  Step1 */
+    /** helper: parse "key \t value" where key may contain tabs */
+    private static class KV {
+        String key;
+        String val;
+    }
+
+    private static KV parseLineKV(String line) {
+        if (line == null) return null;
+        line = line.trim();
+        if (line.isEmpty()) return null;
+
+        int lastTab = line.lastIndexOf('\t');
+        if (lastTab < 0) return null;
+
+        KV kv = new KV();
+        kv.key = line.substring(0, lastTab);
+        kv.val = line.substring(lastTab + 1);
+        return kv;
+    }
+
+    /** Mapper for Step1 output */
     public static class PSWMapper extends Mapper<LongWritable, Text, Text, Text> {
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
         @Override
         protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
-            // Step1 line: pred \t slot \t word \t cpsw
-            String[] f = value.toString().split("\t");
-            if (f.length != 4) return;
+            // Step1 line: (pred \t slot \t word) \t cpsw
+            KV kv = parseLineKV(value.toString());
+            if (kv == null) return;
 
-            String pred = f[0];
-            String slot = f[1];
-            String word = f[2];
-            String cpsw = f[3];
+            String[] k = kv.key.split("\t", -1);
+            if (k.length != 3) return;
+
+            String pred = k[0];
+            String slot = k[1];
+            String word = k[2];
+            String cpsw = kv.val;
 
             // join key on (pred,slot)
             outKey.set("J\t" + pred + "\t" + slot);
@@ -46,35 +69,29 @@ public class Step3_JoinPSWWithPSTotals {
         }
     }
 
+    /** Mapper for Step2 totals output */
     public static class PSTotalsMapper extends Mapper<LongWritable, Text, Text, Text> {
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
         @Override
         protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
-            // Step2 output: key \t value
-            // key 
-            // PS\tpred\tslot
-            // SW\tslot\tword
-            // SLOT\tslot
-            String[] kv = value.toString().split("\t");
-            if (kv.length != 2) return;
+            // Step2 line: <key> \t <value>
+            KV kv = parseLineKV(value.toString());
+            if (kv == null) return;
 
-            String k = kv[0];
-            String v = kv[1];
+            // we only want PS totals: key starts with "PS\tpred\tslot"
+            if (!kv.key.startsWith("PS\t")) return;
 
-            if (!k.startsWith("PS\t")) return;
-
-            // k = PS\tpred\tslot
-            String[] p = k.split("\t", 3);
+            String[] p = kv.key.split("\t", 3);
             if (p.length != 3) return;
 
             String pred = p[1];
             String slot = p[2];
-            String cps = v;
+            String cps = kv.val;
 
             outKey.set("J\t" + pred + "\t" + slot);
-            outVal.set("T\t" + cps); // totals record
+            outVal.set("T\t" + cps);
             ctx.write(outKey, outVal);
         }
     }
@@ -89,21 +106,19 @@ public class Step3_JoinPSWWithPSTotals {
             List<String[]> wordRecs = new ArrayList<>();
 
             for (Text t : vals) {
-                String[] parts = t.toString().split("\t");
+                String[] parts = t.toString().split("\t", -1);
                 if (parts.length < 2) continue;
 
                 if (parts[0].equals("T")) {
                     cps = parts[1];
                 } else if (parts[0].equals("W") && parts.length == 3) {
-                    // W \t word \t cpsw
-                    wordRecs.add(new String[]{parts[1], parts[2]});
+                    wordRecs.add(new String[]{parts[1], parts[2]}); // word, cpsw
                 }
             }
 
             if (cps == null) return;
 
-            // key = J\tpred\tslot
-            String[] k = key.toString().split("\t", 3);
+            String[] k = key.toString().split("\t", 3); // J, pred, slot
             if (k.length != 3) return;
 
             String pred = k[1];
@@ -113,8 +128,6 @@ public class Step3_JoinPSWWithPSTotals {
                 String word = wc[0];
                 String cpsw = wc[1];
 
-                // output:
-                // pred \t slot \t word   \t cpsw \t cps
                 outKey.set(pred + "\t" + slot + "\t" + word);
                 outVal.set(cpsw + "\t" + cps);
                 ctx.write(outKey, outVal);
@@ -135,7 +148,6 @@ public class Step3_JoinPSWWithPSTotals {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        // multiple inputs
         MultipleInputs.addInputPath(job, step1Input, TextInputFormat.class, PSWMapper.class);
         MultipleInputs.addInputPath(job, step2Totals, TextInputFormat.class, PSTotalsMapper.class);
 

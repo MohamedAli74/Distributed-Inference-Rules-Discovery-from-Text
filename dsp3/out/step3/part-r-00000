@@ -1,0 +1,8 @@
+X control Y	X	drug	20	20
+X control Y	Y	pain	20	20
+X die from Y	X	patient	10	10
+X die from Y	Y	cancer	10	10
+X die of Y	X	patient	10	10
+X die of Y	Y	cancer	10	10
+X prevent Y	X	vaccin	20	20
+X prevent Y	Y	fever	20	20

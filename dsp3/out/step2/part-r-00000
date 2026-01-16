@@ -1,9 +1,16 @@
-PS	X control Y	X	15
-PS	X control Y	Y	15
-PS	X prevent Y	X	7
-PS	X prevent Y	Y	7
-SLOT	X	22
-SLOT	Y	22
-SW	X	drug	22
-SW	Y	fever	5
-SW	Y	pain	17
+PS	X control Y	X	20
+PS	X control Y	Y	20
+PS	X die from Y	X	10
+PS	X die from Y	Y	10
+PS	X die of Y	X	10
+PS	X die of Y	Y	10
+PS	X prevent Y	X	20
+PS	X prevent Y	Y	20
+SLOT	X	60
+SLOT	Y	60
+SW	X	drug	20
+SW	X	patient	20
+SW	X	vaccin	20
+SW	Y	cancer	20
+SW	Y	fever	20
+SW	Y	pain	20

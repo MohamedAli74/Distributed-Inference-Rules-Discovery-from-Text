@@ -1,3 +1,6 @@
+
+
+
 package com.example.jobs;
 
 import org.apache.hadoop.conf.Configuration;
@@ -155,3 +158,5 @@ public class Step7_FinalSimilarity {
         return job;
     }
 }
+
+

@@ -1,3 +1,4 @@
-control/VB/ROOT/0 drug/NN/nsubj/1 pain/NN/dobj/1 10 2005,10
-control/VB/ROOT/0 drug/NN/nsubj/1 fever/NN/dobj/1 5 2006,5
-prevent/VB/ROOT/0 drug/NN/nsubj/1 pain/NN/dobj/1 7 2005,7
+die/VB/ROOT/0 patient/NN/nsubj/1 from/IN/prep/1 cancer/NN/pobj/3 10
+die/VB/ROOT/0 patient/NN/nsubj/1 of/IN/prep/1 cancer/NN/pobj/3 10
+control/VB/ROOT/0 drug/NN/nsubj/1 pain/NN/dobj/1 20
+prevent/VB/ROOT/0 vaccine/NN/nsubj/1 fever/NN/dobj/1 20
