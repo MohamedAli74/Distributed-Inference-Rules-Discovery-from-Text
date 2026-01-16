@@ -1,0 +1,9 @@
+PS	X control Y	X	15
+PS	X control Y	Y	15
+PS	X prevent Y	X	7
+PS	X prevent Y	Y	7
+SLOT	X	22
+SLOT	Y	22
+SW	X	drug	22
+SW	Y	fever	5
+SW	Y	pain	17

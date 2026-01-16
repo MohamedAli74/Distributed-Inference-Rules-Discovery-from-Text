@@ -1,0 +1,3 @@
+control/VB/ROOT/0 drug/NN/nsubj/1 pain/NN/dobj/1 10 2005,10
+control/VB/ROOT/0 drug/NN/nsubj/1 fever/NN/dobj/1 5 2006,5
+prevent/VB/ROOT/0 drug/NN/nsubj/1 pain/NN/dobj/1 7 2005,7
