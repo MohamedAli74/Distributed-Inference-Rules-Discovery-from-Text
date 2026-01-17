@@ -1,0 +1,8 @@
+X control Y	X	drug	1.0986122886681098
+X die of Y	X	patient	1.0986122886681098
+X die from Y	X	patient	1.0986122886681098
+X prevent Y	X	vaccin	1.0986122886681098
+X die of Y	Y	cancer	1.0986122886681098
+X die from Y	Y	cancer	1.0986122886681098
+X prevent Y	Y	fever	1.0986122886681098
+X control Y	Y	pain	1.0986122886681098
