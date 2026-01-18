@@ -115,7 +115,7 @@ public class Step7_FinalSimilarity {
                 throws IOException, InterruptedException {
             if (pairKeyTxt.toString().startsWith("*")) {
                 String[] f = pairKeyTxt.toString().substring(1).split("\t");
-                ctx.write(new Text(f[0]+"\t"+f[1]+"\t"+f[2]), new Text(f[3]));
+                ctx.write(new Text(f[0]+"\t"+f[1]+"\t"+f[2]), new Text(vals.iterator().next().toString()));
                 return;
             }
             double num = 0.0;
