@@ -7,6 +7,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
+import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
@@ -43,15 +44,21 @@ public class Step7_FinalSimilarity {
         protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
             // Step6 line: pairKey \t contrib
             String[] f = value.toString().split("\t");
-            if (f.length != 2) return;
+            if (f.length == 2){
+                double contrib;
+                try { contrib = Double.parseDouble(f[1]); }
+                catch (Exception e) { return; }
 
-            double contrib;
-            try { contrib = Double.parseDouble(f[1]); }
-            catch (Exception e) { return; }
-
-            outKey.set(f[0]);      // pairKey
-            outVal.set(contrib);
-            ctx.write(outKey, outVal);
+                outKey.set(f[0]);      // pairKey
+                outVal.set(contrib);
+                ctx.write(outKey, outVal);
+            }else{
+                if (f.length == 4) {
+                    outKey.set("*" + f[0]+"\t"+f[1]+"\t"+f[2]);
+                    outVal.set(Double.parseDouble(f[3]));
+                    ctx.write(outKey, outVal);
+                }
+            }
         }
     }
 
@@ -106,7 +113,11 @@ public class Step7_FinalSimilarity {
         @Override
         protected void reduce(Text pairKeyTxt, Iterable<DoubleWritable> vals, Context ctx)
                 throws IOException, InterruptedException {
-
+            if (pairKeyTxt.toString().startsWith("*")) {
+                String[] f = pairKeyTxt.toString().substring(1).split("\t");
+                ctx.write(new Text(f[0]+"\t"+f[1]+"\t"+f[2]), new Text(f[3]));
+                return;
+            }
             double num = 0.0;
             for (DoubleWritable v : vals) num += v.get();
 
@@ -129,7 +140,7 @@ public class Step7_FinalSimilarity {
         }
     }
 
-    public static Job buildJob(Configuration conf, Path step6Input, Path denomDir, Path output,
+    public static Job buildJob(Configuration conf, Path step4MI, Path step6Input, Path denomDir, Path output,
                                Path positive, Path negative, int reducers) throws Exception {
 
         Job job = Job.getInstance(conf, "Step7-FinalSimilarity");
@@ -152,7 +163,9 @@ public class Step7_FinalSimilarity {
         job.addCacheFile(new URI(positive.toString() + "#positive.txt"));
         job.addCacheFile(new URI(negative.toString() + "#negative.txt"));
 
-        TextInputFormat.addInputPath(job, step6Input);
+        // TextInputFormat.addInputPath(job, step6Input);
+        MultipleInputs.addInputPath(job, step6Input, TextInputFormat.class, FinalMapper.class);
+        MultipleInputs.addInputPath(job, step4MI, TextInputFormat.class, FinalMapper.class);
         TextOutputFormat.setOutputPath(job, output);
 
         return job;

@@ -113,7 +113,7 @@ public int run(String[] rawArgs) throws Exception {
     Job j6 = Step6_IntersectionContrib.buildJob(conf, out4, out6, positive, negative, reducers);
     if (!j6.waitForCompletion(true)) return 7;
 
-    Job j7 = Step7_FinalSimilarity.buildJob(conf, out6, out5, out7, positive, negative, reducers);
+    Job j7 = Step7_FinalSimilarity.buildJob(conf, out4, out6, out5, out7, positive, negative, reducers);
     if (!j7.waitForCompletion(true)) return 8;
 
     System.out.println("DONE. Final output at: " + out7);
