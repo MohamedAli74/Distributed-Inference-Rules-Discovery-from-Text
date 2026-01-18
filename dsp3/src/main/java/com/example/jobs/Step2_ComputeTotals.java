@@ -18,7 +18,9 @@ import java.io.IOException;
  *   PS\tpredicate\tslot   \t C(p,slot)
  *   SW\tslot\tword        \t C(slot,word)
  *   SLOT\tslot            \t C(slot)
- *
+ *  in MI terms: |p,Slot,*|->count
+ *               |*,Slot,w|->count
+ *               |*,Slot,*|->count
  */
 public class Step2_ComputeTotals {
 
@@ -29,6 +31,7 @@ public class Step2_ComputeTotals {
         @Override
         protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
             // Step1 line: pred \t slot \t word \t count
+            //TODO: change the key-value back to <Text, IntWritable>, the same as the previous step output.
             String[] f = value.toString().split("\t");
             if (f.length != 4) return;
 
@@ -37,7 +40,7 @@ public class Step2_ComputeTotals {
             String word = f[2];
 
             int c;
-            try { c = Integer.parseInt(f[3]); }
+            try { c = Integer.parseInt(f[3]); }//TODO: change here as well
             catch (Exception e) { return; }
             if (c <= 0) return;
 
@@ -53,7 +56,7 @@ public class Step2_ComputeTotals {
 
             // 3) SLOT: C(slot)
             outKey.set("SLOT\t" + slot);
-            ctx.write(outKey, outVal);
+            ctx.write(outKey, outVal);//TODO: make it a global variable
         }
     }
 

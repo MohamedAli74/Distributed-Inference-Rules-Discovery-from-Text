@@ -1,28 +1,20 @@
 package com.example.helpers;
 
-import org.apache.hadoop.fs.Path;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URI;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-/**
- * مسؤول عن:
- * 1) قراءة positive-preds و negative-preds من DistributedCache
- * 2) استخراج الأزواج (predicate1, predicate2) + label
- * 3) توفير Set بكل predicates الموجودة في test-set
- *
- * Supports formats مثل:
- * - "X control Y X prevent Y 0.1566 1"  (زي مثالك)
- * - "X control Y X prevent Y"           (بدون أرقام)
- * - "X control Y\tX prevent Y"          (tabs)
- */
+import org.apache.hadoop.fs.Path;
 public class TestData {
 
-    // separator داخلي آمن (مش tab ولا space)
     public static final String SEP = "\u0001";
 
-    /** معلومات زوج من التست */
     public static class PairInfo {
         public final String p1;
         public final String p2;
@@ -34,19 +26,16 @@ public class TestData {
         }
     }
 
-    /** Parsing output بسيط */
     public static class PairParsed {
         public final String p1, p2;
         public PairParsed(String p1, String p2) { this.p1 = p1; this.p2 = p2; }
     }
 
-    /** canonical key بحيث (a,b) = (b,a) */
     public static String canonicalPairKey(String a, String b) {
         if (a.compareTo(b) <= 0) return a + SEP + b;
         return b + SEP + a;
     }
 
-    /** هل الفعل auxiliary؟ (عشان Step1 ممكن يتجاهله) */
     public static boolean isAuxiliary(String word, PorterStemmer stemmer) {
         if (word == null) return false;
         String s = stemmer.stem(word.toLowerCase());
@@ -60,10 +49,6 @@ public class TestData {
                 || s.equals("must") || s.equals("shall") || s.equals("should");
     }
 
-    /**
-     * تحميل كل predicates الموجودة في test-set (positive + negative)
-     * هذا بنستخدمه مثلاً حتى نفلتر MI/Denom بس لهذول predicates.
-     */
     public static Set<String> loadTestPredicates(URI[] cacheFiles, PorterStemmer stemmer) throws IOException {
         Set<String> preds = new HashSet<>();
         if (cacheFiles == null) return preds;
@@ -85,10 +70,6 @@ public class TestData {
         return preds;
     }
 
-    /**
-     * تحميل كل الأزواج (positive=1, negative=0) من cache
-     * return Map<canonicalKey, PairInfo(p1,p2,label)>
-     */
     public static Map<String, PairInfo> loadPairs(URI[] cacheFiles, PorterStemmer stemmer) throws IOException {
         Map<String, PairInfo> map = new HashMap<>();
         if (cacheFiles == null) return map;
@@ -103,7 +84,6 @@ public class TestData {
                     PairParsed pp = parsePairLineFlexible(line, stemmer);
                     if (pp == null) continue;
                     String key = canonicalPairKey(pp.p1, pp.p2);
-                    // نخزن p1,p2 حسب اللي موجود بالملف + label
                     map.put(key, new PairInfo(pp.p1, pp.p2, label));
                 }
             }
@@ -111,18 +91,11 @@ public class TestData {
         return map;
     }
 
-    /**
-     * parser flexible:
-     * - إذا فيه tab: pred1 \t pred2 ...
-     * - غير هيك: نفصل على spaces ونعتبر كل predicate ينتهي عند token "Y"
-     *   (لأن القالب دائماً: X ... Y)
-     */
     public static PairParsed parsePairLineFlexible(String line, PorterStemmer stemmer) {
         if (line == null) return null;
         line = line.trim();
         if (line.isEmpty()) return null;
 
-        // إذا فيه tab: نأخذ أول عمودين
         if (line.contains("\t")) {
             String[] f = line.split("\t");
             if (f.length < 2) return null;
@@ -131,7 +104,6 @@ public class TestData {
             return new PairParsed(p1, p2);
         }
 
-        // spaces format: "X control Y X prevent Y 0.15 1"
         String[] toks = line.split("\\s+");
 
         int y1 = findY(toks, 0);
@@ -163,17 +135,6 @@ public class TestData {
         return sb.toString().trim();
     }
 
-    /**
-     * Normalize predicate to match Step1 templates:
-     * - compress spaces
-     * - stem verb (2nd token)
-     * - keep X and Y
-     * - keep prepositions lower-case
-     *
-     * Examples:
-     * "X provide from Y" -> "X provid from Y"
-     * "X manages with Y" -> "X manag with Y"
-     */
     private static String normalizePredicate(String pred, PorterStemmer stemmer) {
         pred = pred.trim().replaceAll("\\s+", " ");
         String[] t = pred.split(" ");

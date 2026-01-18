@@ -28,12 +28,12 @@ import java.util.*;
 public class Step4_ComputeMI {
 
     /** ===== helper: parse a TextOutputFormat line into (key,value) using last TAB ===== */
-    private static class KV {
+    private static class KV {//TODO
         String key;
         String val;
     }
 
-    private static KV parseLineKV(String line) {
+    private static KV parseLineKV(String line) {//TODO
         if (line == null) return null;
         line = line.trim();
         if (line.isEmpty()) return null;
@@ -61,8 +61,8 @@ public class Step4_ComputeMI {
             String pred = f[0];
             String slot = f[1];
             String word = f[2];
-            String cpsw = f[3];
-            String cps  = f[4];
+            String cpsw = f[3];//TODO
+            String cps  = f[4];//TODO
 
             // join key: slot \t word
             outKey.set(slot + "\t" + word);

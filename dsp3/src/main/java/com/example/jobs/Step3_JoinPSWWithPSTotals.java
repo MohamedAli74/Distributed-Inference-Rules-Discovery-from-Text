@@ -21,12 +21,11 @@ import java.util.List;
  *  <pred \t slot \t word> \t <cpsw \t cps>
  */
 public class Step3_JoinPSWWithPSTotals {
-
     /** helper: parse "key \t value" where key may contain tabs */
     private static class KV {
         String key;
         String val;
-    }
+    }//TODO: change here as well, this class and the next function made to treat the test input
 
     private static KV parseLineKV(String line) {
         if (line == null) return null;
@@ -43,7 +42,7 @@ public class Step3_JoinPSWWithPSTotals {
     }
 
     /** Mapper for Step1 output */
-    public static class PSWMapper extends Mapper<LongWritable, Text, Text, Text> {
+    public static class PSWMapper extends Mapper<LongWritable, Text, Text, Text> {//TODO: change the key value type
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
@@ -67,7 +66,7 @@ public class Step3_JoinPSWWithPSTotals {
             outVal.set("W\t" + word + "\t" + cpsw);
             ctx.write(outKey, outVal);
         }
-    }
+    }//TODO: check if this whole class will be needed after the test->prod change
 
     /** Mapper for Step2 totals output */
     public static class PSTotalsMapper extends Mapper<LongWritable, Text, Text, Text> {
@@ -75,9 +74,9 @@ public class Step3_JoinPSWWithPSTotals {
         private final Text outVal = new Text();
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
+        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {//TODO
             // Step2 line: <key> \t <value>
-            KV kv = parseLineKV(value.toString());
+            KV kv = parseLineKV(value.toString());//TODO
             if (kv == null) return;
 
             // we only want PS totals: key starts with "PS\tpred\tslot"

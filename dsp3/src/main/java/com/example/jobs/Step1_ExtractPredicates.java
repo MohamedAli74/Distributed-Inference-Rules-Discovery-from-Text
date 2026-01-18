@@ -18,12 +18,17 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class Step1_ExtractPredicates {
-
-    /** Mapper:
-     * Input: biarc line
+    /**
+     * Input: biarc line - head_word \t syntactic-ngram \t total_count \t counts_by_year  
      * Output: key = predicate \t slot \t word , value = count
+     * [in MI terms: |p,Slot,w|->count]
      */
+
     public static class ExtractMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+        /** Mapper:
+         * Input: biarc line - head_word \t syntactic-ngram \t total_count \t counts_by_year
+         * Output: key = predicate \t slot \t word , value = count
+         */
         private final Text outKey = new Text();
         private final IntWritable outVal = new IntWritable();
         private final PorterStemmer stemmer = new PorterStemmer();
@@ -41,6 +46,7 @@ public class Step1_ExtractPredicates {
 
             Optional<Parser.PredicateInstance> instOpt = Parser.extractPredicate(pl.tokens, root, stemmer);
             if (!instOpt.isPresent()) return;
+            //instOpt -> template (X control Y, X went to Y), xWordStem, yWordStem
 
             Parser.PredicateInstance inst = instOpt.get();
             int c = pl.count;
@@ -58,7 +64,10 @@ public class Step1_ExtractPredicates {
         }
     }
 
-    /** Reducer: sum counts */
+    /** Reducer: sum counts 
+     * Input: key = predicate \t slot \t word , value = count
+     * Output: same as input, but summed counts
+    */
     public static class SumReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
         private final IntWritable out = new IntWritable();
 
