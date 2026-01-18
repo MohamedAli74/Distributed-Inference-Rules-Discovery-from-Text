@@ -5,11 +5,14 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.*;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Step 3:
@@ -21,76 +24,46 @@ import java.util.List;
  *  <pred \t slot \t word> \t <cpsw \t cps>
  */
 public class Step3_JoinPSWWithPSTotals {
-    /** helper: parse "key \t value" where key may contain tabs */
-    private static class KV {
-        String key;
-        String val;
-    }//TODO: change here as well, this class and the next function made to treat the test input
-
-    private static KV parseLineKV(String line) {
-        if (line == null) return null;
-        line = line.trim();
-        if (line.isEmpty()) return null;
-
-        int lastTab = line.lastIndexOf('\t');
-        if (lastTab < 0) return null;
-
-        KV kv = new KV();
-        kv.key = line.substring(0, lastTab);
-        kv.val = line.substring(lastTab + 1);
-        return kv;
-    }
-
     /** Mapper for Step1 output */
-    public static class PSWMapper extends Mapper<LongWritable, Text, Text, Text> {//TODO: change the key value type
+    public static class PSWMapper extends Mapper<Text, LongWritable, Text, Text> {//TODO: change the key value type
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
-            // Step1 line: (pred \t slot \t word) \t cpsw
-            KV kv = parseLineKV(value.toString());
-            if (kv == null) return;
-
-            String[] k = kv.key.split("\t", -1);
+        protected void map(Text key, LongWritable value, Context ctx) throws IOException, InterruptedException {
+            String[] k = key.toString().split("\t", -1);
             if (k.length != 3) return;
 
             String pred = k[0];
             String slot = k[1];
             String word = k[2];
-            String cpsw = kv.val;
 
             // join key on (pred,slot)
             outKey.set("J\t" + pred + "\t" + slot);
             // mark as word record
-            outVal.set("W\t" + word + "\t" + cpsw);
+            outVal.set("W\t" + word + "\t" + value.get());
             ctx.write(outKey, outVal);
         }
-    }//TODO: check if this whole class will be needed after the test->prod change
+    }
 
     /** Mapper for Step2 totals output */
-    public static class PSTotalsMapper extends Mapper<LongWritable, Text, Text, Text> {
+    public static class PSTotalsMapper extends Mapper<Text, LongWritable, Text, Text> {
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {//TODO
-            // Step2 line: <key> \t <value>
-            KV kv = parseLineKV(value.toString());//TODO
-            if (kv == null) return;
-
+        protected void map(Text key, LongWritable value, Context ctx) throws IOException, InterruptedException {
             // we only want PS totals: key starts with "PS\tpred\tslot"
-            if (!kv.key.startsWith("PS\t")) return;
+            if (!key.toString().startsWith("PS\t")) return;
 
-            String[] p = kv.key.split("\t", 3);
-            if (p.length != 3) return;
+            String[] p = key.toString().split("\t", 3);
+            if (p.length != 2) return;
 
             String pred = p[1];
             String slot = p[2];
-            String cps = kv.val;
 
             outKey.set("J\t" + pred + "\t" + slot);
-            outVal.set("T\t" + cps);
+            outVal.set("T\t" + value.get());
             ctx.write(outKey, outVal);
         }
     }
@@ -144,13 +117,16 @@ public class Step3_JoinPSWWithPSTotals {
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(Text.class);
 
+        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setOutputFormatClass(SequenceFileOutputFormat.class);
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        MultipleInputs.addInputPath(job, step1Input, TextInputFormat.class, PSWMapper.class);
-        MultipleInputs.addInputPath(job, step2Totals, TextInputFormat.class, PSTotalsMapper.class);
+        MultipleInputs.addInputPath(job, step1Input, SequenceFileInputFormat.class, PSWMapper.class);
+        MultipleInputs.addInputPath(job, step2Totals, SequenceFileInputFormat.class, PSTotalsMapper.class);
 
-        TextOutputFormat.setOutputPath(job, output);
+        FileOutputFormat.setOutputPath(job, output);
         return job;
     }
 }

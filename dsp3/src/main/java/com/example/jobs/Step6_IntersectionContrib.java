@@ -4,8 +4,10 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import com.example.helpers.PorterStemmer;
 import com.example.helpers.TestData;
@@ -31,23 +33,21 @@ import java.util.*;
  */
 public class Step6_IntersectionContrib {
 
-    public static class ContribMapper extends Mapper<LongWritable, Text, Text, Text> {
+    public static class ContribMapper extends Mapper<Text, DoubleWritable, Text, Text> {
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
-            // Step4: pred \t slot \t word \t mi
-            String[] f = value.toString().split("\t");
-            if (f.length != 4) return;
+        protected void map(Text key, DoubleWritable value, Context ctx) throws IOException, InterruptedException {
+            // key pred \t slot \t word ,value: mi
+            String[] f = key.toString().split("\t");
+            if (f.length != 3) return;
 
             String pred = f[0];
             String slot = f[1];
             String word = f[2];
 
-            double mi;
-            try { mi = Double.parseDouble(f[3]); }
-            catch (Exception e) { return; }
+            double mi = value.get();
 
             if (mi <= 0) return;
 
@@ -121,6 +121,9 @@ public class Step6_IntersectionContrib {
         job.setReducerClass(ContribReducer.class);
         job.setNumReduceTasks(reducers);
 
+        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setOutputFormatClass(SequenceFileOutputFormat.class);
+
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(Text.class);
 
@@ -131,8 +134,8 @@ public class Step6_IntersectionContrib {
         job.addCacheFile(new URI(positive.toString() + "#positive.txt"));
         job.addCacheFile(new URI(negative.toString() + "#negative.txt"));
 
-        TextInputFormat.addInputPath(job, miInput);
-        TextOutputFormat.setOutputPath(job, output);
+        FileInputFormat.addInputPath(job, miInput);
+        FileOutputFormat.setOutputPath(job, output);
 
         return job;
     }

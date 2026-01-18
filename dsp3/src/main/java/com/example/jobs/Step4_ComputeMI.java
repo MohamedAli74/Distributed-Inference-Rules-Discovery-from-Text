@@ -2,10 +2,12 @@ package com.example.jobs;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.*;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.*;
 import java.util.*;
@@ -27,75 +29,57 @@ import java.util.*;
  */
 public class Step4_ComputeMI {
 
-    /** ===== helper: parse a TextOutputFormat line into (key,value) using last TAB ===== */
-    private static class KV {//TODO
-        String key;
-        String val;
-    }
-
-    private static KV parseLineKV(String line) {//TODO
-        if (line == null) return null;
-        line = line.trim();
-        if (line.isEmpty()) return null;
-
-        int lastTab = line.lastIndexOf('\t');
-        if (lastTab < 0) return null;
-
-        KV kv = new KV();
-        kv.key = line.substring(0, lastTab);
-        kv.val = line.substring(lastTab + 1);
-        return kv;
-    }
-
     /** Mapper from Step3 join output */
-    public static class FromJoinMapper extends Mapper<LongWritable, Text, Text, Text> {
+    public static class FromJoinMapper extends Mapper<Text, Text, Text, Text> {
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
+        protected void map(Text key, Text value, Context ctx) throws IOException, InterruptedException {
             // Step3 line: pred \t slot \t word \t cpsw \t cps  (5 fields)
-            String[] f = value.toString().split("\t");
-            if (f.length != 5) return;
+            String[] k = key.toString().split("\t");
+            String[] v = value.toString().split("\t");
+            if (k.length != 3) return;
+            if (v.length != 2) return;
 
-            String pred = f[0];
-            String slot = f[1];
-            String word = f[2];
-            String cpsw = f[3];//TODO
-            String cps  = f[4];//TODO
+            String pred = k[0];
+            String slot = k[1];
+            String word = k[2];
+            String cpsw = v[0];
+            String cps  = v[1];
 
             // join key: slot \t word
             outKey.set(slot + "\t" + word);
 
-            // record: P \t pred \t cpsw \t cps
+            // value: P \t pred \t cpsw \t cps
             outVal.set("P\t" + pred + "\t" + cpsw + "\t" + cps);
             ctx.write(outKey, outVal);
         }
     }
 
     /** Mapper from Step2 totals: only SW records */
-    public static class SWTotalsMapper extends Mapper<LongWritable, Text, Text, Text> {
+    public static class SWTotalsMapper extends Mapper<Text, LongWritable, Text, Text> {
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
-            // Step2 totals line is TextOutputFormat: "<key>\t<value>"
+        protected void map(Text key, LongWritable value, Context ctx) throws IOException, InterruptedException {
+            // key:SW\t<slot>\t<word>       value:csw
+            //or:PS\t<predicate>\t<slot>    value:cps
+            //or:SLOT\t<slot>               value:cslot
+            // we only want SW records
             // Example: "SW\tX\tdrug\t15"
-            KV kv = parseLineKV(value.toString());
-            if (kv == null) return;
+            if (!key.toString().startsWith("SW\t")) return;
 
-            if (!kv.key.startsWith("SW\t")) return;
-
-            // kv.key = "SW\t<slot>\t<word>"
-            String[] p = kv.key.split("\t", 3);
+            // key = "SW\t<slot>\t<word>"
+            String[] p = key.toString().split("\t", -1);
             if (p.length != 3) return;
 
             String slot = p[1];
             String word = p[2];
 
             outKey.set(slot + "\t" + word);
-            outVal.set("S\t" + kv.val); // csw
+            outVal.set("S\t" + value.get()); // csw
             ctx.write(outKey, outVal);
         }
     }
@@ -108,36 +92,32 @@ public class Step4_ComputeMI {
         @Override
         protected void setup(Context ctx) throws IOException {
             Configuration conf = ctx.getConfiguration();
-            String totalsDir = conf.get("dirt.totals.dir");
-            if (totalsDir == null) return;
-
-            Path totalsPath = new Path(totalsDir);
+            Path totalsPath = new Path(conf.get("dirt.totals.dir"));
             FileSystem fs = totalsPath.getFileSystem(conf);
-            if (!fs.exists(totalsPath)) return;
 
+            // Iterate over all part-files in the folder
             for (FileStatus st : fs.listStatus(totalsPath)) {
-                if (!st.isFile()) continue;
-                String name = st.getPath().getName();
-                if (!name.startsWith("part-")) continue;
+                if (st.getPath().getName().startsWith("_")) continue; // Skip _SUCCESS
 
-                try (BufferedReader br = new BufferedReader(new InputStreamReader(fs.open(st.getPath())))) {
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        KV kv = parseLineKV(line);
-                        if (kv == null) continue;
+                // USE SEQUENCE FILE READER
+                SequenceFile.Reader reader = new SequenceFile.Reader(conf, SequenceFile.Reader.file(st.getPath()));
+                
+                // Create objects to hold the data
+                Text key = new Text();
+                Text val = new Text(); // Or LongWritable, depending on Step 2 output
 
-                        // SLOT totals are stored as key="SLOT\tX" value="<count>"
-                        if (kv.key.equals("SLOT\tX")) {
-                            try { cSlotX = Long.parseLong(kv.val); } catch (Exception ignored) {}
-                        } else if (kv.key.equals("SLOT\tY")) {
-                            try { cSlotY = Long.parseLong(kv.val); } catch (Exception ignored) {}
-                        }
+                while (reader.next(key, val)) {
+                    String keyStr = key.toString();
+                    long count = Long.parseLong(val.toString());
+
+                    if (keyStr.equals("SLOT\tX")) {
+                        cSlotX = count;
+                    } else if (keyStr.equals("SLOT\tY")) {
+                        cSlotY = count;
                     }
                 }
+                reader.close();
             }
-
-            if (cSlotX <= 0) cSlotX = 1;
-            if (cSlotY <= 0) cSlotY = 1;
         }
 
         @Override
@@ -195,16 +175,18 @@ public class Step4_ComputeMI {
         job.setReducerClass(MIReducer.class);
         job.setNumReduceTasks(reducers);
 
+        job.setOutputFormatClass(SequenceFileOutputFormat.class);
+
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(Text.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(DoubleWritable.class);
 
-        MultipleInputs.addInputPath(job, step3Join, TextInputFormat.class, FromJoinMapper.class);
-        MultipleInputs.addInputPath(job, step2Totals, TextInputFormat.class, SWTotalsMapper.class);
+        MultipleInputs.addInputPath(job, step3Join, SequenceFileInputFormat.class, FromJoinMapper.class);
+        MultipleInputs.addInputPath(job, step2Totals, SequenceFileInputFormat.class, SWTotalsMapper.class);
 
-        TextOutputFormat.setOutputPath(job, output);
+        FileOutputFormat.setOutputPath(job, output);
         return job;
     }
 }

@@ -8,8 +8,9 @@ import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 
 import com.example.helpers.PorterStemmer;
 import com.example.helpers.TestData;
@@ -22,10 +23,17 @@ import java.util.*;
  * Step7:
  * Inputs:
  *  A) Step6 output:
- *     pairKey \t contrib
+ *     key: p1 \t p2 
+ *     value: contrib
  *
- *  B) Step5 output:
- *     pred \t denom
+ *  B) Step4 output:
+ *    key: pred \t slot \t word
+ *    value: mi
+ * 
+ *  Saved as a table inside the reducer:-
+ *  Step5 output:
+ *     key: pred
+ *     value: denom
  *
  * Output:
  *   pred1 \t pred2 \t similarity \t label
@@ -36,26 +44,24 @@ import java.util.*;
  */
 public class Step7_FinalSimilarity {
 
-    public static class FinalMapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
+    public static class FinalMapper extends Mapper<Text, DoubleWritable, Text, DoubleWritable> {
         private final Text outKey = new Text();
         private final DoubleWritable outVal = new DoubleWritable();
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
+        protected void map(Text key, DoubleWritable value, Context ctx) throws IOException, InterruptedException {
             // Step6 line: pairKey \t contrib
-            String[] f = value.toString().split("\t");
+            String[] f = key.toString().split("\t");
             if (f.length == 2){
-                double contrib;
-                try { contrib = Double.parseDouble(f[1]); }
-                catch (Exception e) { return; }
+                double contrib = value.get();
 
-                outKey.set(f[0]);      // pairKey
+                outKey.set(f[0]+"\t"+f[1]);// p1\tf[2]
                 outVal.set(contrib);
                 ctx.write(outKey, outVal);
             }else{
-                if (f.length == 4) {
+                if (f.length == 3) {
                     outKey.set("*" + f[0]+"\t"+f[1]+"\t"+f[2]);
-                    outVal.set(Double.parseDouble(f[3]));
+                    outVal.set(value.get());
                     ctx.write(outKey, outVal);
                 }
             }
@@ -156,6 +162,8 @@ public class Step7_FinalSimilarity {
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(DoubleWritable.class);
 
+        job.setOutputFormatClass(SequenceFileOutputFormat.class);
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
@@ -164,8 +172,8 @@ public class Step7_FinalSimilarity {
         job.addCacheFile(new URI(negative.toString() + "#negative.txt"));
 
         // TextInputFormat.addInputPath(job, step6Input);
-        MultipleInputs.addInputPath(job, step6Input, TextInputFormat.class, FinalMapper.class);
-        MultipleInputs.addInputPath(job, step4MI, TextInputFormat.class, FinalMapper.class);
+        MultipleInputs.addInputPath(job, step6Input, SequenceFileInputFormat.class, FinalMapper.class);
+        MultipleInputs.addInputPath(job, step4MI, SequenceFileInputFormat.class, FinalMapper.class);
         TextOutputFormat.setOutputPath(job, output);
 
         return job;

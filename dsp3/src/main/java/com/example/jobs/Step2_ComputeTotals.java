@@ -4,8 +4,10 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
 
@@ -24,55 +26,48 @@ import java.io.IOException;
  */
 public class Step2_ComputeTotals {
 
-    public static class TotalsMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+    public static class TotalsMapper extends Mapper<Text, LongWritable, Text, LongWritable> {
         private final Text outKey = new Text();
-        private final IntWritable outVal = new IntWritable();
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
-            // Step1 line: pred \t slot \t word \t count
-            //TODO: change the key-value back to <Text, IntWritable>, the same as the previous step output.
-            String[] f = value.toString().split("\t");
-            if (f.length != 4) return;
+        protected void map(Text key, LongWritable value, Context ctx) throws IOException, InterruptedException {
+            // Input key: predicate \t slot \t word
+            // Output value: count
+            String[] f = key.toString().split("\t");
+            if (f.length != 3) return;
 
             String pred = f[0];
             String slot = f[1];
             String word = f[2];
 
-            int c;
-            try { c = Integer.parseInt(f[3]); }//TODO: change here as well
-            catch (Exception e) { return; }
-            if (c <= 0) return;
-
-            outVal.set(c);
 
             // 1) PS: C(predicate, slot)
             outKey.set("PS\t" + pred + "\t" + slot);
-            ctx.write(outKey, outVal);
+            ctx.write(outKey, value);
 
             // 2) SW: C(slot, word)
             outKey.set("SW\t" + slot + "\t" + word);
-            ctx.write(outKey, outVal);
+            ctx.write(outKey, value);
 
             // 3) SLOT: C(slot)
             outKey.set("SLOT\t" + slot);
-            ctx.write(outKey, outVal);//TODO: make it a global variable
+            ctx.write(outKey, value);
         }
     }
 
-    public static class SumReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
-        private final IntWritable out = new IntWritable();
+    public static class SumReducer extends Reducer<Text, LongWritable, Text, LongWritable> {
+        private final LongWritable out = new LongWritable();
 
         @Override
-        protected void reduce(Text key, Iterable<IntWritable> vals, Context ctx) throws IOException, InterruptedException {
-            int sum = 0;
-            for (IntWritable v : vals) sum += v.get();
+        protected void reduce(Text key, Iterable<LongWritable> vals, Context ctx) throws IOException, InterruptedException {
+            long sum = 0;
+            for (LongWritable v : vals) sum += v.get();
             out.set(sum);
             ctx.write(key, out);
         }
     }
 
-    /** builder للـ Driver */
+    //driver builder
     public static Job buildJob(Configuration conf, Path input, Path output, int reducers) throws Exception {
         Job job = Job.getInstance(conf, "Step2-ComputeTotals");
         job.setJarByClass(Step2_ComputeTotals.class);
@@ -82,13 +77,17 @@ public class Step2_ComputeTotals {
         job.setNumReduceTasks(reducers);
 
         job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
+        job.setMapOutputValueClass(LongWritable.class);
+
+        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntWritable.class);
+        job.setOutputValueClass(LongWritable.class);
 
-        TextInputFormat.addInputPath(job, input);
-        TextOutputFormat.setOutputPath(job, output);
+        FileInputFormat.addInputPath(job, input);
+        FileOutputFormat.setOutputPath(job, output);
+
 
         return job;
     }

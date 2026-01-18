@@ -5,8 +5,10 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import com.example.helpers.PorterStemmer;
 import com.example.helpers.TestData;
@@ -22,7 +24,7 @@ import java.util.Set;
  */
 public class Step5_ComputeDenom {
 
-    public static class DenomMapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
+    public static class DenomMapper extends Mapper<Text, DoubleWritable, Text, DoubleWritable> {
         private final Text outKey = new Text();
         private final DoubleWritable outVal = new DoubleWritable();
 
@@ -36,17 +38,13 @@ public class Step5_ComputeDenom {
         }
 
         @Override
-        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
-            String[] f = value.toString().split("\t");
-            if (f.length != 4) return;
+        //filters the input to only test predicates.
+        protected void map(Text key, DoubleWritable value, Context ctx) throws IOException, InterruptedException {
+            String[] f = key.toString().split("\t");
+            if (f.length != 3) return;
 
             String pred = f[0];
-            double mi;
-            try { 
-                mi = Double.parseDouble(f[3]); 
-            } catch (Exception e) { 
-                return; 
-            }
+            double mi = value.get();
 
             if (mi <= 0) return;
 
@@ -80,6 +78,9 @@ public class Step5_ComputeDenom {
         job.setReducerClass(SumReducer.class);
         job.setNumReduceTasks(reducers);
 
+        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setOutputFormatClass(SequenceFileOutputFormat.class);
+
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(DoubleWritable.class);
 
@@ -95,8 +96,8 @@ public class Step5_ComputeDenom {
         job.addCacheFile(new URI(fullNegativePath.toString() + "#negative.txt"));
         // ---------------------------------------
 
-        TextInputFormat.addInputPath(job, miInput);
-        TextOutputFormat.setOutputPath(job, output);
+        FileInputFormat.addInputPath(job, miInput);
+        FileOutputFormat.setOutputPath(job, output);
 
         return job;
     }

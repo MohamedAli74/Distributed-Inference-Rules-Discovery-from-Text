@@ -13,7 +13,7 @@ import java.util.Set;
 import org.apache.hadoop.fs.Path;
 public class TestData {
 
-    public static final String SEP = "\u0001";
+    public static final String SEP = "\t";
 
     public static class PairInfo {
         public final String p1;

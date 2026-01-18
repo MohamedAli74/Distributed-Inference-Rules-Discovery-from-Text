@@ -4,19 +4,18 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import com.example.helpers.Parser;
 import com.example.helpers.PorterStemmer;
 import com.example.helpers.TestData;
 import com.example.helpers.Token;
-import com.example.helpers.Parser.ParsedLine;
-import com.example.helpers.Parser.PredicateInstance;
 
 import java.io.IOException;
 import java.util.Optional;
-
 public class Step1_ExtractPredicates {
     /**
      * Input: biarc line - head_word \t syntactic-ngram \t total_count \t counts_by_year  
@@ -85,18 +84,23 @@ public class Step1_ExtractPredicates {
         Job job = Job.getInstance(conf, "Step1-ExtractPredicates");
         job.setJarByClass(Step1_ExtractPredicates.class);
 
+        
         job.setMapperClass(ExtractMapper.class);
         job.setReducerClass(SumReducer.class);
+        
         job.setNumReduceTasks(reducers);
-
+        
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
+        
+        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        TextInputFormat.addInputPath(job, input);
-        TextOutputFormat.setOutputPath(job, output);
+        FileInputFormat.addInputPath(job, input);
+        FileOutputFormat.setOutputPath(job, output);
 
         return job;
     }
