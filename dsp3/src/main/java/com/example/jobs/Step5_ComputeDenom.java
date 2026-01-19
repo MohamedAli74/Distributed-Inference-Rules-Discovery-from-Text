@@ -1,17 +1,24 @@
 package com.example.jobs;
 
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem; 
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.*;
-import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
 import com.example.helpers.PorterStemmer;
 import com.example.helpers.TestData;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.Text;
+
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 
 import java.io.IOException;
 import java.net.URI;
@@ -19,8 +26,8 @@ import java.util.Set;
 
 /**
  * Step5:
- * Input: Step4 output: pred \t slot \t word \t mi
- * Output: pred \t denom
+ * Input (SequenceFile): key = "pred\tslot\tword" , value = mi
+ * Output (SequenceFile): key = pred , value = denom
  */
 public class Step5_ComputeDenom {
 
@@ -38,8 +45,8 @@ public class Step5_ComputeDenom {
         }
 
         @Override
-        //filters the input to only test predicates.
         protected void map(Text key, DoubleWritable value, Context ctx) throws IOException, InterruptedException {
+            // key is: pred \t slot \t word
             String[] f = key.toString().split("\t");
             if (f.length != 3) return;
 
@@ -47,7 +54,6 @@ public class Step5_ComputeDenom {
             double mi = value.get();
 
             if (mi <= 0) return;
-
             if (testPreds != null && !testPreds.contains(pred)) return;
 
             outKey.set(pred);
@@ -78,6 +84,7 @@ public class Step5_ComputeDenom {
         job.setReducerClass(SumReducer.class);
         job.setNumReduceTasks(reducers);
 
+        // Keep SequenceFile
         job.setInputFormatClass(SequenceFileInputFormat.class);
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
@@ -87,14 +94,18 @@ public class Step5_ComputeDenom {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(DoubleWritable.class);
 
-        
-        FileSystem fs = FileSystem.get(conf);
-        Path fullPositivePath = fs.makeQualified(positive);
-        Path fullNegativePath = fs.makeQualified(negative);
+        //  Fix Wrong FS: take FS from each path (s3a/hdfs) correctly
+        FileSystem fsPos = positive.getFileSystem(conf);
+        FileSystem fsNeg = negative.getFileSystem(conf);
+
+        Path fullPositivePath = fsPos.makeQualified(positive);
+        Path fullNegativePath = fsNeg.makeQualified(negative);
+
+        // enable symlink names (positive.txt / negative.txt) if your loader expects them
+        job.getConfiguration().setBoolean("mapreduce.job.cache.symlink.create", true);
 
         job.addCacheFile(new URI(fullPositivePath.toString() + "#positive.txt"));
         job.addCacheFile(new URI(fullNegativePath.toString() + "#negative.txt"));
-        // ---------------------------------------
 
         FileInputFormat.addInputPath(job, miInput);
         FileOutputFormat.setOutputPath(job, output);

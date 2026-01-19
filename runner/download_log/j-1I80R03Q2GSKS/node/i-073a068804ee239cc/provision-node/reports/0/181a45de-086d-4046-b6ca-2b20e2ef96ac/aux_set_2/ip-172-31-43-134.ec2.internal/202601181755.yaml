@@ -1,0 +1,898 @@
+--- !ruby/object:Puppet::Transaction::Report
+host: ip-172-31-43-134.ec2.internal
+time: '2026-01-18T17:55:15.648582338+00:00'
+configuration_version: 1768758915
+transaction_uuid: 3450c2f7-dbbe-4e80-8e71-54d9ff4eb83a
+report_format: 12
+puppet_version: 8.1.0
+status: unchanged
+transaction_completed: true
+noop: false
+noop_pending: true
+environment: production
+logs:
+- level: info
+  message: Using environment 'production'
+  source: Puppet
+  tags:
+  - info
+  time: '2026-01-18T17:55:15.674860920+00:00'
+  file:
+  line:
+- level: info
+  message: Applying configuration version '1768758915'
+  source: Puppet
+  tags:
+  - info
+  time: '2026-01-18T17:55:15.706112284+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (1 of 30)
+  source: Stage[pre]
+  tags:
+  - info
+  - stage
+  - pre
+  - class
+  time: '2026-01-18T17:55:15.711263153+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Stage[pre]
+  tags:
+  - info
+  - stage
+  - pre
+  - class
+  time: '2026-01-18T17:55:15.711741721+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (2 of 30)
+  source: Stage[pre]
+  tags:
+  - info
+  - stage
+  - pre
+  - class
+  time: '2026-01-18T17:55:15.711868473+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Stage[pre]
+  tags:
+  - info
+  - stage
+  - pre
+  - class
+  time: '2026-01-18T17:55:15.712359869+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (3 of 30)
+  source: Stage[main]
+  tags:
+  - info
+  - stage
+  time: '2026-01-18T17:55:15.712469933+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Stage[main]
+  tags:
+  - info
+  - stage
+  time: '2026-01-18T17:55:15.712668961+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (4 of 30)
+  source: Class[Settings]
+  tags:
+  - info
+  - class
+  - settings
+  time: '2026-01-18T17:55:15.712812515+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Settings]
+  tags:
+  - info
+  - class
+  - settings
+  time: '2026-01-18T17:55:15.713003780+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (5 of 30)
+  source: Class[Settings]
+  tags:
+  - info
+  - class
+  - settings
+  time: '2026-01-18T17:55:15.713116218+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Settings]
+  tags:
+  - info
+  - class
+  - settings
+  time: '2026-01-18T17:55:15.713301390+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (6 of 30)
+  source: Class[Main]
+  tags:
+  - info
+  - class
+  time: '2026-01-18T17:55:15.713379734+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Main]
+  tags:
+  - info
+  - class
+  time: '2026-01-18T17:55:15.713579011+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (7 of 30)
+  source: "/Stage[main]/Main/Package[jdk]"
+  tags:
+  - info
+  - package
+  - jdk
+  - class
+  time: '2026-01-18T17:55:15.789557069+00:00'
+  file: "/var/aws/emr/bigtop-deploy/puppet/manifests/site.pp"
+  line: 80
+- level: notice
+  message: current_value 'purged', should be 'present' (noop)
+  source: "/Stage[main]/Main/Package[jdk]/ensure"
+  tags:
+  - notice
+  - package
+  - jdk
+  - class
+  time: '2026-01-18T17:55:15.810694699+00:00'
+  file: "/var/aws/emr/bigtop-deploy/puppet/manifests/site.pp"
+  line: 80
+- level: info
+  message: Evaluated in 0.02 seconds
+  source: "/Stage[main]/Main/Package[jdk]"
+  tags:
+  - info
+  - package
+  - jdk
+  - class
+  time: '2026-01-18T17:55:15.810939125+00:00'
+  file: "/var/aws/emr/bigtop-deploy/puppet/manifests/site.pp"
+  line: 80
+- level: info
+  message: Starting to evaluate the resource (8 of 30)
+  source: Node[default]
+  tags:
+  - info
+  - node
+  - default
+  - class
+  time: '2026-01-18T17:55:15.811042020+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Node[default]
+  tags:
+  - info
+  - node
+  - default
+  - class
+  time: '2026-01-18T17:55:15.811283592+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (9 of 30)
+  source: Node[default]
+  tags:
+  - info
+  - node
+  - default
+  - class
+  time: '2026-01-18T17:55:15.811362814+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Node[default]
+  tags:
+  - info
+  - node
+  - default
+  - class
+  time: '2026-01-18T17:55:15.811497725+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (10 of 30)
+  source: Class[Main]
+  tags:
+  - info
+  - class
+  time: '2026-01-18T17:55:15.811568489+00:00'
+  file:
+  line:
+- level: notice
+  message: Would have triggered 'refresh' from 1 event
+  source: Class[Main]
+  tags:
+  - notice
+  - class
+  time: '2026-01-18T17:55:15.812268711+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Main]
+  tags:
+  - info
+  - class
+  time: '2026-01-18T17:55:15.812385792+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (11 of 30)
+  source: Class[Hadoop_cluster_node]
+  tags:
+  - info
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.812449912+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Hadoop_cluster_node]
+  tags:
+  - info
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.812622030+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (12 of 30)
+  source: Class[Node_with_roles]
+  tags:
+  - info
+  - class
+  - node_with_roles
+  - node
+  - default
+  time: '2026-01-18T17:55:15.812703399+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Node_with_roles]
+  tags:
+  - info
+  - class
+  - node_with_roles
+  - node
+  - default
+  time: '2026-01-18T17:55:15.812835284+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (13 of 30)
+  source: "/Stage[main]/Hadoop_cluster_node/User[hadoop]"
+  tags:
+  - info
+  - user
+  - hadoop
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.813104864+00:00'
+  file: "/var/aws/emr/bigtop-deploy/puppet/manifests/cluster.pp"
+  line: 216
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Stage[main]/Hadoop_cluster_node/User[hadoop]"
+  tags:
+  - info
+  - user
+  - hadoop
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.813801348+00:00'
+  file: "/var/aws/emr/bigtop-deploy/puppet/manifests/cluster.pp"
+  line: 216
+- level: info
+  message: Starting to evaluate the resource (14 of 30)
+  source: Emr_scripts::Scripts[emr_scripts scripts]
+  tags:
+  - info
+  - emr_scripts::scripts
+  - emr_scripts
+  - scripts
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.813895117+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Emr_scripts::Scripts[emr_scripts scripts]
+  tags:
+  - info
+  - emr_scripts::scripts
+  - emr_scripts
+  - scripts
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.814082481+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (15 of 30)
+  source: Node_with_roles::Deploy_module[tez]
+  tags:
+  - info
+  - node_with_roles::deploy_module
+  - node_with_roles
+  - deploy_module
+  - tez
+  - class
+  - node
+  - default
+  time: '2026-01-18T17:55:15.814162091+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Node_with_roles::Deploy_module[tez]
+  tags:
+  - info
+  - node_with_roles::deploy_module
+  - node_with_roles
+  - deploy_module
+  - tez
+  - class
+  - node
+  - default
+  time: '2026-01-18T17:55:15.814325741+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (16 of 30)
+  source: Node_with_roles::Deploy_module[tez]
+  tags:
+  - info
+  - node_with_roles::deploy_module
+  - node_with_roles
+  - deploy_module
+  - tez
+  - class
+  - node
+  - default
+  time: '2026-01-18T17:55:15.814399929+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Node_with_roles::Deploy_module[tez]
+  tags:
+  - info
+  - node_with_roles::deploy_module
+  - node_with_roles
+  - deploy_module
+  - tez
+  - class
+  - node
+  - default
+  time: '2026-01-18T17:55:15.814532735+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (17 of 30)
+  source: Class[Node_with_roles]
+  tags:
+  - info
+  - class
+  - node_with_roles
+  - node
+  - default
+  time: '2026-01-18T17:55:15.814607110+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Node_with_roles]
+  tags:
+  - info
+  - class
+  - node_with_roles
+  - node
+  - default
+  time: '2026-01-18T17:55:15.814723530+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (18 of 30)
+  source: "/Stage[main]/Hadoop_cluster_node/Emr_scripts::Scripts[emr_scripts scripts]/Package[emr-scripts]"
+  tags:
+  - info
+  - package
+  - emr-scripts
+  - emr_scripts::scripts
+  - emr_scripts
+  - scripts
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.814888959+00:00'
+  file: "/var/aws/emr/bigtop-deploy/puppet/modules/emr_scripts/manifests/init.pp"
+  line: 3
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Stage[main]/Hadoop_cluster_node/Emr_scripts::Scripts[emr_scripts scripts]/Package[emr-scripts]"
+  tags:
+  - info
+  - package
+  - emr-scripts
+  - emr_scripts::scripts
+  - emr_scripts
+  - scripts
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.815208341+00:00'
+  file: "/var/aws/emr/bigtop-deploy/puppet/modules/emr_scripts/manifests/init.pp"
+  line: 3
+- level: info
+  message: Starting to evaluate the resource (19 of 30)
+  source: Emr_scripts::Scripts[emr_scripts scripts]
+  tags:
+  - info
+  - emr_scripts::scripts
+  - emr_scripts
+  - scripts
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.815307897+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Emr_scripts::Scripts[emr_scripts scripts]
+  tags:
+  - info
+  - emr_scripts::scripts
+  - emr_scripts
+  - scripts
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.815860879+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (20 of 30)
+  source: Class[Hadoop_cluster_node]
+  tags:
+  - info
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.815951072+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Hadoop_cluster_node]
+  tags:
+  - info
+  - class
+  - hadoop_cluster_node
+  - node
+  - default
+  time: '2026-01-18T17:55:15.816089607+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (21 of 30)
+  source: Class[Tez::Deploy]
+  tags:
+  - info
+  - class
+  - tez::deploy
+  - tez
+  - deploy
+  - node_with_roles::deploy_module
+  - node_with_roles
+  - deploy_module
+  - node
+  - default
+  time: '2026-01-18T17:55:15.816151145+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Tez::Deploy]
+  tags:
+  - info
+  - class
+  - tez::deploy
+  - tez
+  - deploy
+  - node_with_roles::deploy_module
+  - node_with_roles
+  - deploy_module
+  - node
+  - default
+  time: '2026-01-18T17:55:15.816299756+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (22 of 30)
+  source: Class[Tez::Deploy]
+  tags:
+  - info
+  - class
+  - tez::deploy
+  - tez
+  - deploy
+  - node_with_roles::deploy_module
+  - node_with_roles
+  - deploy_module
+  - node
+  - default
+  time: '2026-01-18T17:55:15.816380765+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Class[Tez::Deploy]
+  tags:
+  - info
+  - class
+  - tez::deploy
+  - tez
+  - deploy
+  - node_with_roles::deploy_module
+  - node_with_roles
+  - deploy_module
+  - node
+  - default
+  time: '2026-01-18T17:55:15.816517484+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (23 of 30)
+  source: Stage[main]
+  tags:
+  - info
+  - stage
+  time: '2026-01-18T17:55:15.816585298+00:00'
+  file:
+  line:
+- level: notice
+  message: Would have triggered 'refresh' from 1 event
+  source: Stage[main]
+  tags:
+  - notice
+  - stage
+  time: '2026-01-18T17:55:15.816796540+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: Stage[main]
+  tags:
+  - info
+  - stage
+  time: '2026-01-18T17:55:15.816854763+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (24 of 30)
+  source: "/Schedule[puppet]"
+  tags:
+  - info
+  - schedule
+  - puppet
+  time: '2026-01-18T17:55:15.816929167+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Schedule[puppet]"
+  tags:
+  - info
+  - schedule
+  - puppet
+  time: '2026-01-18T17:55:15.817127666+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (25 of 30)
+  source: "/Schedule[hourly]"
+  tags:
+  - info
+  - schedule
+  - hourly
+  time: '2026-01-18T17:55:15.817182201+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Schedule[hourly]"
+  tags:
+  - info
+  - schedule
+  - hourly
+  time: '2026-01-18T17:55:15.817308893+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (26 of 30)
+  source: "/Schedule[daily]"
+  tags:
+  - info
+  - schedule
+  - daily
+  time: '2026-01-18T17:55:15.817358587+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Schedule[daily]"
+  tags:
+  - info
+  - schedule
+  - daily
+  time: '2026-01-18T17:55:15.817476797+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (27 of 30)
+  source: "/Schedule[weekly]"
+  tags:
+  - info
+  - schedule
+  - weekly
+  time: '2026-01-18T17:55:15.817525485+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Schedule[weekly]"
+  tags:
+  - info
+  - schedule
+  - weekly
+  time: '2026-01-18T17:55:15.817640816+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (28 of 30)
+  source: "/Schedule[monthly]"
+  tags:
+  - info
+  - schedule
+  - monthly
+  time: '2026-01-18T17:55:15.817687358+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Schedule[monthly]"
+  tags:
+  - info
+  - schedule
+  - monthly
+  time: '2026-01-18T17:55:15.817804597+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (29 of 30)
+  source: "/Schedule[never]"
+  tags:
+  - info
+  - schedule
+  - never
+  time: '2026-01-18T17:55:15.817851485+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Schedule[never]"
+  tags:
+  - info
+  - schedule
+  - never
+  time: '2026-01-18T17:55:15.817964156+00:00'
+  file:
+  line:
+- level: info
+  message: Starting to evaluate the resource (30 of 30)
+  source: "/Filebucket[puppet]"
+  tags:
+  - info
+  - filebucket
+  - puppet
+  time: '2026-01-18T17:55:15.818371823+00:00'
+  file:
+  line:
+- level: info
+  message: Evaluated in 0.00 seconds
+  source: "/Filebucket[puppet]"
+  tags:
+  - info
+  - filebucket
+  - puppet
+  time: '2026-01-18T17:55:15.818604430+00:00'
+  file:
+  line:
+- level: notice
+  message: Applied catalog in 0.15 seconds
+  source: Puppet
+  tags:
+  - notice
+  time: '2026-01-18T17:55:15.829301898+00:00'
+  file:
+  line:
+metrics:
+  resources:
+    name: resources
+    label: Resources
+    values:
+    - - total
+      - Total
+      - 10
+    - - skipped
+      - Skipped
+      - 0
+    - - failed
+      - Failed
+      - 0
+    - - failed_to_restart
+      - Failed to restart
+      - 0
+    - - restarted
+      - Restarted
+      - 0
+    - - changed
+      - Changed
+      - 0
+    - - out_of_sync
+      - Out of sync
+      - 1
+    - - scheduled
+      - Scheduled
+      - 0
+    - - corrective_change
+      - Corrective change
+      - 0
+  time:
+    name: time
+    label: Time
+    values:
+    - - package
+      - Package
+      - 0.02108274
+    - - user
+      - User
+      - 0.000429658
+    - - schedule
+      - Schedule
+      - 0.000245735
+    - - filebucket
+      - Filebucket
+      - 0.000102739
+    - - config_retrieval
+      - Config retrieval
+      - 0.211127269
+    - - transaction_evaluation
+      - Transaction evaluation
+      - 0.11268383299997708
+    - - catalog_application
+      - Catalog application
+      - 0.15423593200000596
+    - - total
+      - Total
+      - 0.180800886
+  changes:
+    name: changes
+    label: Changes
+    values:
+    - - total
+      - Total
+      - 0
+  events:
+    name: events
+    label: Events
+    values:
+    - - total
+      - Total
+      - 1
+    - - failure
+      - Failure
+      - 0
+    - - success
+      - Success
+      - 0
+    - - noop
+      - Noop
+      - 1
+resource_statuses:
+  Package[jdk]:
+    title: jdk
+    file: "/var/aws/emr/bigtop-deploy/puppet/manifests/site.pp"
+    line: 80
+    resource: Package[jdk]
+    resource_type: Package
+    provider_used: dnf
+    containment_path:
+    - Stage[main]
+    - Main
+    - Package[jdk]
+    evaluation_time: 0.020943184
+    tags:
+    - package
+    - jdk
+    - class
+    time: '2026-01-18T17:55:15.789854936+00:00'
+    failed: false
+    failed_to_restart: false
+    changed: false
+    out_of_sync: true
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 1
+    events:
+    - audited: false
+      property: ensure
+      previous_value: purged
+      desired_value: present
+      historical_value:
+      message: current_value 'purged', should be 'present' (noop)
+      name: package_installed
+      status: noop
+      time: '2026-01-18T17:55:15.809374475+00:00'
+      redacted:
+      corrective_change: false
+    corrective_change: false
+corrective_change: false
+catalog_uuid: c762127f-ed4c-4127-bab5-ed42cb0b62cd
+cached_catalog_status: not_used

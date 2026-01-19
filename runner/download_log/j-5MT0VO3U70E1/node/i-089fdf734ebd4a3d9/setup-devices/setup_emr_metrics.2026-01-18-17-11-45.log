@@ -1,0 +1,12 @@
+2026-01-18 17:11:56.332 + setup_emr_metrics_dirs
+2026-01-18 17:11:56.333 + base_dir=/mnt/var/em
+2026-01-18 17:11:56.334 + raw_dir=/mnt/var/em/raw
+2026-01-18 17:11:56.336 + mkdir -p /mnt/var/em/raw
+2026-01-18 17:11:56.337 + chown -R hadoop:hadoop /mnt/var/em
+2026-01-18 17:11:56.338 + chmod 0777 /mnt/var/em/raw
+2026-01-18 17:11:56.339 + setfacl --default --recursive --modify user:hadoop:rwx /mnt/var/em/raw
+2026-01-18 17:11:56.351 + setfacl --recursive --modify user:hadoop:rwX /mnt/var/em/raw
+2026-01-18 17:11:56.352 
+2026-01-18 17:11:56.353 real	0m0.021s
+2026-01-18 17:11:56.354 user	0m0.007s
+2026-01-18 17:11:56.355 sys	0m0.000s

@@ -1,0 +1,52 @@
++ sudo /usr/share/aws/emr/node-provisioner/bin/provision-node --install --provision -d0/181a45de-086d-4046-b6ca-2b20e2ef96ac
++ NODE_PROVISIONER=NodeProvisioner
++ INSTALL=0
++ PROVISION=0
++ LOG_SUBDIRECTORY=/
++ args='--install --provision -d0/181a45de-086d-4046-b6ca-2b20e2ef96ac'
+++ getopt -n /usr/share/aws/emr/node-provisioner/bin/provision-node -o d: -l install -l component-names: -l provision -- --install --provision -d0/181a45de-086d-4046-b6ca-2b20e2ef96ac
++ OPTS=' --install --provision -d '\''0/181a45de-086d-4046-b6ca-2b20e2ef96ac'\'' --'
++ '[' 0 '!=' 0 ']'
++ eval set -- ' --install --provision -d '\''0/181a45de-086d-4046-b6ca-2b20e2ef96ac'\'' --'
+++ set -- --install --provision -d 0/181a45de-086d-4046-b6ca-2b20e2ef96ac --
++ true
++ case "$1" in
++ INSTALL=1
++ shift
++ true
++ case "$1" in
++ PROVISION=1
++ shift
++ true
++ case "$1" in
++ LOG_SUBDIRECTORY=/0/181a45de-086d-4046-b6ca-2b20e2ef96ac/
++ shift 2
++ true
++ case "$1" in
++ shift
++ break
++ this=/usr/share/aws/emr/node-provisioner/bin/provision-node
++ '[' -h /usr/share/aws/emr/node-provisioner/bin/provision-node ']'
+++ dirname /usr/share/aws/emr/node-provisioner/bin/provision-node
++ bin=/usr/share/aws/emr/node-provisioner/bin
+++ basename /usr/share/aws/emr/node-provisioner/bin/provision-node
++ script=provision-node
+++ cd /usr/share/aws/emr/node-provisioner/bin
+++ pwd
++ bin=/usr/share/aws/emr/node-provisioner/bin
++ this=/usr/share/aws/emr/node-provisioner/bin/provision-node
++ '[' -z '' ']'
+++ dirname /usr/share/aws/emr/node-provisioner/bin
++ export EMR_NODE_PROVISIONER_HOME=/usr/share/aws/emr/node-provisioner
++ EMR_NODE_PROVISIONER_HOME=/usr/share/aws/emr/node-provisioner
++ CLASSPATH='/usr/share/aws/emr/node-provisioner/lib/*'
++ CLASS=com.amazonaws.emr.node.provisioner.Program
++ APPS_PHASE_LOG_ROOT=/var/log/provision-node/apps-phase/0/181a45de-086d-4046-b6ca-2b20e2ef96ac/
++ mkdir -p /var/log/provision-node/apps-phase/0/181a45de-086d-4046-b6ca-2b20e2ef96ac/
++ [[ 1 == 1 ]]
++ [[ 1 != 1 ]]
++ STDOUT_LOG=/var/log/provision-node/apps-phase/0/181a45de-086d-4046-b6ca-2b20e2ef96ac//stdout
++ STDERR_LOG=/var/log/provision-node/apps-phase/0/181a45de-086d-4046-b6ca-2b20e2ef96ac//stderr
++ [[ 1 == 1 ]]
++ echo 4553
++ nohup -- java -classpath '/usr/share/aws/emr/node-provisioner/lib/*' com.amazonaws.emr.node.provisioner.Program --yum-config-option skip_missing_names_on_install=False --no-repo-provision --install --provision -d0/181a45de-086d-4046-b6ca-2b20e2ef96ac

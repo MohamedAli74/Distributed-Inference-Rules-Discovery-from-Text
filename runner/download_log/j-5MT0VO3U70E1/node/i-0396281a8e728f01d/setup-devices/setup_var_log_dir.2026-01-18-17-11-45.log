@@ -1,0 +1,90 @@
+2026-01-18 17:11:53.841 + setup_var_log_dir
+2026-01-18 17:11:53.842 + target_dir=/var/log
+2026-01-18 17:11:53.843 + move_to_ephemeral /var/log
+2026-01-18 17:11:53.844 + echo 'Moving directory to ephemeral: /var/log'
+2026-01-18 17:11:53.845 Moving directory to ephemeral: /var/log
+2026-01-18 17:11:53.846 + ls -l /var/log
+2026-01-18 17:11:53.879 total 4
+2026-01-18 17:11:53.880 lrwxrwxrwx. 1 root      root             39 Nov 17 07:08 README -> ../../usr/share/doc/systemd/README.logs
+2026-01-18 17:11:53.881 drwxr-xr-x. 2 root      root              6 Dec  4 17:20 amazon
+2026-01-18 17:11:53.882 drwx------. 2 root      root             23 Jan 18 17:11 audit
+2026-01-18 17:11:53.883 -rw-rw----. 1 root      utmp              0 Nov 17 07:08 btmp
+2026-01-18 17:11:53.884 drwxr-x---. 2 chrony    chrony            6 Dec  4 17:12 chrony
+2026-01-18 17:11:53.886 drwxrwxr-x. 2 hdfs      hadoop            6 Nov 26 23:35 hadoop-hdfs
+2026-01-18 17:11:53.887 drwxrwxr-x. 2 httpfs    httpfs            6 Nov 26 23:35 hadoop-httpfs
+2026-01-18 17:11:53.888 drwxrwxr-x. 2 kms       hadoop            6 Nov 26 23:35 hadoop-kms
+2026-01-18 17:11:53.889 drwxrwxr-x. 2 mapred    hadoop            6 Nov 26 23:35 hadoop-mapreduce
+2026-01-18 17:11:53.890 drwxrwxr-x. 2 yarn      hadoop            6 Nov 26 23:35 hadoop-yarn
+2026-01-18 17:11:53.892 drwxr-sr-x+ 3 root      systemd-journal  46 Dec  4 17:20 journal
+2026-01-18 17:11:53.893 -rw-rw-r--. 1 root      utmp              0 Nov 17 07:08 lastlog
+2026-01-18 17:11:53.894 drwxr-xr-x. 2 root      root             32 Jan 18 17:11 mk-tmp-on-root
+2026-01-18 17:11:53.896 drwx------. 2 root      root              6 Nov 17 07:08 private
+2026-01-18 17:11:53.897 drwx------. 2 hadoop    hadoop            6 Dec  3 23:48 provision-node
+2026-01-18 17:11:53.898 drwxr-xr-x. 3 root      root             20 Dec  4 17:14 puppetlabs
+2026-01-18 17:11:53.899 drwxr-xr-x. 2 root      root             18 Jan 18 17:11 sa
+2026-01-18 17:11:53.900 drwxr-x---. 2 root      root              6 Oct 17 22:54 sssd
+2026-01-18 17:11:53.902 -rw-------. 1 root      root              0 Nov 17 07:08 tallylog
+2026-01-18 17:11:53.903 -rw-rw-r--. 1 root      utmp            384 Jan 18 17:11 wtmp
+2026-01-18 17:11:53.904 drwxr-xr-x. 2 zookeeper zookeeper         6 Dec  4 17:13 zookeeper
+2026-01-18 17:11:53.905 + du -c /var/log
+2026-01-18 17:11:53.906 11800	/var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7
+2026-01-18 17:11:53.908 11800	/var/log/journal
+2026-01-18 17:11:53.909 0	/var/log/private
+2026-01-18 17:11:53.910 0	/var/log/sssd
+2026-01-18 17:11:53.911 0	/var/log/chrony
+2026-01-18 17:11:53.912 0	/var/log/amazon
+2026-01-18 17:11:53.913 16	/var/log/audit
+2026-01-18 17:11:53.914 4	/var/log/sa
+2026-01-18 17:11:53.916 0	/var/log/zookeeper
+2026-01-18 17:11:53.917 0	/var/log/puppetlabs/puppet
+2026-01-18 17:11:53.918 0	/var/log/puppetlabs
+2026-01-18 17:11:53.919 0	/var/log/provision-node
+2026-01-18 17:11:53.920 0	/var/log/hadoop-yarn
+2026-01-18 17:11:53.921 0	/var/log/hadoop-mapreduce
+2026-01-18 17:11:53.923 0	/var/log/hadoop-hdfs
+2026-01-18 17:11:53.924 0	/var/log/hadoop-httpfs
+2026-01-18 17:11:53.925 0	/var/log/hadoop-kms
+2026-01-18 17:11:53.926 4	/var/log/mk-tmp-on-root
+2026-01-18 17:11:53.927 11844	/var/log
+2026-01-18 17:11:53.928 11844	total
+2026-01-18 17:11:53.929 + lsof
+2026-01-18 17:11:53.930 + awk '{print $9}'
+2026-01-18 17:11:53.931 + grep '^/var/log'
+2026-01-18 17:11:54.019 /var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal
+2026-01-18 17:11:54.021 /var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal
+2026-01-18 17:11:54.022 /var/log/audit/audit.log
+2026-01-18 17:11:54.023 + mkdir -p /mnt/var/log
+2026-01-18 17:11:54.024 + mv /var/log /var/log.old
+2026-01-18 17:11:54.025 + ln -nsf /mnt/var/log -T /var/log
+2026-01-18 17:11:54.027 + rsync -a /var/log.old/ /mnt/var/log
+2026-01-18 17:11:54.089 + rm -Rf /var/log.old
+2026-01-18 17:11:54.090 + echo 'Moved directory to ephemeral: /var/log'
+2026-01-18 17:11:54.091 Moved directory to ephemeral: /var/log
+2026-01-18 17:11:54.092 + restart_proc_that_can_have_open_files_in_var_log_dir
+2026-01-18 17:11:54.094 + restart_proc_if_enabled auditd 'systemctl start auditd'
+2026-01-18 17:11:54.095 + systemctl is-enabled auditd
+2026-01-18 17:11:54.097 + echo 'Restarting auditd.'
+2026-01-18 17:11:54.098 Restarting auditd.
+2026-01-18 17:11:54.100 + systemctl start auditd
+2026-01-18 17:11:54.104 + echo 'Restart of auditd completed.'
+2026-01-18 17:11:54.105 Restart of auditd completed.
+2026-01-18 17:11:54.106 + restart_proc_if_running rsyslogd 'systemctl restart rsyslog'
+2026-01-18 17:11:54.107 + pgrep -x rsyslogd
+2026-01-18 17:11:54.111 + echo 'Not restarting rsyslogd as it isn'\''t running.'
+2026-01-18 17:11:54.113 Not restarting rsyslogd as it isn't running.
+2026-01-18 17:11:54.114 + print_deleted_files_in_old_dir /var/log
+2026-01-18 17:11:54.115 + echo 'Dumping remaining open deleted files in old /var/log directory:'
+2026-01-18 17:11:54.116 Dumping remaining open deleted files in old /var/log directory:
+2026-01-18 17:11:54.117 + lsof_deleted_files_in_old_dir /var/log
+2026-01-18 17:11:54.118 + lsof
+2026-01-18 17:11:54.119 + grep '(deleted)'
+2026-01-18 17:11:54.120 + grep /var/log.old
+2026-01-18 17:11:54.248 systemd-j 1041                           root   16u      REG              259,3   8388608    8529812 /var/log.old/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal (deleted)
+2026-01-18 17:11:54.249 auditd    1619                           root    5w      REG              259,3     13443    1194089 /var/log.old/audit/audit.log (deleted)
+2026-01-18 17:11:54.250 auditd    1619 1620 auditd               root    5w      REG              259,3     13443    1194089 /var/log.old/audit/audit.log (deleted)
+2026-01-18 17:11:54.251 + echo 'Dump complete, any output indicates potential lost file.'
+2026-01-18 17:11:54.252 Dump complete, any output indicates potential lost file.
+2026-01-18 17:11:54.253 
+2026-01-18 17:11:54.254 real	0m0.407s
+2026-01-18 17:11:54.255 user	0m0.131s
+2026-01-18 17:11:54.256 sys	0m0.076s

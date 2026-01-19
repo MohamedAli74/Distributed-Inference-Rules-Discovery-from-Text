@@ -1,0 +1,454 @@
+2026-01-18 17:53:13.077 + setup_drives
+2026-01-18 17:53:13.080 + local idx=0
+2026-01-18 17:53:13.081 + tee -a /dev/console
+2026-01-18 17:53:13.082 ++ date
+2026-01-18 17:53:13.084 + echo 'Drives setup started at: Sun' Jan 18 17:53:13 UTC 2026
+2026-01-18 17:53:13.085 Drives setup started at: Sun Jan 18 17:53:13 UTC 2026
+2026-01-18 17:53:13.087 + set -xe
+2026-01-18 17:53:13.088 ++ find /usr/share/aws/emr/instance-controller/lib -name 'instance-controller*.jar' -and -not -name '*interface*'
+2026-01-18 17:53:13.100 + local instance_controller_jar=/usr/share/aws/emr/instance-controller/lib/instance-controller-1.85.0.jar
+2026-01-18 17:53:13.102 + '[' -e /var/setup-devices/device-names.json ']'
+2026-01-18 17:53:13.104 ++ lsblk -pdno NAME
+2026-01-18 17:53:13.106 ++ sort -V
+2026-01-18 17:53:13.108 + local 'block_devices=/dev/nvme0n1
+2026-01-18 17:53:13.109 /dev/nvme1n1
+2026-01-18 17:53:13.110 /dev/nvme2n1'
+2026-01-18 17:53:13.111 ++ cat /var/setup-devices/device-names.json
+2026-01-18 17:53:13.113 ++ jq -r '.symlinkDevices | keys[]'
+2026-01-18 17:53:13.114 ++ tr '\n' ' '
+2026-01-18 17:53:13.123 + symlink_devices=('/dev/nvme0n1' '/dev/nvme2n1')
+2026-01-18 17:53:13.124 + local symlink_devices
+2026-01-18 17:53:13.125 ++ jq -r '.deviceNameRegex[]'
+2026-01-18 17:53:13.126 ++ paste -s -d '|'
+2026-01-18 17:53:13.138 + active_device_pattern='/dev/xvda2|/dev/nvme[0-9]+n1|/dev/xvd[b-z]+'
+2026-01-18 17:53:13.139 + for symlink_device in ${symlink_devices[*]}
+2026-01-18 17:53:13.141 ++ cat /var/setup-devices/device-names.json
+2026-01-18 17:53:13.142 ++ jq -r '.symlinkDevices."/dev/nvme0n1"'
+2026-01-18 17:53:13.144 + link_to_device=('/dev/xvda')
+2026-01-18 17:53:13.145 + local link_to_device
+2026-01-18 17:53:13.146 + symlink_root_device /dev/xvda /dev/nvme0n1
+2026-01-18 17:53:13.148 + local root_device=/dev/xvda
+2026-01-18 17:53:13.149 + local other_device=/dev/nvme0n1
+2026-01-18 17:53:13.150 + '[' '!' -e /dev/xvda ']'
+2026-01-18 17:53:13.152 + for symlink_device in ${symlink_devices[*]}
+2026-01-18 17:53:13.153 ++ cat /var/setup-devices/device-names.json
+2026-01-18 17:53:13.154 ++ jq -r '.symlinkDevices."/dev/nvme0n1"'
+2026-01-18 17:53:13.156 + link_to_device=('/dev/xvda')
+2026-01-18 17:53:13.157 + local link_to_device
+2026-01-18 17:53:13.158 + symlink_root_device /dev/xvda /dev/nvme2n1
+2026-01-18 17:53:13.160 + local root_device=/dev/xvda
+2026-01-18 17:53:13.161 + local other_device=/dev/nvme2n1
+2026-01-18 17:53:13.162 + '[' '!' -e /dev/xvda ']'
+2026-01-18 17:53:13.164 + [[ ! -e /var/setup-devices/completed ]]
+2026-01-18 17:53:13.165 + setup_cloud_cfg
+2026-01-18 17:53:13.167 + cat
+2026-01-18 17:53:13.168 + mv /tmp/00_emr.cfg /etc/cloud/cloud.cfg.d/
+2026-01-18 17:53:13.169 
+2026-01-18 17:53:13.170 real	0m0.005s
+2026-01-18 17:53:13.172 user	0m0.003s
+2026-01-18 17:53:13.173 sys	0m0.000s
+2026-01-18 17:53:13.175 ++ ls /media/
+2026-01-18 17:53:13.176 + active_devices=()
+2026-01-18 17:53:13.177 + for device in $block_devices
+2026-01-18 17:53:13.179 + is_swap_device /dev/nvme0n1
+2026-01-18 17:53:13.180 + local device=/dev/nvme0n1
+2026-01-18 17:53:13.181 + local return_code=0
+2026-01-18 17:53:13.182 + swapon -s
+2026-01-18 17:53:13.183 + grep -w /dev/nvme0n1
+2026-01-18 17:53:13.185 + return_code=1
+2026-01-18 17:53:13.186 + return 1
+2026-01-18 17:53:13.187 ++ is_active_device /dev/nvme0n1
+2026-01-18 17:53:13.188 ++ local device=/dev/nvme0n1
+2026-01-18 17:53:13.189 ++ matches_active_device_pattern /dev/nvme0n1
+2026-01-18 17:53:13.191 ++ local device=/dev/nvme0n1
+2026-01-18 17:53:13.192 ++ echo /dev/nvme0n1
+2026-01-18 17:53:13.193 ++ grep -qE '/dev/xvda2|/dev/nvme[0-9]+n1|/dev/xvd[b-z]+'
+2026-01-18 17:53:13.194 ++ od -N 0 /dev/nvme0n1
+2026-01-18 17:53:13.196 ++ '[' 0 == 0 ']'
+2026-01-18 17:53:13.197 ++ echo true
+2026-01-18 17:53:13.198 + '[' true '!=' true ']'
+2026-01-18 17:53:13.199 ++ is_link_from_root_device /dev/xvda /dev/nvme0n1
+2026-01-18 17:53:13.200 +++ readlink -f /dev/xvda
+2026-01-18 17:53:13.202 ++ local root_device=/dev/nvme0n1
+2026-01-18 17:53:13.203 ++ local this_device=/dev/nvme0n1
+2026-01-18 17:53:13.204 ++ [[ /dev/nvme0n1 == \/\d\e\v\/\n\v\m\e\0\n\1 ]]
+2026-01-18 17:53:13.205 ++ echo true
+2026-01-18 17:53:13.207 + '[' true == true ']'
+2026-01-18 17:53:13.208 + continue
+2026-01-18 17:53:13.209 + for device in $block_devices
+2026-01-18 17:53:13.210 + is_swap_device /dev/nvme1n1
+2026-01-18 17:53:13.211 + local device=/dev/nvme1n1
+2026-01-18 17:53:13.212 + local return_code=0
+2026-01-18 17:53:13.214 + swapon -s
+2026-01-18 17:53:13.215 + grep -w /dev/nvme1n1
+2026-01-18 17:53:13.216 + return_code=1
+2026-01-18 17:53:13.217 + return 1
+2026-01-18 17:53:13.218 ++ is_active_device /dev/nvme1n1
+2026-01-18 17:53:13.220 ++ local device=/dev/nvme1n1
+2026-01-18 17:53:13.221 ++ matches_active_device_pattern /dev/nvme1n1
+2026-01-18 17:53:13.222 ++ local device=/dev/nvme1n1
+2026-01-18 17:53:13.223 ++ echo /dev/nvme1n1
+2026-01-18 17:53:13.225 ++ grep -qE '/dev/xvda2|/dev/nvme[0-9]+n1|/dev/xvd[b-z]+'
+2026-01-18 17:53:13.226 ++ od -N 0 /dev/nvme1n1
+2026-01-18 17:53:13.227 ++ '[' 0 == 0 ']'
+2026-01-18 17:53:13.228 ++ echo true
+2026-01-18 17:53:13.232 + '[' true '!=' true ']'
+2026-01-18 17:53:13.233 ++ is_link_from_root_device /dev/xvda /dev/nvme1n1
+2026-01-18 17:53:13.234 +++ readlink -f /dev/xvda
+2026-01-18 17:53:13.236 ++ local root_device=/dev/nvme0n1
+2026-01-18 17:53:13.237 ++ local this_device=/dev/nvme1n1
+2026-01-18 17:53:13.238 ++ [[ /dev/nvme0n1 == \/\d\e\v\/\n\v\m\e\1\n\1 ]]
+2026-01-18 17:53:13.239 + '[' '' == true ']'
+2026-01-18 17:53:13.241 + umount -f /dev/nvme1n1
+2026-01-18 17:53:13.242 umount: /dev/nvme1n1: not mounted.
+2026-01-18 17:53:13.243 + true
+2026-01-18 17:53:13.244 + remove_fstab_entry /dev/nvme1n1
+2026-01-18 17:53:13.246 + local deviceIdentifier=/dev/nvme1n1
+2026-01-18 17:53:13.247 + grep -v /dev/nvme1n1 /etc/fstab
+2026-01-18 17:53:13.248 + mv /tmp/fstab /etc/fstab
+2026-01-18 17:53:13.249 + '[' 0 == 0 ']'
+2026-01-18 17:53:13.251 + sgdisk -o -n 1:0:+5GB -N2 -p /dev/nvme1n1
+2026-01-18 17:53:14.246 Creating new GPT entries in memory.
+2026-01-18 17:53:14.247 Disk /dev/nvme1n1: 67108864 sectors, 32.0 GiB
+2026-01-18 17:53:14.249 Model: Amazon Elastic Block Store              
+2026-01-18 17:53:14.250 Sector size (logical/physical): 512/512 bytes
+2026-01-18 17:53:14.252 Disk identifier (GUID): FA94D359-4A66-4305-9681-D8CE920782EB
+2026-01-18 17:53:14.253 Partition table holds up to 128 entries
+2026-01-18 17:53:14.255 Main partition table begins at sector 2 and ends at sector 33
+2026-01-18 17:53:14.256 First usable sector is 34, last usable sector is 67108830
+2026-01-18 17:53:14.257 Partitions will be aligned on 2048-sector boundaries
+2026-01-18 17:53:14.258 Total free space is 2014 sectors (1007.0 KiB)
+2026-01-18 17:53:14.260 
+2026-01-18 17:53:14.261 Number  Start (sector)    End (sector)  Size       Code  Name
+2026-01-18 17:53:14.262    1            2048        10487807   5.0 GiB     8300  
+2026-01-18 17:53:14.264    2        10487808        67108830   27.0 GiB    8300  
+2026-01-18 17:53:14.265 The operation has completed successfully.
+2026-01-18 17:53:14.266 + active_devices=($(ls -1 $device?*))
+2026-01-18 17:53:14.267 ++ ls -1 /dev/nvme1n1p1 /dev/nvme1n1p2
+2026-01-18 17:53:14.269 + (( idx = idx + 1 ))
+2026-01-18 17:53:14.270 + for device in $block_devices
+2026-01-18 17:53:14.271 + is_swap_device /dev/nvme2n1
+2026-01-18 17:53:14.272 + local device=/dev/nvme2n1
+2026-01-18 17:53:14.274 + local return_code=0
+2026-01-18 17:53:14.275 + swapon -s
+2026-01-18 17:53:14.276 + grep -w /dev/nvme2n1
+2026-01-18 17:53:14.277 + return_code=1
+2026-01-18 17:53:14.278 + return 1
+2026-01-18 17:53:14.280 ++ is_active_device /dev/nvme2n1
+2026-01-18 17:53:14.281 ++ local device=/dev/nvme2n1
+2026-01-18 17:53:14.282 ++ matches_active_device_pattern /dev/nvme2n1
+2026-01-18 17:53:14.283 ++ local device=/dev/nvme2n1
+2026-01-18 17:53:14.285 ++ echo /dev/nvme2n1
+2026-01-18 17:53:14.286 ++ grep -qE '/dev/xvda2|/dev/nvme[0-9]+n1|/dev/xvd[b-z]+'
+2026-01-18 17:53:14.287 ++ od -N 0 /dev/nvme2n1
+2026-01-18 17:53:14.288 ++ '[' 0 == 0 ']'
+2026-01-18 17:53:14.290 ++ echo true
+2026-01-18 17:53:14.291 + '[' true '!=' true ']'
+2026-01-18 17:53:14.292 ++ is_link_from_root_device /dev/xvda /dev/nvme2n1
+2026-01-18 17:53:14.293 +++ readlink -f /dev/xvda
+2026-01-18 17:53:14.295 ++ local root_device=/dev/nvme0n1
+2026-01-18 17:53:14.296 ++ local this_device=/dev/nvme2n1
+2026-01-18 17:53:14.297 ++ [[ /dev/nvme0n1 == \/\d\e\v\/\n\v\m\e\2\n\1 ]]
+2026-01-18 17:53:14.299 + '[' '' == true ']'
+2026-01-18 17:53:14.300 + umount -f /dev/nvme2n1
+2026-01-18 17:53:14.301 umount: /dev/nvme2n1: not mounted.
+2026-01-18 17:53:14.303 + true
+2026-01-18 17:53:14.305 + remove_fstab_entry /dev/nvme2n1
+2026-01-18 17:53:14.306 + local deviceIdentifier=/dev/nvme2n1
+2026-01-18 17:53:14.307 + grep -v /dev/nvme2n1 /etc/fstab
+2026-01-18 17:53:14.309 + mv /tmp/fstab /etc/fstab
+2026-01-18 17:53:14.310 + '[' 1 == 0 ']'
+2026-01-18 17:53:14.311 + active_devices+=($device)
+2026-01-18 17:53:14.312 + (( idx = idx + 1 ))
+2026-01-18 17:53:14.314 + encrypted_devices=($($INSTANCE_CONTROLLER_JAVA/java -cp $DISK_ENCRYPTOR_CP -Dlog4j2.configurationFile=file:$DISK_ENCRYPTOR_LOG4J2_CONFIG -Dlog4j2.formatMsgNoLookups=true -Dlog4j2.disable.jmx=true aws157.instancecontroller.encryptor.DiskEncryptorMain ${active_devices[*]}))
+2026-01-18 17:53:14.315 ++ /usr/lib/jvm/jre-17/bin/java -cp '/usr/share/aws/emr/instance-controller/lib/*:/var/setup-devices/lib/*:/home/hadoop/conf:/usr/share/aws/aws-java-sdk-v2/*' -Dlog4j2.configurationFile=file:/etc/instance-controller/disk-encryptor-log4j2.xml -Dlog4j2.formatMsgNoLookups=true -Dlog4j2.disable.jmx=true aws157.instancecontroller.encryptor.DiskEncryptorMain /dev/nvme1n1p1 /dev/nvme1n1p2 /dev/nvme2n1
+2026-01-18 17:53:20.041 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2026-01-18 17:53:20.042 SLF4J: Defaulting to no-operation (NOP) logger implementation
+2026-01-18 17:53:20.044 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2026-01-18 17:53:20.510 + make_xfs_parallel /dev/nvme1n1p1 /dev/nvme1n1p2 /dev/nvme2n1
+2026-01-18 17:53:20.512 ++ printf '%s\n' /dev/nvme1n1p1 /dev/nvme1n1p2 /dev/nvme2n1
+2026-01-18 17:53:20.513 + local 'devices=/dev/nvme1n1p1
+2026-01-18 17:53:20.514 /dev/nvme1n1p2
+2026-01-18 17:53:20.516 /dev/nvme2n1'
+2026-01-18 17:53:20.518 ++ run_repeatedly 3 mktemp -t make_xfs_XXXXXXXXXX
+2026-01-18 17:53:20.520 ++ (( i = 0 ))
+2026-01-18 17:53:20.521 ++ (( i < 3 ))
+2026-01-18 17:53:20.523 ++ mktemp -t make_xfs_XXXXXXXXXX
+2026-01-18 17:53:20.525 ++ (( i++ ))
+2026-01-18 17:53:20.526 ++ (( i < 3 ))
+2026-01-18 17:53:20.528 ++ mktemp -t make_xfs_XXXXXXXXXX
+2026-01-18 17:53:20.529 ++ (( i++ ))
+2026-01-18 17:53:20.530 ++ (( i < 3 ))
+2026-01-18 17:53:20.532 ++ mktemp -t make_xfs_XXXXXXXXXX
+2026-01-18 17:53:20.533 ++ (( i++ ))
+2026-01-18 17:53:20.534 ++ (( i < 3 ))
+2026-01-18 17:53:20.535 + local 'log_files=/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.536 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.538 /tmp/make_xfs_SjVtW5OUue'
+2026-01-18 17:53:20.539 + local return_code=0
+2026-01-18 17:53:20.540 + run_make_xfs_parallel '/dev/nvme1n1p1
+2026-01-18 17:53:20.541 /dev/nvme1n1p2
+2026-01-18 17:53:20.543 /dev/nvme2n1' '/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.544 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.545 /tmp/make_xfs_SjVtW5OUue'
+2026-01-18 17:53:20.546 + timeout --kill-after=10 10 bash -c '{ date; udevadm monitor; }'
+2026-01-18 17:53:20.548 + local 'devices=/dev/nvme1n1p1
+2026-01-18 17:53:20.549 /dev/nvme1n1p2
+2026-01-18 17:53:20.550 /dev/nvme2n1'
+2026-01-18 17:53:20.551 + local 'log_files=/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.552 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.554 /tmp/make_xfs_SjVtW5OUue'
+2026-01-18 17:53:20.555 + interleave_lines '/dev/nvme1n1p1
+2026-01-18 17:53:20.556 /dev/nvme1n1p2
+2026-01-18 17:53:20.557 /dev/nvme2n1' '/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.558 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.560 /tmp/make_xfs_SjVtW5OUue'
+2026-01-18 17:53:20.561 ++ date +%Y-%m-%d-%H-%M-%S
+2026-01-18 17:53:20.562 + xargs -r --verbose -P0 -L2 bash -xc '
+2026-01-18 17:53:20.563       device=$0; log_file=$1
+2026-01-18 17:53:20.564       { time mkfs.xfs -f "$device"; exit $?; } > "$log_file" 2>&1'
+2026-01-18 17:53:20.566 + paste '-d\n' /dev/fd/63 /dev/fd/62
+2026-01-18 17:53:20.567 ++ echo '/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.568 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.569 /tmp/make_xfs_SjVtW5OUue'
+2026-01-18 17:53:20.570 ++ echo '/dev/nvme1n1p1
+2026-01-18 17:53:20.572 /dev/nvme1n1p2
+2026-01-18 17:53:20.573 /dev/nvme2n1'
+2026-01-18 17:53:20.574 bash -xc ''$'\n''      device=$0; log_file=$1'$'\n''      { time mkfs.xfs -f "$device"; exit $?; } > "$log_file" 2>&1' /dev/nvme1n1p1 /tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.576 bash -xc ''$'\n''      device=$0; log_file=$1'$'\n''      { time mkfs.xfs -f "$device"; exit $?; } > "$log_file" 2>&1' /dev/nvme1n1p2 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.577 bash -xc ''$'\n''      device=$0; log_file=$1'$'\n''      { time mkfs.xfs -f "$device"; exit $?; } > "$log_file" 2>&1' /dev/nvme2n1 /tmp/make_xfs_SjVtW5OUue
+2026-01-18 17:53:20.578 + device=/dev/nvme1n1p1
+2026-01-18 17:53:20.580 + log_file=/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.581 + device=/dev/nvme1n1p2
+2026-01-18 17:53:20.582 + log_file=/tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.583 + device=/dev/nvme2n1
+2026-01-18 17:53:20.584 + log_file=/tmp/make_xfs_SjVtW5OUue
+2026-01-18 17:53:20.905 + echo 'Waiting for udev to settle'
+2026-01-18 17:53:20.907 Waiting for udev to settle
+2026-01-18 17:53:20.908 + udevadm settle
+2026-01-18 17:53:20.969 + echo 'udevadmn settle finished'
+2026-01-18 17:53:20.971 udevadmn settle finished
+2026-01-18 17:53:20.972 + process_log_files '/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.973 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.975 /tmp/make_xfs_SjVtW5OUue'
+2026-01-18 17:53:20.976 + '[' -n '/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.977 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.979 /tmp/make_xfs_SjVtW5OUue' ']'
+2026-01-18 17:53:20.980 + echo '/tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.981 /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:20.983 /tmp/make_xfs_SjVtW5OUue'
+2026-01-18 17:53:20.984 + read -r log_file
+2026-01-18 17:53:20.985 + sed 's#^#    #' /tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:20.986     + mkfs.xfs -f /dev/nvme1n1p1
+2026-01-18 17:53:20.988     meta-data=/dev/nvme1n1p1         isize=512    agcount=8, agsize=163840 blks
+2026-01-18 17:53:20.990              =                       sectsz=512   attr=2, projid32bit=1
+2026-01-18 17:53:20.991              =                       crc=1        finobt=1, sparse=1, rmapbt=0
+2026-01-18 17:53:20.992              =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+2026-01-18 17:53:20.994              =                       exchange=0  
+2026-01-18 17:53:20.995     data     =                       bsize=4096   blocks=1310720, imaxpct=25
+2026-01-18 17:53:20.996              =                       sunit=1      swidth=1 blks
+2026-01-18 17:53:20.998     naming   =version 2              bsize=4096   ascii-ci=0, ftype=1, parent=0
+2026-01-18 17:53:20.999     log      =internal log           bsize=4096   blocks=16384, version=2
+2026-01-18 17:53:21.000              =                       sectsz=512   sunit=1 blks, lazy-count=1
+2026-01-18 17:53:21.001     realtime =none                   extsz=4096   blocks=0, rtextents=0
+2026-01-18 17:53:21.002     
+2026-01-18 17:53:21.004     real	0m0.317s
+2026-01-18 17:53:21.005     user	0m0.008s
+2026-01-18 17:53:21.006     sys	0m0.000s
+2026-01-18 17:53:21.007     + exit 0
+2026-01-18 17:53:21.008 + rm /tmp/make_xfs_0QZ6ZCObM0
+2026-01-18 17:53:21.010 + read -r log_file
+2026-01-18 17:53:21.011 + sed 's#^#    #' /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:21.012     + mkfs.xfs -f /dev/nvme1n1p2
+2026-01-18 17:53:21.013     meta-data=/dev/nvme1n1p2         isize=512    agcount=16, agsize=442352 blks
+2026-01-18 17:53:21.015              =                       sectsz=512   attr=2, projid32bit=1
+2026-01-18 17:53:21.016              =                       crc=1        finobt=1, sparse=1, rmapbt=0
+2026-01-18 17:53:21.017              =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+2026-01-18 17:53:21.018              =                       exchange=0  
+2026-01-18 17:53:21.020     data     =                       bsize=4096   blocks=7077627, imaxpct=25
+2026-01-18 17:53:21.021              =                       sunit=1      swidth=1 blks
+2026-01-18 17:53:21.022     naming   =version 2              bsize=4096   ascii-ci=0, ftype=1, parent=0
+2026-01-18 17:53:21.024     log      =internal log           bsize=4096   blocks=16384, version=2
+2026-01-18 17:53:21.025              =                       sectsz=512   sunit=1 blks, lazy-count=1
+2026-01-18 17:53:21.026     realtime =none                   extsz=4096   blocks=0, rtextents=0
+2026-01-18 17:53:21.027     
+2026-01-18 17:53:21.029     real	0m0.372s
+2026-01-18 17:53:21.030     user	0m0.010s
+2026-01-18 17:53:21.032     sys	0m0.000s
+2026-01-18 17:53:21.033     + exit 0
+2026-01-18 17:53:21.034 + rm /tmp/make_xfs_Seo4rdt4Hl
+2026-01-18 17:53:21.035 + read -r log_file
+2026-01-18 17:53:21.036 + sed 's#^#    #' /tmp/make_xfs_SjVtW5OUue
+2026-01-18 17:53:21.038     + mkfs.xfs -f /dev/nvme2n1
+2026-01-18 17:53:21.039     meta-data=/dev/nvme2n1           isize=512    agcount=16, agsize=524288 blks
+2026-01-18 17:53:21.040              =                       sectsz=512   attr=2, projid32bit=1
+2026-01-18 17:53:21.042              =                       crc=1        finobt=1, sparse=1, rmapbt=0
+2026-01-18 17:53:21.043              =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+2026-01-18 17:53:21.045              =                       exchange=0  
+2026-01-18 17:53:21.046     data     =                       bsize=4096   blocks=8388608, imaxpct=25
+2026-01-18 17:53:21.047              =                       sunit=1      swidth=1 blks
+2026-01-18 17:53:21.048     naming   =version 2              bsize=4096   ascii-ci=0, ftype=1, parent=0
+2026-01-18 17:53:21.050     log      =internal log           bsize=4096   blocks=16384, version=2
+2026-01-18 17:53:21.051              =                       sectsz=512   sunit=1 blks, lazy-count=1
+2026-01-18 17:53:21.052     realtime =none                   extsz=4096   blocks=0, rtextents=0
+2026-01-18 17:53:21.054     
+2026-01-18 17:53:21.055     real	0m0.381s
+2026-01-18 17:53:21.056     user	0m0.000s
+2026-01-18 17:53:21.058     sys	0m0.009s
+2026-01-18 17:53:21.059     + exit 0
+2026-01-18 17:53:21.060 + rm /tmp/make_xfs_SjVtW5OUue
+2026-01-18 17:53:21.061 + read -r log_file
+2026-01-18 17:53:21.063 + return 0
+2026-01-18 17:53:21.064 + emrDevice=/dev/nvme1n1p1
+2026-01-18 17:53:21.066 + encrypted_devices=("${encrypted_devices[@]:1}")
+2026-01-18 17:53:21.067 + create_devices_mount_map /dev/nvme1n1p1 /emr
+2026-01-18 17:53:21.068 + local deviceFile=/dev/nvme1n1p1
+2026-01-18 17:53:21.070 + local mount_point=/emr
+2026-01-18 17:53:21.071 + echo /dev/nvme1n1p1
+2026-01-18 17:53:21.073 + grep -qs /mapper
+2026-01-18 17:53:21.074 ++ repeat_command_until_not_empty 'lsblk -o UUID -ipnd /dev/nvme1n1p1' 5
+2026-01-18 17:53:21.075 ++ local 'cmd=lsblk -o UUID -ipnd /dev/nvme1n1p1'
+2026-01-18 17:53:21.076 ++ local maxWait=5
+2026-01-18 17:53:21.077 ++ local result=
+2026-01-18 17:53:21.079 +++ date +%s
+2026-01-18 17:53:21.080 ++ endTime=1768758805
+2026-01-18 17:53:21.081 ++ '[' -z ']'
+2026-01-18 17:53:21.082 +++ date +%s
+2026-01-18 17:53:21.083 ++ '[' 1768758800 -lt 1768758805 ']'
+2026-01-18 17:53:21.085 +++ bash -c 'lsblk -o UUID -ipnd /dev/nvme1n1p1'
+2026-01-18 17:53:21.086 ++ result=1513d83d-7a41-436e-a387-275afc5074ac
+2026-01-18 17:53:21.087 ++ '[' -z 1513d83d-7a41-436e-a387-275afc5074ac ']'
+2026-01-18 17:53:21.088 ++ printf 1513d83d-7a41-436e-a387-275afc5074ac
+2026-01-18 17:53:21.090 + local deviceUUID=1513d83d-7a41-436e-a387-275afc5074ac
+2026-01-18 17:53:21.091 + '[' -z 1513d83d-7a41-436e-a387-275afc5074ac ']'
+2026-01-18 17:53:21.092 + create_drive 1513d83d-7a41-436e-a387-275afc5074ac /emr
+2026-01-18 17:53:21.093 + local deviceUUID=1513d83d-7a41-436e-a387-275afc5074ac
+2026-01-18 17:53:21.094 + local drive=/emr
+2026-01-18 17:53:21.096 + create_directory /emr
+2026-01-18 17:53:21.097 + local dir=/emr
+2026-01-18 17:53:21.098 + '[' -d /emr ']'
+2026-01-18 17:53:21.099 + '[' -d /emr ']'
+2026-01-18 17:53:21.100 + mount_drive 1513d83d-7a41-436e-a387-275afc5074ac /emr
+2026-01-18 17:53:21.102 + local deviceUUID=1513d83d-7a41-436e-a387-275afc5074ac
+2026-01-18 17:53:21.103 + local mountPoint=/emr
+2026-01-18 17:53:21.104 + lsblk -o UUID,MOUNTPOINT -ipnr
+2026-01-18 17:53:21.105 + grep -
+2026-01-18 17:53:21.107 + grep -qs '^1513d83d-7a41-436e-a387-275afc5074ac /emr$'
+2026-01-18 17:53:21.108 + [[ /emr == \/\e\m\r ]]
+2026-01-18 17:53:21.109 + mount -o inode64,nodev -t xfs UUID=1513d83d-7a41-436e-a387-275afc5074ac /emr
+2026-01-18 17:53:21.110 + remove_fstab_entry 1513d83d-7a41-436e-a387-275afc5074ac
+2026-01-18 17:53:21.112 + local deviceIdentifier=1513d83d-7a41-436e-a387-275afc5074ac
+2026-01-18 17:53:21.113 + grep -v 1513d83d-7a41-436e-a387-275afc5074ac /etc/fstab
+2026-01-18 17:53:21.114 + mv /tmp/fstab /etc/fstab
+2026-01-18 17:53:21.116 + echo 'UUID=1513d83d-7a41-436e-a387-275afc5074ac /emr xfs defaults,noauto,comment=emr-setup-devices 0 0'
+2026-01-18 17:53:21.118 + echo '1513d83d-7a41-436e-a387-275afc5074ac /emr'
+2026-01-18 17:53:21.119 + mntDevice=/dev/nvme1n1p2
+2026-01-18 17:53:21.120 + encrypted_devices=("${encrypted_devices[@]:1}")
+2026-01-18 17:53:21.121 + create_devices_mount_map /dev/nvme1n1p2 /mnt
+2026-01-18 17:53:21.123 + local deviceFile=/dev/nvme1n1p2
+2026-01-18 17:53:21.124 + local mount_point=/mnt
+2026-01-18 17:53:21.125 + echo /dev/nvme1n1p2
+2026-01-18 17:53:21.126 + grep -qs /mapper
+2026-01-18 17:53:21.128 ++ repeat_command_until_not_empty 'lsblk -o UUID -ipnd /dev/nvme1n1p2' 5
+2026-01-18 17:53:21.129 ++ local 'cmd=lsblk -o UUID -ipnd /dev/nvme1n1p2'
+2026-01-18 17:53:21.130 ++ local maxWait=5
+2026-01-18 17:53:21.131 ++ local result=
+2026-01-18 17:53:21.133 +++ date +%s
+2026-01-18 17:53:21.134 ++ endTime=1768758806
+2026-01-18 17:53:21.136 ++ '[' -z ']'
+2026-01-18 17:53:21.137 +++ date +%s
+2026-01-18 17:53:21.138 ++ '[' 1768758801 -lt 1768758806 ']'
+2026-01-18 17:53:21.140 +++ bash -c 'lsblk -o UUID -ipnd /dev/nvme1n1p2'
+2026-01-18 17:53:21.141 ++ result=70b2b3a7-3d28-4192-b8a4-16a3ad37a689
+2026-01-18 17:53:21.143 ++ '[' -z 70b2b3a7-3d28-4192-b8a4-16a3ad37a689 ']'
+2026-01-18 17:53:21.144 ++ printf 70b2b3a7-3d28-4192-b8a4-16a3ad37a689
+2026-01-18 17:53:21.146 + local deviceUUID=70b2b3a7-3d28-4192-b8a4-16a3ad37a689
+2026-01-18 17:53:21.147 + '[' -z 70b2b3a7-3d28-4192-b8a4-16a3ad37a689 ']'
+2026-01-18 17:53:21.148 + create_drive 70b2b3a7-3d28-4192-b8a4-16a3ad37a689 /mnt
+2026-01-18 17:53:21.150 + local deviceUUID=70b2b3a7-3d28-4192-b8a4-16a3ad37a689
+2026-01-18 17:53:21.151 + local drive=/mnt
+2026-01-18 17:53:21.152 + create_directory /mnt
+2026-01-18 17:53:21.153 + local dir=/mnt
+2026-01-18 17:53:21.155 + '[' -d /mnt ']'
+2026-01-18 17:53:21.156 + '[' -d /mnt ']'
+2026-01-18 17:53:21.157 + mount_drive 70b2b3a7-3d28-4192-b8a4-16a3ad37a689 /mnt
+2026-01-18 17:53:21.158 + local deviceUUID=70b2b3a7-3d28-4192-b8a4-16a3ad37a689
+2026-01-18 17:53:21.159 + local mountPoint=/mnt
+2026-01-18 17:53:21.161 + lsblk -o UUID,MOUNTPOINT -ipnr
+2026-01-18 17:53:21.162 + grep -
+2026-01-18 17:53:21.163 + grep -qs '^70b2b3a7-3d28-4192-b8a4-16a3ad37a689 /mnt$'
+2026-01-18 17:53:21.164 + [[ /mnt == \/\e\m\r ]]
+2026-01-18 17:53:21.166 + mount -o inode64,nodev,usrquota,grpquota,prjquota -t xfs UUID=70b2b3a7-3d28-4192-b8a4-16a3ad37a689 /mnt
+2026-01-18 17:53:21.167 + remove_fstab_entry 70b2b3a7-3d28-4192-b8a4-16a3ad37a689
+2026-01-18 17:53:21.168 + local deviceIdentifier=70b2b3a7-3d28-4192-b8a4-16a3ad37a689
+2026-01-18 17:53:21.169 + grep -v 70b2b3a7-3d28-4192-b8a4-16a3ad37a689 /etc/fstab
+2026-01-18 17:53:21.170 + mv /tmp/fstab /etc/fstab
+2026-01-18 17:53:21.172 + echo 'UUID=70b2b3a7-3d28-4192-b8a4-16a3ad37a689 /mnt xfs defaults,noauto,comment=emr-setup-devices 0 0'
+2026-01-18 17:53:21.173 + echo '70b2b3a7-3d28-4192-b8a4-16a3ad37a689 /mnt'
+2026-01-18 17:53:21.175 + deviceIdx=1
+2026-01-18 17:53:21.176 + for dev in "${encrypted_devices[@]}"
+2026-01-18 17:53:21.177 + create_devices_mount_map /dev/nvme2n1 /mnt1
+2026-01-18 17:53:21.178 + local deviceFile=/dev/nvme2n1
+2026-01-18 17:53:21.179 + local mount_point=/mnt1
+2026-01-18 17:53:21.181 + echo /dev/nvme2n1
+2026-01-18 17:53:21.182 + grep -qs /mapper
+2026-01-18 17:53:21.183 ++ repeat_command_until_not_empty 'lsblk -o UUID -ipnd /dev/nvme2n1' 5
+2026-01-18 17:53:21.184 ++ local 'cmd=lsblk -o UUID -ipnd /dev/nvme2n1'
+2026-01-18 17:53:21.186 ++ local maxWait=5
+2026-01-18 17:53:21.187 ++ local result=
+2026-01-18 17:53:21.188 +++ date +%s
+2026-01-18 17:53:21.189 ++ endTime=1768758806
+2026-01-18 17:53:21.190 ++ '[' -z ']'
+2026-01-18 17:53:21.192 +++ date +%s
+2026-01-18 17:53:21.193 ++ '[' 1768758801 -lt 1768758806 ']'
+2026-01-18 17:53:21.194 +++ bash -c 'lsblk -o UUID -ipnd /dev/nvme2n1'
+2026-01-18 17:53:21.195 ++ result=12bc3700-1b13-4c16-b5c9-1ac80669e593
+2026-01-18 17:53:21.196 ++ '[' -z 12bc3700-1b13-4c16-b5c9-1ac80669e593 ']'
+2026-01-18 17:53:21.198 ++ printf 12bc3700-1b13-4c16-b5c9-1ac80669e593
+2026-01-18 17:53:21.199 + local deviceUUID=12bc3700-1b13-4c16-b5c9-1ac80669e593
+2026-01-18 17:53:21.201 + '[' -z 12bc3700-1b13-4c16-b5c9-1ac80669e593 ']'
+2026-01-18 17:53:21.202 + create_drive 12bc3700-1b13-4c16-b5c9-1ac80669e593 /mnt1
+2026-01-18 17:53:21.204 + local deviceUUID=12bc3700-1b13-4c16-b5c9-1ac80669e593
+2026-01-18 17:53:21.205 + local drive=/mnt1
+2026-01-18 17:53:21.207 + create_directory /mnt1
+2026-01-18 17:53:21.208 + local dir=/mnt1
+2026-01-18 17:53:21.209 + '[' -d /mnt1 ']'
+2026-01-18 17:53:21.210 + mkdir -p /mnt1
+2026-01-18 17:53:21.211 + '[' -d /mnt1 ']'
+2026-01-18 17:53:21.213 + mount_drive 12bc3700-1b13-4c16-b5c9-1ac80669e593 /mnt1
+2026-01-18 17:53:21.214 + local deviceUUID=12bc3700-1b13-4c16-b5c9-1ac80669e593
+2026-01-18 17:53:21.215 + local mountPoint=/mnt1
+2026-01-18 17:53:21.216 + lsblk -o UUID,MOUNTPOINT -ipnr
+2026-01-18 17:53:21.218 + grep -
+2026-01-18 17:53:21.219 + grep -qs '^12bc3700-1b13-4c16-b5c9-1ac80669e593 /mnt1$'
+2026-01-18 17:53:21.222 + [[ /mnt1 == \/\e\m\r ]]
+2026-01-18 17:53:21.224 + mount -o inode64,nodev,usrquota,grpquota,prjquota -t xfs UUID=12bc3700-1b13-4c16-b5c9-1ac80669e593 /mnt1
+2026-01-18 17:53:21.225 + remove_fstab_entry 12bc3700-1b13-4c16-b5c9-1ac80669e593
+2026-01-18 17:53:21.227 + local deviceIdentifier=12bc3700-1b13-4c16-b5c9-1ac80669e593
+2026-01-18 17:53:21.237 + grep -v 12bc3700-1b13-4c16-b5c9-1ac80669e593 /etc/fstab
+2026-01-18 17:53:21.238 + mv /tmp/fstab /etc/fstab
+2026-01-18 17:53:21.239 + echo 'UUID=12bc3700-1b13-4c16-b5c9-1ac80669e593 /mnt1 xfs defaults,noauto,comment=emr-setup-devices 0 0'
+2026-01-18 17:53:21.240 + echo '12bc3700-1b13-4c16-b5c9-1ac80669e593 /mnt1'
+2026-01-18 17:53:21.242 + (( deviceIdx = deviceIdx + 1 ))
+2026-01-18 17:53:21.243 + tee -a /dev/console
+2026-01-18 17:53:21.244 ++ date
+2026-01-18 17:53:21.245 + echo 'Drives setup completed at: Sun' Jan 18 17:53:21 UTC 2026
+2026-01-18 17:53:21.246 Drives setup completed at: Sun Jan 18 17:53:21 UTC 2026
+2026-01-18 17:53:21.248 + echo 'Currently mounted devices: '
+2026-01-18 17:53:21.249 + tee -a /dev/console
+2026-01-18 17:53:21.250 Currently mounted devices: 
+2026-01-18 17:53:21.251 + df
+2026-01-18 17:53:21.252 + tee -a /dev/console
+2026-01-18 17:53:21.254 Filesystem       1K-blocks    Used Available Use% Mounted on
+2026-01-18 17:53:21.255 devtmpfs              4096       0      4096   0% /dev
+2026-01-18 17:53:21.256 tmpfs              7992892       0   7992892   0% /dev/shm
+2026-01-18 17:53:21.257 tmpfs              3197160    8604   3188556   1% /run
+2026-01-18 17:53:21.258 /dev/nvme0n1p1    15650796 7156064   8494732  46% /
+2026-01-18 17:53:21.260 /dev/nvme0n1p128     10202    1314      8888  13% /boot/efi
+2026-01-18 17:53:21.261 /dev/nvme1n1p1     5177344   69368   5107976   2% /emr
+2026-01-18 17:53:21.262 /dev/nvme1n1p2    28244972  230756  28014216   1% /mnt
+2026-01-18 17:53:21.263 /dev/nvme2n1      33488896  267356  33221540   1% /mnt1
+2026-01-18 17:53:21.264 
+2026-01-18 17:53:21.266 real	0m8.160s
+2026-01-18 17:53:21.267 user	0m2.864s
+2026-01-18 17:53:21.268 sys	0m0.233s

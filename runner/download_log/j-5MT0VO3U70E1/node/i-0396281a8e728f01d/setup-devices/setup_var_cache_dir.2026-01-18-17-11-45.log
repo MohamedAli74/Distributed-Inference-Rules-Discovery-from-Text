@@ -1,0 +1,167 @@
+2026-01-18 17:11:56.624 + setup_var_cache_dir
+2026-01-18 17:11:56.625 + move_to_ephemeral /var/cache
+2026-01-18 17:11:56.626 + echo 'Moving directory to ephemeral: /var/cache'
+2026-01-18 17:11:56.627 Moving directory to ephemeral: /var/cache
+2026-01-18 17:11:56.628 + ls -l /var/cache
+2026-01-18 17:11:56.629 total 32
+2026-01-18 17:11:56.630 drwxr-xr-x.  2 root root     6 Jan 30  2023 bpf
+2026-01-18 17:11:56.631 drwxr-xr-x.  8 root root 16384 Dec  4 17:16 dnf
+2026-01-18 17:11:56.632 drwxr-xr-x.  2 root root     6 Oct 17 22:54 krb5rcache
+2026-01-18 17:11:56.633 drwx------.  2 root root    23 Jan 18 17:11 ldconfig
+2026-01-18 17:11:56.634 drwxr-xr-x.  3 root root    21 Dec  4 17:11 libX11
+2026-01-18 17:11:56.635 drwxr-xr-x. 35 root root 16384 Dec  4 17:16 man
+2026-01-18 17:11:56.636 drwx------.  2 root root     6 Nov 17 07:08 private
+2026-01-18 17:11:56.637 + du -c /var/cache
+2026-01-18 17:11:56.639 0	/var/cache/bpf
+2026-01-18 17:11:56.640 36	/var/cache/ldconfig
+2026-01-18 17:11:56.641 0	/var/cache/private
+2026-01-18 17:11:56.642 0	/var/cache/krb5rcache
+2026-01-18 17:11:56.644 0	/var/cache/dnf/amazonlinux-5ca606579ad66bce/packages
+2026-01-18 17:11:56.645 0	/var/cache/dnf/amazonlinux-5ca606579ad66bce/repodata
+2026-01-18 17:11:56.646 0	/var/cache/dnf/amazonlinux-5ca606579ad66bce
+2026-01-18 17:11:56.647 0	/var/cache/dnf/kernel-livepatch-4ae3c03a06a2e235/repodata
+2026-01-18 17:11:56.648 0	/var/cache/dnf/kernel-livepatch-4ae3c03a06a2e235
+2026-01-18 17:11:56.649 0	/var/cache/dnf/emr-kamino-platform-repo-d3d9443dfb58a0b1/repodata
+2026-01-18 17:11:56.650 0	/var/cache/dnf/emr-kamino-platform-repo-d3d9443dfb58a0b1
+2026-01-18 17:11:56.651 0	/var/cache/dnf/emr-apps-repo-2d8a0c0bbdeef6d1/packages
+2026-01-18 17:11:56.652 0	/var/cache/dnf/emr-apps-repo-2d8a0c0bbdeef6d1/repodata
+2026-01-18 17:11:56.653 0	/var/cache/dnf/emr-apps-repo-2d8a0c0bbdeef6d1
+2026-01-18 17:11:56.654 0	/var/cache/dnf/emr-platform-repo-661733d16c87f474/packages
+2026-01-18 17:11:56.655 0	/var/cache/dnf/emr-platform-repo-661733d16c87f474/repodata
+2026-01-18 17:11:56.656 0	/var/cache/dnf/emr-platform-repo-661733d16c87f474
+2026-01-18 17:11:56.657 0	/var/cache/dnf/emr-kamino-apps-repo-7b0ef0eb644d38a7/repodata
+2026-01-18 17:11:56.658 0	/var/cache/dnf/emr-kamino-apps-repo-7b0ef0eb644d38a7
+2026-01-18 17:11:56.659 3536	/var/cache/dnf
+2026-01-18 17:11:56.660 0	/var/cache/man/cat1
+2026-01-18 17:11:56.661 0	/var/cache/man/cat2
+2026-01-18 17:11:56.662 0	/var/cache/man/cat3
+2026-01-18 17:11:56.663 0	/var/cache/man/cat4
+2026-01-18 17:11:56.664 0	/var/cache/man/cat5
+2026-01-18 17:11:56.665 0	/var/cache/man/cat6
+2026-01-18 17:11:56.666 0	/var/cache/man/cat7
+2026-01-18 17:11:56.667 0	/var/cache/man/cat8
+2026-01-18 17:11:56.668 0	/var/cache/man/ru/cat1
+2026-01-18 17:11:56.669 0	/var/cache/man/ru/cat3
+2026-01-18 17:11:56.670 0	/var/cache/man/ru/cat5
+2026-01-18 17:11:56.671 0	/var/cache/man/ru/cat8
+2026-01-18 17:11:56.672 40	/var/cache/man/ru
+2026-01-18 17:11:56.673 0	/var/cache/man/cs/cat1
+2026-01-18 17:11:56.675 0	/var/cache/man/cs/cat3
+2026-01-18 17:11:56.676 0	/var/cache/man/cs/cat5
+2026-01-18 17:11:56.677 0	/var/cache/man/cs/cat7
+2026-01-18 17:11:56.678 0	/var/cache/man/cs/cat8
+2026-01-18 17:11:56.679 20	/var/cache/man/cs
+2026-01-18 17:11:56.680 0	/var/cache/man/da/cat1
+2026-01-18 17:11:56.681 0	/var/cache/man/da/cat5
+2026-01-18 17:11:56.682 0	/var/cache/man/da/cat8
+2026-01-18 17:11:56.683 20	/var/cache/man/da
+2026-01-18 17:11:56.684 0	/var/cache/man/de/cat1
+2026-01-18 17:11:56.685 0	/var/cache/man/de/cat3
+2026-01-18 17:11:56.686 0	/var/cache/man/de/cat5
+2026-01-18 17:11:56.687 0	/var/cache/man/de/cat8
+2026-01-18 17:11:56.688 24	/var/cache/man/de
+2026-01-18 17:11:56.689 0	/var/cache/man/fr/cat1
+2026-01-18 17:11:56.690 0	/var/cache/man/fr/cat3
+2026-01-18 17:11:56.691 0	/var/cache/man/fr/cat5
+2026-01-18 17:11:56.692 0	/var/cache/man/fr/cat8
+2026-01-18 17:11:56.693 24	/var/cache/man/fr
+2026-01-18 17:11:56.694 0	/var/cache/man/hu/cat1
+2026-01-18 17:11:56.695 0	/var/cache/man/hu/cat8
+2026-01-18 17:11:56.696 20	/var/cache/man/hu
+2026-01-18 17:11:56.697 0	/var/cache/man/id/cat1
+2026-01-18 17:11:56.698 0	/var/cache/man/id/cat5
+2026-01-18 17:11:56.699 0	/var/cache/man/id/cat8
+2026-01-18 17:11:56.700 20	/var/cache/man/id
+2026-01-18 17:11:56.701 0	/var/cache/man/it/cat1
+2026-01-18 17:11:56.702 0	/var/cache/man/it/cat3
+2026-01-18 17:11:56.703 0	/var/cache/man/it/cat5
+2026-01-18 17:11:56.704 0	/var/cache/man/it/cat8
+2026-01-18 17:11:56.705 20	/var/cache/man/it
+2026-01-18 17:11:56.706 0	/var/cache/man/ja/cat1
+2026-01-18 17:11:56.707 0	/var/cache/man/ja/cat5
+2026-01-18 17:11:56.708 0	/var/cache/man/ja/cat8
+2026-01-18 17:11:56.709 24	/var/cache/man/ja
+2026-01-18 17:11:56.710 0	/var/cache/man/ko/cat8
+2026-01-18 17:11:56.711 20	/var/cache/man/ko
+2026-01-18 17:11:56.712 0	/var/cache/man/pl/cat1
+2026-01-18 17:11:56.713 0	/var/cache/man/pl/cat3
+2026-01-18 17:11:56.714 0	/var/cache/man/pl/cat5
+2026-01-18 17:11:56.715 0	/var/cache/man/pl/cat8
+2026-01-18 17:11:56.716 20	/var/cache/man/pl
+2026-01-18 17:11:56.717 0	/var/cache/man/pt_BR/cat1
+2026-01-18 17:11:56.718 0	/var/cache/man/pt_BR/cat5
+2026-01-18 17:11:56.719 0	/var/cache/man/pt_BR/cat8
+2026-01-18 17:11:56.720 20	/var/cache/man/pt_BR
+2026-01-18 17:11:56.721 0	/var/cache/man/sv/cat1
+2026-01-18 17:11:56.723 0	/var/cache/man/sv/cat3
+2026-01-18 17:11:56.724 0	/var/cache/man/sv/cat5
+2026-01-18 17:11:56.725 0	/var/cache/man/sv/cat8
+2026-01-18 17:11:56.726 20	/var/cache/man/sv
+2026-01-18 17:11:56.727 0	/var/cache/man/tr/cat1
+2026-01-18 17:11:56.728 0	/var/cache/man/tr/cat5
+2026-01-18 17:11:56.729 0	/var/cache/man/tr/cat8
+2026-01-18 17:11:56.730 20	/var/cache/man/tr
+2026-01-18 17:11:56.731 0	/var/cache/man/zh_CN/cat1
+2026-01-18 17:11:56.732 0	/var/cache/man/zh_CN/cat3
+2026-01-18 17:11:56.734 0	/var/cache/man/zh_CN/cat5
+2026-01-18 17:11:56.735 0	/var/cache/man/zh_CN/cat8
+2026-01-18 17:11:56.736 20	/var/cache/man/zh_CN
+2026-01-18 17:11:56.737 0	/var/cache/man/zh_TW/cat1
+2026-01-18 17:11:56.738 0	/var/cache/man/zh_TW/cat8
+2026-01-18 17:11:56.739 20	/var/cache/man/zh_TW
+2026-01-18 17:11:56.740 0	/var/cache/man/uk/cat1
+2026-01-18 17:11:56.741 0	/var/cache/man/uk/cat5
+2026-01-18 17:11:56.742 0	/var/cache/man/uk/cat8
+2026-01-18 17:11:56.743 20	/var/cache/man/uk
+2026-01-18 17:11:56.744 0	/var/cache/man/sk/cat8
+2026-01-18 17:11:56.746 20	/var/cache/man/sk
+2026-01-18 17:11:56.747 0	/var/cache/man/ca/cat5
+2026-01-18 17:11:56.748 20	/var/cache/man/ca
+2026-01-18 17:11:56.749 0	/var/cache/man/pt/cat1
+2026-01-18 17:11:56.750 0	/var/cache/man/pt/cat5
+2026-01-18 17:11:56.752 0	/var/cache/man/pt/cat8
+2026-01-18 17:11:56.753 20	/var/cache/man/pt
+2026-01-18 17:11:56.754 0	/var/cache/man/es/cat1
+2026-01-18 17:11:56.755 0	/var/cache/man/es/cat5
+2026-01-18 17:11:56.756 0	/var/cache/man/es/cat8
+2026-01-18 17:11:56.757 20	/var/cache/man/es
+2026-01-18 17:11:56.758 0	/var/cache/man/nl/cat1
+2026-01-18 17:11:56.759 0	/var/cache/man/nl/cat5
+2026-01-18 17:11:56.760 0	/var/cache/man/nl/cat8
+2026-01-18 17:11:56.761 20	/var/cache/man/nl
+2026-01-18 17:11:56.762 0	/var/cache/man/sr/cat1
+2026-01-18 17:11:56.763 0	/var/cache/man/sr/cat5
+2026-01-18 17:11:56.765 0	/var/cache/man/sr/cat8
+2026-01-18 17:11:56.766 20	/var/cache/man/sr
+2026-01-18 17:11:56.767 0	/var/cache/man/local/cat1
+2026-01-18 17:11:56.768 0	/var/cache/man/local/cat2
+2026-01-18 17:11:56.769 0	/var/cache/man/local/cat3
+2026-01-18 17:11:56.770 0	/var/cache/man/local/cat4
+2026-01-18 17:11:56.771 0	/var/cache/man/local/cat5
+2026-01-18 17:11:56.772 0	/var/cache/man/local/cat6
+2026-01-18 17:11:56.773 0	/var/cache/man/local/cat7
+2026-01-18 17:11:56.774 0	/var/cache/man/local/cat8
+2026-01-18 17:11:56.775 0	/var/cache/man/local/cat9
+2026-01-18 17:11:56.776 20	/var/cache/man/local
+2026-01-18 17:11:56.777 0	/var/cache/man/oldlocal/cat1
+2026-01-18 17:11:56.778 20	/var/cache/man/oldlocal
+2026-01-18 17:11:56.779 2792	/var/cache/man
+2026-01-18 17:11:56.780 0	/var/cache/libX11/compose
+2026-01-18 17:11:56.781 0	/var/cache/libX11
+2026-01-18 17:11:56.782 6364	/var/cache
+2026-01-18 17:11:56.783 6364	total
+2026-01-18 17:11:56.784 + lsof
+2026-01-18 17:11:56.785 + awk '{print $9}'
+2026-01-18 17:11:56.787 + grep '^/var/cache'
+2026-01-18 17:11:56.788 + true
+2026-01-18 17:11:56.789 + mkdir -p /mnt/var/cache
+2026-01-18 17:11:56.790 + mv /var/cache /var/cache.old
+2026-01-18 17:11:56.790 + ln -nsf /mnt/var/cache -T /var/cache
+2026-01-18 17:11:56.792 + rsync -a /var/cache.old/ /mnt/var/cache
+2026-01-18 17:11:57.040 + rm -Rf /var/cache.old
+2026-01-18 17:11:57.045 + echo 'Moved directory to ephemeral: /var/cache'
+2026-01-18 17:11:57.046 Moved directory to ephemeral: /var/cache
+2026-01-18 17:11:57.047 
+2026-01-18 17:11:57.048 real	0m0.421s
+2026-01-18 17:11:57.049 user	0m0.088s
+2026-01-18 17:11:57.050 sys	0m0.030s

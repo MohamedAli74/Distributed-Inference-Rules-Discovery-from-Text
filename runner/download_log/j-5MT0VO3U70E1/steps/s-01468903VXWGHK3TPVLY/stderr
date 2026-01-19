@@ -1,0 +1,13 @@
+Exception in thread "main" java.lang.IllegalArgumentException: Wrong FS: s3a://cfggii23/dsp3/test/positive-preds.txt, expected: hdfs://ip-172-31-39-66.ec2.internal:8020
+	at org.apache.hadoop.fs.FileSystem.checkPath(FileSystem.java:831)
+	at org.apache.hadoop.fs.FileSystem.makeQualified(FileSystem.java:690)
+	at com.example.jobs.Step5_ComputeDenom.buildJob(Step5_ComputeDenom.java:91)
+	at com.example.DirtDriver.run(DirtDriver.java:110)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:82)
+	at com.example.DirtDriver.main(DirtDriver.java:125)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:330)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:245)

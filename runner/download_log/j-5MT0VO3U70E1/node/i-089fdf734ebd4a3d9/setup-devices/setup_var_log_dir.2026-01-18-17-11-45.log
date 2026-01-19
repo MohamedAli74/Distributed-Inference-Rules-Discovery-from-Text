@@ -1,0 +1,90 @@
+2026-01-18 17:11:53.274 + setup_var_log_dir
+2026-01-18 17:11:53.275 + target_dir=/var/log
+2026-01-18 17:11:53.276 + move_to_ephemeral /var/log
+2026-01-18 17:11:53.277 + echo 'Moving directory to ephemeral: /var/log'
+2026-01-18 17:11:53.278 Moving directory to ephemeral: /var/log
+2026-01-18 17:11:53.279 + ls -l /var/log
+2026-01-18 17:11:53.298 total 4
+2026-01-18 17:11:53.300 lrwxrwxrwx. 1 root      root             39 Nov 17 07:08 README -> ../../usr/share/doc/systemd/README.logs
+2026-01-18 17:11:53.301 drwxr-xr-x. 2 root      root              6 Dec  4 17:20 amazon
+2026-01-18 17:11:53.302 drwx------. 2 root      root             23 Jan 18 17:11 audit
+2026-01-18 17:11:53.303 -rw-rw----. 1 root      utmp              0 Nov 17 07:08 btmp
+2026-01-18 17:11:53.304 drwxr-x---. 2 chrony    chrony            6 Dec  4 17:12 chrony
+2026-01-18 17:11:53.305 drwxrwxr-x. 2 hdfs      hadoop            6 Nov 26 23:35 hadoop-hdfs
+2026-01-18 17:11:53.306 drwxrwxr-x. 2 httpfs    httpfs            6 Nov 26 23:35 hadoop-httpfs
+2026-01-18 17:11:53.307 drwxrwxr-x. 2 kms       hadoop            6 Nov 26 23:35 hadoop-kms
+2026-01-18 17:11:53.309 drwxrwxr-x. 2 mapred    hadoop            6 Nov 26 23:35 hadoop-mapreduce
+2026-01-18 17:11:53.310 drwxrwxr-x. 2 yarn      hadoop            6 Nov 26 23:35 hadoop-yarn
+2026-01-18 17:11:53.311 drwxr-sr-x+ 3 root      systemd-journal  46 Dec  4 17:20 journal
+2026-01-18 17:11:53.313 -rw-rw-r--. 1 root      utmp              0 Nov 17 07:08 lastlog
+2026-01-18 17:11:53.314 drwxr-xr-x. 2 root      root             32 Jan 18 17:11 mk-tmp-on-root
+2026-01-18 17:11:53.315 drwx------. 2 root      root              6 Nov 17 07:08 private
+2026-01-18 17:11:53.316 drwx------. 2 hadoop    hadoop            6 Dec  3 23:48 provision-node
+2026-01-18 17:11:53.317 drwxr-xr-x. 3 root      root             20 Dec  4 17:14 puppetlabs
+2026-01-18 17:11:53.318 drwxr-xr-x. 2 root      root             18 Jan 18 17:11 sa
+2026-01-18 17:11:53.319 drwxr-x---. 2 root      root              6 Oct 17 22:54 sssd
+2026-01-18 17:11:53.320 -rw-------. 1 root      root              0 Nov 17 07:08 tallylog
+2026-01-18 17:11:53.321 -rw-rw-r--. 1 root      utmp            384 Jan 18 17:11 wtmp
+2026-01-18 17:11:53.322 drwxr-xr-x. 2 zookeeper zookeeper         6 Dec  4 17:13 zookeeper
+2026-01-18 17:11:53.323 + du -c /var/log
+2026-01-18 17:11:53.324 11800	/var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7
+2026-01-18 17:11:53.325 11800	/var/log/journal
+2026-01-18 17:11:53.326 0	/var/log/private
+2026-01-18 17:11:53.328 0	/var/log/sssd
+2026-01-18 17:11:53.329 0	/var/log/chrony
+2026-01-18 17:11:53.330 0	/var/log/amazon
+2026-01-18 17:11:53.331 16	/var/log/audit
+2026-01-18 17:11:53.332 4	/var/log/sa
+2026-01-18 17:11:53.333 0	/var/log/zookeeper
+2026-01-18 17:11:53.334 0	/var/log/puppetlabs/puppet
+2026-01-18 17:11:53.335 0	/var/log/puppetlabs
+2026-01-18 17:11:53.336 0	/var/log/provision-node
+2026-01-18 17:11:53.337 0	/var/log/hadoop-yarn
+2026-01-18 17:11:53.338 0	/var/log/hadoop-mapreduce
+2026-01-18 17:11:53.339 0	/var/log/hadoop-hdfs
+2026-01-18 17:11:53.340 0	/var/log/hadoop-httpfs
+2026-01-18 17:11:53.341 0	/var/log/hadoop-kms
+2026-01-18 17:11:53.342 4	/var/log/mk-tmp-on-root
+2026-01-18 17:11:53.343 11844	/var/log
+2026-01-18 17:11:53.344 11844	total
+2026-01-18 17:11:53.345 + lsof
+2026-01-18 17:11:53.346 + awk '{print $9}'
+2026-01-18 17:11:53.347 + grep '^/var/log'
+2026-01-18 17:11:53.420 /var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal
+2026-01-18 17:11:53.422 /var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal
+2026-01-18 17:11:53.423 /var/log/audit/audit.log
+2026-01-18 17:11:53.424 + mkdir -p /mnt/var/log
+2026-01-18 17:11:53.425 + mv /var/log /var/log.old
+2026-01-18 17:11:53.426 + ln -nsf /mnt/var/log -T /var/log
+2026-01-18 17:11:53.427 + rsync -a /var/log.old/ /mnt/var/log
+2026-01-18 17:11:53.489 + rm -Rf /var/log.old
+2026-01-18 17:11:53.491 + echo 'Moved directory to ephemeral: /var/log'
+2026-01-18 17:11:53.492 Moved directory to ephemeral: /var/log
+2026-01-18 17:11:53.493 + restart_proc_that_can_have_open_files_in_var_log_dir
+2026-01-18 17:11:53.494 + restart_proc_if_enabled auditd 'systemctl start auditd'
+2026-01-18 17:11:53.495 + systemctl is-enabled auditd
+2026-01-18 17:11:53.498 + echo 'Restarting auditd.'
+2026-01-18 17:11:53.499 Restarting auditd.
+2026-01-18 17:11:53.500 + systemctl start auditd
+2026-01-18 17:11:53.504 + echo 'Restart of auditd completed.'
+2026-01-18 17:11:53.505 Restart of auditd completed.
+2026-01-18 17:11:53.506 + restart_proc_if_running rsyslogd 'systemctl restart rsyslog'
+2026-01-18 17:11:53.508 + pgrep -x rsyslogd
+2026-01-18 17:11:53.512 + echo 'Not restarting rsyslogd as it isn'\''t running.'
+2026-01-18 17:11:53.513 Not restarting rsyslogd as it isn't running.
+2026-01-18 17:11:53.514 + print_deleted_files_in_old_dir /var/log
+2026-01-18 17:11:53.515 + echo 'Dumping remaining open deleted files in old /var/log directory:'
+2026-01-18 17:11:53.516 Dumping remaining open deleted files in old /var/log directory:
+2026-01-18 17:11:53.517 + lsof_deleted_files_in_old_dir /var/log
+2026-01-18 17:11:53.518 + lsof
+2026-01-18 17:11:53.520 + grep '(deleted)'
+2026-01-18 17:11:53.521 + grep /var/log.old
+2026-01-18 17:11:53.639 systemd-j 1039                           root   16u      REG              259,3   8388608    8529812 /var/log.old/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal (deleted)
+2026-01-18 17:11:53.640 auditd    1617                           root    5w      REG              259,3     13443    1194089 /var/log.old/audit/audit.log (deleted)
+2026-01-18 17:11:53.641 auditd    1617 1618 auditd               root    5w      REG              259,3     13443    1194089 /var/log.old/audit/audit.log (deleted)
+2026-01-18 17:11:53.642 + echo 'Dump complete, any output indicates potential lost file.'
+2026-01-18 17:11:53.644 Dump complete, any output indicates potential lost file.
+2026-01-18 17:11:53.645 
+2026-01-18 17:11:53.646 real	0m0.366s
+2026-01-18 17:11:53.647 user	0m0.102s
+2026-01-18 17:11:53.648 sys	0m0.103s

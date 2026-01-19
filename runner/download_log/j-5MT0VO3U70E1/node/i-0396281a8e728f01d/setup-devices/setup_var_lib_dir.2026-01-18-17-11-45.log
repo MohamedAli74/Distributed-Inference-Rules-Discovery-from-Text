@@ -1,0 +1,675 @@
+2026-01-18 17:11:54.258 + setup_var_lib_dir
+2026-01-18 17:11:54.259 + [[ -n true ]]
+2026-01-18 17:11:54.260 + systemctl stop var-lib-nfs-rpc_pipefs.mount
+2026-01-18 17:11:54.398 + target_dir=/var/lib
+2026-01-18 17:11:54.399 + move_to_ephemeral /var/lib
+2026-01-18 17:11:54.400 + echo 'Moving directory to ephemeral: /var/lib'
+2026-01-18 17:11:54.401 Moving directory to ephemeral: /var/lib
+2026-01-18 17:11:54.402 + ls -l /var/lib
+2026-01-18 17:11:54.429 total 16
+2026-01-18 17:11:54.430 drwxr-xr-x. 2 root      root      16384 Dec  4 17:16 alternatives
+2026-01-18 17:11:54.431 drwxr-xr-x. 3 root      root         17 Dec  4 17:16 amazon
+2026-01-18 17:11:54.432 drwxr-xr-x. 3 root      root         17 Dec  4 17:14 aws
+2026-01-18 17:11:54.433 drwxr-xr-x. 2 root      root          6 Nov  5 12:07 bigtop
+2026-01-18 17:11:54.434 drwxr-x---. 2 chrony    chrony       19 Dec  4 17:21 chrony
+2026-01-18 17:11:54.435 drwxr-xr-x. 2 root      root          6 Dec  4 17:20 cloud
+2026-01-18 17:11:54.436 drwxr-xr-x. 2 root      root          6 Nov  4 23:08 containerd
+2026-01-18 17:11:54.438 drwxr-xr-x. 2 root      root         80 Dec  4 17:16 dnf
+2026-01-18 17:11:54.439 drwxr-xr-x. 2 root      dnsmasq       6 Feb 21  2024 dnsmasq
+2026-01-18 17:11:54.440 drwxr-xr-x. 2 root      root          6 Nov  4 18:29 docker
+2026-01-18 17:11:54.441 drwxr-xr-x. 2 root      root          6 Jan 30  2023 games
+2026-01-18 17:11:54.442 drwxr-xr-x. 2 geoclue   geoclue       6 Feb 18  2025 geoclue
+2026-01-18 17:11:54.443 drwxr-xr-x. 4 root      root         55 Nov 17 07:08 gssproxy
+2026-01-18 17:11:54.444 drwxr-xr-x. 3 hdfs      hadoop       19 Dec  4 17:16 hadoop-hdfs
+2026-01-18 17:11:54.445 drwxrwxr-x. 2 httpfs    httpfs        6 Nov 26 23:35 hadoop-httpfs
+2026-01-18 17:11:54.446 drwxrwxr-x. 3 kms       hadoop       19 Dec  4 17:16 hadoop-kms
+2026-01-18 17:11:54.447 drwxrwxr-x. 3 mapred    hadoop       19 Dec  4 17:15 hadoop-mapreduce
+2026-01-18 17:11:54.448 drwxr-xr-x. 3 yarn      hadoop       19 Dec  4 17:15 hadoop-yarn
+2026-01-18 17:11:54.449 drwxr-xr-x. 2 root      root          6 Jan 25  2024 hibinit-agent
+2026-01-18 17:11:54.450 drwxr-xr-x. 2 root      root          6 Oct 25  2024 initramfs
+2026-01-18 17:11:54.451 drwxr-xr-x. 2 root      root          6 Mar 20  2025 kpatch
+2026-01-18 17:11:54.452 drwxr-xr-x. 2 root      root         30 Jan 18 17:11 logrotate
+2026-01-18 17:11:54.453 drwxr-xr-x. 2 root      root          6 Jan 30  2023 misc
+2026-01-18 17:11:54.454 drwxr-xr-x. 5 root      root         80 Nov 17 07:09 nfs
+2026-01-18 17:11:54.455 drwxr-xr-x. 2 root      root          6 Feb  1  2023 os-prober
+2026-01-18 17:11:54.456 drwxr-x---. 3 root      polkitd      28 Dec  4 17:11 polkit-1
+2026-01-18 17:11:54.457 drwx------. 2 root      root          6 Nov 17 07:08 portables
+2026-01-18 17:11:54.458 drwx------. 2 root      root          6 Nov 17 07:08 private
+2026-01-18 17:11:54.459 drwxr-xr-x. 2 hadoop    hadoop        6 Dec  3 23:48 provision-node
+2026-01-18 17:11:54.460 drwxr-xr-x. 2 root      root         91 Nov 17 07:10 rpm
+2026-01-18 17:11:54.461 drwxr-xr-x. 4 root      root         40 Dec  4 17:16 rpm-state
+2026-01-18 17:11:54.462 drwxr-xr-x. 5 root      root         46 Nov 17 07:08 selinux
+2026-01-18 17:11:54.463 drwxr-xr-x. 2 root      root          6 Jan 18 17:11 setup-devices
+2026-01-18 17:11:54.464 drwxr-xr-x. 9 root      root        105 Nov 17 07:08 sss
+2026-01-18 17:11:54.465 drwxr-xr-x. 8 root      root        110 Dec  4 17:07 systemd
+2026-01-18 17:11:54.466 drwxr-xr-x. 4 root      root         44 Dec  4 17:14 texmf
+2026-01-18 17:11:54.467 drwxr-xr-x. 2 root      root         30 Dec  4 17:14 trocla
+2026-01-18 17:11:54.468 drwxr-xr-x. 2 root      root         18 Dec  4 17:07 update-motd
+2026-01-18 17:11:54.469 drwxr-xr-x. 2 root      root          6 Jan 18 17:11 upower
+2026-01-18 17:11:54.470 drwxr-xr-x. 3 root      root         23 Nov 17 07:09 xfsdump
+2026-01-18 17:11:54.471 drwxr-xr-x. 2 root      root          6 Nov 17 07:06 yum
+2026-01-18 17:11:54.472 drwxr-xr-x. 2 zookeeper zookeeper     6 Dec  4 17:13 zookeeper
+2026-01-18 17:11:54.473 + du -c /var/lib
+2026-01-18 17:11:54.474 0	/var/lib/yum
+2026-01-18 17:11:54.475 4268	/var/lib/dnf
+2026-01-18 17:11:54.476 0	/var/lib/games
+2026-01-18 17:11:54.477 0	/var/lib/misc
+2026-01-18 17:11:54.478 0	/var/lib/rpm-state/kernel
+2026-01-18 17:11:54.479 0	/var/lib/rpm-state/puppet-agent
+2026-01-18 17:11:54.480 0	/var/lib/rpm-state
+2026-01-18 17:11:54.488 132	/var/lib/alternatives
+2026-01-18 17:11:54.489 0	/var/lib/selinux/tmp
+2026-01-18 17:11:54.510 36	/var/lib/selinux/targeted/active/modules/100/abrt
+2026-01-18 17:11:54.512 20	/var/lib/selinux/targeted/active/modules/100/accountsd
+2026-01-18 17:11:54.513 20	/var/lib/selinux/targeted/active/modules/100/acct
+2026-01-18 17:11:54.514 20	/var/lib/selinux/targeted/active/modules/100/afs
+2026-01-18 17:11:54.515 20	/var/lib/selinux/targeted/active/modules/100/afterburn
+2026-01-18 17:11:54.516 20	/var/lib/selinux/targeted/active/modules/100/aiccu
+2026-01-18 17:11:54.517 20	/var/lib/selinux/targeted/active/modules/100/aide
+2026-01-18 17:11:54.518 20	/var/lib/selinux/targeted/active/modules/100/ajaxterm
+2026-01-18 17:11:54.519 20	/var/lib/selinux/targeted/active/modules/100/alsa
+2026-01-18 17:11:54.520 20	/var/lib/selinux/targeted/active/modules/100/amanda
+2026-01-18 17:11:54.521 20	/var/lib/selinux/targeted/active/modules/100/amtu
+2026-01-18 17:11:54.522 28	/var/lib/selinux/targeted/active/modules/100/anaconda
+2026-01-18 17:11:54.523 24	/var/lib/selinux/targeted/active/modules/100/antivirus
+2026-01-18 17:11:54.524 52	/var/lib/selinux/targeted/active/modules/100/apache
+2026-01-18 17:11:54.525 28	/var/lib/selinux/targeted/active/modules/100/apcupsd
+2026-01-18 17:11:54.526 28	/var/lib/selinux/targeted/active/modules/100/apm
+2026-01-18 17:11:54.527 20	/var/lib/selinux/targeted/active/modules/100/application
+2026-01-18 17:11:54.528 20	/var/lib/selinux/targeted/active/modules/100/arpwatch
+2026-01-18 17:11:54.529 20	/var/lib/selinux/targeted/active/modules/100/asterisk
+2026-01-18 17:11:54.531 28	/var/lib/selinux/targeted/active/modules/100/auditadm
+2026-01-18 17:11:54.532 20	/var/lib/selinux/targeted/active/modules/100/authconfig
+2026-01-18 17:11:54.533 36	/var/lib/selinux/targeted/active/modules/100/authlogin
+2026-01-18 17:11:54.534 20	/var/lib/selinux/targeted/active/modules/100/automount
+2026-01-18 17:11:54.535 20	/var/lib/selinux/targeted/active/modules/100/avahi
+2026-01-18 17:11:54.536 20	/var/lib/selinux/targeted/active/modules/100/awstats
+2026-01-18 17:11:54.537 28	/var/lib/selinux/targeted/active/modules/100/bacula
+2026-01-18 17:11:54.538 136	/var/lib/selinux/targeted/active/modules/100/base
+2026-01-18 17:11:54.539 20	/var/lib/selinux/targeted/active/modules/100/bcfg2
+2026-01-18 17:11:54.540 28	/var/lib/selinux/targeted/active/modules/100/bind
+2026-01-18 17:11:54.541 20	/var/lib/selinux/targeted/active/modules/100/bitlbee
+2026-01-18 17:11:54.542 20	/var/lib/selinux/targeted/active/modules/100/blkmapd
+2026-01-18 17:11:54.543 20	/var/lib/selinux/targeted/active/modules/100/blueman
+2026-01-18 17:11:54.544 28	/var/lib/selinux/targeted/active/modules/100/bluetooth
+2026-01-18 17:11:54.546 28	/var/lib/selinux/targeted/active/modules/100/boinc
+2026-01-18 17:11:54.547 20	/var/lib/selinux/targeted/active/modules/100/boltd
+2026-01-18 17:11:54.548 20	/var/lib/selinux/targeted/active/modules/100/boothd
+2026-01-18 17:11:54.549 28	/var/lib/selinux/targeted/active/modules/100/bootloader
+2026-01-18 17:11:54.550 20	/var/lib/selinux/targeted/active/modules/100/bootupd
+2026-01-18 17:11:54.551 20	/var/lib/selinux/targeted/active/modules/100/brctl
+2026-01-18 17:11:54.552 20	/var/lib/selinux/targeted/active/modules/100/brltty
+2026-01-18 17:11:54.553 20	/var/lib/selinux/targeted/active/modules/100/bugzilla
+2026-01-18 17:11:54.554 20	/var/lib/selinux/targeted/active/modules/100/bumblebee
+2026-01-18 17:11:54.555 20	/var/lib/selinux/targeted/active/modules/100/cachefilesd
+2026-01-18 17:11:54.556 20	/var/lib/selinux/targeted/active/modules/100/calamaris
+2026-01-18 17:11:54.557 20	/var/lib/selinux/targeted/active/modules/100/callweaver
+2026-01-18 17:11:54.558 20	/var/lib/selinux/targeted/active/modules/100/canna
+2026-01-18 17:11:54.559 20	/var/lib/selinux/targeted/active/modules/100/ccs
+2026-01-18 17:11:54.560 20	/var/lib/selinux/targeted/active/modules/100/cdrecord
+2026-01-18 17:11:54.561 20	/var/lib/selinux/targeted/active/modules/100/certmaster
+2026-01-18 17:11:54.562 28	/var/lib/selinux/targeted/active/modules/100/certmonger
+2026-01-18 17:11:54.563 20	/var/lib/selinux/targeted/active/modules/100/certwatch
+2026-01-18 17:11:54.564 20	/var/lib/selinux/targeted/active/modules/100/cfengine
+2026-01-18 17:11:54.565 20	/var/lib/selinux/targeted/active/modules/100/cgroup
+2026-01-18 17:11:54.567 28	/var/lib/selinux/targeted/active/modules/100/chrome
+2026-01-18 17:11:54.568 24	/var/lib/selinux/targeted/active/modules/100/chronyd
+2026-01-18 17:11:54.569 28	/var/lib/selinux/targeted/active/modules/100/cinder
+2026-01-18 17:11:54.570 20	/var/lib/selinux/targeted/active/modules/100/cipe
+2026-01-18 17:11:54.571 20	/var/lib/selinux/targeted/active/modules/100/clock
+2026-01-18 17:11:54.572 20	/var/lib/selinux/targeted/active/modules/100/clogd
+2026-01-18 17:11:54.573 28	/var/lib/selinux/targeted/active/modules/100/cloudform
+2026-01-18 17:11:54.574 20	/var/lib/selinux/targeted/active/modules/100/cmirrord
+2026-01-18 17:11:54.575 20	/var/lib/selinux/targeted/active/modules/100/cobbler
+2026-01-18 17:11:54.576 20	/var/lib/selinux/targeted/active/modules/100/collectd
+2026-01-18 17:11:54.577 20	/var/lib/selinux/targeted/active/modules/100/colord
+2026-01-18 17:11:54.578 20	/var/lib/selinux/targeted/active/modules/100/comsat
+2026-01-18 17:11:54.579 28	/var/lib/selinux/targeted/active/modules/100/condor
+2026-01-18 17:11:54.580 20	/var/lib/selinux/targeted/active/modules/100/conman
+2026-01-18 17:11:54.581 20	/var/lib/selinux/targeted/active/modules/100/conntrackd
+2026-01-18 17:11:54.582 28	/var/lib/selinux/targeted/active/modules/100/consolekit
+2026-01-18 17:11:54.583 20	/var/lib/selinux/targeted/active/modules/100/coreos_installer
+2026-01-18 17:11:54.584 20	/var/lib/selinux/targeted/active/modules/100/couchdb
+2026-01-18 17:11:54.585 20	/var/lib/selinux/targeted/active/modules/100/courier
+2026-01-18 17:11:54.587 20	/var/lib/selinux/targeted/active/modules/100/cpucontrol
+2026-01-18 17:11:54.588 20	/var/lib/selinux/targeted/active/modules/100/cpufreqselector
+2026-01-18 17:11:54.589 20	/var/lib/selinux/targeted/active/modules/100/cpuplug
+2026-01-18 17:11:54.590 40	/var/lib/selinux/targeted/active/modules/100/cron
+2026-01-18 17:11:54.592 20	/var/lib/selinux/targeted/active/modules/100/ctdb
+2026-01-18 17:11:54.593 36	/var/lib/selinux/targeted/active/modules/100/cups
+2026-01-18 17:11:54.594 20	/var/lib/selinux/targeted/active/modules/100/cvs
+2026-01-18 17:11:54.595 20	/var/lib/selinux/targeted/active/modules/100/cyphesis
+2026-01-18 17:11:54.597 20	/var/lib/selinux/targeted/active/modules/100/cyrus
+2026-01-18 17:11:54.598 20	/var/lib/selinux/targeted/active/modules/100/daemontools
+2026-01-18 17:11:54.599 28	/var/lib/selinux/targeted/active/modules/100/dbadm
+2026-01-18 17:11:54.600 20	/var/lib/selinux/targeted/active/modules/100/dbskk
+2026-01-18 17:11:54.601 28	/var/lib/selinux/targeted/active/modules/100/dbus
+2026-01-18 17:11:54.602 20	/var/lib/selinux/targeted/active/modules/100/dcc
+2026-01-18 17:11:54.604 20	/var/lib/selinux/targeted/active/modules/100/ddclient
+2026-01-18 17:11:54.605 20	/var/lib/selinux/targeted/active/modules/100/denyhosts
+2026-01-18 17:11:54.606 32	/var/lib/selinux/targeted/active/modules/100/devicekit
+2026-01-18 17:11:54.607 20	/var/lib/selinux/targeted/active/modules/100/dhcp
+2026-01-18 17:11:54.608 20	/var/lib/selinux/targeted/active/modules/100/dictd
+2026-01-18 17:11:54.610 28	/var/lib/selinux/targeted/active/modules/100/dirsrv
+2026-01-18 17:11:54.611 28	/var/lib/selinux/targeted/active/modules/100/dirsrv-admin
+2026-01-18 17:11:54.612 20	/var/lib/selinux/targeted/active/modules/100/dmesg
+2026-01-18 17:11:54.613 20	/var/lib/selinux/targeted/active/modules/100/dmidecode
+2026-01-18 17:11:54.614 20	/var/lib/selinux/targeted/active/modules/100/dnsmasq
+2026-01-18 17:11:54.616 20	/var/lib/selinux/targeted/active/modules/100/dnssec
+2026-01-18 17:11:54.617 28	/var/lib/selinux/targeted/active/modules/100/dovecot
+2026-01-18 17:11:54.618 20	/var/lib/selinux/targeted/active/modules/100/drbd
+2026-01-18 17:11:54.619 20	/var/lib/selinux/targeted/active/modules/100/dspam
+2026-01-18 17:11:54.620 20	/var/lib/selinux/targeted/active/modules/100/entropyd
+2026-01-18 17:11:54.622 24	/var/lib/selinux/targeted/active/modules/100/exim
+2026-01-18 17:11:54.623 20	/var/lib/selinux/targeted/active/modules/100/fail2ban
+2026-01-18 17:11:54.624 20	/var/lib/selinux/targeted/active/modules/100/fcoe
+2026-01-18 17:11:54.625 20	/var/lib/selinux/targeted/active/modules/100/fdo
+2026-01-18 17:11:54.626 20	/var/lib/selinux/targeted/active/modules/100/fetchmail
+2026-01-18 17:11:54.627 20	/var/lib/selinux/targeted/active/modules/100/finger
+2026-01-18 17:11:54.628 20	/var/lib/selinux/targeted/active/modules/100/firewalld
+2026-01-18 17:11:54.629 20	/var/lib/selinux/targeted/active/modules/100/firewallgui
+2026-01-18 17:11:54.630 20	/var/lib/selinux/targeted/active/modules/100/firstboot
+2026-01-18 17:11:54.631 20	/var/lib/selinux/targeted/active/modules/100/fprintd
+2026-01-18 17:11:54.632 20	/var/lib/selinux/targeted/active/modules/100/freeipmi
+2026-01-18 17:11:54.633 20	/var/lib/selinux/targeted/active/modules/100/freqset
+2026-01-18 17:11:54.634 28	/var/lib/selinux/targeted/active/modules/100/fstools
+2026-01-18 17:11:54.635 28	/var/lib/selinux/targeted/active/modules/100/ftp
+2026-01-18 17:11:54.636 20	/var/lib/selinux/targeted/active/modules/100/fwupd
+2026-01-18 17:11:54.637 28	/var/lib/selinux/targeted/active/modules/100/games
+2026-01-18 17:11:54.638 20	/var/lib/selinux/targeted/active/modules/100/gdomap
+2026-01-18 17:11:54.639 20	/var/lib/selinux/targeted/active/modules/100/geoclue
+2026-01-18 17:11:54.640 20	/var/lib/selinux/targeted/active/modules/100/getty
+2026-01-18 17:11:54.641 20	/var/lib/selinux/targeted/active/modules/100/git
+2026-01-18 17:11:54.642 20	/var/lib/selinux/targeted/active/modules/100/gitosis
+2026-01-18 17:11:54.643 20	/var/lib/selinux/targeted/active/modules/100/glance
+2026-01-18 17:11:54.644 28	/var/lib/selinux/targeted/active/modules/100/gnome
+2026-01-18 17:11:54.645 28	/var/lib/selinux/targeted/active/modules/100/gpg
+2026-01-18 17:11:54.646 20	/var/lib/selinux/targeted/active/modules/100/gpm
+2026-01-18 17:11:54.647 20	/var/lib/selinux/targeted/active/modules/100/gpsd
+2026-01-18 17:11:54.648 20	/var/lib/selinux/targeted/active/modules/100/gssproxy
+2026-01-18 17:11:54.649 28	/var/lib/selinux/targeted/active/modules/100/guest
+2026-01-18 17:11:54.650 20	/var/lib/selinux/targeted/active/modules/100/hddtemp
+2026-01-18 17:11:54.651 20	/var/lib/selinux/targeted/active/modules/100/hostapd
+2026-01-18 17:11:54.653 20	/var/lib/selinux/targeted/active/modules/100/hostname
+2026-01-18 17:11:54.654 20	/var/lib/selinux/targeted/active/modules/100/hsqldb
+2026-01-18 17:11:54.655 20	/var/lib/selinux/targeted/active/modules/100/hwloc
+2026-01-18 17:11:54.656 20	/var/lib/selinux/targeted/active/modules/100/hypervkvp
+2026-01-18 17:11:54.657 20	/var/lib/selinux/targeted/active/modules/100/ibacm
+2026-01-18 17:11:54.658 16	/var/lib/selinux/targeted/active/modules/100/ica
+2026-01-18 17:11:54.659 20	/var/lib/selinux/targeted/active/modules/100/icecast
+2026-01-18 17:11:54.660 28	/var/lib/selinux/targeted/active/modules/100/inetd
+2026-01-18 17:11:54.661 64	/var/lib/selinux/targeted/active/modules/100/init
+2026-01-18 17:11:54.662 20	/var/lib/selinux/targeted/active/modules/100/inn
+2026-01-18 17:11:54.663 32	/var/lib/selinux/targeted/active/modules/100/insights_client
+2026-01-18 17:11:54.664 20	/var/lib/selinux/targeted/active/modules/100/iodine
+2026-01-18 17:11:54.666 20	/var/lib/selinux/targeted/active/modules/100/iotop
+2026-01-18 17:11:54.667 20	/var/lib/selinux/targeted/active/modules/100/ipmievd
+2026-01-18 17:11:54.668 32	/var/lib/selinux/targeted/active/modules/100/ipsec
+2026-01-18 17:11:54.669 24	/var/lib/selinux/targeted/active/modules/100/iptables
+2026-01-18 17:11:54.670 20	/var/lib/selinux/targeted/active/modules/100/irc
+2026-01-18 17:11:54.671 20	/var/lib/selinux/targeted/active/modules/100/irqbalance
+2026-01-18 17:11:54.672 20	/var/lib/selinux/targeted/active/modules/100/iscsi
+2026-01-18 17:11:54.673 20	/var/lib/selinux/targeted/active/modules/100/isns
+2026-01-18 17:11:54.675 20	/var/lib/selinux/targeted/active/modules/100/jabber
+2026-01-18 17:11:54.676 20	/var/lib/selinux/targeted/active/modules/100/jetty
+2026-01-18 17:11:54.677 20	/var/lib/selinux/targeted/active/modules/100/jockey
+2026-01-18 17:11:54.678 20	/var/lib/selinux/targeted/active/modules/100/journalctl
+2026-01-18 17:11:54.679 28	/var/lib/selinux/targeted/active/modules/100/kdump
+2026-01-18 17:11:54.680 20	/var/lib/selinux/targeted/active/modules/100/kdumpgui
+2026-01-18 17:11:54.681 20	/var/lib/selinux/targeted/active/modules/100/keepalived
+2026-01-18 17:11:54.683 28	/var/lib/selinux/targeted/active/modules/100/kerberos
+2026-01-18 17:11:54.684 20	/var/lib/selinux/targeted/active/modules/100/keyboardd
+2026-01-18 17:11:54.685 24	/var/lib/selinux/targeted/active/modules/100/keystone
+2026-01-18 17:11:54.686 20	/var/lib/selinux/targeted/active/modules/100/kismet
+2026-01-18 17:11:54.687 20	/var/lib/selinux/targeted/active/modules/100/kmscon
+2026-01-18 17:11:54.688 20	/var/lib/selinux/targeted/active/modules/100/kpatch
+2026-01-18 17:11:54.690 20	/var/lib/selinux/targeted/active/modules/100/ksmtuned
+2026-01-18 17:11:54.691 20	/var/lib/selinux/targeted/active/modules/100/ktalk
+2026-01-18 17:11:54.692 20	/var/lib/selinux/targeted/active/modules/100/l2tp
+2026-01-18 17:11:54.693 20	/var/lib/selinux/targeted/active/modules/100/ldap
+2026-01-18 17:11:54.694 28	/var/lib/selinux/targeted/active/modules/100/libraries
+2026-01-18 17:11:54.696 28	/var/lib/selinux/targeted/active/modules/100/likewise
+2026-01-18 17:11:54.697 20	/var/lib/selinux/targeted/active/modules/100/linuxptp
+2026-01-18 17:11:54.698 20	/var/lib/selinux/targeted/active/modules/100/lircd
+2026-01-18 17:11:54.699 20	/var/lib/selinux/targeted/active/modules/100/livecd
+2026-01-18 17:11:54.700 20	/var/lib/selinux/targeted/active/modules/100/lldpad
+2026-01-18 17:11:54.701 20	/var/lib/selinux/targeted/active/modules/100/loadkeys
+2026-01-18 17:11:54.702 28	/var/lib/selinux/targeted/active/modules/100/locallogin
+2026-01-18 17:11:54.703 20	/var/lib/selinux/targeted/active/modules/100/lockdev
+2026-01-18 17:11:54.704 20	/var/lib/selinux/targeted/active/modules/100/logadm
+2026-01-18 17:11:54.705 36	/var/lib/selinux/targeted/active/modules/100/logging
+2026-01-18 17:11:54.706 28	/var/lib/selinux/targeted/active/modules/100/logrotate
+2026-01-18 17:11:54.707 20	/var/lib/selinux/targeted/active/modules/100/logwatch
+2026-01-18 17:11:54.708 20	/var/lib/selinux/targeted/active/modules/100/lpd
+2026-01-18 17:11:54.710 20	/var/lib/selinux/targeted/active/modules/100/lsm
+2026-01-18 17:11:54.711 20	/var/lib/selinux/targeted/active/modules/100/lttng-tools
+2026-01-18 17:11:54.712 28	/var/lib/selinux/targeted/active/modules/100/lvm
+2026-01-18 17:11:54.713 20	/var/lib/selinux/targeted/active/modules/100/mailman
+2026-01-18 17:11:54.714 20	/var/lib/selinux/targeted/active/modules/100/mailscanner
+2026-01-18 17:11:54.715 20	/var/lib/selinux/targeted/active/modules/100/man2html
+2026-01-18 17:11:54.716 20	/var/lib/selinux/targeted/active/modules/100/mandb
+2026-01-18 17:11:54.717 20	/var/lib/selinux/targeted/active/modules/100/mcelog
+2026-01-18 17:11:54.718 20	/var/lib/selinux/targeted/active/modules/100/mediawiki
+2026-01-18 17:11:54.719 20	/var/lib/selinux/targeted/active/modules/100/memcached
+2026-01-18 17:11:54.720 20	/var/lib/selinux/targeted/active/modules/100/milter
+2026-01-18 17:11:54.721 20	/var/lib/selinux/targeted/active/modules/100/minidlna
+2026-01-18 17:11:54.722 20	/var/lib/selinux/targeted/active/modules/100/minissdpd
+2026-01-18 17:11:54.723 20	/var/lib/selinux/targeted/active/modules/100/mip6d
+2026-01-18 17:11:54.724 20	/var/lib/selinux/targeted/active/modules/100/mirrormanager
+2026-01-18 17:11:54.726 20	/var/lib/selinux/targeted/active/modules/100/miscfiles
+2026-01-18 17:11:54.727 20	/var/lib/selinux/targeted/active/modules/100/mock
+2026-01-18 17:11:54.728 20	/var/lib/selinux/targeted/active/modules/100/modemmanager
+2026-01-18 17:11:54.729 28	/var/lib/selinux/targeted/active/modules/100/modutils
+2026-01-18 17:11:54.730 20	/var/lib/selinux/targeted/active/modules/100/mojomojo
+2026-01-18 17:11:54.731 20	/var/lib/selinux/targeted/active/modules/100/mon_statd
+2026-01-18 17:11:54.732 20	/var/lib/selinux/targeted/active/modules/100/mongodb
+2026-01-18 17:11:54.733 20	/var/lib/selinux/targeted/active/modules/100/motion
+2026-01-18 17:11:54.734 28	/var/lib/selinux/targeted/active/modules/100/mount
+2026-01-18 17:11:54.735 36	/var/lib/selinux/targeted/active/modules/100/mozilla
+2026-01-18 17:11:54.736 20	/var/lib/selinux/targeted/active/modules/100/mpd
+2026-01-18 17:11:54.737 20	/var/lib/selinux/targeted/active/modules/100/mplayer
+2026-01-18 17:11:54.738 20	/var/lib/selinux/targeted/active/modules/100/mptcpd
+2026-01-18 17:11:54.739 20	/var/lib/selinux/targeted/active/modules/100/mrtg
+2026-01-18 17:11:54.740 28	/var/lib/selinux/targeted/active/modules/100/mta
+2026-01-18 17:11:54.741 32	/var/lib/selinux/targeted/active/modules/100/munin
+2026-01-18 17:11:54.742 28	/var/lib/selinux/targeted/active/modules/100/mysql
+2026-01-18 17:11:54.743 20	/var/lib/selinux/targeted/active/modules/100/mythtv
+2026-01-18 17:11:54.744 20	/var/lib/selinux/targeted/active/modules/100/naemon
+2026-01-18 17:11:54.745 36	/var/lib/selinux/targeted/active/modules/100/nagios
+2026-01-18 17:11:54.746 20	/var/lib/selinux/targeted/active/modules/100/namespace
+2026-01-18 17:11:54.747 20	/var/lib/selinux/targeted/active/modules/100/ncftool
+2026-01-18 17:11:54.748 20	/var/lib/selinux/targeted/active/modules/100/netlabel
+2026-01-18 17:11:54.749 20	/var/lib/selinux/targeted/active/modules/100/netutils
+2026-01-18 17:11:54.750 44	/var/lib/selinux/targeted/active/modules/100/networkmanager
+2026-01-18 17:11:54.751 20	/var/lib/selinux/targeted/active/modules/100/ninfod
+2026-01-18 17:11:54.752 20	/var/lib/selinux/targeted/active/modules/100/nis
+2026-01-18 17:11:54.753 28	/var/lib/selinux/targeted/active/modules/100/nova
+2026-01-18 17:11:54.754 20	/var/lib/selinux/targeted/active/modules/100/nscd
+2026-01-18 17:11:54.755 20	/var/lib/selinux/targeted/active/modules/100/nsd
+2026-01-18 17:11:54.757 20	/var/lib/selinux/targeted/active/modules/100/nslcd
+2026-01-18 17:11:54.758 20	/var/lib/selinux/targeted/active/modules/100/ntop
+2026-01-18 17:11:54.759 20	/var/lib/selinux/targeted/active/modules/100/ntp
+2026-01-18 17:11:54.760 20	/var/lib/selinux/targeted/active/modules/100/numad
+2026-01-18 17:11:54.761 28	/var/lib/selinux/targeted/active/modules/100/nut
+2026-01-18 17:11:54.762 20	/var/lib/selinux/targeted/active/modules/100/nvme_stas
+2026-01-18 17:11:54.763 20	/var/lib/selinux/targeted/active/modules/100/nx
+2026-01-18 17:11:54.764 20	/var/lib/selinux/targeted/active/modules/100/obex
+2026-01-18 17:11:54.765 20	/var/lib/selinux/targeted/active/modules/100/oddjob
+2026-01-18 17:11:54.766 20	/var/lib/selinux/targeted/active/modules/100/opafm
+2026-01-18 17:11:54.767 20	/var/lib/selinux/targeted/active/modules/100/openct
+2026-01-18 17:11:54.768 20	/var/lib/selinux/targeted/active/modules/100/opendnssec
+2026-01-18 17:11:54.769 20	/var/lib/selinux/targeted/active/modules/100/openfortivpn
+2026-01-18 17:11:54.770 20	/var/lib/selinux/targeted/active/modules/100/openhpid
+2026-01-18 17:11:54.771 36	/var/lib/selinux/targeted/active/modules/100/openshift
+2026-01-18 17:11:54.772 16	/var/lib/selinux/targeted/active/modules/100/openshift-origin
+2026-01-18 17:11:54.773 20	/var/lib/selinux/targeted/active/modules/100/opensm
+2026-01-18 17:11:54.774 28	/var/lib/selinux/targeted/active/modules/100/openvpn
+2026-01-18 17:11:54.775 20	/var/lib/selinux/targeted/active/modules/100/openvswitch
+2026-01-18 17:11:54.776 20	/var/lib/selinux/targeted/active/modules/100/openwsman
+2026-01-18 17:11:54.777 20	/var/lib/selinux/targeted/active/modules/100/oracleasm
+2026-01-18 17:11:54.778 20	/var/lib/selinux/targeted/active/modules/100/osad
+2026-01-18 17:11:54.779 20	/var/lib/selinux/targeted/active/modules/100/pads
+2026-01-18 17:11:54.780 20	/var/lib/selinux/targeted/active/modules/100/passenger
+2026-01-18 17:11:54.781 20	/var/lib/selinux/targeted/active/modules/100/pcmcia
+2026-01-18 17:11:54.782 28	/var/lib/selinux/targeted/active/modules/100/pcp
+2026-01-18 17:11:54.783 20	/var/lib/selinux/targeted/active/modules/100/pcscd
+2026-01-18 17:11:54.784 20	/var/lib/selinux/targeted/active/modules/100/pdns
+2026-01-18 17:11:54.785 36	/var/lib/selinux/targeted/active/modules/100/pegasus
+2026-01-18 17:11:54.786 8	/var/lib/selinux/targeted/active/modules/100/permissivedomains
+2026-01-18 17:11:54.787 20	/var/lib/selinux/targeted/active/modules/100/pesign
+2026-01-18 17:11:54.788 20	/var/lib/selinux/targeted/active/modules/100/pingd
+2026-01-18 17:11:54.789 28	/var/lib/selinux/targeted/active/modules/100/piranha
+2026-01-18 17:11:54.790 20	/var/lib/selinux/targeted/active/modules/100/pkcs
+2026-01-18 17:11:54.791 20	/var/lib/selinux/targeted/active/modules/100/pkcs11proxyd
+2026-01-18 17:11:54.792 28	/var/lib/selinux/targeted/active/modules/100/pki
+2026-01-18 17:11:54.793 20	/var/lib/selinux/targeted/active/modules/100/plymouthd
+2026-01-18 17:11:54.794 20	/var/lib/selinux/targeted/active/modules/100/podsleuth
+2026-01-18 17:11:54.795 28	/var/lib/selinux/targeted/active/modules/100/policykit
+2026-01-18 17:11:54.796 20	/var/lib/selinux/targeted/active/modules/100/polipo
+2026-01-18 17:11:54.797 20	/var/lib/selinux/targeted/active/modules/100/portmap
+2026-01-18 17:11:54.798 20	/var/lib/selinux/targeted/active/modules/100/portreserve
+2026-01-18 17:11:54.799 36	/var/lib/selinux/targeted/active/modules/100/postfix
+2026-01-18 17:11:54.800 28	/var/lib/selinux/targeted/active/modules/100/postgresql
+2026-01-18 17:11:54.801 20	/var/lib/selinux/targeted/active/modules/100/postgrey
+2026-01-18 17:11:54.802 28	/var/lib/selinux/targeted/active/modules/100/ppp
+2026-01-18 17:11:54.803 28	/var/lib/selinux/targeted/active/modules/100/prelink
+2026-01-18 17:11:54.804 28	/var/lib/selinux/targeted/active/modules/100/prelude
+2026-01-18 17:11:54.806 20	/var/lib/selinux/targeted/active/modules/100/privoxy
+2026-01-18 17:11:54.807 20	/var/lib/selinux/targeted/active/modules/100/procmail
+2026-01-18 17:11:54.808 20	/var/lib/selinux/targeted/active/modules/100/prosody
+2026-01-18 17:11:54.809 20	/var/lib/selinux/targeted/active/modules/100/psad
+2026-01-18 17:11:54.810 20	/var/lib/selinux/targeted/active/modules/100/ptchown
+2026-01-18 17:11:54.811 20	/var/lib/selinux/targeted/active/modules/100/publicfile
+2026-01-18 17:11:54.812 28	/var/lib/selinux/targeted/active/modules/100/pulseaudio
+2026-01-18 17:11:54.813 28	/var/lib/selinux/targeted/active/modules/100/puppet
+2026-01-18 17:11:54.814 20	/var/lib/selinux/targeted/active/modules/100/pwauth
+2026-01-18 17:11:54.815 20	/var/lib/selinux/targeted/active/modules/100/qatlib
+2026-01-18 17:11:54.816 24	/var/lib/selinux/targeted/active/modules/100/qmail
+2026-01-18 17:11:54.817 20	/var/lib/selinux/targeted/active/modules/100/qpid
+2026-01-18 17:11:54.818 28	/var/lib/selinux/targeted/active/modules/100/quantum
+2026-01-18 17:11:54.819 20	/var/lib/selinux/targeted/active/modules/100/quota
+2026-01-18 17:11:54.820 24	/var/lib/selinux/targeted/active/modules/100/rabbitmq
+2026-01-18 17:11:54.821 20	/var/lib/selinux/targeted/active/modules/100/radius
+2026-01-18 17:11:54.822 20	/var/lib/selinux/targeted/active/modules/100/radvd
+2026-01-18 17:11:54.823 20	/var/lib/selinux/targeted/active/modules/100/raid
+2026-01-18 17:11:54.824 20	/var/lib/selinux/targeted/active/modules/100/rasdaemon
+2026-01-18 17:11:54.825 20	/var/lib/selinux/targeted/active/modules/100/rdisc
+2026-01-18 17:11:54.826 20	/var/lib/selinux/targeted/active/modules/100/readahead
+2026-01-18 17:11:54.827 36	/var/lib/selinux/targeted/active/modules/100/realmd
+2026-01-18 17:11:54.828 20	/var/lib/selinux/targeted/active/modules/100/redis
+2026-01-18 17:11:54.829 20	/var/lib/selinux/targeted/active/modules/100/remotelogin
+2026-01-18 17:11:54.830 24	/var/lib/selinux/targeted/active/modules/100/rhcd
+2026-01-18 17:11:54.831 36	/var/lib/selinux/targeted/active/modules/100/rhcs
+2026-01-18 17:11:54.832 28	/var/lib/selinux/targeted/active/modules/100/rhev
+2026-01-18 17:11:54.833 20	/var/lib/selinux/targeted/active/modules/100/rhgb
+2026-01-18 17:11:54.834 20	/var/lib/selinux/targeted/active/modules/100/rhnsd
+2026-01-18 17:11:54.835 24	/var/lib/selinux/targeted/active/modules/100/rhsmcertd
+2026-01-18 17:11:54.836 28	/var/lib/selinux/targeted/active/modules/100/ricci
+2026-01-18 17:11:54.837 16	/var/lib/selinux/targeted/active/modules/100/rkhunter
+2026-01-18 17:11:54.838 20	/var/lib/selinux/targeted/active/modules/100/rkt
+2026-01-18 17:11:54.839 24	/var/lib/selinux/targeted/active/modules/100/rlogin
+2026-01-18 17:11:54.840 20	/var/lib/selinux/targeted/active/modules/100/rngd
+2026-01-18 17:11:54.841 20	/var/lib/selinux/targeted/active/modules/100/rolekit
+2026-01-18 17:11:54.842 20	/var/lib/selinux/targeted/active/modules/100/roundup
+2026-01-18 17:11:54.843 28	/var/lib/selinux/targeted/active/modules/100/rpc
+2026-01-18 17:11:54.844 20	/var/lib/selinux/targeted/active/modules/100/rpcbind
+2026-01-18 17:11:54.845 36	/var/lib/selinux/targeted/active/modules/100/rpm
+2026-01-18 17:11:54.846 20	/var/lib/selinux/targeted/active/modules/100/rrdcached
+2026-01-18 17:11:54.847 20	/var/lib/selinux/targeted/active/modules/100/rshd
+2026-01-18 17:11:54.848 20	/var/lib/selinux/targeted/active/modules/100/rshim
+2026-01-18 17:11:54.849 20	/var/lib/selinux/targeted/active/modules/100/rssh
+2026-01-18 17:11:54.850 20	/var/lib/selinux/targeted/active/modules/100/rsync
+2026-01-18 17:11:54.851 20	/var/lib/selinux/targeted/active/modules/100/rtas
+2026-01-18 17:11:54.852 20	/var/lib/selinux/targeted/active/modules/100/rtkit
+2026-01-18 17:11:54.853 20	/var/lib/selinux/targeted/active/modules/100/rwho
+2026-01-18 17:11:54.854 48	/var/lib/selinux/targeted/active/modules/100/samba
+2026-01-18 17:11:54.856 20	/var/lib/selinux/targeted/active/modules/100/sambagui
+2026-01-18 17:11:54.857 28	/var/lib/selinux/targeted/active/modules/100/sandboxX
+2026-01-18 17:11:54.858 20	/var/lib/selinux/targeted/active/modules/100/sanlock
+2026-01-18 17:11:54.859 20	/var/lib/selinux/targeted/active/modules/100/sap
+2026-01-18 17:11:54.860 20	/var/lib/selinux/targeted/active/modules/100/sasl
+2026-01-18 17:11:54.861 20	/var/lib/selinux/targeted/active/modules/100/sbd
+2026-01-18 17:11:54.862 20	/var/lib/selinux/targeted/active/modules/100/sblim
+2026-01-18 17:11:54.863 20	/var/lib/selinux/targeted/active/modules/100/screen
+2026-01-18 17:11:54.864 28	/var/lib/selinux/targeted/active/modules/100/secadm
+2026-01-18 17:11:54.865 20	/var/lib/selinux/targeted/active/modules/100/sectoolm
+2026-01-18 17:11:54.866 36	/var/lib/selinux/targeted/active/modules/100/selinuxutil
+2026-01-18 17:11:54.867 28	/var/lib/selinux/targeted/active/modules/100/sendmail
+2026-01-18 17:11:54.868 20	/var/lib/selinux/targeted/active/modules/100/sensord
+2026-01-18 17:11:54.869 20	/var/lib/selinux/targeted/active/modules/100/setrans
+2026-01-18 17:11:54.870 20	/var/lib/selinux/targeted/active/modules/100/setroubleshoot
+2026-01-18 17:11:54.871 20	/var/lib/selinux/targeted/active/modules/100/seunshare
+2026-01-18 17:11:54.872 28	/var/lib/selinux/targeted/active/modules/100/sge
+2026-01-18 17:11:54.873 20	/var/lib/selinux/targeted/active/modules/100/shorewall
+2026-01-18 17:11:54.874 20	/var/lib/selinux/targeted/active/modules/100/slocate
+2026-01-18 17:11:54.875 20	/var/lib/selinux/targeted/active/modules/100/slpd
+2026-01-18 17:11:54.876 20	/var/lib/selinux/targeted/active/modules/100/smartmon
+2026-01-18 17:11:54.877 20	/var/lib/selinux/targeted/active/modules/100/smokeping
+2026-01-18 17:11:54.878 20	/var/lib/selinux/targeted/active/modules/100/smoltclient
+2026-01-18 17:11:54.879 20	/var/lib/selinux/targeted/active/modules/100/smsd
+2026-01-18 17:11:54.880 20	/var/lib/selinux/targeted/active/modules/100/snapper
+2026-01-18 17:11:54.881 20	/var/lib/selinux/targeted/active/modules/100/snmp
+2026-01-18 17:11:54.882 20	/var/lib/selinux/targeted/active/modules/100/snort
+2026-01-18 17:11:54.883 28	/var/lib/selinux/targeted/active/modules/100/sosreport
+2026-01-18 17:11:54.884 20	/var/lib/selinux/targeted/active/modules/100/soundserver
+2026-01-18 17:11:54.885 28	/var/lib/selinux/targeted/active/modules/100/spamassassin
+2026-01-18 17:11:54.887 20	/var/lib/selinux/targeted/active/modules/100/speech-dispatcher
+2026-01-18 17:11:54.888 28	/var/lib/selinux/targeted/active/modules/100/squid
+2026-01-18 17:11:54.889 40	/var/lib/selinux/targeted/active/modules/100/ssh
+2026-01-18 17:11:54.890 20	/var/lib/selinux/targeted/active/modules/100/sslh
+2026-01-18 17:11:54.891 28	/var/lib/selinux/targeted/active/modules/100/sssd
+2026-01-18 17:11:54.892 76	/var/lib/selinux/targeted/active/modules/100/staff
+2026-01-18 17:11:54.893 20	/var/lib/selinux/targeted/active/modules/100/stalld
+2026-01-18 17:11:54.894 20	/var/lib/selinux/targeted/active/modules/100/stapserver
+2026-01-18 17:11:54.895 20	/var/lib/selinux/targeted/active/modules/100/stratisd
+2026-01-18 17:11:54.896 20	/var/lib/selinux/targeted/active/modules/100/stunnel
+2026-01-18 17:11:54.897 20	/var/lib/selinux/targeted/active/modules/100/su
+2026-01-18 17:11:54.898 20	/var/lib/selinux/targeted/active/modules/100/sudo
+2026-01-18 17:11:54.899 20	/var/lib/selinux/targeted/active/modules/100/svnserve
+2026-01-18 17:11:54.901 20	/var/lib/selinux/targeted/active/modules/100/swift
+2026-01-18 17:11:54.902 100	/var/lib/selinux/targeted/active/modules/100/sysadm
+2026-01-18 17:11:54.903 20	/var/lib/selinux/targeted/active/modules/100/sysadm_secadm
+2026-01-18 17:11:54.904 28	/var/lib/selinux/targeted/active/modules/100/sysnetwork
+2026-01-18 17:11:54.905 20	/var/lib/selinux/targeted/active/modules/100/sysstat
+2026-01-18 17:11:54.906 48	/var/lib/selinux/targeted/active/modules/100/systemd
+2026-01-18 17:11:54.907 20	/var/lib/selinux/targeted/active/modules/100/tangd
+2026-01-18 17:11:54.908 20	/var/lib/selinux/targeted/active/modules/100/targetd
+2026-01-18 17:11:54.909 20	/var/lib/selinux/targeted/active/modules/100/tcpd
+2026-01-18 17:11:54.910 20	/var/lib/selinux/targeted/active/modules/100/tcsd
+2026-01-18 17:11:54.911 28	/var/lib/selinux/targeted/active/modules/100/telepathy
+2026-01-18 17:11:54.912 20	/var/lib/selinux/targeted/active/modules/100/telnet
+2026-01-18 17:11:54.913 20	/var/lib/selinux/targeted/active/modules/100/tftp
+2026-01-18 17:11:54.914 20	/var/lib/selinux/targeted/active/modules/100/tgtd
+2026-01-18 17:11:54.916 20	/var/lib/selinux/targeted/active/modules/100/thin
+2026-01-18 17:11:54.917 20	/var/lib/selinux/targeted/active/modules/100/thumb
+2026-01-18 17:11:54.918 20	/var/lib/selinux/targeted/active/modules/100/timedatex
+2026-01-18 17:11:54.919 20	/var/lib/selinux/targeted/active/modules/100/tlp
+2026-01-18 17:11:54.920 20	/var/lib/selinux/targeted/active/modules/100/tmpreaper
+2026-01-18 17:11:54.921 28	/var/lib/selinux/targeted/active/modules/100/tomcat
+2026-01-18 17:11:54.922 20	/var/lib/selinux/targeted/active/modules/100/tor
+2026-01-18 17:11:54.923 28	/var/lib/selinux/targeted/active/modules/100/tuned
+2026-01-18 17:11:54.924 20	/var/lib/selinux/targeted/active/modules/100/tvtime
+2026-01-18 17:11:54.925 36	/var/lib/selinux/targeted/active/modules/100/udev
+2026-01-18 17:11:54.926 20	/var/lib/selinux/targeted/active/modules/100/ulogd
+2026-01-18 17:11:54.927 20	/var/lib/selinux/targeted/active/modules/100/uml
+2026-01-18 17:11:54.929 20	/var/lib/selinux/targeted/active/modules/100/unconfined
+2026-01-18 17:11:54.930 40	/var/lib/selinux/targeted/active/modules/100/unconfineduser
+2026-01-18 17:11:54.931 16	/var/lib/selinux/targeted/active/modules/100/unlabelednet
+2026-01-18 17:11:54.932 60	/var/lib/selinux/targeted/active/modules/100/unprivuser
+2026-01-18 17:11:54.933 20	/var/lib/selinux/targeted/active/modules/100/updfstab
+2026-01-18 17:11:54.934 20	/var/lib/selinux/targeted/active/modules/100/usbmodules
+2026-01-18 17:11:54.935 20	/var/lib/selinux/targeted/active/modules/100/usbmuxd
+2026-01-18 17:11:54.936 32	/var/lib/selinux/targeted/active/modules/100/userdomain
+2026-01-18 17:11:54.937 20	/var/lib/selinux/targeted/active/modules/100/userhelper
+2026-01-18 17:11:54.938 36	/var/lib/selinux/targeted/active/modules/100/usermanage
+2026-01-18 17:11:54.939 20	/var/lib/selinux/targeted/active/modules/100/usernetctl
+2026-01-18 17:11:54.940 20	/var/lib/selinux/targeted/active/modules/100/uucp
+2026-01-18 17:11:54.941 20	/var/lib/selinux/targeted/active/modules/100/uuidd
+2026-01-18 17:11:54.942 20	/var/lib/selinux/targeted/active/modules/100/varnishd
+2026-01-18 17:11:54.943 20	/var/lib/selinux/targeted/active/modules/100/vdagent
+2026-01-18 17:11:54.944 20	/var/lib/selinux/targeted/active/modules/100/vhostmd
+2026-01-18 17:11:54.945 64	/var/lib/selinux/targeted/active/modules/100/virt
+2026-01-18 17:11:54.947 20	/var/lib/selinux/targeted/active/modules/100/vlock
+2026-01-18 17:11:54.948 28	/var/lib/selinux/targeted/active/modules/100/vmtools
+2026-01-18 17:11:54.949 28	/var/lib/selinux/targeted/active/modules/100/vmware
+2026-01-18 17:11:54.950 20	/var/lib/selinux/targeted/active/modules/100/vnstatd
+2026-01-18 17:11:54.951 20	/var/lib/selinux/targeted/active/modules/100/vpn
+2026-01-18 17:11:54.952 20	/var/lib/selinux/targeted/active/modules/100/w3c
+2026-01-18 17:11:54.953 28	/var/lib/selinux/targeted/active/modules/100/watchdog
+2026-01-18 17:11:54.954 20	/var/lib/selinux/targeted/active/modules/100/wdmd
+2026-01-18 17:11:54.955 28	/var/lib/selinux/targeted/active/modules/100/webadm
+2026-01-18 17:11:54.956 20	/var/lib/selinux/targeted/active/modules/100/webalizer
+2026-01-18 17:11:54.957 20	/var/lib/selinux/targeted/active/modules/100/wine
+2026-01-18 17:11:54.958 20	/var/lib/selinux/targeted/active/modules/100/wireguard
+2026-01-18 17:11:54.959 20	/var/lib/selinux/targeted/active/modules/100/wireshark
+2026-01-18 17:11:54.960 28	/var/lib/selinux/targeted/active/modules/100/xen
+2026-01-18 17:11:54.961 40	/var/lib/selinux/targeted/active/modules/100/xguest
+2026-01-18 17:11:54.962 60	/var/lib/selinux/targeted/active/modules/100/xserver
+2026-01-18 17:11:54.963 28	/var/lib/selinux/targeted/active/modules/100/zabbix
+2026-01-18 17:11:54.964 20	/var/lib/selinux/targeted/active/modules/100/zarafa
+2026-01-18 17:11:54.966 20	/var/lib/selinux/targeted/active/modules/100/zebra
+2026-01-18 17:11:54.967 20	/var/lib/selinux/targeted/active/modules/100/zoneminder
+2026-01-18 17:11:54.968 20	/var/lib/selinux/targeted/active/modules/100/zosremote
+2026-01-18 17:11:54.969 10144	/var/lib/selinux/targeted/active/modules/100
+2026-01-18 17:11:54.970 12	/var/lib/selinux/targeted/active/modules/200/ec2-instance-connect
+2026-01-18 17:11:54.971 64	/var/lib/selinux/targeted/active/modules/200/container
+2026-01-18 17:11:54.972 76	/var/lib/selinux/targeted/active/modules/200
+2026-01-18 17:11:54.973 0	/var/lib/selinux/targeted/active/modules/disabled
+2026-01-18 17:11:54.974 10220	/var/lib/selinux/targeted/active/modules
+2026-01-18 17:11:54.975 17824	/var/lib/selinux/targeted/active
+2026-01-18 17:11:54.976 17824	/var/lib/selinux/targeted
+2026-01-18 17:11:54.977 0	/var/lib/selinux/final
+2026-01-18 17:11:54.978 17824	/var/lib/selinux
+2026-01-18 17:11:54.979 232	/var/lib/systemd/catalog
+2026-01-18 17:11:54.980 0	/var/lib/systemd/coredump
+2026-01-18 17:11:54.981 0	/var/lib/systemd/pstore
+2026-01-18 17:11:54.982 0	/var/lib/systemd/timers
+2026-01-18 17:11:54.983 0	/var/lib/systemd/home
+2026-01-18 17:11:54.984 0	/var/lib/systemd/linger
+2026-01-18 17:11:54.985 236	/var/lib/systemd
+2026-01-18 17:11:54.986 0	/var/lib/portables
+2026-01-18 17:11:54.987 0	/var/lib/private
+2026-01-18 17:11:54.988 0	/var/lib/initramfs
+2026-01-18 17:11:54.989 0	/var/lib/os-prober
+2026-01-18 17:11:54.990 0	/var/lib/gssproxy/clients
+2026-01-18 17:11:54.991 0	/var/lib/gssproxy/rcache
+2026-01-18 17:11:54.992 0	/var/lib/gssproxy
+2026-01-18 17:11:54.993 4	/var/lib/logrotate
+2026-01-18 17:11:54.994 1256	/var/lib/sss/db
+2026-01-18 17:11:54.995 0	/var/lib/sss/deskprofile
+2026-01-18 17:11:54.996 0	/var/lib/sss/gpo_cache
+2026-01-18 17:11:54.997 0	/var/lib/sss/mc
+2026-01-18 17:11:54.998 0	/var/lib/sss/pipes/private
+2026-01-18 17:11:54.999 0	/var/lib/sss/pipes
+2026-01-18 17:11:55.000 0	/var/lib/sss/pubconf
+2026-01-18 17:11:55.001 0	/var/lib/sss/secrets
+2026-01-18 17:11:55.002 1256	/var/lib/sss
+2026-01-18 17:11:55.003 4	/var/lib/chrony
+2026-01-18 17:11:55.004 0	/var/lib/cloud
+2026-01-18 17:11:55.005 0	/var/lib/kpatch
+2026-01-18 17:11:55.006 0	/var/lib/nfs/rpc_pipefs
+2026-01-18 17:11:55.007 0	/var/lib/nfs/statd/sm
+2026-01-18 17:11:55.008 0	/var/lib/nfs/statd/sm.bak
+2026-01-18 17:11:55.009 0	/var/lib/nfs/statd
+2026-01-18 17:11:55.010 0	/var/lib/nfs/v4recovery
+2026-01-18 17:11:55.011 0	/var/lib/nfs
+2026-01-18 17:11:55.012 0	/var/lib/hibinit-agent
+2026-01-18 17:11:55.013 0	/var/lib/xfsdump/inventory
+2026-01-18 17:11:55.014 0	/var/lib/xfsdump
+2026-01-18 17:11:55.015 0	/var/lib/amazon/ssm/ipc
+2026-01-18 17:11:55.016 4	/var/lib/amazon/ssm/runtimeconfig
+2026-01-18 17:11:55.017 4	/var/lib/amazon/ssm/Vault/Store
+2026-01-18 17:11:55.018 8	/var/lib/amazon/ssm/Vault
+2026-01-18 17:11:55.019 4	/var/lib/amazon/ssm/dynamicconfig
+2026-01-18 17:11:55.021 0	/var/lib/amazon/ssm/localcommands/completed
+2026-01-18 17:11:55.022 0	/var/lib/amazon/ssm/localcommands
+2026-01-18 17:11:55.023 0	/var/lib/amazon/ssm/daemons
+2026-01-18 17:11:55.024 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/state/pending
+2026-01-18 17:11:55.025 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/state/current
+2026-01-18 17:11:55.026 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/state/completed
+2026-01-18 17:11:55.027 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/state/corrupt
+2026-01-18 17:11:55.028 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/state
+2026-01-18 17:11:55.029 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/d89cea78-17ad-417b-b405-d789374dbf56/awsrunShellScript/CollectRunningKernel
+2026-01-18 17:11:55.030 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/d89cea78-17ad-417b-b405-d789374dbf56/awsrunShellScript
+2026-01-18 17:11:55.031 4	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/d89cea78-17ad-417b-b405-d789374dbf56/CollectRunningKernel
+2026-01-18 17:11:55.032 4	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/d89cea78-17ad-417b-b405-d789374dbf56
+2026-01-18 17:11:55.033 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/dc27f838-64de-4fe5-8ddc-61c5f2b05cfa/2025-12-04T17-07-57.169Z/awssoftwareInventory/collectSoftwareInventoryItems
+2026-01-18 17:11:55.035 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/dc27f838-64de-4fe5-8ddc-61c5f2b05cfa/2025-12-04T17-07-57.169Z/awssoftwareInventory
+2026-01-18 17:11:55.036 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/dc27f838-64de-4fe5-8ddc-61c5f2b05cfa/2025-12-04T17-07-57.169Z
+2026-01-18 17:11:55.037 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/dc27f838-64de-4fe5-8ddc-61c5f2b05cfa
+2026-01-18 17:11:55.038 12	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/01ef8244-a57b-48be-9c4c-deb4939b6ecd/awsrunShellScript/0.awsrunShellScript
+2026-01-18 17:11:55.039 12	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/01ef8244-a57b-48be-9c4c-deb4939b6ecd/awsrunShellScript
+2026-01-18 17:11:55.040 12	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/01ef8244-a57b-48be-9c4c-deb4939b6ecd
+2026-01-18 17:11:55.041 20	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/033c19c1-0d59-409c-b25a-fe2dda45cc6a/awsrunShellScript/0.awsrunShellScript
+2026-01-18 17:11:55.042 20	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/033c19c1-0d59-409c-b25a-fe2dda45cc6a/awsrunShellScript
+2026-01-18 17:11:55.043 20	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/033c19c1-0d59-409c-b25a-fe2dda45cc6a
+2026-01-18 17:11:55.044 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/6b64b251-67da-4590-bb67-b1de12c49db4/awsrefreshAssociation/refreshAssociation
+2026-01-18 17:11:55.045 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/6b64b251-67da-4590-bb67-b1de12c49db4/awsrefreshAssociation
+2026-01-18 17:11:55.047 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/6b64b251-67da-4590-bb67-b1de12c49db4
+2026-01-18 17:11:55.048 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/616662fb-c3ff-43e2-a46a-5ffdae323a65/2025-12-04T17-17-21.211Z/awssoftwareInventory/collectSoftwareInventoryItems
+2026-01-18 17:11:55.049 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/616662fb-c3ff-43e2-a46a-5ffdae323a65/2025-12-04T17-17-21.211Z/awssoftwareInventory
+2026-01-18 17:11:55.050 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/616662fb-c3ff-43e2-a46a-5ffdae323a65/2025-12-04T17-17-21.211Z
+2026-01-18 17:11:55.051 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/616662fb-c3ff-43e2-a46a-5ffdae323a65/2025-12-04T17-17-48.998Z/awssoftwareInventory/collectSoftwareInventoryItems
+2026-01-18 17:11:55.052 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/616662fb-c3ff-43e2-a46a-5ffdae323a65/2025-12-04T17-17-48.998Z/awssoftwareInventory
+2026-01-18 17:11:55.053 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/616662fb-c3ff-43e2-a46a-5ffdae323a65/2025-12-04T17-17-48.998Z
+2026-01-18 17:11:55.054 16	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/616662fb-c3ff-43e2-a46a-5ffdae323a65
+2026-01-18 17:11:55.055 28	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/2f29f763-02b6-4bea-a38b-c1104c73b5f0/awsrunShellScript/0.awsrunShellScript
+2026-01-18 17:11:55.056 28	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/2f29f763-02b6-4bea-a38b-c1104c73b5f0/awsrunShellScript
+2026-01-18 17:11:55.058 28	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration/2f29f763-02b6-4bea-a38b-c1104c73b5f0
+2026-01-18 17:11:55.059 112	/var/lib/amazon/ssm/i-04211d47fc32133ec/document/orchestration
+2026-01-18 17:11:55.060 112	/var/lib/amazon/ssm/i-04211d47fc32133ec/document
+2026-01-18 17:11:55.061 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/longrunningplugins/datastore
+2026-01-18 17:11:55.062 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/longrunningplugins/healthcheck
+2026-01-18 17:11:55.063 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/longrunningplugins
+2026-01-18 17:11:55.064 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/replies
+2026-01-18 17:11:55.065 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/replies_mgs
+2026-01-18 17:11:55.066 4	/var/lib/amazon/ssm/i-04211d47fc32133ec/inventory/custom
+2026-01-18 17:11:55.067 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/inventory/file
+2026-01-18 17:11:55.068 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/inventory/role
+2026-01-18 17:11:55.069 8	/var/lib/amazon/ssm/i-04211d47fc32133ec/inventory
+2026-01-18 17:11:55.070 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/idempotency/SendCommand/d89cea78-17ad-417b-b405-d789374dbf56
+2026-01-18 17:11:55.071 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/idempotency/SendCommand/01ef8244-a57b-48be-9c4c-deb4939b6ecd
+2026-01-18 17:11:55.072 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/idempotency/SendCommand/033c19c1-0d59-409c-b25a-fe2dda45cc6a
+2026-01-18 17:11:55.073 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/idempotency/SendCommand/6b64b251-67da-4590-bb67-b1de12c49db4
+2026-01-18 17:11:55.075 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/idempotency/SendCommand/2f29f763-02b6-4bea-a38b-c1104c73b5f0
+2026-01-18 17:11:55.076 16	/var/lib/amazon/ssm/i-04211d47fc32133ec/idempotency/SendCommand
+2026-01-18 17:11:55.077 16	/var/lib/amazon/ssm/i-04211d47fc32133ec/idempotency
+2026-01-18 17:11:55.078 0	/var/lib/amazon/ssm/i-04211d47fc32133ec/channels
+2026-01-18 17:11:55.079 136	/var/lib/amazon/ssm/i-04211d47fc32133ec
+2026-01-18 17:11:55.080 152	/var/lib/amazon/ssm
+2026-01-18 17:11:55.081 152	/var/lib/amazon
+2026-01-18 17:11:55.082 0	/var/lib/update-motd
+2026-01-18 17:11:55.083 36352	/var/lib/rpm
+2026-01-18 17:11:55.084 0	/var/lib/polkit-1/localauthority/10-vendor.d
+2026-01-18 17:11:55.085 0	/var/lib/polkit-1/localauthority/20-org.d
+2026-01-18 17:11:55.086 0	/var/lib/polkit-1/localauthority/30-site.d
+2026-01-18 17:11:55.087 0	/var/lib/polkit-1/localauthority/50-local.d
+2026-01-18 17:11:55.088 0	/var/lib/polkit-1/localauthority/90-mandatory.d
+2026-01-18 17:11:55.089 0	/var/lib/polkit-1/localauthority
+2026-01-18 17:11:55.090 0	/var/lib/polkit-1
+2026-01-18 17:11:55.091 0	/var/lib/geoclue
+2026-01-18 17:11:55.092 2328	/var/lib/texmf/web2c/luatex
+2026-01-18 17:11:55.093 2340	/var/lib/texmf/web2c
+2026-01-18 17:11:55.094 112	/var/lib/texmf/fonts/map/dvips/updmap
+2026-01-18 17:11:55.095 112	/var/lib/texmf/fonts/map/dvips
+2026-01-18 17:11:55.096 44	/var/lib/texmf/fonts/map/pdftex/updmap
+2026-01-18 17:11:55.097 44	/var/lib/texmf/fonts/map/pdftex
+2026-01-18 17:11:55.099 4	/var/lib/texmf/fonts/map/dvipdfmx/updmap
+2026-01-18 17:11:55.100 4	/var/lib/texmf/fonts/map/dvipdfmx
+2026-01-18 17:11:55.101 160	/var/lib/texmf/fonts/map
+2026-01-18 17:11:55.102 160	/var/lib/texmf/fonts
+2026-01-18 17:11:55.103 2504	/var/lib/texmf
+2026-01-18 17:11:55.104 0	/var/lib/bigtop
+2026-01-18 17:11:55.105 0	/var/lib/zookeeper
+2026-01-18 17:11:55.106 0	/var/lib/trocla
+2026-01-18 17:11:55.107 0	/var/lib/aws/emr/step-runner/hadoop-jars
+2026-01-18 17:11:55.108 0	/var/lib/aws/emr/step-runner
+2026-01-18 17:11:55.109 4	/var/lib/aws/emr
+2026-01-18 17:11:55.110 4	/var/lib/aws
+2026-01-18 17:11:55.111 0	/var/lib/dnsmasq
+2026-01-18 17:11:55.112 0	/var/lib/provision-node
+2026-01-18 17:11:55.113 0	/var/lib/containerd
+2026-01-18 17:11:55.114 0	/var/lib/hadoop-yarn/cache
+2026-01-18 17:11:55.115 0	/var/lib/hadoop-yarn
+2026-01-18 17:11:55.116 0	/var/lib/hadoop-mapreduce/cache
+2026-01-18 17:11:55.117 0	/var/lib/hadoop-mapreduce
+2026-01-18 17:11:55.118 0	/var/lib/hadoop-hdfs/cache
+2026-01-18 17:11:55.119 0	/var/lib/hadoop-hdfs
+2026-01-18 17:11:55.120 0	/var/lib/hadoop-httpfs
+2026-01-18 17:11:55.121 0	/var/lib/docker
+2026-01-18 17:11:55.122 0	/var/lib/hadoop-kms/cache
+2026-01-18 17:11:55.124 0	/var/lib/hadoop-kms
+2026-01-18 17:11:55.125 0	/var/lib/upower
+2026-01-18 17:11:55.126 0	/var/lib/setup-devices
+2026-01-18 17:11:55.127 62752	/var/lib
+2026-01-18 17:11:55.128 62752	total
+2026-01-18 17:11:55.129 + lsof
+2026-01-18 17:11:55.130 + awk '{print $9}'
+2026-01-18 17:11:55.131 + grep '^/var/lib'
+2026-01-18 17:11:55.132 + true
+2026-01-18 17:11:55.133 + mkdir -p /mnt/var/lib
+2026-01-18 17:11:55.134 + mv /var/lib /var/lib.old
+2026-01-18 17:11:55.135 + ln -nsf /mnt/var/lib -T /var/lib
+2026-01-18 17:11:55.136 + rsync -a /var/lib.old/ /mnt/var/lib
+2026-01-18 17:11:56.327 + rm -Rf /var/lib.old
+2026-01-18 17:11:56.366 + echo 'Moved directory to ephemeral: /var/lib'
+2026-01-18 17:11:56.367 Moved directory to ephemeral: /var/lib
+2026-01-18 17:11:56.368 + restart_proc_that_can_have_open_files_in_var_lib_dir
+2026-01-18 17:11:56.369 + restart_proc_if_running dhclient 'service network restart'
+2026-01-18 17:11:56.370 + pgrep -x dhclient
+2026-01-18 17:11:56.372 + echo 'Not restarting dhclient as it isn'\''t running.'
+2026-01-18 17:11:56.373 Not restarting dhclient as it isn't running.
+2026-01-18 17:11:56.374 + print_deleted_files_in_old_dir /var/lib
+2026-01-18 17:11:56.375 + echo 'Dumping remaining open deleted files in old /var/lib directory:'
+2026-01-18 17:11:56.376 Dumping remaining open deleted files in old /var/lib directory:
+2026-01-18 17:11:56.377 + lsof_deleted_files_in_old_dir /var/lib
+2026-01-18 17:11:56.378 + lsof
+2026-01-18 17:11:56.379 + grep '(deleted)'
+2026-01-18 17:11:56.380 + grep /var/lib.old
+2026-01-18 17:11:56.488 + true
+2026-01-18 17:11:56.489 + echo 'Dump complete, any output indicates potential lost file.'
+2026-01-18 17:11:56.490 Dump complete, any output indicates potential lost file.
+2026-01-18 17:11:56.491 
+2026-01-18 17:11:56.492 real	0m2.231s
+2026-01-18 17:11:56.493 user	0m0.195s
+2026-01-18 17:11:56.494 sys	0m0.253s

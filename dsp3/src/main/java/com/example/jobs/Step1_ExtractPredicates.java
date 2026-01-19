@@ -93,7 +93,7 @@ public class Step1_ExtractPredicates {
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
         
-        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setInputFormatClass(TextinputFormat.class);
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
         job.setOutputKeyClass(Text.class);

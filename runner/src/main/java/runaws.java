@@ -50,45 +50,45 @@ public class runaws {
     }
 
     public static void main(String[] args) {
-
         // Usage:
-        // runaws <jarS3> <unigramS3> <bigramS3> <outBaseS3> <reducers> [instanceCount] [useCombiner(0/1)] [localOutDir] [localLogsDir]
+        // runaws <jarS3> <inputS3> <workDirS3> <positiveS3> <negativeS3> <reducers> [instanceCount] [localOutDir] [localLogsDir]
         //
-        // Examples:
-        // java -jar target/runner-1.0.jar <jar> <uni> <bi> s3://.../output/run1 2 1 1 ./download_out ./download_log
-        //
-        // If localOutDir/localLogsDir are not provided -> defaults inside current directory (runner):
-        // ./download_out/<clusterId> , ./download_log/<clusterId>
+        // Example:
+        // java -jar target/runner-1.0.jar \
+        //   s3://BUCKET/jars/dsp2-1.0.0.jar \
+        //   s3://BUCKET/input/biarcs_small10/ \
+        //   s3://BUCKET/output/run_small10/ \
+        //   s3://BUCKET/test/positive-preds.txt \
+        //   s3://BUCKET/test/negative-preds.txt \
+        //   4 \
+        //   3 \
+        //   ./download_out \
+        //   ./download_log
 
-        if (args.length < 5) {
-            System.err.println("Usage: runaws <jarS3> <unigramS3> <bigramS3> <outBaseS3> <reducers> [instanceCount] [useCombiner(0/1)] [localOutDir] [localLogsDir]");
+        if (args.length < 6) {
+            System.err.println("Usage: runaws <jarS3> <inputS3> <workDirS3> <positiveS3> <negativeS3> <reducers> [instanceCount] [localOutDir] [localLogsDir]");
             System.exit(1);
         }
 
+        // ====== EMR CONFIG  ======
         String region      = "us-east-1";
         String keyPairName = "vockey";
         String logUri      = "s3://cfggii23/dsp2/logs/";   // EMR writes logs here
 
-        String jarS3    = args[0];
-        String unigram  = args[1];
-        String bigram   = args[2];
-        String outBase  = args[3];
-        String reducers = args[4];
+        // ====== ARGS ======
+        String jarS3      = args[0];
+        String inputS3    = args[1]; // folder (small10 or full)
+        String workDirS3  = args[2]; // output base dir for steps
+        String positiveS3 = args[3];
+        String negativeS3 = args[4];
+        String reducers   = args[5];
+        int instanceCount = (args.length >= 7) ? Integer.parseInt(args[6]) : 3;
 
-        int instanceCount  = (args.length >= 6) ? Integer.parseInt(args[5]) : 3;
-        String useCombiner = (args.length >= 7) ? args[6] : "0";
-
-        if (!useCombiner.equals("0") && !useCombiner.equals("1")) {
-            System.err.println("useCombiner must be 0 or 1");
-            System.exit(1);
-        }
-
-        // Default download roots: inside current working directory (runner)
+        // ====== LOCAL DOWNLOAD ROOTS ======
         String cwd = System.getProperty("user.dir");
         String localOutRootDefault  = Paths.get(cwd, "download_out").toAbsolutePath().toString();
         String localLogsRootDefault = Paths.get(cwd, "download_log").toAbsolutePath().toString();
 
-        // If user provided local paths as last 2 args, use them
         String localOutRoot  = (args.length >= 9) ? Paths.get(args[7]).toAbsolutePath().toString() : localOutRootDefault;
         String localLogsRoot = (args.length >= 9) ? Paths.get(args[8]).toAbsolutePath().toString() : localLogsRootDefault;
 
@@ -97,13 +97,16 @@ public class runaws {
                 .withRegion(region)
                 .build();
 
+        // ====== STEP: run your Hadoop jar ======
         HadoopJarStepConfig hadoopStep = new HadoopJarStepConfig()
                 .withJar(jarS3)
-                .withMainClass("dsp2.Main")
-                .withArgs(unigram, bigram, outBase, reducers, useCombiner);
+                // IMPORTANT: 
+                .withMainClass("com.example.DirtDriver")
+                // DirtDriver: <input> <workDir> <positive> <negative> <reducers>
+                .withArgs(inputS3, workDirS3, positiveS3, negativeS3, reducers);
 
         StepConfig step = new StepConfig()
-                .withName("Run dsp2 pipeline")
+                .withName("Run DIRT pipeline")
                 .withHadoopJarStep(hadoopStep)
                 .withActionOnFailure("TERMINATE_CLUSTER");
 
@@ -115,7 +118,7 @@ public class runaws {
                 .withSlaveInstanceType("m5.xlarge");
 
         RunJobFlowRequest request = new RunJobFlowRequest()
-                .withName("dsp2-run")
+                .withName("dirt-run")
                 .withReleaseLabel("emr-7.12.0")
                 .withApplications(new Application().withName("Hadoop"))
                 .withInstances(instances)
@@ -129,18 +132,12 @@ public class runaws {
             String clusterId = result.getJobFlowId();
             String stepId = firstStepId(emr, clusterId);
 
-            // Local folders per cluster id (inside runner)
             String localLogsDir = Paths.get(localLogsRoot, clusterId).toString();
             String localOutDir  = Paths.get(localOutRoot,  clusterId).toString();
 
             System.out.println("ClusterId: " + clusterId);
             System.out.println("StepId:    " + stepId);
-            System.out.println("Instances: " + instanceCount);
-            System.out.println("Combiner:  " + useCombiner);
-            System.out.println("OutBase:   " + outBase);
-            System.out.println("LocalOut:  " + localOutDir);
-            System.out.println("LocalLogs: " + localLogsDir);
-            System.out.println("Waiting for step to finish...");
+            System.out.println("Waiting for step to complete...");
 
             while (true) {
                 String state = stepState(emr, clusterId, stepId);
@@ -161,19 +158,20 @@ public class runaws {
             System.out.println("Unzipping logs (.gz) ...");
             gunzipAll(localLogsDir);
 
-            // Download output only if completed
-            String state = stepState(emr, clusterId, stepId);
-            if (!state.equals("COMPLETED")) {
-                System.err.println("Step finished with state: " + state);
+            // If step not completed, exit after logs
+            String finalState = stepState(emr, clusterId, stepId);
+            if (!finalState.equals("COMPLETED")) {
+                System.err.println("Step finished with state: " + finalState);
                 System.err.println("Logs saved (unzipped) at: " + localLogsDir);
                 System.exit(2);
             }
 
-            String outS3 = ensureSlash(outBase) + "job4_out/";
+            // Download FINAL output (step7)
+            String outS3 = ensureSlash(workDirS3) + "step7/";
             System.out.println("Downloading output to: " + localOutDir);
             runAwsSync(outS3, localOutDir);
 
-            System.out.println("done");
+            System.out.println("DONE");
             System.out.println("Output: " + localOutDir);
             System.out.println("Logs:   " + localLogsDir);
 
@@ -185,16 +183,3 @@ public class runaws {
         }
     }
 }
-
-
-//how to run
-
-   /* java -jar target/runner-1.0.jar   s3://cfggii22/jars/dsp2.jar 
-  s3://datasets.elasticmapreduce/ngrams/books/20090715/eng-us-all/1gram/data  
-  
- s3://datasets.elasticmapreduce/ngrams/books/20090715/eng-us-all/2gram/data
-   s3://cfggii22/dsp2/output/eng_run1 
-     2  (reducers number)
-      2 (number of instances)
-        0 (no combiner 1 with combiner)
-          ./download55_out   ./download55_log  */

@@ -1,0 +1,13 @@
+(console) 2026-01-18 17:53:27   listing currently running logpushers: 
+root        4000       1  0 17:53 ?        00:00:00 /usr/bin/bash -l /usr/bin/logpusher
+root        4119    4000  0 17:53 ?        00:00:00 /usr/lib/jvm/jre-17/bin/java -Xmx1024m -XX:+ExitOnOutOfMemoryError -XX:MinHeapFreeRatio=10 -server -cp /usr/share/aws/emr/instance-controller/lib/*:/home/hadoop/conf:/usr/share/aws/aws-java-sdk-v2/* -Dlog4j2.configurationFile=file:/etc/logpusher/log4j2.xml -Dlog4j2.formatMsgNoLookups=true -Dlog4j2.disable.jmx=true aws157.logpusher.Main /etc/logpusher/logpusher.properties
+root        4141    4000  0 17:53 ?        00:00:00 grep -i logpusher
+(console) 2026-01-18 17:53:28  Displaying last 10 lines of logpusher logfile: 
+(console) 2026-01-18 17:53:29 About to start instance controller.
+(console) 2026-01-18 17:53:29 Listing currently running instance controllers:
+hadoop      3999       1  0 17:53 ?        00:00:00 /usr/bin/bash -l /usr/bin/instance-controller
+root        4119       1 99 17:53 ?        00:00:02 /usr/lib/jvm/jre-17/bin/java -Xmx1024m -XX:+ExitOnOutOfMemoryError -XX:MinHeapFreeRatio=10 -server -cp /usr/share/aws/emr/instance-controller/lib/*:/home/hadoop/conf:/usr/share/aws/aws-java-sdk-v2/* -Dlog4j2.configurationFile=file:/etc/logpusher/log4j2.xml -Dlog4j2.formatMsgNoLookups=true -Dlog4j2.disable.jmx=true aws157.logpusher.Main /etc/logpusher/logpusher.properties
+hadoop      4243    3999  0 17:53 ?        00:00:00 /usr/lib/jvm/jre-17/bin/java -Djava.security.properties=/emr/instance-controller/lib/security.properties -Xmx1024m -Djute.maxbuffer=3145728 -XX:+ExitOnOutOfMemoryError -XX:MinHeapFreeRatio=10 -server -cp /usr/share/aws/emr/instance-controller/lib/*:/home/hadoop/conf:/usr/share/aws/aws-java-sdk-v2/* -Dlog4j2.configurationFile=file:/etc/instance-controller/log4j2.xml -Dlog4j2.formatMsgNoLookups=true -Dlog4j2.disable.jmx=true aws157.instancecontroller.Main
+hadoop      4273    3999  0 17:53 ?        00:00:00 grep -i instance
+root        4274    3999  0 17:53 ?        00:00:00 sudo tee -a /emr/instance-state/console.log-2026-01-18-17-53 /dev/console
+(console) 2026-01-18 17:53:29  Displaying last 10 lines of instance controller logfile: 

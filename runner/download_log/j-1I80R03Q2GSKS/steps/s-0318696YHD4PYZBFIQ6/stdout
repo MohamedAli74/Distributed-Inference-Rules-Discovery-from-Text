@@ -1,0 +1,1 @@
+ARGS = [com.example.DirtDriver, s3a://dsp-ass3-first10-biarcs/, s3a://cfggii23/dsp3/output/run_small10/, s3a://cfggii23/dsp3/test/positive-preds.txt, s3a://cfggii23/dsp3/test/negative-preds.txt, 3]

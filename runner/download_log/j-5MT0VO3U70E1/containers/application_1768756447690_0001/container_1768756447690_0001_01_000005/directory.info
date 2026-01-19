@@ -1,0 +1,24 @@
+ls -l:
+total 20
+-rw-r--r--. 1 yarn yarn  129 Jan 18 17:16 container_tokens
+-rwx------. 1 yarn yarn  645 Jan 18 17:16 default_container_executor.sh
+-rwx------. 1 yarn yarn  590 Jan 18 17:16 default_container_executor_session.sh
+lrwxrwxrwx. 1 yarn yarn   88 Jan 18 17:16 job.jar -> /mnt1/yarn/usercache/hadoop/appcache/application_1768756447690_0001/filecache/11/job.jar
+lrwxrwxrwx. 1 yarn yarn   88 Jan 18 17:16 job.xml -> /mnt1/yarn/usercache/hadoop/appcache/application_1768756447690_0001/filecache/13/job.xml
+-rwx------. 1 yarn yarn 7382 Jan 18 17:16 launch_container.sh
+drwx--x---. 2 yarn yarn    6 Jan 18 17:16 tmp
+find -L . -maxdepth 5 -ls:
+ 12583195      4 drwx--x---   3 yarn     yarn         4096 Jan 18 17:16 .
+ 20971823      0 drwx--x---   2 yarn     yarn            6 Jan 18 17:16 ./tmp
+ 12583196      4 -rw-r--r--   1 yarn     yarn          129 Jan 18 17:16 ./container_tokens
+ 12583197      4 -rw-r--r--   1 yarn     yarn           12 Jan 18 17:16 ./.container_tokens.crc
+ 12583198      8 -rwx------   1 yarn     yarn         7382 Jan 18 17:16 ./launch_container.sh
+ 12583199      4 -rw-r--r--   1 yarn     yarn           68 Jan 18 17:16 ./.launch_container.sh.crc
+ 12583200      4 -rwx------   1 yarn     yarn          590 Jan 18 17:16 ./default_container_executor_session.sh
+ 12583201      4 -rw-r--r--   1 yarn     yarn           16 Jan 18 17:16 ./.default_container_executor_session.sh.crc
+ 12583202      4 -rwx------   1 yarn     yarn          645 Jan 18 17:16 ./default_container_executor.sh
+ 12583203      4 -rw-r--r--   1 yarn     yarn           16 Jan 18 17:16 ./.default_container_executor.sh.crc
+ 20971650      0 drwx------   2 yarn     yarn           21 Jan 18 17:15 ./job.jar
+ 20971651     56 -r-x------   1 yarn     yarn        55290 Jan 18 17:15 ./job.jar/job.jar
+ 25165955    272 -r-x------   1 yarn     yarn       278494 Jan 18 17:15 ./job.xml
+broken symlinks(find -L . -maxdepth 5 -type l -ls):

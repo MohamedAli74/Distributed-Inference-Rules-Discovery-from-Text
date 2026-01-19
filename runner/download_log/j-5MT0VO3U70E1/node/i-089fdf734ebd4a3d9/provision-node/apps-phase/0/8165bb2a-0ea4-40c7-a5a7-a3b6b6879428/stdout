@@ -1,0 +1,51 @@
+Amazon Linux 2023 repository - Source packages   13 MB/s | 1.7 MB     00:00    
+Amazon Linux 2023 repository - Debug             61 MB/s |  27 MB     00:00    
+Last metadata expiration check: 0:00:01 ago on Sun 18 Jan 2026 05:12:59 PM UTC.
+Package hadoop-mapreduce-3.4.1.amzn.4-1.amzn2023.x86_64 is already installed.
+Package hadoop-hdfs-3.4.1.amzn.4-1.amzn2023.x86_64 is already installed.
+Package bigtop-utils-1.2.0-1.amzn2023.noarch is already installed.
+Package cloudwatch-sink-2.22.0-1.amzn2023.noarch is already installed.
+Package hadoop-3.4.1.amzn.4-1.amzn2023.x86_64 is already installed.
+Package hadoop-lzo-0.4.19-1.amzn2023.x86_64 is already installed.
+Package emr-secret-agent-hadoop-authenticator-1.35.0-1.amzn2023.noarch is already installed.
+Package emr-goodies-3.21.0-1.amzn2023.noarch is already installed.
+Package emrfs-2.73.0-1.amzn2023.noarch is already installed.
+Package emr-ddb-5.7.0-1.amzn2023.noarch is already installed.
+Package emr-kinesis-3.25.0-1.amzn2023.noarch is already installed.
+Package hadoop-hdfs-datanode-3.4.1.amzn.4-1.amzn2023.x86_64 is already installed.
+Package hadoop-yarn-nodemanager-3.4.1.amzn.4-1.amzn2023.x86_64 is already installed.
+Package docker-25.0.13-1.amzn2023.0.2.x86_64 is already installed.
+Package hadoop-yarn-3.4.1.amzn.4-1.amzn2023.x86_64 is already installed.
+Dependencies resolved.
+================================================================================
+ Package           Architecture Version                    Repository      Size
+================================================================================
+Installing:
+ emr-scripts       noarch       2.27.0-1.amzn2023          emr_apps        12 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 12 k
+Installed size: 7.8 k
+Downloading Packages:
+emr-scripts-2.27.0-1.amzn2023.noarch.rpm        358 kB/s |  12 kB     00:00    
+--------------------------------------------------------------------------------
+Total                                           342 kB/s |  12 kB     00:00     
+EMR Application Repository                      1.6 MB/s | 1.7 kB     00:00    
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : emr-scripts-2.27.0-1.amzn2023.noarch                   1/1 
+  Running scriptlet: emr-scripts-2.27.0-1.amzn2023.noarch                   1/1 
+  Verifying        : emr-scripts-2.27.0-1.amzn2023.noarch                   1/1 
+
+Installed:
+  emr-scripts-2.27.0-1.amzn2023.noarch                                          
+
+Complete!
