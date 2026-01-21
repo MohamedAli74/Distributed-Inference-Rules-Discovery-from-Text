@@ -6,6 +6,7 @@ import com.example.helpers.TestData;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.PathFilter;
 
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
@@ -27,10 +28,19 @@ import java.util.Set;
 /**
  * Step5:
  * Input (SequenceFile): key = "pred\tslot\tword" , value = mi
- *   - Reads from Step4's 'sequence' output subdirectory
+ *   - Reads from Step4 output (sequence files: sequence-r-00000, sequence-r-00001, etc.)
  * Output (SequenceFile): key = pred , value = denom
  */
 public class Step5_ComputeDenom {
+
+    /** Filter to only read sequence-r-* files from Step4 output */
+    public static class SequenceFilePathFilter implements PathFilter {
+        @Override
+        public boolean accept(Path p) {
+            String name = p.getName();
+            return name.startsWith("sequence-r-");
+        }
+    }
 
     public static class DenomMapper extends Mapper<Text, DoubleWritable, Text, DoubleWritable> {
         private final Text outKey = new Text();
@@ -107,7 +117,7 @@ public class Step5_ComputeDenom {
 
         job.addCacheFile(new URI(fullPositivePath.toString() + "#positive.txt"));
         job.addCacheFile(new URI(fullNegativePath.toString() + "#negative.txt"));
-
+        
         FileInputFormat.addInputPath(job, miInput);
         FileOutputFormat.setOutputPath(job, output);
 

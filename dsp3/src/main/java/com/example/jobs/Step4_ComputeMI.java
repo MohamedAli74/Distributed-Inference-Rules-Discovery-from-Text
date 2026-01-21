@@ -177,10 +177,10 @@ public class Step4_ComputeMI {
                 DoubleWritable outVal = new DoubleWritable(mi);
                 
                 // Write to SequenceFile (for Step 5,6 and 7)
-                multipleOutputs.write("sequence", outKey, outVal);
+                multipleOutputs.write("seqOut", outKey, outVal, "sequence/part");
                 
                 // Write to Text format (for display)
-                multipleOutputs.write("text", new Text(outKey.toString()), new Text(String.valueOf(mi)));
+                multipleOutputs.write("textOut", outKey, outVal, "text/part");
             }
         }
 
@@ -207,8 +207,8 @@ public class Step4_ComputeMI {
         job.setOutputValueClass(DoubleWritable.class);
 
         // Configure MultipleOutputs for two output formats
-        MultipleOutputs.addNamedOutput(job, "sequence", SequenceFileOutputFormat.class, Text.class, DoubleWritable.class);
-        MultipleOutputs.addNamedOutput(job, "text", TextOutputFormat.class, Text.class, Text.class);
+        MultipleOutputs.addNamedOutput(job, "seqOut", SequenceFileOutputFormat.class, Text.class, DoubleWritable.class);
+        MultipleOutputs.addNamedOutput(job, "textOut", TextOutputFormat.class, Text.class, DoubleWritable.class);
 
         MultipleInputs.addInputPath(job, step3Join, SequenceFileInputFormat.class, FromJoinMapper.class);
         MultipleInputs.addInputPath(job, step2Totals, SequenceFileInputFormat.class, SWTotalsMapper.class);

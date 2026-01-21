@@ -2,6 +2,7 @@ package com.example.jobs;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.PathFilter;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
@@ -18,7 +19,7 @@ import java.util.*;
 
 /**
  * Step6:
- * Input: Step4 output (from 'sequence' subdirectory):
+ * Input: Step4 output (sequence files: sequence-r-00000, sequence-r-00001, etc.):
  *   key: pred \t slot \t word
  *   value: mi
  *
@@ -34,6 +35,15 @@ import java.util.*;
  * We only emit pairs that exist in test set (positive/negative).
  */
 public class Step6_IntersectionContrib {
+
+    /** Filter to only read sequence-r-* files from Step4 output */
+    public static class SequenceFilePathFilter implements PathFilter {
+        @Override
+        public boolean accept(Path p) {
+            String name = p.getName();
+            return name.startsWith("sequence-r-");
+        }
+    }
 
     public static class ContribMapper extends Mapper<Text, DoubleWritable, Text, Text> {
         private final Text outKey = new Text();
@@ -136,6 +146,9 @@ public class Step6_IntersectionContrib {
         job.addCacheFile(new URI(positive.toString() + "#positive.txt"));
         job.addCacheFile(new URI(negative.toString() + "#negative.txt"));
 
+        // Use PathFilter to only read sequence-r-* files from Step4
+        FileInputFormat.setInputPathFilter(job, SequenceFilePathFilter.class);
+        
         FileInputFormat.addInputPath(job, miInput);
         FileOutputFormat.setOutputPath(job, output);
 
