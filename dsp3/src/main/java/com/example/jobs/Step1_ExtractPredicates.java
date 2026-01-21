@@ -4,10 +4,9 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 
 import com.example.helpers.Parser;
 import com.example.helpers.PorterStemmer;
@@ -23,13 +22,13 @@ public class Step1_ExtractPredicates {
      * [in MI terms: |p,Slot,w|->count]
      */
 
-    public static class ExtractMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+    public static class ExtractMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
         /** Mapper:
          * Input: biarc line - head_word \t syntactic-ngram \t total_count \t counts_by_year
          * Output: key = predicate \t slot \t word , value = count
          */
         private final Text outKey = new Text();
-        private final IntWritable outVal = new IntWritable();
+        private final LongWritable outVal = new LongWritable();
         private final PorterStemmer stemmer = new PorterStemmer();
 
         @Override
@@ -67,13 +66,13 @@ public class Step1_ExtractPredicates {
      * Input: key = predicate \t slot \t word , value = count
      * Output: same as input, but summed counts
     */
-    public static class SumReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
-        private final IntWritable out = new IntWritable();
+    public static class SumReducer extends Reducer<Text, LongWritable, Text, LongWritable> {
+        private final LongWritable out = new LongWritable();
 
         @Override
-        protected void reduce(Text key, Iterable<IntWritable> vals, Context ctx) throws IOException, InterruptedException {
+        protected void reduce(Text key, Iterable<LongWritable> vals, Context ctx) throws IOException, InterruptedException {
             int sum = 0;
-            for (IntWritable v : vals) sum += v.get();
+            for (LongWritable v : vals) sum += v.get();
             out.set(sum);
             ctx.write(key, out);
         }
@@ -91,15 +90,14 @@ public class Step1_ExtractPredicates {
         job.setNumReduceTasks(reducers);
         
         job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
+        job.setMapOutputValueClass(LongWritable.class);
         
-        job.setInputFormatClass(TextinputFormat.class);
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntWritable.class);
+        job.setOutputValueClass(LongWritable.class);
 
-        FileInputFormat.addInputPath(job, input);
+        TextInputFormat.addInputPath(job, input);
         FileOutputFormat.setOutputPath(job, output);
 
         return job;

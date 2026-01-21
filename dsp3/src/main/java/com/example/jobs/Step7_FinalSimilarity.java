@@ -5,12 +5,12 @@ package com.example.jobs;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 
 import com.example.helpers.PorterStemmer;
 import com.example.helpers.TestData;
@@ -94,25 +94,29 @@ public class Step7_FinalSimilarity {
             if (!fs.exists(denomDir)) return;
 
             for (FileStatus st : fs.listStatus(denomDir)) {
-                if (!st.isFile()) continue;
-                String name = st.getPath().getName();
-                if (!name.startsWith("part-")) continue;
+                if (st.getPath().getName().startsWith("_")) continue;
 
-                try (BufferedReader br = new BufferedReader(new InputStreamReader(fs.open(st.getPath())))) {
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        // line: pred \t denom
-                        String[] f = line.split("\t");
-                        if (f.length != 2) continue;
+                //Open a SequenceFile Reader
+                SequenceFile.Reader reader = new SequenceFile.Reader(conf, SequenceFile.Reader.file(st.getPath()));
 
-                        String pred = f[0];
-                        double d;
-                        try { d = Double.parseDouble(f[1]); }
-                        catch (Exception e) { continue; }
+                // Step 5 output was: Key=Text, Value=DoubleWritable, we use dynamic instantiation
+                Writable key = (Writable) org.apache.hadoop.util.ReflectionUtils.newInstance(reader.getKeyClass(), conf);
+                Writable val = (Writable) org.apache.hadoop.util.ReflectionUtils.newInstance(reader.getValueClass(), conf);
 
-                        denomMap.put(pred, d);
+                while (reader.next(key, val)) {
+                    String pred = key.toString();
+                    
+                    double d = 0.0;
+                    if (val instanceof DoubleWritable) {
+                        d = ((DoubleWritable) val).get();
+                    } else {
+                        // Fallback if it was written as Text
+                        try { d = Double.parseDouble(val.toString()); } catch (Exception e) { continue; }
                     }
+
+                    denomMap.put(pred, d);
                 }
+                reader.close();
             }
         }
 
@@ -162,7 +166,6 @@ public class Step7_FinalSimilarity {
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(DoubleWritable.class);
 
-        job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
@@ -174,6 +177,7 @@ public class Step7_FinalSimilarity {
         // TextInputFormat.addInputPath(job, step6Input);
         MultipleInputs.addInputPath(job, step6Input, SequenceFileInputFormat.class, FinalMapper.class);
         MultipleInputs.addInputPath(job, step4MI, SequenceFileInputFormat.class, FinalMapper.class);
+        
         TextOutputFormat.setOutputPath(job, output);
 
         return job;

@@ -104,11 +104,11 @@ public class Step4_ComputeMI {
                 
                 // Create objects to hold the data
                 Text key = new Text();
-                Text val = new Text(); // Or LongWritable, depending on Step 2 output
+                LongWritable val = new LongWritable(); // Step 2 outputs LongWritable values
 
                 while (reader.next(key, val)) {
                     String keyStr = key.toString();
-                    long count = Long.parseLong(val.toString());
+                    long count = val.get();
 
                     if (keyStr.equals("SLOT\tX")) {
                         cSlotX = count;
