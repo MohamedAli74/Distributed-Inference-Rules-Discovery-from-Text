@@ -1,5 +1,14 @@
 package com.example;
 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+
 import com.example.jobs.Step1_ExtractPredicates;
 import com.example.jobs.Step2_ComputeTotals;
 import com.example.jobs.Step3_JoinPSWWithPSTotals;
@@ -7,14 +16,6 @@ import com.example.jobs.Step4_ComputeMI;
 import com.example.jobs.Step5_ComputeDenom;
 import com.example.jobs.Step6_IntersectionContrib;
 import com.example.jobs.Step7_FinalSimilarity;
-
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.conf.Configured;
-import org.apache.hadoop.util.Tool;
-import org.apache.hadoop.util.ToolRunner;
-import org.apache.hadoop.mapreduce.Job;
 
 public class DirtDriver extends Configured implements Tool {
 
@@ -25,6 +26,34 @@ public class DirtDriver extends Configured implements Tool {
 
     private static void ensureNotExists(Configuration conf, Path p) throws Exception {
         deleteIfExists(conf, p);
+    }
+
+    /**
+     * Merge Job 7 (final similarity) with Job 4 MI text into a single final output folder
+     */
+    private static void mergeFinalOutput(Configuration conf, Path out4Text, Path out7, Path finalMergeDir) throws Exception {
+        FileSystem fs = finalMergeDir.getFileSystem(conf);
+        deleteIfExists(conf, finalMergeDir);
+        fs.mkdirs(finalMergeDir);
+
+        System.out.println("Merging final output: Job 7 (similarity) + Job 4 (MI text)...");
+
+        // Copy Job 7 output (final similarity)
+        for (FileStatus file : fs.listStatus(out7)) {
+            if (!file.getPath().getName().startsWith("_")) {
+                fs.copyToLocalFile(file.getPath(), new Path(finalMergeDir.toString() + "/" + file.getPath().getName()));
+            }
+        }
+
+        // Copy Job 4 MI text output
+        for (FileStatus file : fs.listStatus(out4Text)) {
+            if (!file.getPath().getName().startsWith("_")) {
+                String destName = "mi-" + file.getPath().getName();
+                fs.copyToLocalFile(file.getPath(), new Path(finalMergeDir.toString() + "/" + destName));
+            }
+        }
+
+        System.out.println("Final merged output saved to: " + finalMergeDir);
     }
 
     private static void usage() {
@@ -86,6 +115,7 @@ public int run(String[] rawArgs) throws Exception {
     Path out5 = new Path(workDir, "step5");
     Path out6 = new Path(workDir, "step6");
     Path out7 = new Path(workDir, "step7");
+    Path finalOutput = new Path(workDir, "final");
 
     ensureNotExists(conf, out1);
     ensureNotExists(conf, out2);
@@ -107,16 +137,23 @@ public int run(String[] rawArgs) throws Exception {
     Job j4 = Step4_ComputeMI.buildJob(conf, out3, out2, out4, reducers);
     if (!j4.waitForCompletion(true)) return 5;
 
-    Job j5 = Step5_ComputeDenom.buildJob(conf, out4, out5, positive, negative, reducers);
+    // Step 4 outputs to 'sequence' subdirectory via MultipleOutputs
+    Path out4Sequence = new Path(out4, "sequence");
+
+    Job j5 = Step5_ComputeDenom.buildJob(conf, out4Sequence, out5, positive, negative, reducers);
     if (!j5.waitForCompletion(true)) return 6;
 
-    Job j6 = Step6_IntersectionContrib.buildJob(conf, out4, out6, positive, negative, reducers);
+    Job j6 = Step6_IntersectionContrib.buildJob(conf, out4Sequence, out6, positive, negative, reducers);
     if (!j6.waitForCompletion(true)) return 7;
 
-    Job j7 = Step7_FinalSimilarity.buildJob(conf, out4, out6, out5, out7, positive, negative, reducers);
+    Job j7 = Step7_FinalSimilarity.buildJob(conf, out6, out5, out7, positive, negative, reducers);
     if (!j7.waitForCompletion(true)) return 8;
 
-    System.out.println("DONE. Final output at: " + out7);
+    Path out4Text = new Path(out4, "text");
+    // Merge final output: Job 7 similarity + Job 4 MI text
+    mergeFinalOutput(conf, out4Text, out7, finalOutput);
+
+    System.out.println("DONE. Final output at: " + finalOutput);
     return 0;
 }
 

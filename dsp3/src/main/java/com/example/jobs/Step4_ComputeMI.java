@@ -1,16 +1,26 @@
 package com.example.jobs;
 
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.*;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.io.*;
-import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.*;
-import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.io.*;
-import java.util.*;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.SequenceFile;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 /**
  * Step 4:
@@ -88,9 +98,12 @@ public class Step4_ComputeMI {
 
         private long cSlotX = 1;
         private long cSlotY = 1;
+        private MultipleOutputs<Text, DoubleWritable> multipleOutputs;
 
         @Override
         protected void setup(Context ctx) throws IOException {
+            multipleOutputs = new MultipleOutputs<>(ctx);
+            
             Configuration conf = ctx.getConfiguration();
             Path totalsPath = new Path(conf.get("dirt.totals.dir"));
             FileSystem fs = totalsPath.getFileSystem(conf);
@@ -160,8 +173,20 @@ public class Step4_ComputeMI {
                 // MI = log( (C(p,slot,w) * C(slot)) / (C(p,slot) * C(slot,w)) )
                 double mi = Math.log(((double) cpsw * (double) cslot) / ((double) cps * (double) csw));
 
-                ctx.write(new Text(pred + "\t" + slot + "\t" + word), new DoubleWritable(mi));
+                Text outKey = new Text(pred + "\t" + slot + "\t" + word);
+                DoubleWritable outVal = new DoubleWritable(mi);
+                
+                // Write to SequenceFile (for Step 5,6 and 7)
+                multipleOutputs.write("sequence", outKey, outVal);
+                
+                // Write to Text format (for display)
+                multipleOutputs.write("text", new Text(outKey.toString()), new Text(String.valueOf(mi)));
             }
+        }
+
+        @Override
+        protected void cleanup(Context ctx) throws IOException, InterruptedException {
+            multipleOutputs.close();
         }
     }
 
@@ -175,13 +200,15 @@ public class Step4_ComputeMI {
         job.setReducerClass(MIReducer.class);
         job.setNumReduceTasks(reducers);
 
-        job.setOutputFormatClass(SequenceFileOutputFormat.class);
-
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(Text.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(DoubleWritable.class);
+
+        // Configure MultipleOutputs for two output formats
+        MultipleOutputs.addNamedOutput(job, "sequence", SequenceFileOutputFormat.class, Text.class, DoubleWritable.class);
+        MultipleOutputs.addNamedOutput(job, "text", TextOutputFormat.class, Text.class, Text.class);
 
         MultipleInputs.addInputPath(job, step3Join, SequenceFileInputFormat.class, FromJoinMapper.class);
         MultipleInputs.addInputPath(job, step2Totals, SequenceFileInputFormat.class, SWTotalsMapper.class);

@@ -18,11 +18,13 @@ import java.util.*;
 
 /**
  * Step6:
- * Input: Step4 output:
- *   pred \t slot \t word \t mi
+ * Input: Step4 output (from 'sequence' subdirectory):
+ *   key: pred \t slot \t word
+ *   value: mi
  *
  * Output:
- *   pairKey \t contrib
+ *   key: pairKey
+ *   value: contrib
  *
  * Where:
  *  pairKey = canonicalPairKey(pred1, pred2)

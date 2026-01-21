@@ -1,23 +1,27 @@
-
-
-
 package com.example.jobs;
 
+import java.io.IOException;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.*;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.io.*;
-import org.apache.hadoop.mapreduce.*;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.SequenceFile;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 import com.example.helpers.PorterStemmer;
 import com.example.helpers.TestData;
-
-import java.io.*;
-import java.net.URI;
-import java.util.*;
 
 /**
  * Step7:
@@ -26,7 +30,7 @@ import java.util.*;
  *     key: p1 \t p2 
  *     value: contrib
  *
- *  B) Step4 output:
+ *  B) Step4 output (from 'sequence' subdirectory):
  *    key: pred \t slot \t word
  *    value: mi
  * 
@@ -55,15 +59,9 @@ public class Step7_FinalSimilarity {
             if (f.length == 2){
                 double contrib = value.get();
 
-                outKey.set(f[0]+"\t"+f[1]);// p1\tf[2]
+                outKey.set(f[0]+"\t"+f[1]);// p1\tp2
                 outVal.set(contrib);
                 ctx.write(outKey, outVal);
-            }else{
-                if (f.length == 3) {
-                    outKey.set("*" + f[0]+"\t"+f[1]+"\t"+f[2]);
-                    outVal.set(value.get());
-                    ctx.write(outKey, outVal);
-                }
             }
         }
     }
@@ -150,7 +148,7 @@ public class Step7_FinalSimilarity {
         }
     }
 
-    public static Job buildJob(Configuration conf, Path step4MI, Path step6Input, Path denomDir, Path output,
+    public static Job buildJob(Configuration conf, Path step6Input, Path denomDir, Path output,
                                Path positive, Path negative, int reducers) throws Exception {
 
         Job job = Job.getInstance(conf, "Step7-FinalSimilarity");
@@ -174,9 +172,8 @@ public class Step7_FinalSimilarity {
         job.addCacheFile(new URI(positive.toString() + "#positive.txt"));
         job.addCacheFile(new URI(negative.toString() + "#negative.txt"));
 
-        // TextInputFormat.addInputPath(job, step6Input);
+        // Input: Step6 output only
         MultipleInputs.addInputPath(job, step6Input, SequenceFileInputFormat.class, FinalMapper.class);
-        MultipleInputs.addInputPath(job, step4MI, SequenceFileInputFormat.class, FinalMapper.class);
         
         TextOutputFormat.setOutputPath(job, output);
 

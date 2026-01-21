@@ -27,6 +27,7 @@ import java.util.Set;
 /**
  * Step5:
  * Input (SequenceFile): key = "pred\tslot\tword" , value = mi
+ *   - Reads from Step4's 'sequence' output subdirectory
  * Output (SequenceFile): key = pred , value = denom
  */
 public class Step5_ComputeDenom {
