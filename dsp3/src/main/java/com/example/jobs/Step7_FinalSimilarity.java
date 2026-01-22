@@ -1,11 +1,7 @@
-
-
-
 package com.example.jobs;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
@@ -15,76 +11,55 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import com.example.helpers.PorterStemmer;
 import com.example.helpers.TestData;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.URI;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Step7:
- * Inputs:
- *  A) Step6 output:
- *     key: p1 \t p2 
+ * Input:
+ *  A) Step6 output (SequenceFile):
+ *     key: p1 \t p2
  *     value: contrib
  *
- *  B) Step4 output:
- *    key: pred \t slot \t word
- *    value: mi
- * 
- *  Saved as a table inside the reducer:-
- *  Step5 output:
- *     key: pred
- *     value: denom
+ * Loads Step5 denom table from denomDir (SequenceFile) in reducer setup.
  *
- * Output:
+ * Output (TEXT):
  *   pred1 \t pred2 \t similarity \t label
  *
- * Notes:
- * - pairKey is canonical (predA + SEP + predB)
- * - label is 1 if in positive file, 0 if in negative file
+ * NOTE: This version DOES NOT read Step4 at all (no MI printing).
  */
 public class Step7_FinalSimilarity {
 
+    /** Mapper: accepts ONLY Step6 records */
     public static class FinalMapper extends Mapper<Text, DoubleWritable, Text, DoubleWritable> {
-        private final Text outKey = new Text();
-        private final DoubleWritable outVal = new DoubleWritable();
-
         @Override
         protected void map(Text key, DoubleWritable value, Context ctx) throws IOException, InterruptedException {
-            // Step6 line: pairKey \t contrib
-            String[] f = key.toString().split("\t");
-            if (f.length == 2){
-                double contrib = value.get();
-
-                outKey.set(f[0]+"\t"+f[1]);// p1\tf[2]
-                outVal.set(contrib);
-                ctx.write(outKey, outVal);
-            }else{
-                if (f.length == 3) {
-                    outKey.set("*" + f[0]+"\t"+f[1]+"\t"+f[2]);
-                    outVal.set(value.get());
-                    ctx.write(outKey, outVal);
-                }
-            }
+            // Step6: key = "p1\tp2", value = contrib
+            String[] f = key.toString().split("\t", -1);
+            if (f.length != 2) return;
+            ctx.write(new Text(f[0] + "\t" + f[1]), value);
         }
     }
 
     public static class FinalReducer extends Reducer<Text, DoubleWritable, Text, Text> {
 
         private final PorterStemmer stemmer = new PorterStemmer();
-        private Map<String, Double> denomMap = new HashMap<>();
+        private final Map<String, Double> denomMap = new HashMap<>();
         private Map<String, TestData.PairInfo> testPairs = new HashMap<>();
 
         @Override
         protected void setup(Context ctx) throws IOException {
             Configuration conf = ctx.getConfiguration();
 
-            // 1) load denomMap from Step5 output dir
+            // 1) load denomMap from Step5 output dir (SequenceFile)
             String denomDir = conf.get("dirt.denom.dir");
             if (denomDir != null) {
                 loadDenoms(conf, new Path(denomDir));
             }
 
-            // 2) load test pairs (for label + original p1,p2)
+            // 2) load test pairs (label + original p1,p2)
             URI[] cache = ctx.getCacheFiles();
             testPairs = TestData.loadPairs(cache, stemmer);
         }
@@ -96,24 +71,16 @@ public class Step7_FinalSimilarity {
             for (FileStatus st : fs.listStatus(denomDir)) {
                 if (st.getPath().getName().startsWith("_")) continue;
 
-                //Open a SequenceFile Reader
                 SequenceFile.Reader reader = new SequenceFile.Reader(conf, SequenceFile.Reader.file(st.getPath()));
 
-                // Step 5 output was: Key=Text, Value=DoubleWritable, we use dynamic instantiation
                 Writable key = (Writable) org.apache.hadoop.util.ReflectionUtils.newInstance(reader.getKeyClass(), conf);
                 Writable val = (Writable) org.apache.hadoop.util.ReflectionUtils.newInstance(reader.getValueClass(), conf);
 
                 while (reader.next(key, val)) {
                     String pred = key.toString();
-                    
-                    double d = 0.0;
-                    if (val instanceof DoubleWritable) {
-                        d = ((DoubleWritable) val).get();
-                    } else {
-                        // Fallback if it was written as Text
-                        try { d = Double.parseDouble(val.toString()); } catch (Exception e) { continue; }
-                    }
-
+                    double d;
+                    try { d = Double.parseDouble(val.toString()); }
+                    catch (Exception e) { continue; }
                     denomMap.put(pred, d);
                 }
                 reader.close();
@@ -123,19 +90,16 @@ public class Step7_FinalSimilarity {
         @Override
         protected void reduce(Text pairKeyTxt, Iterable<DoubleWritable> vals, Context ctx)
                 throws IOException, InterruptedException {
-            if (pairKeyTxt.toString().startsWith("*")) {
-                String[] f = pairKeyTxt.toString().substring(1).split("\t");
-                ctx.write(new Text(f[0]+"\t"+f[1]+"\t"+f[2]), new Text(vals.iterator().next().toString()));
-                return;
-            }
+
+            // sum numerator contributions
             double num = 0.0;
             for (DoubleWritable v : vals) num += v.get();
 
             String pairKey = pairKeyTxt.toString();
+
+            // output only pairs that exist in testPairs
             TestData.PairInfo info = testPairs.get(pairKey);
-            if (info == null) {
-                return;
-            }
+            if (info == null) return;
 
             double d1 = denomMap.getOrDefault(info.p1, 0.0);
             double d2 = denomMap.getOrDefault(info.p2, 0.0);
@@ -144,19 +108,25 @@ public class Step7_FinalSimilarity {
             double sim = 0.0;
             if (denom > 0.0) sim = num / denom;
 
-            // output: p1 \t p2 \t sim \t label
-            String out = sim + "\t" + info.label;
-            ctx.write(new Text(info.p1 + "\t" + info.p2), new Text(out));
+            // if you REALLY want "only similar" you can uncomment:
+            // if (sim <= 0.0) return;
+
+            ctx.write(new Text(info.p1 + "\t" + info.p2),
+                      new Text(sim + "\t" + info.label));
         }
     }
 
-    public static Job buildJob(Configuration conf, Path step4MI, Path step6Input, Path denomDir, Path output,
-                               Path positive, Path negative, int reducers) throws Exception {
+    public static Job buildJob(Configuration conf,
+                               Path step6Input,
+                               Path denomDir,
+                               Path output,
+                               Path positive,
+                               Path negative,
+                               int reducers) throws Exception {
 
         Job job = Job.getInstance(conf, "Step7-FinalSimilarity");
         job.setJarByClass(Step7_FinalSimilarity.class);
 
-        // pass denom dir to reducer
         job.getConfiguration().set("dirt.denom.dir", denomDir.toString());
 
         job.setMapperClass(FinalMapper.class);
@@ -166,22 +136,20 @@ public class Step7_FinalSimilarity {
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(DoubleWritable.class);
 
-
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        // add test files (for label)
+        job.setOutputFormatClass(TextOutputFormat.class);
+        TextOutputFormat.setOutputPath(job, output);
+
+        // cache files for labels
+        job.getConfiguration().setBoolean("mapreduce.job.cache.symlink.create", true);
         job.addCacheFile(new URI(positive.toString() + "#positive.txt"));
         job.addCacheFile(new URI(negative.toString() + "#negative.txt"));
 
-        // TextInputFormat.addInputPath(job, step6Input);
+        // ✅ ONLY Step6 input
         MultipleInputs.addInputPath(job, step6Input, SequenceFileInputFormat.class, FinalMapper.class);
-        MultipleInputs.addInputPath(job, step4MI, SequenceFileInputFormat.class, FinalMapper.class);
-        
-        TextOutputFormat.setOutputPath(job, output);
 
         return job;
     }
 }
-
-

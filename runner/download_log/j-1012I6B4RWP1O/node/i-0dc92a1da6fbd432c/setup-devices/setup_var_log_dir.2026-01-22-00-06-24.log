@@ -1,0 +1,90 @@
+2026-01-22 00:06:33.035 + setup_var_log_dir
+2026-01-22 00:06:33.037 + target_dir=/var/log
+2026-01-22 00:06:33.038 + move_to_ephemeral /var/log
+2026-01-22 00:06:33.039 + echo 'Moving directory to ephemeral: /var/log'
+2026-01-22 00:06:33.040 Moving directory to ephemeral: /var/log
+2026-01-22 00:06:33.041 + ls -l /var/log
+2026-01-22 00:06:33.074 total 4
+2026-01-22 00:06:33.075 lrwxrwxrwx. 1 root      root             39 Nov 17 07:08 README -> ../../usr/share/doc/systemd/README.logs
+2026-01-22 00:06:33.076 drwxr-xr-x. 2 root      root              6 Dec  4 17:20 amazon
+2026-01-22 00:06:33.077 drwx------. 2 root      root             23 Jan 22 00:06 audit
+2026-01-22 00:06:33.078 -rw-rw----. 1 root      utmp              0 Nov 17 07:08 btmp
+2026-01-22 00:06:33.079 drwxr-x---. 2 chrony    chrony            6 Dec  4 17:12 chrony
+2026-01-22 00:06:33.080 drwxrwxr-x. 2 hdfs      hadoop            6 Nov 26 23:35 hadoop-hdfs
+2026-01-22 00:06:33.081 drwxrwxr-x. 2 httpfs    httpfs            6 Nov 26 23:35 hadoop-httpfs
+2026-01-22 00:06:33.082 drwxrwxr-x. 2 kms       hadoop            6 Nov 26 23:35 hadoop-kms
+2026-01-22 00:06:33.084 drwxrwxr-x. 2 mapred    hadoop            6 Nov 26 23:35 hadoop-mapreduce
+2026-01-22 00:06:33.085 drwxrwxr-x. 2 yarn      hadoop            6 Nov 26 23:35 hadoop-yarn
+2026-01-22 00:06:33.087 drwxr-sr-x+ 3 root      systemd-journal  46 Dec  4 17:20 journal
+2026-01-22 00:06:33.088 -rw-rw-r--. 1 root      utmp              0 Nov 17 07:08 lastlog
+2026-01-22 00:06:33.089 drwxr-xr-x. 2 root      root             32 Jan 22 00:06 mk-tmp-on-root
+2026-01-22 00:06:33.090 drwx------. 2 root      root              6 Nov 17 07:08 private
+2026-01-22 00:06:33.092 drwx------. 2 hadoop    hadoop            6 Dec  3 23:48 provision-node
+2026-01-22 00:06:33.093 drwxr-xr-x. 3 root      root             20 Dec  4 17:14 puppetlabs
+2026-01-22 00:06:33.094 drwxr-xr-x. 2 root      root             18 Jan 22 00:06 sa
+2026-01-22 00:06:33.095 drwxr-x---. 2 root      root              6 Oct 17 22:54 sssd
+2026-01-22 00:06:33.097 -rw-------. 1 root      root              0 Nov 17 07:08 tallylog
+2026-01-22 00:06:33.098 -rw-rw-r--. 1 root      utmp            384 Jan 22 00:06 wtmp
+2026-01-22 00:06:33.099 drwxr-xr-x. 2 zookeeper zookeeper         6 Dec  4 17:13 zookeeper
+2026-01-22 00:06:33.101 + du -c /var/log
+2026-01-22 00:06:33.102 11800	/var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7
+2026-01-22 00:06:33.103 11800	/var/log/journal
+2026-01-22 00:06:33.104 0	/var/log/private
+2026-01-22 00:06:33.105 0	/var/log/sssd
+2026-01-22 00:06:33.107 0	/var/log/chrony
+2026-01-22 00:06:33.108 0	/var/log/amazon
+2026-01-22 00:06:33.109 16	/var/log/audit
+2026-01-22 00:06:33.110 4	/var/log/sa
+2026-01-22 00:06:33.111 0	/var/log/zookeeper
+2026-01-22 00:06:33.112 0	/var/log/puppetlabs/puppet
+2026-01-22 00:06:33.114 0	/var/log/puppetlabs
+2026-01-22 00:06:33.115 0	/var/log/provision-node
+2026-01-22 00:06:33.116 0	/var/log/hadoop-yarn
+2026-01-22 00:06:33.117 0	/var/log/hadoop-mapreduce
+2026-01-22 00:06:33.119 0	/var/log/hadoop-hdfs
+2026-01-22 00:06:33.120 0	/var/log/hadoop-httpfs
+2026-01-22 00:06:33.121 0	/var/log/hadoop-kms
+2026-01-22 00:06:33.122 4	/var/log/mk-tmp-on-root
+2026-01-22 00:06:33.123 11844	/var/log
+2026-01-22 00:06:33.124 11844	total
+2026-01-22 00:06:33.125 + lsof
+2026-01-22 00:06:33.126 + awk '{print $9}'
+2026-01-22 00:06:33.127 + grep '^/var/log'
+2026-01-22 00:06:33.191 /var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal
+2026-01-22 00:06:33.193 /var/log/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal
+2026-01-22 00:06:33.194 /var/log/audit/audit.log
+2026-01-22 00:06:33.195 + mkdir -p /mnt/var/log
+2026-01-22 00:06:33.196 + mv /var/log /var/log.old
+2026-01-22 00:06:33.197 + ln -nsf /mnt/var/log -T /var/log
+2026-01-22 00:06:33.198 + rsync -a /var/log.old/ /mnt/var/log
+2026-01-22 00:06:33.261 + rm -Rf /var/log.old
+2026-01-22 00:06:33.263 + echo 'Moved directory to ephemeral: /var/log'
+2026-01-22 00:06:33.264 Moved directory to ephemeral: /var/log
+2026-01-22 00:06:33.265 + restart_proc_that_can_have_open_files_in_var_log_dir
+2026-01-22 00:06:33.267 + restart_proc_if_enabled auditd 'systemctl start auditd'
+2026-01-22 00:06:33.268 + systemctl is-enabled auditd
+2026-01-22 00:06:33.270 + echo 'Restarting auditd.'
+2026-01-22 00:06:33.271 Restarting auditd.
+2026-01-22 00:06:33.272 + systemctl start auditd
+2026-01-22 00:06:33.276 + echo 'Restart of auditd completed.'
+2026-01-22 00:06:33.278 Restart of auditd completed.
+2026-01-22 00:06:33.279 + restart_proc_if_running rsyslogd 'systemctl restart rsyslog'
+2026-01-22 00:06:33.280 + pgrep -x rsyslogd
+2026-01-22 00:06:33.284 + echo 'Not restarting rsyslogd as it isn'\''t running.'
+2026-01-22 00:06:33.285 Not restarting rsyslogd as it isn't running.
+2026-01-22 00:06:33.286 + print_deleted_files_in_old_dir /var/log
+2026-01-22 00:06:33.287 + echo 'Dumping remaining open deleted files in old /var/log directory:'
+2026-01-22 00:06:33.289 Dumping remaining open deleted files in old /var/log directory:
+2026-01-22 00:06:33.290 + lsof_deleted_files_in_old_dir /var/log
+2026-01-22 00:06:33.291 + lsof
+2026-01-22 00:06:33.292 + grep '(deleted)'
+2026-01-22 00:06:33.293 + grep /var/log.old
+2026-01-22 00:06:33.408 systemd-j 1039                           root   16u      REG              259,3   8388608    8529812 /var/log.old/journal/ec276fc410ae8f3bf6c5605dc1bcdbc7/system.journal (deleted)
+2026-01-22 00:06:33.410 auditd    1617                           root    5w      REG              259,3     13443    1194089 /var/log.old/audit/audit.log (deleted)
+2026-01-22 00:06:33.411 auditd    1617 1618 auditd               root    5w      REG              259,3     13443    1194089 /var/log.old/audit/audit.log (deleted)
+2026-01-22 00:06:33.412 + echo 'Dump complete, any output indicates potential lost file.'
+2026-01-22 00:06:33.413 Dump complete, any output indicates potential lost file.
+2026-01-22 00:06:33.414 
+2026-01-22 00:06:33.415 real	0m0.374s
+2026-01-22 00:06:33.416 user	0m0.123s
+2026-01-22 00:06:33.417 sys	0m0.089s

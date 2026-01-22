@@ -1,0 +1,50 @@
+2026-01-22T00:58:22.056778092Z INFO Ensure step 1 jar file s3://cfggii23/dsp3/jars/dsp3-1.0.0.jar
+2026-01-22T00:58:23.004110245Z INFO Running step with ProcessBuilder
+2026-01-22T00:58:23.006334402Z INFO StepRunner: Created Runner for step 1
+INFO startExec 'hadoop jar /mnt/var/lib/hadoop/steps/s-040432332X9TYVJ1CJNR/dsp3-1.0.0.jar com.example.DirtDriver s3a://dsp-ass3-first10-biarcs/biarcs.0-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.1-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.2-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.3-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.4-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.5-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.6-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.7-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.8-of-99.gz,s3a://dsp-ass3-first10-biarcs/biarcs.9-of-99.gz,s3a://meni-biarcs-data/biarcs.10-of-99.gz,s3a://meni-biarcs-data/biarcs.11-of-99.gz,s3a://meni-biarcs-data/biarcs.12-of-99.gz,s3a://meni-biarcs-data/biarcs.13-of-99.gz,s3a://meni-biarcs-data/biarcs.14-of-99.gz,s3a://meni-biarcs-data/biarcs.15-of-99.gz,s3a://meni-biarcs-data/biarcs.16-of-99.gz,s3a://meni-biarcs-data/biarcs.17-of-99.gz,s3a://meni-biarcs-data/biarcs.18-of-99.gz,s3a://meni-biarcs-data/biarcs.19-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.20-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.21-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.22-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.23-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.24-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.25-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.26-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.27-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.28-of-99.gz,s3a://dsp-ass3-20-29-biarcs/biarcs.29-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.30-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.31-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.32-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.33-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.34-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.35-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.36-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.37-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.38-of-99.gz,s3a://dsp-assignment3-bucket-noya-and-oria/biarcs_30_39/biarcs.39-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.40-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.41-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.42-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.43-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.44-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.45-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.46-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.47-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.48-of-99.gz,s3a://aws3-yuvaliron-biarcs/biarcs_40_49/biarcs.49-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.50-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.51-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.52-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.53-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.54-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.55-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.56-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.57-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.58-of-99.gz,s3a://ilay-biarcs-data/biarcs/biarcs.59-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.60-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.61-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.62-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.63-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.64-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.65-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.66-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.67-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.68-of-99.gz,s3a://dsp-ass3-dirt/input/biarcs-large/biarcs_30_39/biarcs.69-of-99.gz,s3a://meni-biarcs/biarcs.70-of-99.gz,s3a://meni-biarcs/biarcs.71-of-99.gz,s3a://meni-biarcs/biarcs.72-of-99.gz,s3a://meni-biarcs/biarcs.73-of-99.gz,s3a://meni-biarcs/biarcs.74-of-99.gz,s3a://meni-biarcs/biarcs.75-of-99.gz,s3a://meni-biarcs/biarcs.76-of-99.gz,s3a://meni-biarcs/biarcs.77-of-99.gz,s3a://meni-biarcs/biarcs.78-of-99.gz,s3a://meni-biarcs/biarcs.79-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.80-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.81-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.82-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.83-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.84-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.85-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.86-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.87-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.88-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.89-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.90-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.91-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.92-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.93-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.94-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.95-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.96-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.97-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.98-of-99.gz,s3a://biarcs-data-dsp/biarcs/biarcs.99-of-99.gz s3a://cfggii23/dsp3/output/run_full100_1769043210/ s3a://cfggii23/dsp3/test/positive-preds.txt s3a://cfggii23/dsp3/test/negative-preds.txt 6'
+INFO Environment:
+  PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/aws/puppet/bin/:/opt/puppetlabs/bin
+  INVOCATION_ID=ea32b23bb67a4b24b71d7fffdfd60061
+  SECURITY_PROPERTIES=/emr/instance-controller/lib/security.properties
+  HISTCONTROL=ignoredups
+  MANPATH=:/opt/puppetlabs/puppet/share/man
+  PIDFILE=/emr/instance-controller/run/instance-controller.pid
+  HISTSIZE=1000
+  HADOOP_ROOT_LOGGER=INFO,DRFA
+  AWS_DEFAULT_REGION=us-east-1
+  JAVA_HOME=/etc/alternatives/jre
+  BASH_FUNC_which%%=() {  ( alias; eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"}
+  LANG=en_US.UTF-8
+  JOURNAL_STREAM=8:24637
+  MAIL=/var/spool/mail/hadoop
+  PLATFORM_TYPE=EMR_ON_EC2
+  which_declare=declare -f
+  LOGNAME=hadoop
+  PWD=/
+  HADOOP_CLIENT_OPTS=-Djava.io.tmpdir=/mnt/var/lib/hadoop/steps/s-040432332X9TYVJ1CJNR/tmp
+  _=/usr/lib/jvm/jre-17/bin/java
+  S_COLORS=auto
+  LESSOPEN=||/usr/bin/lesspipe.sh %s
+  SHELL=/bin/bash
+  JOB_IDENTIFIER=j-244MVJ6MQC9EE/s-040432332X9TYVJ1CJNR
+  USER=hadoop
+  GEM_HOME=/home/hadoop/.local/share/gem/ruby
+  HADOOP_LOGFILE=syslog
+  SYSTEMD_COLORS=false
+  HOSTNAME=ip-172-31-39-172.ec2.internal
+  HADOOP_LOG_DIR=/mnt/var/log/hadoop/steps/s-040432332X9TYVJ1CJNR
+  SYSTEMD_EXEC_PID=3992
+  EMR_STEP_ID=s-040432332X9TYVJ1CJNR
+  SHLVL=0
+  HOME=/home/hadoop
+  HADOOP_IDENT_STRING=hadoop
+INFO redirectOutput to /mnt/var/log/hadoop/steps/s-040432332X9TYVJ1CJNR/stdout
+INFO redirectError to /mnt/var/log/hadoop/steps/s-040432332X9TYVJ1CJNR/stderr
+INFO Working dir /mnt/var/lib/hadoop/steps/s-040432332X9TYVJ1CJNR
+INFO ProcessRunner started child process 12270
+2026-01-22T00:58:23.011080946Z INFO HadoopJarStepRunner.Runner: startRun() called for s-040432332X9TYVJ1CJNR Child Pid: 12270
+INFO Synchronously wait child process to complete : hadoop jar /mnt/var/lib/hadoop/steps/s-04043233...
+INFO waitProcessCompletion ended with exit code 1 : hadoop jar /mnt/var/lib/hadoop/steps/s-04043233...
+INFO total process run time: 8 seconds
+2026-01-22T00:58:31.258629201Z INFO Step created jobs: 
+2026-01-22T00:58:31.260959250Z WARN Step failed with exitCode 1 and took 8 seconds

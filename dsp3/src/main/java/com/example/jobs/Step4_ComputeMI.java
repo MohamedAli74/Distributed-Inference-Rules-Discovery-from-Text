@@ -6,26 +6,27 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.*;
-import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;   // ✅ TEXT output
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Step 4:
  * Inputs:
- *  A) Step3 output (TextOutputFormat):
- *     pred \t slot \t word \t cpsw \t cps
- *     where cpsw = C(p,slot,w), cps = C(p,slot)
+ *  A) Step3 output (SequenceFile):
+ *     key:   pred \t slot \t word
+ *     value: cpsw \t cps
  *
- *  B) Step2 totals (TextOutputFormat):
- *     key="SW\t slot \t word"   value=csw    -> line: SW \t slot \t word \t csw
- *     key="SLOT\t slot"        value=cslot  -> line: SLOT \t slot \t cslot
+ *  B) Step2 totals (SequenceFile):
+ *     key="SW\t slot \t word"   value=csw
+ *     key="SLOT\t slot"        value=cslot
  *
- * Output:
- *   key:   pred \t slot \t word
- *   value: MI
+ * Output (TEXT):
+ *   line: pred \t slot \t word \t mi
  */
 public class Step4_ComputeMI {
 
@@ -36,9 +37,10 @@ public class Step4_ComputeMI {
 
         @Override
         protected void map(Text key, Text value, Context ctx) throws IOException, InterruptedException {
-            // Step3 line: pred \t slot \t word \t cpsw \t cps  (5 fields)
-            String[] k = key.toString().split("\t");
-            String[] v = value.toString().split("\t");
+            // Step3: key = pred \t slot \t word  (3 fields)
+            //       val = cpsw \t cps           (2 fields)
+            String[] k = key.toString().split("\t", -1);
+            String[] v = value.toString().split("\t", -1);
             if (k.length != 3) return;
             if (v.length != 2) return;
 
@@ -64,14 +66,12 @@ public class Step4_ComputeMI {
 
         @Override
         protected void map(Text key, LongWritable value, Context ctx) throws IOException, InterruptedException {
-            // key:SW\t<slot>\t<word>       value:csw
-            //or:PS\t<predicate>\t<slot>    value:cps
-            //or:SLOT\t<slot>               value:cslot
-            // we only want SW records
-            // Example: "SW\tX\tdrug\t15"
+            // Step2 totals: key examples:
+            // "SW\tX\tdrug"   value: csw
+            // "SLOT\tX"       value: cslot
+            // We only want SW records here
             if (!key.toString().startsWith("SW\t")) return;
 
-            // key = "SW\t<slot>\t<word>"
             String[] p = key.toString().split("\t", -1);
             if (p.length != 3) return;
 
@@ -84,7 +84,17 @@ public class Step4_ComputeMI {
         }
     }
 
-    public static class MIReducer extends Reducer<Text, Text, Text, DoubleWritable> {
+    /**
+     * Reducer:
+     * key = slot \t word
+     * values include:
+     *  - S \t csw
+     *  - P \t pred \t cpsw \t cps
+     *
+     * Output TEXT line:
+     *   pred \t slot \t word \t mi
+     */
+    public static class MIReducer extends Reducer<Text, Text, Text, Text> {
 
         private long cSlotX = 1;
         private long cSlotY = 1;
@@ -97,36 +107,33 @@ public class Step4_ComputeMI {
 
             // Iterate over all part-files in the folder
             for (FileStatus st : fs.listStatus(totalsPath)) {
-                if (st.getPath().getName().startsWith("_")) continue; // Skip _SUCCESS
+                if (st.getPath().getName().startsWith("_")) continue; // skip _SUCCESS etc.
 
-                // USE SEQUENCE FILE READER
+                // Step2 totals are SequenceFiles in your pipeline
                 SequenceFile.Reader reader = new SequenceFile.Reader(conf, SequenceFile.Reader.file(st.getPath()));
-                
-                // Create objects to hold the data
+
                 Text key = new Text();
-                LongWritable val = new LongWritable(); // Step 2 outputs LongWritable values
+                LongWritable val = new LongWritable();
 
                 while (reader.next(key, val)) {
                     String keyStr = key.toString();
                     long count = val.get();
 
-                    if (keyStr.equals("SLOT\tX")) {
-                        cSlotX = count;
-                    } else if (keyStr.equals("SLOT\tY")) {
-                        cSlotY = count;
-                    }
+                    if (keyStr.equals("SLOT\tX")) cSlotX = count;
+                    else if (keyStr.equals("SLOT\tY")) cSlotY = count;
                 }
+
                 reader.close();
             }
         }
 
         @Override
         protected void reduce(Text key, Iterable<Text> vals, Context ctx) throws IOException, InterruptedException {
-            Long csw = null;                 // C(slot, w)
+            Long csw = null; // C(slot,w)
             List<String[]> preds = new ArrayList<>(); // (pred, cpsw, cps)
 
             for (Text t : vals) {
-                String[] p = t.toString().split("\t");
+                String[] p = t.toString().split("\t", -1);
                 if (p.length < 2) continue;
 
                 if (p[0].equals("S")) {
@@ -160,7 +167,11 @@ public class Step4_ComputeMI {
                 // MI = log( (C(p,slot,w) * C(slot)) / (C(p,slot) * C(slot,w)) )
                 double mi = Math.log(((double) cpsw * (double) cslot) / ((double) cps * (double) csw));
 
-                ctx.write(new Text(pred + "\t" + slot + "\t" + word), new DoubleWritable(mi));
+                // ✅ Output as TEXT: "pred\tslot\tword\t<mi>"
+                String line = pred + "\t" + slot + "\t" + word + "\t" +
+                        String.format(Locale.US, "%.6f", mi);
+
+                ctx.write(new Text(line), new Text("")); // value empty -> still writes trailing tab sometimes depending on settings
             }
         }
     }
@@ -175,14 +186,17 @@ public class Step4_ComputeMI {
         job.setReducerClass(MIReducer.class);
         job.setNumReduceTasks(reducers);
 
-        job.setOutputFormatClass(SequenceFileOutputFormat.class);
+        // ✅ OUTPUT = TEXT
+        job.setOutputFormatClass(TextOutputFormat.class);
 
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(Text.class);
 
+        // Reducer outputs TEXT
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(DoubleWritable.class);
+        job.setOutputValueClass(Text.class);
 
+        // Inputs stay SequenceFile (like your current code)
         MultipleInputs.addInputPath(job, step3Join, SequenceFileInputFormat.class, FromJoinMapper.class);
         MultipleInputs.addInputPath(job, step2Totals, SequenceFileInputFormat.class, SWTotalsMapper.class);
 

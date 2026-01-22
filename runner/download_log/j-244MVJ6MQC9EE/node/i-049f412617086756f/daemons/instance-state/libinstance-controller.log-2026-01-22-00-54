@@ -1,0 +1,61 @@
++ setup_ssh_keys
++ echo 'Fetch ssh key ...'
+Fetch ssh key ...
++ '[' '!' -d /home/hadoop/.ssh ']'
++ query_imds meta-data/public-keys/0/openssh-key
++ local shell_opts=hxB
++ set +x
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    56  100    56    0     0  50955      0 --:--:-- --:--:-- --:--:-- 56000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   388  100   388    0     0   329k      0 --:--:-- --:--:-- --:--:--  378k
++ echo 'Installing ssh key ...'
+Installing ssh key ...
++ cat /tmp/root-public-key.pem
++ chmod 600 /home/hadoop/.ssh/authorized_keys
++ rm -f /tmp/root-public-key.pem
++ chown -R hadoop.hadoop /home/hadoop/.ssh
++ mkdir -p /var/log/setup-dns
++ /usr/bin/setup-dns
++ tee -a /var/log/setup-dns/setup-dns.log
++ make_directories
++ mkdir -p /mnt/var/lib/hadoop /mnt/var/run/hadoop /mnt/var/log/hadoop
++ mkdir -p /emr/instance-controller/lib /emr/instance-controller/run /emr/instance-controller/log /emr/instance-controller/db /emr/logpusher/lib /emr/logpusher/run /emr/logpusher/log /emr/logpusher/db
++ mkdir -p /emr/instance-controller/lib/info
++ mkdir -p /emr/instance-state
++ mkdir -p /emr/logpusher-user-overrides /emr/logpusher-system-overrides
++ chown hadoop:hadoop /emr/logpusher-user-overrides /emr/logpusher-system-overrides
++ mkdir -p /mnt/var/lib/hadoop /mnt/var/lib/instance-controller
++ chown hadoop.hadoop /mnt/var/lib/hadoop /mnt/var/lib/instance-controller
++ chown hadoop.hadoop /mnt/var/log/hadoop /mnt/var/run/hadoop
++ touch /emr/instance-controller/lib/dfs.hosts.exclude
++ cat
++ ln -sf /emr/instance-controller/lib/info /mnt/var/lib/
++ ln -sf /mnt/var/lib/info/extraInstanceData.json /mnt/var/lib/instance-controller/extraInstanceData.json
++ ln -sf /emr/instance-state /mnt/var/log/
++ ln -sf /emr/instance-controller/log/bootstrap-actions /mnt/var/log/
++ change_permissions
++ chown hadoop:hadoop /var/aws/emr/userData.json
++ chmod 440 /var/aws/emr/userData.json
++ chown -R hadoop.hadoop /emr/instance-controller
++ chown hadoop:hadoop /emr/instance-state
++ chmod 750 /emr/instance-controller
++ chmod 700 /emr/logpusher
++ chmod 750 /emr/instance-state
++ echo 'Making sure /mnt* is mounted and owned by hadoop'
+Making sure /mnt* is mounted and owned by hadoop
++ for x in /emr /mnt*
++ echo '  ==> /emr'
+  ==> /emr
++ chown hadoop.hadoop /emr
++ for x in /emr /mnt*
++ echo '  ==> /mnt'
+  ==> /mnt
++ chown hadoop.hadoop /mnt
++ for x in /emr /mnt*
++ echo '  ==> /mnt1'
+  ==> /mnt1
++ chown hadoop.hadoop /mnt1
+(console) 2026-01-22 00:54:37  Service libinstance-controller-java installed security keys 

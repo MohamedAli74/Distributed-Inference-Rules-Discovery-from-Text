@@ -8,6 +8,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
 import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 
 import org.apache.hadoop.mapreduce.Job;
@@ -15,7 +16,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
@@ -26,12 +27,17 @@ import java.util.Set;
 
 /**
  * Step5:
- * Input (SequenceFile): key = "pred\tslot\tword" , value = mi
- * Output (SequenceFile): key = pred , value = denom
+ * Input (TEXT): lines from Step4.
+ *   Supported formats:
+ *     A) pred \t slot \t word \t mi
+ *     B) pred \t slot \t word \t mi \t   (trailing tab / empty value)
+ *     C) (key/value text output) pred \t slot \t word \t mi   (still works)
+ *
+ * Output (SequenceFile): key = pred , value = denom (sum of positive MI)
  */
 public class Step5_ComputeDenom {
 
-    public static class DenomMapper extends Mapper<Text, DoubleWritable, Text, DoubleWritable> {
+    public static class DenomMapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
         private final Text outKey = new Text();
         private final DoubleWritable outVal = new DoubleWritable();
 
@@ -44,14 +50,54 @@ public class Step5_ComputeDenom {
             testPreds = TestData.loadTestPredicates(files, stemmer);
         }
 
-        @Override
-        protected void map(Text key, DoubleWritable value, Context ctx) throws IOException, InterruptedException {
-            // key is: pred \t slot \t word
-            String[] f = key.toString().split("\t");
-            if (f.length != 3) return;
+        private static String lastNonEmpty(String[] arr) {
+            for (int i = arr.length - 1; i >= 0; i--) {
+                String s = arr[i];
+                if (s != null) {
+                    s = s.trim();
+                    if (!s.isEmpty()) return s;
+                }
+            }
+            return null;
+        }
 
-            String pred = f[0];
-            double mi = value.get();
+        @Override
+        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
+            String line = value.toString().trim();
+            if (line.isEmpty()) return;
+
+            // Split keeping empties to tolerate trailing tabs
+            String[] parts = line.split("\t", -1);
+
+            String pred = null;
+            String miStr = null;
+
+            // Most common: pred slot word mi
+            if (parts.length >= 4) {
+                pred = parts[0].trim();
+                miStr = lastNonEmpty(parts); // MI should be last meaningful token
+            } else if (parts.length == 2) {
+                // Sometimes TextOutputFormat prints: "<key>\t<value>"
+                // where <key> might be "pred\tslot\tword" and <value> is mi
+                String[] k = parts[0].split("\t", -1);
+                if (k.length == 3) {
+                    pred = k[0].trim();
+                    miStr = parts[1].trim();
+                } else {
+                    return;
+                }
+            } else {
+                return;
+            }
+
+            if (pred == null || pred.isEmpty() || miStr == null || miStr.isEmpty()) return;
+
+            double mi;
+            try {
+                mi = Double.parseDouble(miStr);
+            } catch (Exception e) {
+                return;
+            }
 
             if (mi <= 0) return;
             if (testPreds != null && !testPreds.contains(pred)) return;
@@ -84,8 +130,10 @@ public class Step5_ComputeDenom {
         job.setReducerClass(SumReducer.class);
         job.setNumReduceTasks(reducers);
 
-        // Keep SequenceFile
-        job.setInputFormatClass(SequenceFileInputFormat.class);
+        // ✅ Input TEXT (from Step4)
+        job.setInputFormatClass(TextInputFormat.class);
+
+        // ✅ Output SequenceFile (as required)
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
         job.setMapOutputKeyClass(Text.class);
@@ -94,7 +142,7 @@ public class Step5_ComputeDenom {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(DoubleWritable.class);
 
-        //  Fix Wrong FS: take FS from each path (s3a/hdfs) correctly
+        // Fix Wrong FS: take FS from each path (s3a/hdfs) correctly
         FileSystem fsPos = positive.getFileSystem(conf);
         FileSystem fsNeg = negative.getFileSystem(conf);
 

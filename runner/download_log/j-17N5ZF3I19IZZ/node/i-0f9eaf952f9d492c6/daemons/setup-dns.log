@@ -1,0 +1,205 @@
++ . /etc/instance-controller/imds-utils
++ dnsmasq_emr_conf=/etc/dnsmasq.d/emr.conf
++ dnsmasq_emr_metrics_conf=/etc/dnsmasq.d/emr-metrics.conf
++ emr_primary_internal_domain=emr-primary.internal
+++ jq -r '.candidates[] | .privateIp' /emr/instance-controller/lib/info/extraInstanceData.json
+jq: error: Could not open file /emr/instance-controller/lib/info/extraInstanceData.json: No such file or directory
++ emr_primary_nodes_internal_ips=
++ resolv_conf=/etc/resolv.conf
++ dhclient_conf=/etc/dhcp/dhclient.conf
++ systemd_resolved_conf_d=/etc/systemd/resolved.conf.d
++ systemd_resolved_emr_conf=/etc/systemd/resolved.conf.d/emr.conf
++ localhost=127.0.0.1
++ restart_network=false
++ restart_systemd_resolved=false
++ systemctl is-active systemd-networkd
+active
++ echo 'AMI is running systemd-networkd to manage networking.'
+AMI is running systemd-networkd to manage networking.
++ uses_systemd_networkd=true
+++ tr '[:upper:]' '[:lower:]'
+++ query_imds meta-data/mac/
+++ local shell_opts=hxB
+++ set +x
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    56  100    56    0     0   9991      0 --:--:-- --:--:-- --:--:-- 11200
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    17  100    17    0     0   6000      0 --:--:-- --:--:-- --:--:--  8500
++ mac_address=0e:7f:c2:4c:03:03
+++ query_imds dynamic/instance-identity/document
+++ local shell_opts=hxB
+++ set +x
+++ jq -r .region
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    56  100    56    0     0  60021      0 --:--:-- --:--:-- --:--:-- 56000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   478  100   478    0     0   495k      0 --:--:-- --:--:-- --:--:--  466k
++ region=us-east-1
++ main
++ '[' '' == setup_emr_primary_internal_domain ']'
++ rundnsmasq=
++ '[' -e /usr/bin/nm-online ']'
++ grep -q '^search' /etc/resolv.conf
++ show_dns_status BeforeSetup
++ print_dns_network_configs BeforeSetup
++ type=BeforeSetup
++ echo '------------ BeforeSetup /etc/resolv.conf ------------'
+------------ BeforeSetup /etc/resolv.conf ------------
++ cat /etc/resolv.conf
+# This is /run/systemd/resolve/resolv.conf managed by man:systemd-resolved(8).
+# Do not edit.
+#
+# This file might be symlinked as /etc/resolv.conf. If you're looking at
+# /etc/resolv.conf and seeing this text, you have followed the symlink.
+#
+# This is a dynamic resolv.conf file for connecting local clients directly to
+# all known uplink DNS servers. This file lists all configured search domains.
+#
+# Third party programs should typically not access this file directly, but only
+# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
+# different way, replace this symlink by a static file or a different symlink.
+#
+# See man:systemd-resolved.service(8) for details about the supported modes of
+# operation for /etc/resolv.conf.
+
+nameserver 172.31.0.2
+search ec2.internal
++ '[' -n true ']'
++ echo '------------ BeforeSetup /etc/systemd/resolved.conf.d/emr.conf ------------'
+------------ BeforeSetup /etc/systemd/resolved.conf.d/emr.conf ------------
++ cat /etc/systemd/resolved.conf.d/emr.conf
+cat: /etc/systemd/resolved.conf.d/emr.conf: No such file or directory
+++ get_hostname
+++ hostname -f
+++ return 0
++ hostname=ip-172-31-43-118.ec2.internal
++ status=0
++ echo ''\''hostname -f'\'' returns : ip-172-31-43-118.ec2.internal'
+'hostname -f' returns : ip-172-31-43-118.ec2.internal
++ '[' 0 '!=' 0 ']'
++ check_reverse ip-172-31-43-118.ec2.internal
++ fqdn=ip-172-31-43-118.ec2.internal
+++ host ip-172-31-43-118.ec2.internal
+++ awk '$0 ~ /^ip-172-31-43-118.ec2.internal has address/ { print $4; exit }'
++ ip_addr=172.31.43.118
++ '[' -z 172.31.43.118 ']'
+++ host 172.31.43.118
++ reverse='118.43.31.172.in-addr.arpa domain name pointer ip-172-31-43-118.ec2.internal.'
++ '[' 0 '!=' 0 ']'
+++ echo '118.43.31.172.in-addr.arpa domain name pointer ip-172-31-43-118.ec2.internal.'
+++ cut '-d ' -f5
++ '[' ip-172-31-43-118.ec2.internal. '!=' ip-172-31-43-118.ec2.internal. ']'
++ return 0
++ status=0
++ '[' 0 = 0 ']'
++ echo 'Reverse DNS works and matches.'
+Reverse DNS works and matches.
++ return 0
+++ get_search_domains
+++ awk '$1 ~ /^search/ { sub(/^search /,""); print }' /etc/resolv.conf
++ old_domains=ec2.internal
++ default_domain=ec2.internal
++ '[' us-east-1 '!=' us-east-1 ']'
++ in_vpc=false
++ query_imds meta-data/network/interfaces/macs/0e:7f:c2:4c:03:03/
++ local shell_opts=hxB
++ set +x
++ grep -q vpc
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    56  100    56    0     0  50359      0 --:--:-- --:--:-- --:--:-- 56000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   230  100   230    0     0   267k      0 --:--:-- --:--:-- --:--:--  224k
++ in_vpc=true
++ true
++ '[' '' '!=' rundnsmasq ']'
+++ get_hostname
+++ hostname -f
+++ return 0
++ resolving_host_name=ip-172-31-43-118.ec2.internal
++ hostname_works=0
++ '[' -z ip-172-31-43-118.ec2.internal -o 0 '!=' 0 ']'
++ check_reverse ip-172-31-43-118.ec2.internal
++ fqdn=ip-172-31-43-118.ec2.internal
+++ host ip-172-31-43-118.ec2.internal
+++ awk '$0 ~ /^ip-172-31-43-118.ec2.internal has address/ { print $4; exit }'
++ ip_addr=172.31.43.118
++ '[' -z 172.31.43.118 ']'
+++ host 172.31.43.118
++ reverse='118.43.31.172.in-addr.arpa domain name pointer ip-172-31-43-118.ec2.internal.'
++ '[' 0 '!=' 0 ']'
+++ echo '118.43.31.172.in-addr.arpa domain name pointer ip-172-31-43-118.ec2.internal.'
+++ cut '-d ' -f5
++ '[' ip-172-31-43-118.ec2.internal. '!=' ip-172-31-43-118.ec2.internal. ']'
++ return 0
++ '[' 0 '!=' 0 ']'
++ '[' '' = rundnsmasq ']'
++ printf 'Resolving hostname ip-172-31-43-118.ec2.internal successfully, '
+Resolving hostname ip-172-31-43-118.ec2.internal successfully, + echo 'do nothing and exit.'
+do nothing and exit.
++ restart_network_services_if_needed
++ '[' -n true ']'
++ restart_systemd_resolved_if_needed
++ false
++ show_dns_status AfterSetup
++ print_dns_network_configs AfterSetup
++ type=AfterSetup
++ echo '------------ AfterSetup /etc/resolv.conf ------------'
+------------ AfterSetup /etc/resolv.conf ------------
++ cat /etc/resolv.conf
+# This is /run/systemd/resolve/resolv.conf managed by man:systemd-resolved(8).
+# Do not edit.
+#
+# This file might be symlinked as /etc/resolv.conf. If you're looking at
+# /etc/resolv.conf and seeing this text, you have followed the symlink.
+#
+# This is a dynamic resolv.conf file for connecting local clients directly to
+# all known uplink DNS servers. This file lists all configured search domains.
+#
+# Third party programs should typically not access this file directly, but only
+# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
+# different way, replace this symlink by a static file or a different symlink.
+#
+# See man:systemd-resolved.service(8) for details about the supported modes of
+# operation for /etc/resolv.conf.
+
+nameserver 172.31.0.2
+search ec2.internal
++ '[' -n true ']'
++ echo '------------ AfterSetup /etc/systemd/resolved.conf.d/emr.conf ------------'
+------------ AfterSetup /etc/systemd/resolved.conf.d/emr.conf ------------
++ cat /etc/systemd/resolved.conf.d/emr.conf
+cat: /etc/systemd/resolved.conf.d/emr.conf: No such file or directory
+++ get_hostname
+++ hostname -f
+++ return 0
++ hostname=ip-172-31-43-118.ec2.internal
++ status=0
++ echo ''\''hostname -f'\'' returns : ip-172-31-43-118.ec2.internal'
+'hostname -f' returns : ip-172-31-43-118.ec2.internal
++ '[' 0 '!=' 0 ']'
++ check_reverse ip-172-31-43-118.ec2.internal
++ fqdn=ip-172-31-43-118.ec2.internal
+++ host ip-172-31-43-118.ec2.internal
+++ awk '$0 ~ /^ip-172-31-43-118.ec2.internal has address/ { print $4; exit }'
++ ip_addr=172.31.43.118
++ '[' -z 172.31.43.118 ']'
+++ host 172.31.43.118
++ reverse='118.43.31.172.in-addr.arpa domain name pointer ip-172-31-43-118.ec2.internal.'
++ '[' 0 '!=' 0 ']'
+++ echo '118.43.31.172.in-addr.arpa domain name pointer ip-172-31-43-118.ec2.internal.'
+++ cut '-d ' -f5
++ '[' ip-172-31-43-118.ec2.internal. '!=' ip-172-31-43-118.ec2.internal. ']'
++ return 0
++ status=0
++ '[' 0 = 0 ']'
++ echo 'Reverse DNS works and matches.'
+Reverse DNS works and matches.
++ return 0
++ return 0
++ exit 0

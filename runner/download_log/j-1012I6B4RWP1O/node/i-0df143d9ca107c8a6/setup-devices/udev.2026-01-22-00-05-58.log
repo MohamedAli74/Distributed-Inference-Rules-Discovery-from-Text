@@ -1,0 +1,19 @@
+Thu Jan 22 00:05:58 UTC 2026
+monitor will print the received events for:
+UDEV - the event which udev sends out after rule processing
+KERNEL - the kernel uevent
+
+KERNEL[18.562267] change   /devices/pci0000:00/0000:00:1f.0/nvme/nvme2/nvme2n1 (block)
+KERNEL[18.615803] change   /devices/pci0000:00/0000:00:1e.0/nvme/nvme1/nvme1n1/nvme1n1p1 (block)
+UDEV  [18.625419] change   /devices/pci0000:00/0000:00:1f.0/nvme/nvme2/nvme2n1 (block)
+KERNEL[18.667552] change   /devices/pci0000:00/0000:00:1e.0/nvme/nvme1/nvme1n1/nvme1n1p2 (block)
+UDEV  [18.679887] change   /devices/pci0000:00/0000:00:1e.0/nvme/nvme1/nvme1n1/nvme1n1p1 (block)
+UDEV  [18.738676] change   /devices/pci0000:00/0000:00:1e.0/nvme/nvme1/nvme1n1/nvme1n1p2 (block)
+KERNEL[18.895005] add      /devices/virtual/workqueue/xfs_iwalk-2405 (workqueue)
+UDEV  [18.895606] add      /devices/virtual/workqueue/xfs_iwalk-2405 (workqueue)
+KERNEL[18.897717] remove   /devices/virtual/workqueue/xfs_iwalk-2405 (workqueue)
+UDEV  [18.897955] remove   /devices/virtual/workqueue/xfs_iwalk-2405 (workqueue)
+KERNEL[18.981360] add      /devices/virtual/workqueue/xfs_iwalk-2504 (workqueue)
+UDEV  [18.981729] add      /devices/virtual/workqueue/xfs_iwalk-2504 (workqueue)
+KERNEL[18.983841] remove   /devices/virtual/workqueue/xfs_iwalk-2504 (workqueue)
+UDEV  [18.984094] remove   /devices/virtual/workqueue/xfs_iwalk-2504 (workqueue)

@@ -1,0 +1,58 @@
+2026-01-22 00:06:32.747 + setup_tmp_dir
+2026-01-22 00:06:32.748 ++ readlink /tmp
+2026-01-22 00:06:32.749 + [[ '' == \/\m\n\t\/\t\m\p ]]
+2026-01-22 00:06:32.750 ++ readlink /mnt/tmp
+2026-01-22 00:06:32.751 + [[ '' == \/\t\m\p ]]
+2026-01-22 00:06:32.752 ++ findmnt -rno TARGET /tmp
+2026-01-22 00:06:32.754 + [[ -n '' ]]
+2026-01-22 00:06:32.755 + [[ -e /mnt/tmp ]]
+2026-01-22 00:06:32.756 + move_to_ephemeral /tmp
+2026-01-22 00:06:32.757 + echo 'Moving directory to ephemeral: /tmp'
+2026-01-22 00:06:32.759 Moving directory to ephemeral: /tmp
+2026-01-22 00:06:32.760 + ls -l /tmp
+2026-01-22 00:06:32.761 total 0
+2026-01-22 00:06:32.762 drwxr-xr-x. 2 root root  6 Jan 22 00:06 hsperfdata_root
+2026-01-22 00:06:32.763 drwx------. 3 root root 17 Jan 22 00:06 systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-dbus-broker.service-XhLOdP
+2026-01-22 00:06:32.764 drwx------. 3 root root 17 Jan 22 00:06 systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-policy-routes@ens5.service-BbRQ2U
+2026-01-22 00:06:32.765 drwx------. 3 root root 17 Jan 22 00:06 systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-polkit.service-8WytOV
+2026-01-22 00:06:32.767 drwx------. 3 root root 17 Jan 22 00:06 systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-rtkit-daemon.service-8zMEQl
+2026-01-22 00:06:32.768 drwx------. 3 root root 17 Jan 22 00:06 systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-systemd-logind.service-ngK4xT
+2026-01-22 00:06:32.769 drwx------. 3 root root 17 Jan 22 00:06 systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-systemd-resolved.service-6HErQl
+2026-01-22 00:06:32.770 drwx------. 3 root root 17 Jan 22 00:06 systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-upower.service-6JsDP3
+2026-01-22 00:06:32.771 + du -c /tmp
+2026-01-22 00:06:32.772 0	/tmp/.X11-unix
+2026-01-22 00:06:32.773 0	/tmp/.ICE-unix
+2026-01-22 00:06:32.775 0	/tmp/.XIM-unix
+2026-01-22 00:06:32.776 0	/tmp/.font-unix
+2026-01-22 00:06:32.777 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-systemd-resolved.service-6HErQl/tmp
+2026-01-22 00:06:32.778 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-systemd-resolved.service-6HErQl
+2026-01-22 00:06:32.780 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-dbus-broker.service-XhLOdP/tmp
+2026-01-22 00:06:32.781 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-dbus-broker.service-XhLOdP
+2026-01-22 00:06:32.782 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-policy-routes@ens5.service-BbRQ2U/tmp
+2026-01-22 00:06:32.784 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-policy-routes@ens5.service-BbRQ2U
+2026-01-22 00:06:32.785 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-rtkit-daemon.service-8zMEQl/tmp
+2026-01-22 00:06:32.786 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-rtkit-daemon.service-8zMEQl
+2026-01-22 00:06:32.787 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-systemd-logind.service-ngK4xT/tmp
+2026-01-22 00:06:32.789 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-systemd-logind.service-ngK4xT
+2026-01-22 00:06:32.790 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-upower.service-6JsDP3/tmp
+2026-01-22 00:06:32.791 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-upower.service-6JsDP3
+2026-01-22 00:06:32.792 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-polkit.service-8WytOV/tmp
+2026-01-22 00:06:32.794 0	/tmp/systemd-private-3e0072de7b8547e783b3a54e27d8f3ea-polkit.service-8WytOV
+2026-01-22 00:06:32.795 0	/tmp/hsperfdata_root
+2026-01-22 00:06:32.796 16	/tmp
+2026-01-22 00:06:32.797 16	total
+2026-01-22 00:06:32.798 + lsof
+2026-01-22 00:06:32.800 + awk '{print $9}'
+2026-01-22 00:06:32.801 + grep '^/tmp'
+2026-01-22 00:06:32.911 + true
+2026-01-22 00:06:32.912 + mkdir -p /mnt/tmp
+2026-01-22 00:06:32.913 + mv /tmp /tmp.old
+2026-01-22 00:06:32.914 + ln -nsf /mnt/tmp -T /tmp
+2026-01-22 00:06:32.915 + rsync -a /tmp.old/ /mnt/tmp
+2026-01-22 00:06:33.020 + rm -Rf /tmp.old
+2026-01-22 00:06:33.021 + echo 'Moved directory to ephemeral: /tmp'
+2026-01-22 00:06:33.022 Moved directory to ephemeral: /tmp
+2026-01-22 00:06:33.023 
+2026-01-22 00:06:33.024 real	0m0.275s
+2026-01-22 00:06:33.025 user	0m0.073s
+2026-01-22 00:06:33.026 sys	0m0.033s

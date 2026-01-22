@@ -1,0 +1,2 @@
+2026-01-22 00:05:57,869 INFO main: Unable to find local userdata file: /var/aws/emr/userData.json. Deferring to EC2 Metadata
+2026-01-22 00:05:58,428 INFO main: Cannot find disk encryption configuration in user data. do nothing.

@@ -1,0 +1,45 @@
+2026-01-22 00:54:34.418 + setup_var_tmp_dir
+2026-01-22 00:54:34.419 + move_to_ephemeral /var/tmp
+2026-01-22 00:54:34.420 + echo 'Moving directory to ephemeral: /var/tmp'
+2026-01-22 00:54:34.422 Moving directory to ephemeral: /var/tmp
+2026-01-22 00:54:34.423 + ls -l /var/tmp
+2026-01-22 00:54:34.424 total 0
+2026-01-22 00:54:34.426 drwx------. 3 root root 17 Jan 22 00:54 systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-dbus-broker.service-ClHR90
+2026-01-22 00:54:34.427 drwx------. 3 root root 17 Jan 22 00:54 systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-policy-routes@ens5.service-AByzgl
+2026-01-22 00:54:34.429 drwx------. 3 root root 17 Jan 22 00:54 systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-polkit.service-WBuNOb
+2026-01-22 00:54:34.430 drwx------. 3 root root 17 Jan 22 00:54 systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-rtkit-daemon.service-HecH6V
+2026-01-22 00:54:34.431 drwx------. 3 root root 17 Jan 22 00:54 systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-systemd-logind.service-ToUI7y
+2026-01-22 00:54:34.433 drwx------. 3 root root 17 Jan 22 00:54 systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-systemd-resolved.service-BHBCfe
+2026-01-22 00:54:34.434 drwx------. 3 root root 17 Jan 22 00:54 systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-upower.service-4X3rEC
+2026-01-22 00:54:34.435 + du -c /var/tmp
+2026-01-22 00:54:34.437 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-systemd-resolved.service-BHBCfe/tmp
+2026-01-22 00:54:34.438 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-systemd-resolved.service-BHBCfe
+2026-01-22 00:54:34.439 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-dbus-broker.service-ClHR90/tmp
+2026-01-22 00:54:34.441 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-dbus-broker.service-ClHR90
+2026-01-22 00:54:34.442 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-policy-routes@ens5.service-AByzgl/tmp
+2026-01-22 00:54:34.443 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-policy-routes@ens5.service-AByzgl
+2026-01-22 00:54:34.444 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-rtkit-daemon.service-HecH6V/tmp
+2026-01-22 00:54:34.446 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-rtkit-daemon.service-HecH6V
+2026-01-22 00:54:34.447 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-systemd-logind.service-ToUI7y/tmp
+2026-01-22 00:54:34.448 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-systemd-logind.service-ToUI7y
+2026-01-22 00:54:34.450 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-upower.service-4X3rEC/tmp
+2026-01-22 00:54:34.451 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-upower.service-4X3rEC
+2026-01-22 00:54:34.452 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-polkit.service-WBuNOb/tmp
+2026-01-22 00:54:34.454 0	/var/tmp/systemd-private-cbf2fe948b5b48b6a1b2128aedc1a56b-polkit.service-WBuNOb
+2026-01-22 00:54:34.455 16	/var/tmp
+2026-01-22 00:54:34.456 16	total
+2026-01-22 00:54:34.457 + lsof
+2026-01-22 00:54:34.459 + awk '{print $9}'
+2026-01-22 00:54:34.460 + grep '^/var/tmp'
+2026-01-22 00:54:34.490 + true
+2026-01-22 00:54:34.491 + mkdir -p /mnt/var/tmp
+2026-01-22 00:54:34.492 + mv /var/tmp /var/tmp.old
+2026-01-22 00:54:34.493 + ln -nsf /mnt/var/tmp -T /var/tmp
+2026-01-22 00:54:34.494 + rsync -a /var/tmp.old/ /mnt/var/tmp
+2026-01-22 00:54:34.539 + rm -Rf /var/tmp.old
+2026-01-22 00:54:34.541 + echo 'Moved directory to ephemeral: /var/tmp'
+2026-01-22 00:54:34.542 Moved directory to ephemeral: /var/tmp
+2026-01-22 00:54:34.543 
+2026-01-22 00:54:34.544 real	0m0.123s
+2026-01-22 00:54:34.545 user	0m0.048s
+2026-01-22 00:54:34.546 sys	0m0.045s

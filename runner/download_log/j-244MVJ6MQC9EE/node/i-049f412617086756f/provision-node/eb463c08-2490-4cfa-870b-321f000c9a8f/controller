@@ -1,0 +1,38 @@
+2026-01-22T00:54:52.381993717Z INFO Fetching file '/var/lib/aws/emr/provision-node'
+2026-01-22T00:54:52.384005154Z INFO startExec '/var/lib/aws/emr/provision-node --install --provision -d0/eb463c08-2490-4cfa-870b-321f000c9a8f'
+2026-01-22T00:54:52.384422159Z INFO Environment:
+  PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/aws/puppet/bin/:/opt/puppetlabs/bin
+  INVOCATION_ID=ea32b23bb67a4b24b71d7fffdfd60061
+  SECURITY_PROPERTIES=/emr/instance-controller/lib/security.properties
+  HISTCONTROL=ignoredups
+  MANPATH=:/opt/puppetlabs/puppet/share/man
+  PIDFILE=/emr/instance-controller/run/instance-controller.pid
+  HISTSIZE=1000
+  AWS_DEFAULT_REGION=us-east-1
+  JAVA_HOME=/etc/alternatives/jre
+  BASH_FUNC_which%%=() {  ( alias; eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"}
+  LANG=en_US.UTF-8
+  JOURNAL_STREAM=8:24637
+  MAIL=/var/spool/mail/hadoop
+  which_declare=declare -f
+  LOGNAME=hadoop
+  PWD=/
+  _=/usr/lib/jvm/jre-17/bin/java
+  S_COLORS=auto
+  LESSOPEN=||/usr/bin/lesspipe.sh %s
+  SHELL=/bin/bash
+  USER=hadoop
+  GEM_HOME=/home/hadoop/.local/share/gem/ruby
+  SYSTEMD_COLORS=false
+  HOSTNAME=ip-172-31-39-172.ec2.internal
+  SYSTEMD_EXEC_PID=3992
+  SHLVL=0
+  HOME=/home/hadoop
+2026-01-22T00:54:52.384728939Z INFO redirectOutput to /mnt/var/log/provision-node/eb463c08-2490-4cfa-870b-321f000c9a8f/stdout
+2026-01-22T00:54:52.385353341Z INFO redirectError to /mnt/var/log/provision-node/eb463c08-2490-4cfa-870b-321f000c9a8f/stderr
+2026-01-22T00:54:52.385588943Z INFO Working dir /mnt/var/lib/provision-node/eb463c08-2490-4cfa-870b-321f000c9a8f
+2026-01-22T00:54:52.388359868Z INFO ProcessRunner started child process : /var/lib/aws/emr/provision-node --install --pro...
+2026-01-22T00:54:52.388615965Z INFO Synchronously wait child process to complete : /var/lib/aws/emr/provision-node --install --pro...
+2026-01-22T00:54:54.388955198Z INFO waitProcessCompletion ended with exit code 0 : /var/lib/aws/emr/provision-node --install --pro...
+2026-01-22T00:54:54.389400467Z INFO total process run time: 2 seconds
+2026-01-22T00:54:54.390396487Z INFO Execution succeeded

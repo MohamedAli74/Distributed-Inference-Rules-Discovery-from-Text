@@ -4,7 +4,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -18,36 +18,56 @@ import java.util.*;
 
 /**
  * Step6:
- * Input: Step4 output:
+ * Input (TEXT from Step4):
  *   pred \t slot \t word \t mi
  *
- * Output:
- *   pairKey \t contrib
- *
- * Where:
- *  pairKey = canonicalPairKey(pred1, pred2)
- *  contrib accumulates numerator pieces:
- *    sum over shared features f of (MI(pred1,f) + MI(pred2,f))
+ * Output (SequenceFile):
+ *   key: pairKey (pred1 \t pred2)  [canonical]
+ *   value: contrib (DoubleWritable)
  *
  * We only emit pairs that exist in test set (positive/negative).
  */
 public class Step6_IntersectionContrib {
 
-    public static class ContribMapper extends Mapper<Text, DoubleWritable, Text, Text> {
+    /** Mapper: reads TEXT lines from Step4 */
+    public static class ContribMapper extends Mapper<LongWritable, Text, Text, Text> {
         private final Text outKey = new Text();
         private final Text outVal = new Text();
 
+        private static String lastNonEmpty(String[] arr) {
+            for (int i = arr.length - 1; i >= 0; i--) {
+                String s = arr[i];
+                if (s != null) {
+                    s = s.trim();
+                    if (!s.isEmpty()) return s;
+                }
+            }
+            return null;
+        }
+
         @Override
-        protected void map(Text key, DoubleWritable value, Context ctx) throws IOException, InterruptedException {
-            // key pred \t slot \t word ,value: mi
-            String[] f = key.toString().split("\t");
-            if (f.length != 3) return;
+        protected void map(LongWritable key, Text value, Context ctx) throws IOException, InterruptedException {
+            String line = value.toString();
+            if (line == null) return;
+            line = line.trim();
+            if (line.isEmpty()) return;
 
-            String pred = f[0];
-            String slot = f[1];
-            String word = f[2];
+            // Step4 line: pred \t slot \t word \t mi (may have trailing tabs)
+            String[] parts = line.split("\t", -1);
+            if (parts.length < 4) return;
 
-            double mi = value.get();
+            String pred = parts[0].trim();
+            String slot = parts[1].trim();
+            String word = parts[2].trim();
+
+            if (pred.isEmpty() || slot.isEmpty() || word.isEmpty()) return;
+
+            String miStr = lastNonEmpty(parts);
+            if (miStr == null) return;
+
+            double mi;
+            try { mi = Double.parseDouble(miStr); }
+            catch (Exception e) { return; }
 
             if (mi <= 0) return;
 
@@ -80,11 +100,20 @@ public class Step6_IntersectionContrib {
             List<Double> mis = new ArrayList<>();
 
             for (Text t : vals) {
-                String[] p = t.toString().split("\t");
+                String[] p = t.toString().split("\t", -1);
                 if (p.length != 2) continue;
-                preds.add(p[0]);
-                try { mis.add(Double.parseDouble(p[1])); }
-                catch (Exception e) { mis.add(0.0); }
+
+                String pred = p[0].trim();
+                if (pred.isEmpty()) continue;
+
+                double mi;
+                try { mi = Double.parseDouble(p[1]); }
+                catch (Exception e) { continue; }
+
+                if (mi <= 0) continue;
+
+                preds.add(pred);
+                mis.add(mi);
             }
 
             int n = preds.size();
@@ -93,12 +122,10 @@ public class Step6_IntersectionContrib {
             for (int i = 0; i < n; i++) {
                 String p1 = preds.get(i);
                 double mi1 = mis.get(i);
-                if (mi1 <= 0) continue;
 
                 for (int j = i + 1; j < n; j++) {
                     String p2 = preds.get(j);
                     double mi2 = mis.get(j);
-                    if (mi2 <= 0) continue;
 
                     String pairKey = TestData.canonicalPairKey(p1, p2);
                     if (!allowedPairs.contains(pairKey)) continue;
@@ -121,7 +148,10 @@ public class Step6_IntersectionContrib {
         job.setReducerClass(ContribReducer.class);
         job.setNumReduceTasks(reducers);
 
-        job.setInputFormatClass(SequenceFileInputFormat.class);
+        // ✅ Input = TEXT (because Step4 is TextOutputFormat)
+        job.setInputFormatClass(TextInputFormat.class);
+
+        // ✅ Output stays SequenceFile (used by Step7)
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
         job.setMapOutputKeyClass(Text.class);
@@ -131,6 +161,7 @@ public class Step6_IntersectionContrib {
         job.setOutputValueClass(DoubleWritable.class);
 
         // add test files to cache
+        job.getConfiguration().setBoolean("mapreduce.job.cache.symlink.create", true);
         job.addCacheFile(new URI(positive.toString() + "#positive.txt"));
         job.addCacheFile(new URI(negative.toString() + "#negative.txt"));
 
