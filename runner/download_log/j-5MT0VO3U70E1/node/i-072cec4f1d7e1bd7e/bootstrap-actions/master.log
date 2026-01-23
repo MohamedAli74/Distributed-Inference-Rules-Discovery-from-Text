@@ -1,6 +1,0 @@
-2026-01-18 17:12:45,889 INFO InstanceConfiguratorDoConfigureThread: i-072cec4f1d7e1bd7e: new instance started
-2026-01-18 17:12:45,902 ERROR InstanceConfiguratorDoConfigureThread: i-072cec4f1d7e1bd7e: failed to start. bootstrap action 1 failed with non-zero exit code.
-2026-01-18 17:12:46,902 INFO in-rpc-61: i-089fdf734ebd4a3d9: new instance started
-2026-01-18 17:12:48,931 INFO in-rpc-61: i-089fdf734ebd4a3d9: all bootstrap actions complete and instance ready
-2026-01-18 17:12:49,350 INFO in-rpc-59: i-0396281a8e728f01d: new instance started
-2026-01-18 17:12:51,375 INFO in-rpc-61: i-0396281a8e728f01d: all bootstrap actions complete and instance ready
