@@ -147,7 +147,6 @@ public class Step7_FinalSimilarity {
         job.addCacheFile(new URI(positive.toString() + "#positive.txt"));
         job.addCacheFile(new URI(negative.toString() + "#negative.txt"));
 
-        // ✅ ONLY Step6 input
         MultipleInputs.addInputPath(job, step6Input, SequenceFileInputFormat.class, FinalMapper.class);
 
         return job;

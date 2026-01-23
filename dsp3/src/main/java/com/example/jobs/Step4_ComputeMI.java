@@ -186,7 +186,6 @@ public class Step4_ComputeMI {
         job.setReducerClass(MIReducer.class);
         job.setNumReduceTasks(reducers);
 
-        // ✅ OUTPUT = TEXT
         job.setOutputFormatClass(TextOutputFormat.class);
 
         job.setMapOutputKeyClass(Text.class);

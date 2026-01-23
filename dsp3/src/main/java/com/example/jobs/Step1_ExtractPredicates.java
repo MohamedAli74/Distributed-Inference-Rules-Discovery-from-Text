@@ -24,19 +24,15 @@ public class Step1_ExtractPredicates {
      * [in MI terms: |p,Slot,w|->count]
      */
 
-    // كلمة "طبيعية": حروف فقط، ويسمح بـ ' أو - داخلياً (مثل: can't, e-mail)
-    // ممنوع أرقام/رموز/%/$/!/"/... إلخ
+   
     private static final Pattern CLEAN_WORD =
             Pattern.compile("^[A-Za-z](?:[A-Za-z]|['-](?=[A-Za-z])){1,}$"); // length >=2
 
-    // التمبلت لازم يكون نص "نظيف" (كلمات + مسافات + _ + X/Y)
-    // وإذا كان فيه لخبطة (مثل /VB/ROOT/0 أو رموز) مننظفه ونرميه لو صار فاضي.
+    
     private static String cleanTemplate(String t) {
         if (t == null) return "";
-        // بدّل أي شيء مش حروف/مسافة/_/X/Y بمسافة
         String s = t.replaceAll("[^A-Za-zXY_ ]+", " ");
         s = s.replaceAll("\\s+", " ").trim();
-        // لازم يضل فيه على الأقل كلمة حقيقية غير X/Y
         if (!s.matches(".*[A-Za-z]{2,}.*")) return "";
         return s;
     }
@@ -66,7 +62,6 @@ public class Step1_ExtractPredicates {
             Token root = Parser.findRootVerb(pl.tokens);
             if (root == null) return;
 
-            // لو الجذر نفسه مش كلمة طبيعية (مثل "!" أو "%") تجاهل السطر
             String rootWord = norm(root.word);
             if (!isCleanWord(rootWord)) return;
 
@@ -80,11 +75,9 @@ public class Step1_ExtractPredicates {
             int c = pl.count;
             if (c <= 0) return;
 
-            // نظّف التمبلت عشان ما يطلع /VB/ROOT/0 والخ...
             String template = cleanTemplate(inst.template);
             if (template.isEmpty()) return;
 
-            // كلمات X/Y (حتى لو stemmed) لازم تكون نظيفة
             String x = norm(inst.xWordStem);
             String y = norm(inst.yWordStem);
 
@@ -104,7 +97,6 @@ public class Step1_ExtractPredicates {
                 wrote = true;
             }
 
-            // إذا ولا واحد نظيف، لا تطلع شيء
             if (!wrote) return;
         }
     }
