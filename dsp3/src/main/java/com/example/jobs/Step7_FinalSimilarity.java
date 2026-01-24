@@ -30,7 +30,7 @@ import com.example.helpers.TestData;
  *     key: p1 \t p2 
  *     value: contrib
  *
- *  B) Step4 output (sequence files: sequence-r-00000, sequence-r-00001, etc.):
+ *  B) Step4 output (from 'sequence' subdirectory):
  *    key: pred \t slot \t word
  *    value: mi
  * 

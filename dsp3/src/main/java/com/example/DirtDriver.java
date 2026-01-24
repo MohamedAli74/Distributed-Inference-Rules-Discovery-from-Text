@@ -36,12 +36,12 @@ public class DirtDriver extends Configured implements Tool {
     /**
      * Merge Job 7 (final similarity) with Job 4 MI text into a single final output folder
      */
-    private static void mergeFinalOutput(Configuration conf, Path out4, Path out7, Path finalMergeDir) throws Exception {
+    private static void mergeFinalOutput(Configuration conf, Path out4Text, Path out7, Path finalMergeDir) throws Exception {
         FileSystem fs = finalMergeDir.getFileSystem(conf);
         deleteIfExists(conf, finalMergeDir);
         fs.mkdirs(finalMergeDir);
 
-        System.out.println("Merging final output: Job 7 (similarity) + Job 4 (text-r-* MI files)...");
+        System.out.println("Merging final output: Job 7 (similarity) + Job 4 (MI text)...");
 
         // Copy Job 7 output (final similarity)
         for (FileStatus file : fs.listStatus(out7)) {
@@ -50,11 +50,10 @@ public class DirtDriver extends Configured implements Tool {
             }
         }
 
-        // Copy Job 4 MI text output (text-r-* files only)
-        for (FileStatus file : fs.listStatus(out4)) {
-            String name = file.getPath().getName();
-            if (name.startsWith("text-r-")) {
-                String destName = "mi-" + name;
+        // Copy Job 4 MI text output
+        for (FileStatus file : fs.listStatus(out4Text)) {
+            if (!file.getPath().getName().startsWith("_")) {
+                String destName = "mi-" + file.getPath().getName();
                 fs.copyToLocalFile(file.getPath(), new Path(finalMergeDir.toString() + "/" + destName));
             }
         }
@@ -92,11 +91,11 @@ public class DirtDriver extends Configured implements Tool {
         }
 
         int n = args.size();
-        String input = args.get(0);
-        String workDirStr  = args.get(1);
-        String positiveStr = args.get(2);
-        String negativeStr = args.get(3);
-        String reducersStr = args.get(4);
+        String inputStr = args.get(n-5);
+        String workDirStr  = args.get(n-4);
+        String positiveStr = args.get(n-3);
+        String negativeStr = args.get(n-2);
+        String reducersStr = args.get(n-1);
 
         int reducers;
         try {
@@ -109,6 +108,7 @@ public class DirtDriver extends Configured implements Tool {
 
         Configuration conf = getConf();
 
+        Path input    = new Path(inputStr);
         Path workDir  = new Path(workDirStr);
         Path positive = new Path(positiveStr);
         Path negative = new Path(negativeStr);
@@ -156,6 +156,7 @@ public class DirtDriver extends Configured implements Tool {
 
         // Merge final output: Job 7 similarity + Job 4 text files (text-r-*)
         mergeFinalOutput(conf, out4Text, out7, finalOutput);
+
 
         System.out.println("DONE. Final output at: " + finalOutput);
         return 0;
