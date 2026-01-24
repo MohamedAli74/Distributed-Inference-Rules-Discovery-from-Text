@@ -6,14 +6,6 @@ This section reports the evaluation results computed from `10-output/score` (sma
 
 **Goal:** Compute precision, recall, and F1 for each input size.
 
-**Approach:**
-1. Choose a similarity threshold `t` based on the score distribution.
-2. Convert similarity scores to binary predictions (>= `t` as positive).
-3. Compute:
-   - `Precision = TP / (TP + FP)`
-   - `Recall = TP / (TP + FN)`
-   - `F1 = 2 * Precision * Recall / (Precision + Recall)`
-
 **Results (best F1 threshold per size):**
 - Small input:
   - Threshold: `t = 0.0`
@@ -28,7 +20,19 @@ This section reports the evaluation results computed from `10-output/score` (sma
   - F1: `0.980438648488441`
   - Confusion: `TP=2481, FP=99, TN=0, FN=0`
 
-**Note:** At `t=0.0` all items are predicted positive. This maximizes F1 but removes TN/FN for error analysis.
+**Why F1 is identical for both inputs:**
+At threshold `t = 0.0`, all items are predicted as positive (since all similarity scores are ≥ 0.0). This means:
+- The confusion matrix depends **only on the ground truth label distribution**, not on the similarity scores themselves
+- Both test sets have the same label distribution: 2481 positives and 99 negatives
+- Therefore: `TP = 2481` (all positives predicted correctly), `FP = 99` (all negatives predicted incorrectly), `TN = 0`, `FN = 0`
+- Since the confusion matrices are identical, precision, recall, and F1 are identical
+
+**Score distribution:**
+- **Small input:** 2563 scores = 0.0 (99.3%), only 17 scores > 0.0
+- **Large input:** 1313 scores = 0.0 (50.9%), 1267 scores > 0.0 (49.1%), including 2 scores between 0.0 and 0.01
+- The large input has much better score separation, with nearly half of scores being positive, while the small input has almost all scores at exactly 0.0
+
+**Note:** While the F1 metrics are identical at `t=0.0`, the similarity scores themselves ARE different between small and large inputs. This difference becomes apparent at other thresholds, as shown in the Precision-Recall curves where the large input shows better score separation and more gradual precision/recall trade-offs.
 
 ---
 
@@ -36,12 +40,6 @@ This section reports the evaluation results computed from `10-output/score` (sma
 
 **Goal:** Plot PR curves for both input sizes.
 
-**Definition:** A precision-recall curve plots **precision (y-axis)** vs **recall (x-axis)** across different thresholds.
-
-**Approach:**
-- Sweep thresholds over similarity scores.
-- At each threshold, compute precision and recall.
-- Plot precision vs recall.
 
 **Generated plots:**
 - Small input: `Reports/Analysis/pr_small.svg`
