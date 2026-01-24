@@ -79,7 +79,7 @@ public class Step1_ExtractPredicates {
     }
 
     // Job builder 
-    public static Job buildJob(Configuration conf, String input, Path output, int reducers) throws Exception {
+    public static Job buildJob(Configuration conf, Path input, Path output, int reducers) throws Exception {
         Job job = Job.getInstance(conf, "Step1-ExtractPredicates");
         job.setJarByClass(Step1_ExtractPredicates.class);
 
@@ -97,7 +97,7 @@ public class Step1_ExtractPredicates {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(LongWritable.class);
 
-        TextInputFormat.addInputPaths(job, input);
+        TextInputFormat.addInputPath(job, input);
         FileOutputFormat.setOutputPath(job, output);
 
         return job;
