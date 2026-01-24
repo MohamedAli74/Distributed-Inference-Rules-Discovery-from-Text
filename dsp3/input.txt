@@ -1,22 +1,4 @@
-eat	eat/VB/ROOT/0 person/NN/nsubj/1 food/NN/dobj/1	60	2000,60
-eat	eat/VB/ROOT/0 people/NNS/nsubj/1 meal/NN/dobj/1	45	2000,45
-eat	eat/VB/ROOT/0 man/NN/nsubj/1 dinner/NN/dobj/1	35	2000,35
-eat	eat/VB/ROOT/0 child/NN/nsubj/1 food/NN/dobj/1	30	2000,30
-
-consume	consume/VB/ROOT/0 person/NN/nsubj/1 food/NN/dobj/1	55	2000,55
-consume	consume/VB/ROOT/0 people/NNS/nsubj/1 meal/NN/dobj/1	40	2000,40
-consume	consume/VB/ROOT/0 man/NN/nsubj/1 dinner/NN/dobj/1	28	2000,28
-consume	consume/VB/ROOT/0 child/NN/nsubj/1 food/NN/dobj/1	25	2000,25
-
-buy	buy/VB/ROOT/0 customer/NN/nsubj/1 car/NN/dobj/1	50	2000,50
-buy	buy/VB/ROOT/0 person/NN/nsubj/1 house/NN/dobj/1	32	2000,32
-buy	buy/VB/ROOT/0 buyer/NN/nsubj/1 car/NN/dobj/1	20	2000,20
-
-purchase	purchase/VB/ROOT/0 customer/NN/nsubj/1 car/NN/dobj/1	48	2000,48
-purchase	purchase/VB/ROOT/0 person/NN/nsubj/1 house/NN/dobj/1	30	2000,30
-purchase	purchase/VB/ROOT/0 buyer/NN/nsubj/1 car/NN/dobj/1	18	2000,18
-
-die	die/VB/ROOT/0 patient/NN/nsubj/1 of/IN/prep/1 cancer/NN/pobj/3	40	2000,40
-suffer	suffer/VB/ROOT/0 patient/NN/nsubj/1 from/IN/prep/1 cancer/NN/pobj/3	38	2000,38
-die	die/VB/ROOT/0 person/NN/nsubj/1 from/IN/prep/1 cancer/NN/pobj/3	22	2000,22
-suffer	suffer/VB/ROOT/0 person/NN/nsubj/1 of/IN/prep/1 cancer/NN/pobj/3	20	2000,20
+die/VB/ROOT/0 patient/NN/nsubj/1 from/IN/prep/1 cancer/NN/pobj/3 10
+die/VB/ROOT/0 patient/NN/nsubj/1 of/IN/prep/1 cancer/NN/pobj/3 10
+control/VB/ROOT/0 drug/NN/nsubj/1 pain/NN/dobj/1 20
+prevent/VB/ROOT/0 vaccine/NN/nsubj/1 fever/NN/dobj/1 20

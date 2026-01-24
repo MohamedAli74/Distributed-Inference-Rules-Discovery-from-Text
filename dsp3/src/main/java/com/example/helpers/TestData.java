@@ -5,12 +5,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.apache.hadoop.fs.Path;
+
 public class TestData {
 
     public static final String SEP = "\t";
@@ -70,6 +73,10 @@ public class TestData {
         return preds;
     }
 
+    /**
+     * IMPORTANT: this is the UNIQUE version (what Step6 expects).
+     * Key is canonical, value is a single PairInfo (last wins if duplicates exist).
+     */
     public static Map<String, PairInfo> loadPairs(URI[] cacheFiles, PorterStemmer stemmer) throws IOException {
         Map<String, PairInfo> map = new HashMap<>();
         if (cacheFiles == null) return map;
@@ -91,11 +98,41 @@ public class TestData {
         return map;
     }
 
+    /**
+     * DUPLICATES version (what Step7 needs).
+     * Keeps ALL duplicates and preserves orientation as in the files.
+     * Key is canonical (so Step6/Step7 similarity lookup matches),
+     * but stored PairInfo keeps p1,p2 direction.
+     */
+    public static Map<String, List<PairInfo>> loadPairsWithDuplicates(URI[] cacheFiles, PorterStemmer stemmer) throws IOException {
+        Map<String, List<PairInfo>> map = new HashMap<>();
+        if (cacheFiles == null) return map;
+
+        for (URI uri : cacheFiles) {
+            int label = labelFromUri(uri);
+            if (label == -1) continue;
+
+            try (BufferedReader br = openCached(uri)) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    PairParsed pp = parsePairLineFlexible(line, stemmer);
+                    if (pp == null) continue;
+
+                    String key = canonicalPairKey(pp.p1, pp.p2);
+                    map.computeIfAbsent(key, k -> new ArrayList<>())
+                       .add(new PairInfo(pp.p1, pp.p2, label));
+                }
+            }
+        }
+        return map;
+    }
+
     public static PairParsed parsePairLineFlexible(String line, PorterStemmer stemmer) {
         if (line == null) return null;
         line = line.trim();
         if (line.isEmpty()) return null;
 
+        // Tab-separated: take first 2 columns only
         if (line.contains("\t")) {
             String[] f = line.split("\t");
             if (f.length < 2) return null;
@@ -158,7 +195,6 @@ public class TestData {
 
     /** Determine label from cache URI name */
     private static int labelFromUri(URI uri) {
-        // Hadoop cache: URI may include #positive.txt
         String name = new Path(uri.getPath()).getName();
         if (uri.getFragment() != null) name = uri.getFragment();
 

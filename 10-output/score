@@ -1,0 +1,2580 @@
+X accompani Y	X accompani by Y	0.18791600620002286	1
+X accompani by Y	X accompani Y	0.18791600620002286	1
+X accompani Y	X associ with Y	0.127620217047327	1
+X associ with Y	X accompani Y	0.127620217047327	1
+X accompani with Y	X accompani by Y	0.20107472544512625	1
+X accompani by Y	X accompani with Y	0.20107472544512625	1
+X accompani by Y	X associ with Y	0.25981684763786755	1
+X associ with Y	X accompani by Y	0.25981684763786755	1
+X accompani by Y	X attend with Y	0.20764545960969724	1
+X attend with Y	X accompani by Y	0.20764545960969724	1
+X associ with Y	X accompani with Y	0.07350361707566981	1
+X accompani with Y	X associ with Y	0.07350361707566981	1
+X attack Y	X affect Y	0.06801748426886757	1
+X associ with Y	X attend with Y	0.09087949035511049	1
+X attend with Y	X associ with Y	0.09087949035511049	1
+X associ with Y	X attribut to Y	0.14463775654772554	1
+X attribut to Y	X associ with Y	0.14463775654772554	1
+X us for Y	X correct with x	0.0	1
+X treat by Y	X erad x	0.0	1
+X compos of Y	X prepar from Y	0.0	1
+X prepar from Y	X compos of Y	0.0	1
+X prevent Y	X control with x	0.0	1
+X associ with Y	X occur with x	0.0	1
+X us for Y	X be with x	0.0	1
+X produc Y	X produc in x	0.0	1
+X requir Y	X need for x	0.0	1
+X affect by Y	X involv x	0.0	1
+X produc Y	X develop with Y	0.0	1
+X precipit Y	X trigger Y	0.0	1
+X trigger Y	X precipit Y	0.0	1
+X erad Y	X elimin Y	0.0	1
+X elimin Y	X erad Y	0.0	1
+X present with Y	X result in Y	0.0	1
+X result in Y	X present with Y	0.0	1
+X be against Y	X treat with x	0.0	1
+X be in Y	X receiv x	0.0	1
+X complic by Y	X result from x	0.0	1
+X offer Y	X achiev with x	0.0	1
+X manifest as Y	X caus by x	0.0	1
+X contribut to Y	X result from x	0.0	1
+X affect Y	X infect Y	0.0	1
+X infect Y	X affect Y	0.0	1
+X precipit by Y	X caus x	0.0	1
+X occur with Y	X associ with Y	0.0	1
+X associ with Y	X occur with Y	0.0	1
+X order for Y	X reliev by x	0.0	1
+X us for Y	X respond to x	0.0	1
+X relat to Y	X suggest Y	0.0	1
+X suggest Y	X relat to Y	0.0	1
+X reliev with Y	X prescrib for x	0.0	1
+X hydrolyz Y	X digest Y	0.0	1
+X digest Y	X hydrolyz Y	0.0	1
+X produc Y	X suggest Y	0.0	1
+X suggest Y	X produc Y	0.0	1
+X preced by Y	X complic Y	0.0	1
+X complic Y	X preced by Y	0.0	1
+X follow Y	X complic x	0.0	1
+X predispos to Y	X caus Y	0.0	1
+X caus Y	X predispos to Y	0.0	1
+X us in Y	X requir x	0.0	1
+X control by Y	X order for x	0.0	1
+X mask Y	X reliev with x	0.0	1
+X deriv from Y	X produc by Y	0.0	1
+X produc by Y	X deriv from Y	0.0	1
+X treat with Y	X decreas x	0.0	1
+X produc by Y	X secret x	0.0	1
+X find in Y	X infect with x	0.0	1
+X result from Y	X occur from Y	0.0	1
+X occur from Y	X result from Y	0.0	1
+X erad Y	X treat by x	0.0	1
+X follow Y	X follow by x	0.0	1
+X contain Y	X be in x	0.0	1
+X produc Y	X suggest x	0.0	1
+X control Y	X treat with x	0.0	1
+X obtain with Y	X be for x	0.0	1
+X caus by Y	X lead to x	0.0	1
+X allevi Y	X reliev with x	0.0	1
+X control with Y	X control x	0.0	1
+X control Y	X reliev by x	0.0	1
+X requir Y	X treat with Y	0.0	1
+X treat with Y	X requir Y	0.0	1
+X treat by Y	X cure x	0.0	1
+X reduc Y	X suppress Y	0.0	1
+X suppress Y	X reduc Y	0.0	1
+X produc Y	X occur with x	0.0	1
+X be during Y	X be in Y	0.0	1
+X be in Y	X be during Y	0.0	1
+X us in Y	X give x	0.0	1
+X treat with Y	X improv x	0.0	1
+X treat with Y	X requir for x	0.0	1
+X kill Y	X reduc Y	0.0	1
+X reduc Y	X kill Y	0.0	1
+X suggest Y	X consist of x	0.0	1
+X be for Y	X take for Y	0.0	1
+X take for Y	X be for Y	0.0	1
+X be for Y	X give Y	0.0	1
+X give Y	X be for Y	0.0	1
+X kill by Y	X affect by Y	0.0	1
+X affect by Y	X kill by Y	0.0	1
+X contain Y	X combin with Y	0.0	1
+X combin with Y	X contain Y	0.0	1
+X produc by Y	X destroi Y	0.0	0
+X destroi Y	X produc by Y	0.0	0
+X develop into Y	X caus by x	0.0	1
+X us for Y	X allevi Y	0.0	1
+X allevi Y	X us for Y	0.0	1
+X follow Y	X present as x	0.0	1
+X control by Y	X be in x	0.0	1
+X occur with Y	X suggest x	0.0	1
+X preced Y	X follow by Y	0.0	1
+X follow by Y	X preced Y	0.0	1
+X encount Y	X combin with x	0.0	1
+X treat by Y	X mask x	0.0	1
+X affect by Y	X prevent x	0.0	1
+X mean Y	X refer to Y	0.0	1
+X refer to Y	X mean Y	0.0	1
+X appear as Y	X character by Y	0.0	1
+X character by Y	X appear as Y	0.0	1
+X lead to Y	X complic x	0.0	1
+X present with Y	X caus by x	0.0	1
+X begin as Y	X complic x	0.0	1
+X give for Y	X prescrib for Y	0.0	1
+X prescrib for Y	X give for Y	0.0	1
+X respond to Y	X help x	0.0	1
+X be for Y	X manag with x	0.0	1
+X follow Y	X suggest Y	0.0	1
+X suggest Y	X follow Y	0.0	1
+X caus by Y	X aggrav x	0.0	1
+X follow by Y	X caus by x	0.0	1
+X achiev with Y	X prescrib for x	0.0	1
+X treat with Y	X correct with Y	0.0	1
+X correct with Y	X treat with Y	0.0	1
+X provid from Y	X control with x	0.0	1
+X obtain from Y	X contain x	0.0	1
+X mask Y	X treat by x	0.0	1
+X correct by Y	X reliev x	0.0	1
+X suffer from Y	X get Y	0.0	1
+X follow Y	X suggest x	0.0	1
+X fertil by Y	X fertil x	0.0	1
+X need for Y	X help Y	0.0	1
+X help Y	X need for Y	0.0	1
+X associ with Y	X caus by x	0.0	1
+X differenti from Y	X resembl x	0.0	0
+X control with Y	X reduc x	0.0	1
+X reliev Y	X control with x	0.0	1
+X prescrib for Y	X order for Y	0.0	1
+X order for Y	X prescrib for Y	0.0	1
+X caus by Y	X result in x	0.0	1
+X accompani by Y	X accompani x	0.0	1
+X reliev Y	X control by x	0.0	1
+X suggest Y	X character by x	0.0	1
+X help Y	X treat with x	0.0	1
+X inactiv Y	X inactiv by x	0.0	1
+X produc Y	X occur from x	0.0	1
+X treat with Y	X produc Y	0.0	0
+X produc Y	X treat with Y	0.0	0
+X be in Y	X develop x	0.0	1
+X see in Y	X accompani by x	0.0	1
+X need for Y	X treat with x	0.0	1
+X manufactur Y	X make Y	0.0	1
+X make Y	X manufactur Y	0.0	1
+X result from Y	X present as x	0.0	1
+X occur with Y	X caus by x	0.0	1
+X control with Y	X kill x	0.0	1
+X control by Y	X mask x	0.0	1
+X requir Y	X correct x	0.0	1
+X bring Y	X afford Y	0.0	1
+X afford Y	X bring Y	0.0	1
+X respond to Y	X kill x	0.0	1
+X obtain with Y	X prescrib for x	0.0	1
+X find in Y	X enter Y	0.0	1
+X enter Y	X find in Y	0.0	1
+X caus Y	X lead to Y	0.0	1
+X lead to Y	X caus Y	0.0	1
+X follow Y	X develop after Y	0.0	1
+X develop after Y	X follow Y	0.0	1
+X result in Y	X occur with x	0.0	1
+X produc Y	X relat to x	0.0	1
+X prevent by Y	X protect against x	0.0	1
+X enter Y	X fertil by x	0.0	1
+X increas Y	X associ with Y	0.0	1
+X associ with Y	X increas Y	0.0	1
+X requir Y	X correct by Y	0.0	1
+X correct by Y	X requir Y	0.0	1
+X caus by Y	X contribut to x	0.0	1
+X order for Y	X be in Y	0.0	1
+X be in Y	X order for Y	0.0	1
+X differ from Y	X includ x	0.0	0
+X control with Y	X cure x	0.0	1
+X recommend for Y	X treat with x	0.0	1
+X see in Y	X character by x	0.0	1
+X refer to Y	X associ with x	0.0	1
+X afford Y	X obtain with x	0.0	1
+X penetr by Y	X enter x	0.0	1
+X cure Y	X control with x	0.0	1
+X associ with Y	X refer to x	0.0	1
+X transmit through Y	X transmit via Y	0.0	1
+X transmit via Y	X transmit through Y	0.0	1
+X achiev with Y	X be for x	0.0	1
+X mask Y	X control by x	0.0	1
+X meet Y	X unit with x	0.0	1
+X accompani by Y	X occur with x	0.0	1
+X wipe Y	X prevent Y	0.0	1
+X prevent Y	X wipe Y	0.0	1
+X preced Y	X complic x	0.0	1
+X take for Y	X reliev by x	0.0	1
+X convert into Y	X deriv from x	0.0	1
+X reduc Y	X be for Y	0.0	1
+X be for Y	X reduc Y	0.0	1
+X see in Y	X associ with Y	0.0	1
+X associ with Y	X see in Y	0.0	1
+X give Y	X caus Y	0.0	1
+X caus Y	X give Y	0.0	1
+X contract Y	X die of Y	0.0	0
+X us against Y	X control with x	0.0	1
+X occur in Y	X show x	0.0	1
+X join with Y	X unit with x	0.0	1
+X be in Y	X cure by x	0.0	1
+X be against Y	X affect by x	0.0	1
+X control with Y	X be in x	0.0	1
+X relat to Y	X produc x	0.0	1
+X accompani by Y	X occur with Y	0.0	1
+X occur with Y	X accompani by Y	0.0	1
+X be in Y	X reliev with x	0.0	1
+X be against Y	X us against Y	0.0	1
+X us against Y	X be against Y	0.0	1
+X be with Y	X indic for x	0.0	1
+X occur after Y	X result in x	0.0	1
+X combin with Y	X meet Y	0.0	1
+X meet Y	X combin with Y	0.0	1
+X us as Y	X compos of x	0.0	1
+X produc Y	X preced by Y	0.0	1
+X preced by Y	X produc Y	0.0	1
+X observ in Y	X occur in Y	0.0	1
+X occur in Y	X observ in Y	0.0	1
+X reliev Y	X manag with x	0.0	1
+X cure Y	X treat by x	0.0	1
+X associ with Y	X see in x	0.0	1
+X combin with Y	X meet x	0.0	1
+X follow Y	X accompani by x	0.0	1
+X occur in Y	X present as x	0.0	1
+X occur in Y	X produc x	0.0	1
+X join with Y	X unit with Y	0.0	1
+X unit with Y	X join with Y	0.0	1
+X complic by Y	X complic x	0.0	1
+X present as Y	X associ with x	0.0	1
+X us in Y	X us x	0.0	1
+X achiev with Y	X produc x	0.0	1
+X order for Y	X treat with x	0.0	1
+X lead to Y	X produc by x	0.0	1
+X caus Y	X occur from x	0.0	1
+X respond to Y	X treat x	0.0	1
+X requir for Y	X administ for Y	0.0	1
+X administ for Y	X requir for Y	0.0	1
+X occur with Y	X lead to x	0.0	1
+X associ with Y	X develop Y	0.0	1
+X develop Y	X associ with Y	0.0	1
+X us for Y	X order for Y	0.0	1
+X order for Y	X us for Y	0.0	1
+X caus Y	X begin as Y	0.0	1
+X begin as Y	X caus Y	0.0	1
+X preced by Y	X occur in x	0.0	1
+X isol from Y	X produc by Y	0.0	1
+X produc by Y	X isol from Y	0.0	1
+X metabol to Y	X reduc to Y	0.0	1
+X reduc to Y	X metabol to Y	0.0	1
+X requir Y	X give for x	0.0	1
+X be in Y	X achiev with x	0.0	1
+X control by Y	X help x	0.0	1
+X prevent Y	X fight Y	0.0	1
+X fight Y	X prevent Y	0.0	1
+X deriv from Y	X produc x	0.0	1
+X reliev by Y	X treat with Y	0.0	1
+X treat with Y	X reliev by Y	0.0	1
+X follow by Y	X altern with Y	0.0	1
+X altern with Y	X follow by Y	0.0	1
+X find in Y	X transmit x	0.0	1
+X correct by Y	X correct with Y	0.0	1
+X correct with Y	X correct by Y	0.0	1
+X elimin Y	X prevent by x	0.0	1
+X allevi Y	X treat with x	0.0	1
+X transmit Y	X find in x	0.0	1
+X us for Y	X be against Y	0.0	1
+X be against Y	X us for Y	0.0	1
+X us as Y	X deriv from x	0.0	1
+X reliev Y	X allevi Y	0.0	1
+X allevi Y	X reliev Y	0.0	1
+X provid by Y	X recommend for x	0.0	1
+X be for Y	X be with x	0.0	1
+X allevi Y	X control by x	0.0	1
+X induc by Y	X caus x	0.0	1
+X us during Y	X us in Y	0.0	1
+X us in Y	X us during Y	0.0	1
+X caus Y	X accompani x	0.0	1
+X prevent by Y	X treat with Y	0.0	1
+X treat with Y	X prevent by Y	0.0	1
+X follow by Y	X associ with x	0.0	1
+X base on Y	X contain Y	0.0	1
+X contain Y	X base on Y	0.0	1
+X be in Y	X recommend for Y	0.0	1
+X recommend for Y	X be in Y	0.0	1
+X affect Y	X affect by x	0.0	1
+X lead to Y	X prevent by x	0.0	1
+X altern with Y	X follow by x	0.0	1
+X reliev by Y	X requir for x	0.0	1
+X recommend for Y	X achiev with x	0.0	1
+X correct by Y	X prevent x	0.0	1
+X follow by Y	X produc Y	0.0	1
+X produc Y	X follow by Y	0.0	1
+X reliev by Y	X cure x	0.0	1
+X be in Y	X administ to Y	0.0	1
+X administ to Y	X be in Y	0.0	1
+X suggest Y	X accompani by x	0.0	1
+X reliev Y	X cure by x	0.0	1
+X accompani by Y	X develop with Y	0.0	1
+X develop with Y	X accompani by Y	0.0	1
+X be in Y	X us x	0.0	1
+X caus Y	X develop after x	0.0	1
+X result in Y	X relat to x	0.0	1
+X manifest by Y	X associ with x	0.0	1
+X prescrib for Y	X provid from Y	0.0	1
+X provid from Y	X prescrib for Y	0.0	1
+X associ with Y	X develop from Y	0.0	1
+X develop from Y	X associ with Y	0.0	1
+X produc Y	X releas Y	0.0	1
+X releas Y	X produc Y	0.0	1
+X control with Y	X reliev by Y	0.0	1
+X reliev by Y	X control with Y	0.0	1
+X reduc Y	X respond to x	0.0	1
+X caus Y	X occur in x	0.0	1
+X occur in Y	X caus x	0.0	1
+X reduc Y	X reliev with x	0.0	1
+X control by Y	X prevent by Y	0.0	1
+X prevent by Y	X control by Y	0.0	1
+X find in Y	X carri x	0.0	1
+X induc by Y	X lead to x	0.0	1
+X secret by Y	X produc x	0.0	1
+X obtain from Y	X provid x	0.0	1
+X treat with Y	X cure x	0.0	1
+X reduc Y	X prevent Y	0.0	1
+X prevent Y	X reduc Y	0.0	1
+X precipit Y	X lead to Y	0.0	1
+X lead to Y	X precipit Y	0.0	1
+X caus Y	X induc by x	0.0	1
+X us for Y	X recommend for Y	0.0	1
+X recommend for Y	X us for Y	0.0	1
+X requir for Y	X achiev with x	0.0	1
+X respond to Y	X allevi x	0.0	1
+X resembl Y	X confus with Y	0.0	0
+X cure Y	X reliev by x	0.0	1
+X deriv from Y	X be against Y	0.0	0
+X be against Y	X deriv from Y	0.0	0
+X us Y	X us in x	0.0	1
+X caus by Y	X caus x	0.0	1
+X follow Y	X associ with Y	0.0	1
+X reliev Y	X prevent Y	0.0	1
+X prevent Y	X reliev Y	0.0	1
+X isol from Y	X produc x	0.0	1
+X control Y	X reduc Y	0.0	1
+X reduc Y	X control Y	0.0	1
+X kill Y	X kill by x	0.0	1
+X transmit Y	X carri by x	0.0	1
+X transmit by Y	X be in Y	0.0	1
+X be in Y	X transmit by Y	0.0	1
+X need for Y	X administ for Y	0.0	1
+X administ for Y	X need for Y	0.0	1
+X affect Y	X affect with x	0.0	1
+X follow Y	X occur with x	0.0	1
+X form from Y	X metabol to x	0.0	1
+X character by Y	X be with x	0.0	1
+X deriv from Y	X convert to Y	0.0	0
+X convert to Y	X deriv from Y	0.0	0
+X begin with Y	X present with Y	0.0	1
+X present with Y	X begin with Y	0.0	1
+X find Y	X discov Y	0.0	1
+X discov Y	X find Y	0.0	1
+X be in Y	X develop in Y	0.0	1
+X develop in Y	X be in Y	0.0	1
+X character by Y	X distinguish from x	0.0	0
+X give for Y	X reliev by x	0.0	1
+X find in Y	X contain x	0.0	1
+X be in Y	X transmit x	0.0	1
+X control with Y	X take for x	0.0	1
+X distinguish from Y	X character by Y	0.0	0
+X character by Y	X distinguish from Y	0.0	0
+X control with Y	X treat with Y	0.0	1
+X treat with Y	X control with Y	0.0	1
+X help Y	X control by x	0.0	1
+X achiev with Y	X be in x	0.0	1
+X occur with Y	X occur in Y	0.0	1
+X occur in Y	X occur with Y	0.0	1
+X requir for Y	X recommend for Y	0.0	1
+X recommend for Y	X requir for Y	0.0	1
+X present as Y	X be in x	0.0	1
+X control with Y	X decreas x	0.0	1
+X contribut to Y	X associ with x	0.0	1
+X treat by Y	X correct x	0.0	1
+X bring Y	X provid Y	0.0	1
+X provid Y	X bring Y	0.0	1
+X associ with Y	X give to x	0.0	1
+X achiev with Y	X afford x	0.0	1
+X manifest by Y	X result in Y	0.0	1
+X result in Y	X manifest by Y	0.0	1
+X control with Y	X provid from x	0.0	1
+X us for Y	X be for Y	0.0	1
+X be for Y	X us for Y	0.0	1
+X us for Y	X obtain with x	0.0	1
+X give Y	X occur in x	0.0	1
+X confus with Y	X resembl x	0.0	1
+X control by Y	X reliev with Y	0.0	1
+X reliev with Y	X control by Y	0.0	1
+X lead to Y	X occur with x	0.0	1
+X occur Y	X associ with x	0.0	0
+X associ with Y	X give to Y	0.0	1
+X give to Y	X associ with Y	0.0	1
+X die of Y	X kill x	0.0	1
+X order for Y	X administ for Y	0.0	1
+X administ for Y	X order for Y	0.0	1
+X treat with Y	X give to x	0.0	1
+X manifest by Y	X see in x	0.0	1
+X present as Y	X follow x	0.0	1
+X be with Y	X begin with Y	0.0	1
+X begin with Y	X be with Y	0.0	1
+X manifest by Y	X lead to Y	0.0	1
+X lead to Y	X manifest by Y	0.0	1
+X suggest Y	X caus by x	0.0	1
+X cure Y	X treat with x	0.0	1
+X compos of Y	X us as x	0.0	1
+X decreas Y	X reliev by x	0.0	1
+X involv Y	X occur in Y	0.0	1
+X occur in Y	X involv Y	0.0	1
+X wipe Y	X be against Y	0.0	1
+X be against Y	X wipe Y	0.0	1
+X confound with Y	X simul Y	0.0	1
+X simul Y	X confound with Y	0.0	0
+X allevi Y	X respond to x	0.0	1
+X reliev with Y	X reduc x	0.0	1
+X hydrolyz Y	X hydrolyz by x	0.0	1
+X affect in Y	X involv x	0.0	1
+X induc Y	X provid Y	0.0	1
+X provid Y	X induc Y	0.0	1
+X produc Y	X kill x	0.0	0
+X caus by Y	X begin with x	0.0	1
+X help Y	X respond to x	0.0	1
+X unit with Y	X meet Y	0.0	1
+X meet Y	X unit with Y	0.0	1
+X infect with Y	X find in x	0.0	1
+X prevent by Y	X prevent x	0.0	1
+X confound with Y	X simul x	0.0	1
+X correct by Y	X us for x	0.0	1
+X requir Y	X us for x	0.0	1
+X caus Y	X precipit Y	0.0	1
+X precipit Y	X caus Y	0.0	1
+X relat to Y	X character by x	0.0	1
+X control Y	X control by x	0.0	1
+X reliev by Y	X take for x	0.0	1
+X us as Y	X prepar from x	0.0	1
+X occur after Y	X follow by x	0.0	1
+X pass through Y	X enter Y	0.0	1
+X enter Y	X pass through Y	0.0	1
+X requir Y	X treat by Y	0.0	1
+X treat by Y	X requir Y	0.0	1
+X attack with Y	X have Y	0.0	1
+X allevi Y	X treat by x	0.0	1
+X present as Y	X occur in x	0.0	1
+X secret Y	X secret by x	0.0	1
+X requir Y	X us in x	0.0	1
+X accompani Y	X accompani by x	0.0	1
+X reliev by Y	X reliev x	0.0	1
+X requir Y	X administ for x	0.0	1
+X suggest Y	X associ with Y	0.0	1
+X associ with Y	X suggest Y	0.0	1
+X produc Y	X occur after x	0.0	1
+X occur in Y	X occur with x	0.0	1
+X control with Y	X allevi x	0.0	1
+X give Y	X give to x	0.0	1
+X be for Y	X obtain with x	0.0	1
+X accompani Y	X result in x	0.0	1
+X result from Y	X give to x	0.0	1
+X reserv for Y	X treat with x	0.0	1
+X associ with Y	X indic Y	0.0	1
+X indic Y	X associ with Y	0.0	1
+X transmit by Y	X find in Y	0.0	1
+X find in Y	X transmit by Y	0.0	1
+X occur with Y	X result in x	0.0	1
+X accompani by Y	X mean Y	0.0	1
+X mean Y	X accompani by Y	0.0	1
+X obtain from Y	X isol from Y	0.0	1
+X isol from Y	X obtain from Y	0.0	1
+X inactiv by Y	X inactiv x	0.0	1
+X expos to Y	X develop Y	0.0	1
+X develop Y	X expos to Y	0.0	1
+X requir for Y	X treat with x	0.0	1
+X produc by Y	X be against Y	0.0	0
+X be against Y	X produc by Y	0.0	0
+X help Y	X give for Y	0.0	1
+X give for Y	X help Y	0.0	1
+X give for Y	X take for Y	0.0	1
+X take for Y	X give for Y	0.0	1
+X accompani by Y	X present with Y	0.0	1
+X present with Y	X accompani by Y	0.0	1
+X accompani by Y	X caus by x	0.0	1
+X deriv from Y	X us as x	0.0	1
+X suggest Y	X caus x	0.0	1
+X associ Y	X caus Y	0.0	1
+X caus Y	X associ Y	0.0	1
+X unit with Y	X combin with x	0.0	1
+X find in Y	X associ with x	0.0	1
+X follow by Y	X caus Y	0.0	1
+X caus Y	X follow by Y	0.0	1
+X altern with Y	X give to x	0.0	1
+X suffer from Y	X have Y	0.0	1
+X caus Y	X develop from x	0.0	1
+X fertil Y	X inject into Y	0.0	1
+X inject into Y	X fertil Y	0.0	1
+X destroi Y	X produc x	0.0	0
+X occur in Y	X character by x	0.0	1
+X mistak for Y	X mistak for x	0.0	1
+X caus by Y	X accompani by Y	0.0	1
+X accompani by Y	X caus by Y	0.0	1
+X affect Y	X develop in Y	0.0	1
+X develop in Y	X affect Y	0.0	1
+X result in Y	X develop from x	0.0	1
+X accompani by Y	X follow by x	0.0	1
+X respond to Y	X need for x	0.0	1
+X result in Y	X accompani x	0.0	1
+X combin with Y	X combin with x	0.0	1
+X confus with Y	X differ from Y	0.0	1
+X transmit from Y	X have x	0.0	1
+X respond to Y	X requir Y	0.0	1
+X requir Y	X respond to Y	0.0	1
+X manifest by Y	X present with Y	0.0	1
+X present with Y	X manifest by Y	0.0	1
+X compos of Y	X base on Y	0.0	1
+X base on Y	X compos of Y	0.0	1
+X distinguish from Y	X distinguish from x	0.0	1
+X help Y	X prescrib for Y	0.0	1
+X prescrib for Y	X help Y	0.0	1
+X treat Y	X respond to x	0.0	1
+X suggest Y	X result in x	0.0	1
+X occur in Y	X carri x	0.0	1
+X isol from Y	X find in Y	0.0	1
+X find in Y	X isol from Y	0.0	1
+X occur in Y	X be during Y	0.0	1
+X be during Y	X occur in Y	0.0	1
+X correct Y	X correct by x	0.0	1
+X carri Y	X carri by x	0.0	1
+X caus Y	X involv Y	0.0	1
+X involv Y	X caus Y	0.0	1
+X affect by Y	X kill x	0.0	1
+X be from Y	X caus x	0.0	1
+X be with Y	X affect x	0.0	1
+X order for Y	X reliev Y	0.0	1
+X reliev Y	X order for Y	0.0	1
+X reliev Y	X requir x	0.0	1
+X be in Y	X reduc Y	0.0	1
+X reduc Y	X be in Y	0.0	1
+X reduc Y	X need for Y	0.0	1
+X need for Y	X reduc Y	0.0	1
+X confus with Y	X differ from x	0.0	1
+X treat by Y	X reserv for x	0.0	1
+X erad Y	X control by x	0.0	1
+X take for Y	X reduc Y	0.0	1
+X reduc Y	X take for Y	0.0	1
+X follow by Y	X accompani by x	0.0	1
+X caus by Y	X manifest by x	0.0	1
+X prescrib for Y	X administ for Y	0.0	1
+X administ for Y	X prescrib for Y	0.0	1
+X constrict Y	X dilat Y	0.0	0
+X dilat Y	X constrict Y	0.0	0
+X lead to Y	X preced by x	0.0	1
+X impli Y	X defin as Y	0.0	1
+X defin as Y	X impli Y	0.0	1
+X produc Y	X attribut to x	0.0	1
+X relat to Y	X contribut to x	0.0	1
+X be in Y	X caus by Y	0.0	1
+X caus by Y	X be in Y	0.0	1
+X produc Y	X manifest as Y	0.0	1
+X manifest as Y	X produc Y	0.0	1
+X help Y	X reliev with x	0.0	1
+X reliev by Y	X requir Y	0.0	1
+X requir Y	X reliev by Y	0.0	1
+X manag with Y	X mask x	0.0	1
+X reliev Y	X prescrib for Y	0.0	1
+X prescrib for Y	X reliev Y	0.0	1
+X inhibit Y	X inhibit by x	0.0	1
+X begin as Y	X associ with x	0.0	1
+X result from Y	X complic by x	0.0	1
+X prescrib for Y	X reliev by x	0.0	1
+X occur with Y	X indic x	0.0	1
+X reliev with Y	X mask x	0.0	1
+X produc in Y	X produc x	0.0	1
+X affect by Y	X be in x	0.0	1
+X control by Y	X erad x	0.0	1
+X need for Y	X give for Y	0.0	1
+X give for Y	X need for Y	0.0	1
+X affect by Y	X be against x	0.0	1
+X cure with Y	X cure x	0.0	1
+X be in Y	X occur in x	0.0	0
+X complic with Y	X associ with x	0.0	1
+X develop Y	X find in x	0.0	1
+X form from Y	X convert to x	0.0	1
+X preced by Y	X lead to x	0.0	1
+X respond to Y	X be against x	0.0	1
+X present with Y	X see in x	0.0	1
+X involv Y	X associ with x	0.0	1
+X cure Y	X control Y	0.0	1
+X control Y	X cure Y	0.0	1
+X administ for Y	X help Y	0.0	1
+X help Y	X administ for Y	0.0	1
+X includ Y	X combin with x	0.0	1
+X be against Y	X kill by x	0.0	1
+X produc Y	X increas Y	0.0	1
+X increas Y	X produc Y	0.0	1
+X afford Y	X us for Y	0.0	1
+X us for Y	X afford Y	0.0	1
+X occur with Y	X associ with x	0.0	1
+X carri by Y	X spread by Y	0.0	1
+X spread by Y	X carri by Y	0.0	1
+X accompani by Y	X follow by Y	0.0	1
+X follow by Y	X accompani by Y	0.0	1
+X follow by Y	X occur after x	0.0	1
+X complic with Y	X be in x	0.0	1
+X ejacul Y	X have Y	0.0	1
+X have Y	X ejacul Y	0.0	1
+X infect with Y	X transmit by x	0.0	1
+X associ with Y	X follow x	0.0	1
+X us for Y	X achiev with x	0.0	1
+X caus Y	X be from x	0.0	1
+X complic by Y	X progress to Y	0.0	1
+X progress to Y	X complic by Y	0.0	1
+X us for Y	X manag with x	0.0	1
+X achiev with Y	X recommend for x	0.0	1
+X develop after Y	X caus x	0.0	1
+X introduc by Y	X introduc x	0.0	1
+X be for Y	X recommend for Y	0.0	1
+X recommend for Y	X be for Y	0.0	1
+X occur after Y	X result from Y	0.0	1
+X result from Y	X occur after Y	0.0	1
+X give to Y	X treat with x	0.0	1
+X altern with Y	X give to Y	0.0	1
+X give to Y	X altern with Y	0.0	1
+X see in Y	X be in Y	0.0	1
+X be in Y	X see in Y	0.0	1
+X produc Y	X induc Y	0.0	1
+X induc Y	X produc Y	0.0	1
+X need for Y	X treat by x	0.0	1
+X develop from Y	X result from Y	0.0	1
+X result from Y	X develop from Y	0.0	1
+X termin in Y	X follow x	0.0	1
+X reliev with Y	X be in x	0.0	1
+X meet Y	X meet x	0.0	1
+X infect with Y	X occur in x	0.0	1
+X caus Y	X result from x	0.0	1
+X be against Y	X control with x	0.0	1
+X occur from Y	X caus by Y	0.0	1
+X caus by Y	X occur from Y	0.0	1
+X associ with Y	X associ with x	0.0	1
+X produc Y	X make Y	0.0	1
+X make Y	X produc Y	0.0	1
+X prepar from Y	X us as x	0.0	1
+X control with Y	X mask x	0.0	1
+X manag with Y	X control x	0.0	1
+X requir for Y	X prescrib for Y	0.0	1
+X prescrib for Y	X requir for Y	0.0	1
+X begin with Y	X suggest x	0.0	1
+X caus by Y	X occur after Y	0.0	1
+X occur after Y	X caus by Y	0.0	1
+X prevent Y	X prevent by x	0.0	1
+X occur in Y	X transmit x	0.0	1
+X result in Y	X present as Y	0.0	1
+X present as Y	X result in Y	0.0	1
+X caus Y	X result from Y	0.0	1
+X result from Y	X caus Y	0.0	1
+X be for Y	X requir for Y	0.0	1
+X requir for Y	X be for Y	0.0	1
+X attribut to Y	X be in Y	0.0	1
+X be in Y	X attribut to Y	0.0	1
+X provid Y	X contain Y	0.0	1
+X contain Y	X provid Y	0.0	1
+X respond to Y	X administ for x	0.0	1
+X treat Y	X control with x	0.0	1
+X prescrib for Y	X control Y	0.0	1
+X control Y	X prescrib for Y	0.0	1
+X follow Y	X preced x	0.0	1
+X erad Y	X us against Y	0.0	1
+X us against Y	X erad Y	0.0	1
+X come with Y	X associ with Y	0.0	1
+X associ with Y	X come with Y	0.0	1
+X associ with Y	X mean x	0.0	1
+X administ for Y	X reduc Y	0.0	1
+X reduc Y	X administ for Y	0.0	1
+X caus Y	X contribut to Y	0.0	1
+X contribut to Y	X caus Y	0.0	1
+X requir Y	X prescrib for x	0.0	1
+X be for Y	X respond to x	0.0	1
+X reliev by Y	X order for x	0.0	1
+X prescrib for Y	X requir x	0.0	1
+X be in Y	X infect with x	0.0	1
+X resembl Y	X distinguish from Y	0.0	0
+X distinguish from Y	X resembl Y	0.0	0
+X manifest by Y	X produc Y	0.0	1
+X produc Y	X manifest by Y	0.0	1
+X prevent Y	X control Y	0.0	1
+X control Y	X prevent Y	0.0	1
+X affect Y	X affect in x	0.0	1
+X control with Y	X help x	0.0	1
+X associ with Y	X come with x	0.0	1
+X mean Y	X associ with Y	0.0	1
+X associ with Y	X mean Y	0.0	1
+X treat with Y	X control by Y	0.0	1
+X control by Y	X treat with Y	0.0	1
+X preced Y	X follow x	0.0	1
+X give to Y	X us for Y	0.0	1
+X us for Y	X give to Y	0.0	1
+X prescrib for Y	X respond to x	0.0	1
+X emploi as Y	X us as Y	0.0	1
+X us as Y	X emploi as Y	0.0	1
+X affect by Y	X elimin x	0.0	1
+X us for Y	X administ for Y	0.0	1
+X administ for Y	X us for Y	0.0	1
+X suggest Y	X result in Y	0.0	1
+X result in Y	X suggest Y	0.0	1
+X destroi Y	X affect by x	0.0	1
+X reliev Y	X respond to x	0.0	1
+X follow by Y	X give to x	0.0	1
+X occur with Y	X occur in x	0.0	1
+X suggest Y	X be in x	0.0	1
+X contract Y	X have Y	0.0	1
+X control by Y	X reliev by Y	0.0	1
+X reliev by Y	X control by Y	0.0	1
+X transmit by Y	X infect with x	0.0	1
+X obtain with Y	X achiev with Y	0.0	1
+X achiev with Y	X obtain with Y	0.0	1
+X lead to Y	X present as Y	0.0	1
+X present as Y	X lead to Y	0.0	1
+X relat to Y	X caus x	0.0	1
+X associ with Y	X accompani x	0.0	1
+X reliev Y	X overcom by x	0.0	1
+X indic Y	X manifest by x	0.0	1
+X occur in Y	X preced by x	0.0	1
+X accompani by Y	X associ with x	0.0	1
+X relat to Y	X associ with x	0.0	1
+X respond to Y	X reduc x	0.0	1
+X be in Y	X present as x	0.0	1
+X result in Y	X suggest x	0.0	1
+X enter Y	X releas into Y	0.0	1
+X releas into Y	X enter Y	0.0	1
+X complic Y	X occur with Y	0.0	1
+X occur with Y	X complic Y	0.0	1
+X requir for Y	X reliev Y	0.0	1
+X reliev Y	X requir for Y	0.0	1
+X give to Y	X follow by Y	0.0	1
+X follow by Y	X give to Y	0.0	1
+X control by Y	X overcom by Y	0.0	1
+X overcom by Y	X control by Y	0.0	1
+X elimin Y	X kill Y	0.0	1
+X kill Y	X elimin Y	0.0	1
+X accompani Y	X caus by Y	0.0	1
+X caus by Y	X accompani Y	0.0	1
+X reliev by Y	X control x	0.0	1
+X bring Y	X caus Y	0.0	1
+X caus Y	X bring Y	0.0	1
+X reduc Y	X mask Y	0.0	1
+X mask Y	X reduc Y	0.0	1
+X reliev with Y	X give for x	0.0	1
+X lead to Y	X occur from x	0.0	1
+X develop for Y	X be for Y	0.0	1
+X be for Y	X develop for Y	0.0	1
+X be against Y	X us in Y	0.0	1
+X us in Y	X be against Y	0.0	1
+X follow by Y	X be after x	0.0	1
+X combin with Y	X us as Y	0.0	1
+X us as Y	X combin with Y	0.0	1
+X character by Y	X present with Y	0.0	1
+X present with Y	X character by Y	0.0	1
+X reliev by Y	X need for x	0.0	1
+X have Y	X provid Y	0.0	1
+X provid Y	X have Y	0.0	1
+X discharg Y	X produc Y	0.0	1
+X produc Y	X discharg Y	0.0	1
+X manag with Y	X reduc x	0.0	1
+X result from Y	X result in x	0.0	1
+X contribut to Y	X result in Y	0.0	1
+X result in Y	X contribut to Y	0.0	1
+X penetr Y	X inject into Y	0.0	1
+X inject into Y	X penetr Y	0.0	1
+X mask Y	X manag with x	0.0	1
+X follow Y	X result in x	0.0	1
+X induc by Y	X produc x	0.0	1
+X us in Y	X recommend for Y	0.0	1
+X recommend for Y	X us in Y	0.0	1
+X indic Y	X accompani by x	0.0	1
+X indic for Y	X afford Y	0.0	1
+X afford Y	X indic for Y	0.0	1
+X give to Y	X character by Y	0.0	1
+X character by Y	X give to Y	0.0	1
+X reduc Y	X allevi Y	0.0	1
+X allevi Y	X reduc Y	0.0	1
+X mistak for Y	X differ from Y	0.0	1
+X associ with Y	X relat to Y	0.0	1
+X relat to Y	X associ with Y	0.0	1
+X elimin Y	X prevent Y	0.0	1
+X prevent Y	X elimin Y	0.0	1
+X correct by Y	X correct x	0.0	1
+X indic Y	X present with x	0.0	1
+X die of Y	X expos to Y	0.0	1
+X expos to Y	X die of Y	0.0	0
+X indic for Y	X develop for Y	0.0	1
+X develop for Y	X indic for Y	0.0	1
+X transmit Y	X have Y	0.0	1
+X have Y	X transmit Y	0.0	1
+X enter Y	X penetr by x	0.0	1
+X differenti from Y	X mimic x	0.0	0
+X cure Y	X cure with x	0.0	1
+X give for Y	X correct by x	0.0	1
+X respond to Y	X give for x	0.0	1
+X protect against Y	X prevent by x	0.0	1
+X produc by Y	X give x	0.0	1
+X provid from Y	X give for Y	0.0	1
+X give for Y	X provid from Y	0.0	1
+X differ from Y	X differ from x	0.0	1
+X treat with Y	X control x	0.0	1
+X associ with Y	X relat to x	0.0	1
+X transmit Y	X transmit through x	0.0	1
+X follow by Y	X follow by x	0.0	1
+X be in Y	X present with x	0.0	1
+X be in Y	X consist of x	0.0	1
+X replac Y	X substitut for Y	0.0	1
+X substitut for Y	X replac Y	0.0	1
+X involv Y	X confin to Y	0.0	1
+X confin to Y	X involv Y	0.0	1
+X afford by Y	X offer x	0.0	1
+X caus by Y	X result from Y	0.0	1
+X result from Y	X caus by Y	0.0	1
+X contain Y	X receiv Y	0.0	1
+X receiv Y	X contain Y	0.0	1
+X suppress Y	X treat with x	0.0	1
+X afford Y	X recommend for Y	0.0	1
+X recommend for Y	X afford Y	0.0	1
+X result from Y	X be in Y	0.0	1
+X be in Y	X result from Y	0.0	1
+X relat to Y	X result in x	0.0	1
+X see in Y	X occur in Y	0.0	1
+X occur in Y	X see in Y	0.0	1
+X mask Y	X respond to x	0.0	1
+X transmit Y	X spread by x	0.0	1
+X attribut to Y	X associ with x	0.0	1
+X control with Y	X order for x	0.0	1
+X see in Y	X caus by Y	0.0	1
+X caus by Y	X see in Y	0.0	1
+X manufactur Y	X releas Y	0.0	1
+X releas Y	X manufactur Y	0.0	1
+X prescrib for Y	X achiev with x	0.0	1
+X treat with Y	X be against x	0.0	1
+X reliev Y	X administ for Y	0.0	1
+X administ for Y	X reliev Y	0.0	1
+X result from Y	X mean Y	0.0	1
+X mean Y	X result from Y	0.0	1
+X give Y	X provid by x	0.0	1
+X follow Y	X give to x	0.0	1
+X us for Y	X requir for Y	0.0	1
+X requir for Y	X us for Y	0.0	1
+X affect in Y	X affect x	0.0	1
+X make by Y	X produc x	0.0	1
+X prevent by Y	X treat by Y	0.0	1
+X treat by Y	X prevent by Y	0.0	1
+X give to Y	X result from x	0.0	1
+X herald by Y	X associ with Y	0.0	1
+X associ with Y	X herald by Y	0.0	1
+X contain Y	X obtain from x	0.0	1
+X meet Y	X join with x	0.0	1
+X offer Y	X us for Y	0.0	1
+X us for Y	X offer Y	0.0	1
+X result from Y	X manifest by x	0.0	1
+X caus by Y	X occur in Y	0.0	1
+X occur in Y	X caus by Y	0.0	1
+X caus by Y	X develop into x	0.0	1
+X have Y	X receiv Y	0.0	1
+X receiv Y	X have Y	0.0	1
+X relat to Y	X lead to x	0.0	1
+X give Y	X us in x	0.0	1
+X overcom by Y	X reliev x	0.0	1
+X be for Y	X us in Y	0.0	1
+X us in Y	X be for Y	0.0	1
+X occur with Y	X follow by x	0.0	1
+X elimin Y	X treat with x	0.0	1
+X produc Y	X induc by x	0.0	1
+X meet Y	X combin with x	0.0	1
+X lead to Y	X suggest x	0.0	1
+X accompani Y	X caus Y	0.0	1
+X caus Y	X accompani Y	0.0	1
+X caus by Y	X occur in x	0.0	1
+X character by Y	X mean Y	0.0	1
+X mean Y	X character by Y	0.0	1
+X show Y	X occur in x	0.0	1
+X treat with Y	X help x	0.0	1
+X follow Y	X lead to x	0.0	1
+X give Y	X expos to Y	0.0	1
+X expos to Y	X give Y	0.0	1
+X administ with Y	X combin with Y	0.0	1
+X combin with Y	X administ with Y	0.0	1
+X recommend for Y	X prescrib for Y	0.0	1
+X prescrib for Y	X recommend for Y	0.0	1
+X form from Y	X convert into x	0.0	1
+X occur with Y	X follow x	0.0	1
+X us in Y	X administ for Y	0.0	1
+X administ for Y	X us in Y	0.0	1
+X be for Y	X reliev Y	0.0	1
+X reliev Y	X be for Y	0.0	1
+X fertil by Y	X penetr x	0.0	1
+X reliev by Y	X decreas x	0.0	1
+X accompani Y	X caus x	0.0	1
+X be in Y	X reliev by x	0.0	1
+X result in Y	X give to Y	0.0	1
+X give to Y	X result in Y	0.0	1
+X us for Y	X administ to Y	0.0	1
+X administ to Y	X us for Y	0.0	1
+X die from Y	X kill x	0.0	1
+X allevi Y	X decreas Y	0.0	1
+X decreas Y	X allevi Y	0.0	1
+X provid Y	X achiev with x	0.0	1
+X suggest Y	X result from x	0.0	1
+X suggest Y	X be in Y	0.0	1
+X be in Y	X suggest Y	0.0	1
+X prevent Y	X respond to x	0.0	1
+X erad Y	X be against Y	0.0	1
+X be against Y	X erad Y	0.0	1
+X obtain from Y	X produc by Y	0.0	1
+X produc by Y	X obtain from Y	0.0	1
+X produc by Y	X make x	0.0	1
+X know as Y	X resembl Y	0.0	0
+X resembl Y	X know as Y	0.0	0
+X includ Y	X act as x	0.0	1
+X find in Y	X includ x	0.0	1
+X indic for Y	X provid Y	0.0	1
+X provid Y	X indic for Y	0.0	1
+X be in Y	X suggest x	0.0	1
+X reduc Y	X control by x	0.0	1
+X treat Y	X control Y	0.0	1
+X control Y	X treat Y	0.0	1
+X see in Y	X produc x	0.0	1
+X follow Y	X follow x	0.0	1
+X result from Y	X follow Y	0.0	1
+X follow Y	X result from Y	0.0	1
+X result from Y	X produc x	0.0	1
+X lead to Y	X suggest Y	0.0	1
+X suggest Y	X lead to Y	0.0	1
+X requir for Y	X requir x	0.0	1
+X contain Y	X consist of Y	0.0	1
+X consist of Y	X contain Y	0.0	1
+X have Y	X find in x	0.0	1
+X enter Y	X penetr Y	0.0	1
+X penetr Y	X enter Y	0.0	1
+X die of Y	X get Y	0.0	1
+X get Y	X die of Y	0.0	0
+X occur after Y	X produc x	0.0	1
+X obtain with Y	X offer x	0.0	1
+X complic Y	X follow by x	0.0	1
+X reliev with Y	X be for x	0.0	1
+X begin as Y	X associ with Y	0.0	1
+X associ with Y	X begin as Y	0.0	1
+X occur in Y	X give x	0.0	1
+X caus by Y	X suggest x	0.0	1
+X transmit Y	X carri Y	0.0	1
+X carri Y	X transmit Y	0.0	1
+X occur during Y	X associ with Y	0.0	1
+X associ with Y	X occur during Y	0.0	1
+X kill Y	X us against Y	0.0	1
+X us against Y	X kill Y	0.0	1
+X give to Y	X take x	0.0	1
+X character by Y	X lead to Y	0.0	1
+X lead to Y	X character by Y	0.0	1
+X be in Y	X be with x	0.0	1
+X provid by Y	X provid x	0.0	1
+X present as Y	X associ with Y	0.0	1
+X associ with Y	X present as Y	0.0	1
+X administ to Y	X us in Y	0.0	1
+X us in Y	X administ to Y	0.0	1
+X produc Y	X accompani by x	0.0	1
+X associ with Y	X begin as x	0.0	1
+X produc Y	X isol from x	0.0	1
+X us in Y	X be with x	0.0	1
+X treat by Y	X correct with Y	0.0	1
+X correct with Y	X treat by Y	0.0	1
+X character by Y	X relat to x	0.0	1
+X caus Y	X be in x	0.0	1
+X produc Y	X introduc by x	0.0	1
+X follow Y	X caus x	0.0	1
+X respond to Y	X mask x	0.0	1
+X be for Y	X help Y	0.0	1
+X help Y	X be for Y	0.0	1
+X find in Y	X present x	0.0	1
+X follow by Y	X complic x	0.0	1
+X occur from Y	X associ with Y	0.0	1
+X associ with Y	X occur from Y	0.0	1
+X complic Y	X complic by x	0.0	1
+X accompani Y	X accompani with x	0.0	1
+X help Y	X decreas Y	0.0	1
+X decreas Y	X help Y	0.0	1
+X caus by Y	X occur with x	0.0	1
+X treat with Y	X need for x	0.0	1
+X fertil Y	X fertil by x	0.0	1
+X kill Y	X get x	0.0	1
+X manifest as Y	X result from x	0.0	1
+X obtain with Y	X give x	0.0	1
+X caus by Y	X occur with Y	0.0	1
+X occur with Y	X caus by Y	0.0	1
+X prevent Y	X treat Y	0.0	1
+X treat Y	X prevent Y	0.0	1
+X destroi Y	X deriv from Y	0.0	0
+X deriv from Y	X destroi Y	0.0	0
+X develop Y	X caus by x	0.0	1
+X provid by Y	X us for x	0.0	1
+X consist of Y	X begin with Y	0.0	1
+X begin with Y	X consist of Y	0.0	1
+X lead to Y	X result from x	0.0	1
+X caus Y	X result in Y	0.0	1
+X result in Y	X caus Y	0.0	1
+X order for Y	X indic for Y	0.0	1
+X indic for Y	X order for Y	0.0	1
+X obtain with Y	X afford x	0.0	1
+X treat by Y	X order for x	0.0	1
+X preced Y	X character by x	0.0	1
+X develop into Y	X suggest Y	0.0	1
+X suggest Y	X develop into Y	0.0	1
+X refer to Y	X involv Y	0.0	1
+X involv Y	X refer to Y	0.0	1
+X recommend for Y	X administ for Y	0.0	1
+X administ for Y	X recommend for Y	0.0	1
+X convert Y	X digest Y	0.0	1
+X digest Y	X convert Y	0.0	1
+X give with Y	X treat with x	0.0	1
+X mimic Y	X differenti from x	0.0	0
+X occur in Y	X suffer from x	0.0	1
+X produc Y	X give to x	0.0	0
+X bring Y	X obtain with x	0.0	1
+X associ with Y	X occur from x	0.0	1
+X follow Y	X occur after Y	0.0	1
+X occur after Y	X follow Y	0.0	1
+X have Y	X distinguish from x	0.0	0
+X predispos to Y	X associ with x	0.0	1
+X caus Y	X result in x	0.0	1
+X inject into Y	X get into Y	0.0	1
+X get into Y	X inject into Y	0.0	1
+X result in Y	X follow by Y	0.0	1
+X follow by Y	X result in Y	0.0	1
+X need for Y	X be in Y	0.0	1
+X be in Y	X need for Y	0.0	1
+X cure by Y	X elimin x	0.0	1
+X provid from Y	X reduc Y	0.0	1
+X reduc Y	X provid from Y	0.0	1
+X caus Y	X give to Y	0.0	1
+X give to Y	X caus Y	0.0	1
+X produc Y	X secret by x	0.0	1
+X afford Y	X prescrib for Y	0.0	1
+X prescrib for Y	X afford Y	0.0	1
+X develop into Y	X complic by Y	0.0	1
+X complic by Y	X develop into Y	0.0	1
+X infect Y	X infect with x	0.0	1
+X associ with Y	X present as x	0.0	1
+X releas Y	X produc by x	0.0	1
+X produc Y	X develop Y	0.0	1
+X develop Y	X produc Y	0.0	1
+X produc Y	X be in x	0.0	1
+X respond with Y	X treat with Y	0.0	1
+X induc Y	X caus Y	0.0	1
+X caus Y	X induc Y	0.0	1
+X treat with Y	X give with x	0.0	1
+X treat with Y	X elimin x	0.0	1
+X treat by Y	X elimin x	0.0	1
+X provid from Y	X control by x	0.0	1
+X give Y	X caus by x	0.0	1
+X order for Y	X be for Y	0.0	1
+X be for Y	X order for Y	0.0	1
+X prescrib for Y	X us for Y	0.0	1
+X us for Y	X prescrib for Y	0.0	1
+X caus by Y	X mean Y	0.0	1
+X mean Y	X caus by Y	0.0	1
+X reliev by Y	X treat by Y	0.0	1
+X treat by Y	X reliev by Y	0.0	1
+X contract Y	X get Y	0.0	1
+X administ during Y	X us in Y	0.0	1
+X us in Y	X administ during Y	0.0	1
+X deriv from Y	X convert into x	0.0	1
+X reliev by Y	X be in x	0.0	1
+X be in Y	X control with x	0.0	1
+X lead to Y	X follow by Y	0.0	1
+X follow by Y	X lead to Y	0.0	1
+X control Y	X requir x	0.0	1
+X respond to Y	X prescrib for x	0.0	1
+X suggest Y	X caus by Y	0.0	1
+X caus by Y	X suggest Y	0.0	1
+X follow Y	X associ with x	0.0	1
+X see in Y	X present with x	0.0	1
+X present with Y	X indic x	0.0	1
+X indic Y	X associ with x	0.0	1
+X lead to Y	X contribut to Y	0.0	1
+X contribut to Y	X lead to Y	0.0	1
+X improv Y	X reliev by x	0.0	1
+X unit with Y	X join with x	0.0	1
+X associ with Y	X manifest as x	0.0	1
+X give for Y	X order for Y	0.0	1
+X order for Y	X give for Y	0.0	1
+X make from Y	X consist of Y	0.0	1
+X consist of Y	X make from Y	0.0	1
+X character by Y	X result from x	0.0	1
+X combin with Y	X us with Y	0.0	1
+X us with Y	X combin with Y	0.0	1
+X caus Y	X mean Y	0.0	1
+X mean Y	X caus Y	0.0	1
+X be of Y	X have Y	0.0	1
+X have Y	X be of Y	0.0	1
+X accompani Y	X occur in Y	0.0	1
+X occur in Y	X accompani Y	0.0	1
+X caus Y	X impli Y	0.0	1
+X impli Y	X caus Y	0.0	1
+X convert Y	X hydrolyz Y	0.0	1
+X hydrolyz Y	X convert Y	0.0	1
+X correct Y	X indic for Y	0.0	0
+X indic for Y	X correct Y	0.0	0
+X prevent by Y	X elimin x	0.0	1
+X combin with Y	X us with x	0.0	1
+X correct Y	X requir x	0.0	1
+X character by Y	X result from Y	0.0	1
+X result from Y	X character by Y	0.0	1
+X make Y	X introduc by x	0.0	1
+X treat by Y	X allevi x	0.0	1
+X produc Y	X occur in x	0.0	1
+X follow by Y	X occur with x	0.0	1
+X affect with Y	X occur in x	0.0	1
+X offer Y	X provid Y	0.0	1
+X provid Y	X offer Y	0.0	1
+X transmit by Y	X carri x	0.0	1
+X reliev by Y	X improv x	0.0	1
+X character by Y	X includ Y	0.0	1
+X includ Y	X character by Y	0.0	1
+X be in Y	X allevi Y	0.0	1
+X allevi Y	X be in Y	0.0	1
+X decreas Y	X us for Y	0.0	1
+X us for Y	X decreas Y	0.0	1
+X treat with Y	X order for x	0.0	1
+X follow by Y	X follow x	0.0	1
+X be for Y	X achiev with x	0.0	1
+X caus by Y	X defin as Y	0.0	1
+X defin as Y	X caus by Y	0.0	1
+X requir for Y	X reliev by x	0.0	1
+X treat with Y	X cure with Y	0.0	1
+X cure with Y	X treat with Y	0.0	1
+X contribut to Y	X relat to x	0.0	1
+X manifest as Y	X associ with Y	0.0	1
+X associ with Y	X manifest as Y	0.0	1
+X penetr by Y	X inject into x	0.0	1
+X caus Y	X mean x	0.0	1
+X contain Y	X compos of Y	0.0	1
+X compos of Y	X contain Y	0.0	1
+X treat by Y	X correct by Y	0.0	1
+X correct by Y	X treat by Y	0.0	1
+X give to Y	X altern with x	0.0	1
+X prevent by Y	X lead to x	0.0	1
+X character by Y	X includ x	0.0	0
+X result in Y	X caus x	0.0	1
+X manag with Y	X be for x	0.0	1
+X lead to Y	X occur after x	0.0	1
+X caus Y	X accompani by Y	0.0	1
+X present as Y	X present with Y	0.0	1
+X present with Y	X present as Y	0.0	1
+X distinguish from Y	X associ with x	0.0	0
+X follow Y	X produc x	0.0	1
+X convert into Y	X reduc to Y	0.0	1
+X reduc to Y	X convert into Y	0.0	1
+X reliev by Y	X us for x	0.0	1
+X join with Y	X encount x	0.0	1
+X obtain from Y	X give x	0.0	1
+X reliev by Y	X respond to Y	0.0	1
+X respond to Y	X reliev by Y	0.0	1
+X find in Y	X be in x	0.0	0
+X take for Y	X control with x	0.0	1
+X confus with Y	X mistak for Y	0.0	1
+X mistak for Y	X confus with Y	0.0	1
+X occur in Y	X be in x	0.0	0
+X us for Y	X reliev with x	0.0	1
+X succe to Y	X follow by x	0.0	1
+X secret by Y	X secret x	0.0	1
+X treat with Y	X allevi x	0.0	1
+X make from Y	X prepar from Y	0.0	1
+X prepar from Y	X make from Y	0.0	1
+X reduc Y	X give for Y	0.0	1
+X give for Y	X reduc Y	0.0	1
+X secret by Y	X produc by Y	0.0	1
+X produc by Y	X secret by Y	0.0	1
+X encount Y	X join with x	0.0	1
+X present as Y	X result from x	0.0	1
+X achiev with Y	X offer x	0.0	1
+X administ for Y	X respond to x	0.0	1
+X obtain from Y	X have x	0.0	1
+X us Y	X us for x	0.0	1
+X lead to Y	X caus by x	0.0	1
+X meet Y	X encount x	0.0	1
+X us for Y	X help Y	0.0	1
+X help Y	X us for Y	0.0	1
+X complic Y	X caus Y	0.0	1
+X caus Y	X complic Y	0.0	1
+X inject into Y	X penetr by x	0.0	1
+X be in Y	X suffer from x	0.0	1
+X obtain with Y	X produc x	0.0	1
+X follow Y	X complic by Y	0.0	1
+X complic by Y	X follow Y	0.0	1
+X confus with Y	X distinguish from x	0.0	1
+X find in Y	X associ with Y	0.0	1
+X associ with Y	X find in Y	0.0	1
+X accompani by Y	X accompani by x	0.0	1
+X cure Y	X prescrib for Y	0.0	1
+X prescrib for Y	X cure Y	0.0	1
+X recommend for Y	X indic for Y	0.0	1
+X indic for Y	X recommend for Y	0.0	1
+X occur in Y	X contain x	0.0	1
+X penetr by Y	X penetr x	0.0	1
+X take for Y	X reliev with x	0.0	1
+X complic by Y	X follow x	0.0	1
+X control Y	X reliev Y	0.0	1
+X reliev Y	X control Y	0.0	1
+X treat by Y	X prescrib for x	0.0	1
+X produc Y	X us in x	0.0	0
+X make from Y	X compos of Y	0.0	1
+X compos of Y	X make from Y	0.0	1
+X character by Y	X begin with Y	0.0	1
+X begin with Y	X character by Y	0.0	1
+X confus with Y	X distinguish from Y	0.0	1
+X mask Y	X treat with x	0.0	1
+X affect Y	X be with x	0.0	1
+X caus by Y	X involv Y	0.0	1
+X involv Y	X caus by Y	0.0	1
+X caus Y	X occur after x	0.0	1
+X involv Y	X suggest x	0.0	1
+X result in Y	X produc Y	0.0	1
+X produc Y	X result in Y	0.0	1
+X affect by Y	X affect x	0.0	1
+X associ with Y	X find in x	0.0	1
+X treat by Y	X need for x	0.0	1
+X need for Y	X control with x	0.0	1
+X receiv Y	X be in x	0.0	1
+X us in Y	X produc x	0.0	0
+X be in Y	X find in x	0.0	0
+X complic Y	X lead to x	0.0	1
+X manag with Y	X be in x	0.0	1
+X come with Y	X associ with x	0.0	1
+X follow Y	X character by Y	0.0	1
+X contract Y	X die from Y	0.0	0
+X respond to Y	X us for x	0.0	1
+X occur in Y	X associ with x	0.0	1
+X involv Y	X affect by x	0.0	1
+X be for Y	X prescrib for Y	0.0	1
+X prescrib for Y	X be for Y	0.0	1
+X destroi Y	X attack Y	0.0	1
+X control with Y	X be against x	0.0	1
+X stimul Y	X produc Y	0.0	1
+X produc Y	X stimul Y	0.0	1
+X respond to Y	X prevent x	0.0	1
+X associ with Y	X accompani with x	0.0	1
+X find in Y	X be in Y	0.0	1
+X be in Y	X find in Y	0.0	1
+X mask Y	X us for Y	0.0	1
+X us for Y	X mask Y	0.0	1
+X reliev by Y	X help x	0.0	1
+X give Y	X afford by x	0.0	1
+X spread by Y	X carri x	0.0	1
+X suggest Y	X occur with x	0.0	1
+X stimul Y	X promot Y	0.0	1
+X promot Y	X stimul Y	0.0	1
+X affect with Y	X develop in x	0.0	1
+X be with Y	X us for x	0.0	1
+X need for Y	X requir x	0.0	1
+X caus by Y	X associ with x	0.0	1
+X have Y	X develop Y	0.0	1
+X develop Y	X have Y	0.0	1
+X correct with Y	X correct x	0.0	1
+X suggest Y	X produc x	0.0	1
+X develop from Y	X caus by Y	0.0	1
+X caus by Y	X develop from Y	0.0	1
+X convert by Y	X metabol by Y	0.0	1
+X metabol by Y	X convert by Y	0.0	1
+X be in Y	X caus x	0.0	1
+X develop after Y	X caus by Y	0.0	1
+X caus by Y	X develop after Y	0.0	1
+X have Y	X us for Y	0.0	1
+X us for Y	X have Y	0.0	1
+X provid Y	X give Y	0.0	1
+X give Y	X provid Y	0.0	1
+X carri Y	X be in x	0.0	1
+X prevent Y	X protect from Y	0.0	1
+X protect from Y	X prevent Y	0.0	1
+X produc Y	X result from x	0.0	1
+X occur with Y	X produc x	0.0	1
+X affect by Y	X erad x	0.0	1
+X produc Y	X treat by x	0.0	0
+X convert Y	X convert by x	0.0	1
+X reliev with Y	X us for x	0.0	1
+X develop Y	X be in x	0.0	1
+X occur with Y	X produc Y	0.0	1
+X produc Y	X occur with Y	0.0	1
+X result in Y	X result from x	0.0	1
+X treat Y	X requir x	0.0	1
+X reduc Y	X us for Y	0.0	1
+X us for Y	X reduc Y	0.0	1
+X kill by Y	X be against x	0.0	1
+X occur in Y	X develop x	0.0	1
+X resembl Y	X differenti from x	0.0	0
+X give as Y	X us as Y	0.0	1
+X us as Y	X give as Y	0.0	1
+X give for Y	X recommend for Y	0.0	1
+X recommend for Y	X give for Y	0.0	1
+X give Y	X associ with x	0.0	1
+X occur from Y	X follow Y	0.0	1
+X follow Y	X occur from Y	0.0	1
+X be after Y	X follow by x	0.0	1
+X follow Y	X termin in x	0.0	1
+X cure Y	X cure by x	0.0	1
+X indic for Y	X achiev with x	0.0	1
+X occur after Y	X caus x	0.0	1
+X treat by Y	X produc x	0.0	0
+X produc by Y	X kill Y	0.0	0
+X kill Y	X produc by Y	0.0	0
+X give before Y	X administ before Y	0.0	1
+X administ before Y	X give before Y	0.0	1
+X carri Y	X find in x	0.0	1
+X suffer from Y	X develop Y	0.0	1
+X develop Y	X suffer from Y	0.0	1
+X affect by Y	X attack x	0.0	1
+X achiev with Y	X us for x	0.0	1
+X give Y	X afford Y	0.0	1
+X afford Y	X give Y	0.0	1
+X produc Y	X deriv from x	0.0	1
+X enter Y	X be in Y	0.0	1
+X be in Y	X enter Y	0.0	1
+X control Y	X treat by x	0.0	1
+X distinguish from Y	X confound with x	0.0	0
+X contribut to Y	X character by Y	0.0	1
+X character by Y	X contribut to Y	0.0	1
+X associ with Y	X impli x	0.0	1
+X offer Y	X obtain with x	0.0	1
+X relat to Y	X attribut to Y	0.0	1
+X attribut to Y	X relat to Y	0.0	1
+X provid by Y	X give x	0.0	1
+X occur during Y	X be during Y	0.0	1
+X be during Y	X occur during Y	0.0	1
+X allevi Y	X reliev by x	0.0	1
+X preced by Y	X herald by Y	0.0	1
+X herald by Y	X preced by Y	0.0	1
+X present as Y	X produc Y	0.0	1
+X produc Y	X present as Y	0.0	1
+X cure Y	X requir x	0.0	1
+X includ Y	X produc by x	0.0	1
+X confus with Y	X confound with x	0.0	1
+X prevent Y	X correct by x	0.0	1
+X consist of Y	X have Y	0.0	1
+X have Y	X consist of Y	0.0	1
+X reliev Y	X treat with x	0.0	1
+X have Y	X be in x	0.0	1
+X occur from Y	X associ with x	0.0	1
+X lead to Y	X complic by Y	0.0	1
+X complic by Y	X lead to Y	0.0	1
+X control by Y	X need for x	0.0	1
+X need for Y	X control by x	0.0	1
+X unit with Y	X unit with x	0.0	1
+X us for Y	X reliev by x	0.0	1
+X caus Y	X produc Y	0.0	1
+X produc Y	X caus Y	0.0	1
+X carri Y	X transmit by x	0.0	1
+X elimin Y	X control with x	0.0	1
+X indic Y	X begin with x	0.0	1
+X mask Y	X control Y	0.0	1
+X control Y	X mask Y	0.0	1
+X simul Y	X distinguish from x	0.0	0
+X avoid in Y	X us in Y	0.0	0
+X us in Y	X avoid in Y	0.0	0
+X manag with Y	X reliev by Y	0.0	1
+X reliev by Y	X manag with Y	0.0	1
+X carri by Y	X carri x	0.0	1
+X give to Y	X give x	0.0	1
+X reliev by Y	X be for x	0.0	1
+X complic Y	X follow x	0.0	1
+X unit with Y	X encount x	0.0	1
+X treat by Y	X control x	0.0	1
+X caus Y	X develop with Y	0.0	1
+X caus Y	X produc by x	0.0	1
+X attribut to Y	X follow Y	0.0	1
+X follow Y	X attribut to Y	0.0	1
+X manag with Y	X treat by Y	0.0	1
+X treat by Y	X manag with Y	0.0	1
+X encount Y	X combin with Y	0.0	1
+X combin with Y	X encount Y	0.0	1
+X give for Y	X requir x	0.0	1
+X occur during Y	X caus x	0.0	1
+X correct with Y	X us for x	0.0	1
+X get Y	X kill x	0.0	0
+X us Y	X be in x	0.0	1
+X infect with Y	X infect x	0.0	1
+X creat Y	X produc Y	0.0	1
+X produc Y	X creat Y	0.0	1
+X result in Y	X occur from x	0.0	1
+X caus Y	X trigger Y	0.0	1
+X trigger Y	X caus Y	0.0	1
+X order for Y	X reduc Y	0.0	1
+X reduc Y	X order for Y	0.0	1
+X caus Y	X caus by x	0.0	1
+X occur in Y	X obtain from Y	0.0	1
+X obtain from Y	X occur in Y	0.0	1
+X occur after Y	X associ with x	0.0	1
+X convert into Y	X form from x	0.0	1
+X treat with Y	X reduc x	0.0	1
+X control by Y	X reduc x	0.0	1
+X contain Y	X us in x	0.0	1
+X licens for Y	X us in Y	0.0	1
+X us in Y	X licens for Y	0.0	1
+X reliev with Y	X reliev x	0.0	1
+X be in Y	X administ for Y	0.0	1
+X administ for Y	X be in Y	0.0	1
+X treat with Y	X mask x	0.0	1
+X caus by Y	X give x	0.0	1
+X accompani Y	X follow Y	0.0	1
+X follow Y	X accompani Y	0.0	1
+X simul Y	X differ from Y	0.0	0
+X achiev with Y	X bring x	0.0	1
+X mean Y	X accompani x	0.0	1
+X order for Y	X control with x	0.0	1
+X wipe Y	X control with x	0.0	1
+X preced by Y	X caus Y	0.0	1
+X caus Y	X preced by Y	0.0	1
+X give Y	X achiev with x	0.0	1
+X reliev Y	X mask Y	0.0	1
+X mask Y	X reliev Y	0.0	1
+X have Y	X affect x	0.0	1
+X complic Y	X begin as x	0.0	1
+X us in Y	X reduc Y	0.0	1
+X reduc Y	X us in Y	0.0	1
+X defin as Y	X associ with x	0.0	1
+X accompani Y	X suggest Y	0.0	1
+X suggest Y	X accompani Y	0.0	1
+X indic for Y	X control with x	0.0	1
+X be with Y	X be for x	0.0	1
+X give Y	X obtain from x	0.0	1
+X caus Y	X see in x	0.0	1
+X prescrib for Y	X treat with x	0.0	1
+X attribut to Y	X caus x	0.0	1
+X make of Y	X make from Y	0.0	1
+X make from Y	X make of Y	0.0	1
+X combin with Y	X encount x	0.0	1
+X prevent Y	X affect by x	0.0	1
+X associ with Y	X defin as x	0.0	1
+X carri Y	X contain Y	0.0	1
+X contain Y	X carri Y	0.0	1
+X develop after Y	X follow by x	0.0	1
+X indic Y	X suggest Y	0.0	1
+X suggest Y	X indic Y	0.0	1
+X control with Y	X treat x	0.0	1
+X afford Y	X produc Y	0.0	1
+X produc Y	X afford Y	0.0	1
+X lead to Y	X induc by x	0.0	1
+X obtain from Y	X deriv from Y	0.0	1
+X deriv from Y	X obtain from Y	0.0	1
+X includ Y	X differ from x	0.0	0
+X manag with Y	X respond to Y	0.0	1
+X respond to Y	X manag with Y	0.0	1
+X complic Y	X caus by Y	0.0	1
+X caus by Y	X complic Y	0.0	1
+X see in Y	X associ with x	0.0	1
+X produc Y	X develop from x	0.0	1
+X occur in Y	X affect Y	0.0	1
+X affect Y	X occur in Y	0.0	1
+X need for Y	X reliev by x	0.0	1
+X inhibit Y	X prevent Y	0.0	1
+X prevent Y	X inhibit Y	0.0	1
+X affect Y	X have x	0.0	1
+X cure by Y	X treat with Y	0.0	1
+X treat with Y	X cure by Y	0.0	1
+X respond to Y	X reliev x	0.0	1
+X complic Y	X preced x	0.0	1
+X digest Y	X break Y	0.0	1
+X break Y	X digest Y	0.0	1
+X contain Y	X us as x	0.0	1
+X see in Y	X indic Y	0.0	1
+X indic Y	X see in Y	0.0	1
+X take for Y	X prescrib for Y	0.0	1
+X prescrib for Y	X take for Y	0.0	1
+X convert to Y	X reduc to Y	0.0	1
+X reduc to Y	X convert to Y	0.0	1
+X kill Y	X die from x	0.0	1
+X develop Y	X occur in x	0.0	1
+X distinguish from Y	X confound with Y	0.0	0
+X correct Y	X reliev by x	0.0	1
+X accompani by Y	X see in x	0.0	1
+X obtain from Y	X find in Y	0.0	1
+X find in Y	X obtain from Y	0.0	1
+X start with Y	X character by Y	0.0	1
+X character by Y	X start with Y	0.0	1
+X need for Y	X reliev Y	0.0	1
+X reliev Y	X need for Y	0.0	1
+X develop Y	X caus Y	0.0	1
+X caus Y	X develop Y	0.0	1
+X infect with Y	X carri by x	0.0	1
+X administ for Y	X reliev by x	0.0	1
+X confus with Y	X differenti from Y	0.0	1
+X manag with Y	X reliev x	0.0	1
+X be for Y	X be against Y	0.0	1
+X be against Y	X be for Y	0.0	1
+X secret Y	X produc by x	0.0	1
+X be for Y	X reliev with x	0.0	1
+X reliev Y	X help Y	0.0	1
+X help Y	X reliev Y	0.0	1
+X present with Y	X associ with x	0.0	1
+X manifest as Y	X caus Y	0.0	1
+X caus Y	X manifest as Y	0.0	1
+X confound with Y	X distinguish from x	0.0	1
+X achiev with Y	X give x	0.0	1
+X accompani by Y	X come with Y	0.0	1
+X come with Y	X accompani by Y	0.0	1
+X administ for Y	X requir x	0.0	1
+X control Y	X help Y	0.0	1
+X help Y	X control Y	0.0	1
+X base on Y	X prepar from Y	0.0	1
+X prepar from Y	X base on Y	0.0	1
+X attack Y	X involv Y	0.0	1
+X involv Y	X attack Y	0.0	1
+X character by Y	X be in Y	0.0	1
+X be in Y	X character by Y	0.0	1
+X caus by Y	X complic by x	0.0	1
+X indic for Y	X control Y	0.0	1
+X control Y	X indic for Y	0.0	1
+X administ during Y	X us during Y	0.0	1
+X us during Y	X administ during Y	0.0	1
+X contain Y	X make from Y	0.0	1
+X make from Y	X contain Y	0.0	1
+X begin with Y	X caus by x	0.0	1
+X erad Y	X control with x	0.0	1
+X manag with Y	X give for x	0.0	1
+X control with Y	X wipe x	0.0	1
+X us for Y	X requir x	0.0	1
+X deriv from Y	X synthes from Y	0.0	1
+X synthes from Y	X deriv from Y	0.0	1
+X reliev by Y	X reduc x	0.0	1
+X reduc Y	X manag with x	0.0	1
+X requir for Y	X manag with x	0.0	1
+X prescrib for Y	X bring Y	0.0	1
+X bring Y	X prescrib for Y	0.0	1
+X caus Y	X affect Y	0.0	1
+X us for Y	X provid from Y	0.0	1
+X provid from Y	X us for Y	0.0	1
+X prevent Y	X us against Y	0.0	1
+X us against Y	X prevent Y	0.0	1
+X cure by Y	X requir Y	0.0	1
+X requir Y	X cure by Y	0.0	1
+X give to Y	X associ with x	0.0	1
+X caus Y	X increas Y	0.0	1
+X increas Y	X caus Y	0.0	1
+X kill Y	X be against Y	0.0	1
+X be against Y	X kill Y	0.0	1
+X produc Y	X contribut to Y	0.0	1
+X contribut to Y	X produc Y	0.0	1
+X die from Y	X die of Y	0.0	1
+X die of Y	X die from Y	0.0	1
+X requir for Y	X be in Y	0.0	1
+X be in Y	X requir for Y	0.0	1
+X present with Y	X be in x	0.0	1
+X reliev Y	X correct by x	0.0	1
+X destroi Y	X kill Y	0.0	1
+X kill Y	X destroi Y	0.0	1
+X overcom by Y	X treat by Y	0.0	1
+X treat by Y	X overcom by Y	0.0	1
+X control with Y	X reliev x	0.0	1
+X treat Y	X us for Y	0.0	1
+X us for Y	X treat Y	0.0	1
+X control with Y	X treat by Y	0.0	1
+X treat by Y	X control with Y	0.0	1
+X be for Y	X need for Y	0.0	1
+X need for Y	X be for Y	0.0	1
+X treat with Y	X take Y	0.0	1
+X take Y	X treat with Y	0.0	1
+X correct Y	X treat with x	0.0	1
+X occur from Y	X lead to x	0.0	1
+X control by Y	X requir Y	0.0	1
+X requir Y	X control by Y	0.0	1
+X accompani by Y	X produc x	0.0	1
+X reliev with Y	X help x	0.0	1
+X take for Y	X reliev Y	0.0	1
+X reliev Y	X take for Y	0.0	1
+X need for Y	X control Y	0.0	1
+X control Y	X need for Y	0.0	1
+X erad Y	X affect by x	0.0	1
+X confound with Y	X mistak for Y	0.0	1
+X mistak for Y	X confound with Y	0.0	1
+X reduc Y	X reliev by x	0.0	1
+X requir Y	X control x	0.0	1
+X manifest by Y	X indic x	0.0	1
+X treat with Y	X prescrib for x	0.0	1
+X reliev with Y	X manag with Y	0.0	1
+X manag with Y	X reliev with Y	0.0	1
+X impli Y	X mean Y	0.0	1
+X mean Y	X impli Y	0.0	1
+X contain Y	X occur in x	0.0	1
+X take for Y	X help Y	0.0	1
+X help Y	X take for Y	0.0	1
+X reliev by Y	X give for x	0.0	1
+X die of Y	X develop Y	0.0	1
+X develop Y	X die of Y	0.0	0
+X associ with Y	X see with Y	0.0	1
+X see with Y	X associ with Y	0.0	1
+X introduc by Y	X produc x	0.0	1
+X be with Y	X character by x	0.0	1
+X produc Y	X accompani by Y	0.0	1
+X respond to Y	X cure by Y	0.0	1
+X cure by Y	X respond to Y	0.0	1
+X consist of Y	X be in x	0.0	1
+X control Y	X reliev with x	0.0	1
+X have Y	X kill x	0.0	0
+X us for Y	X includ x	0.0	1
+X resembl Y	X differ from Y	0.0	0
+X make from Y	X us as x	0.0	1
+X character by Y	X be with Y	0.0	1
+X be with Y	X character by Y	0.0	1
+X present with Y	X caus Y	0.0	1
+X caus Y	X present with Y	0.0	1
+X afford by Y	X give x	0.0	1
+X differ from Y	X distinguish from x	0.0	1
+X respond to Y	X elimin x	0.0	1
+X us in Y	X us for Y	0.0	1
+X us for Y	X us in Y	0.0	1
+X give to Y	X produc x	0.0	0
+X produc Y	X ejacul Y	0.0	1
+X ejacul Y	X produc Y	0.0	1
+X kill Y	X be for Y	0.0	1
+X be for Y	X kill Y	0.0	1
+X administ for Y	X give for Y	0.0	1
+X give for Y	X administ for Y	0.0	1
+X obtain with Y	X us for x	0.0	1
+X associ with Y	X contribut to x	0.0	1
+X give for Y	X us in Y	0.0	1
+X us in Y	X give for Y	0.0	1
+X be in Y	X carri x	0.0	1
+X give for Y	X respond to x	0.0	1
+X give for Y	X requir for Y	0.0	1
+X requir for Y	X give for Y	0.0	1
+X treat with Y	X affect by Y	0.0	1
+X affect by Y	X treat with Y	0.0	1
+X includ Y	X confus with Y	0.0	0
+X confus with Y	X includ Y	0.0	0
+X indic Y	X occur in Y	0.0	1
+X occur in Y	X indic Y	0.0	1
+X need for Y	X us for Y	0.0	1
+X us for Y	X need for Y	0.0	1
+X give for Y	X be for Y	0.0	1
+X be for Y	X give for Y	0.0	1
+X confound with Y	X confus with x	0.0	1
+X us for Y	X provid by x	0.0	1
+X turn into Y	X develop into Y	0.0	1
+X develop into Y	X turn into Y	0.0	1
+X occur in Y	X caus by x	0.0	1
+X afford Y	X achiev with x	0.0	1
+X associ with Y	X produc by Y	0.0	1
+X produc by Y	X associ with Y	0.0	1
+X allevi Y	X control with x	0.0	1
+X produc Y	X caus by x	0.0	1
+X produc Y	X accompani Y	0.0	1
+X accompani Y	X produc Y	0.0	1
+X bring Y	X us for Y	0.0	1
+X us for Y	X bring Y	0.0	1
+X provid Y	X afford by x	0.0	1
+X convert into Y	X convert to Y	0.0	1
+X convert to Y	X convert into Y	0.0	1
+X caus Y	X start with Y	0.0	1
+X start with Y	X caus Y	0.0	1
+X produc Y	X follow x	0.0	1
+X be for Y	X provid Y	0.0	1
+X provid Y	X be for Y	0.0	1
+X accompani Y	X accompani x	0.0	1
+X confound with Y	X confus with Y	0.0	1
+X confus with Y	X confound with Y	0.0	1
+X occur with Y	X accompani x	0.0	1
+X promot Y	X produc Y	0.0	1
+X produc Y	X promot Y	0.0	1
+X lead to Y	X develop from x	0.0	1
+X associ with Y	X attribut to x	0.0	1
+X elimin Y	X treat by x	0.0	1
+X accompani Y	X produc x	0.0	1
+X be in Y	X have x	0.0	1
+X correct Y	X correct with x	0.0	1
+X result from Y	X caus x	0.0	1
+X help Y	X reduc Y	0.0	1
+X reduc Y	X help Y	0.0	1
+X make Y	X produc by x	0.0	1
+X decreas Y	X reliev Y	0.0	1
+X reliev Y	X decreas Y	0.0	1
+X offer Y	X give Y	0.0	1
+X give Y	X offer Y	0.0	1
+X treat by Y	X reliev x	0.0	1
+X start with Y	X suggest x	0.0	1
+X kill Y	X affect by x	0.0	1
+X includ Y	X contain Y	0.0	1
+X contain Y	X includ Y	0.0	1
+X involv Y	X defin as Y	0.0	1
+X defin as Y	X involv Y	0.0	1
+X requir Y	X control with Y	0.0	1
+X control with Y	X requir Y	0.0	1
+X know as Y	X includ Y	0.0	1
+X includ Y	X know as Y	0.0	1
+X caus Y	X attribut to x	0.0	1
+X manag with Y	X control with Y	0.0	1
+X control with Y	X manag with Y	0.0	1
+X have Y	X get Y	0.0	1
+X get Y	X have Y	0.0	1
+X prescrib for Y	X provid Y	0.0	1
+X provid Y	X prescrib for Y	0.0	1
+X be against Y	X elimin Y	0.0	1
+X elimin Y	X be against Y	0.0	1
+X reliev by Y	X prescrib for x	0.0	1
+X produc Y	X introduc Y	0.0	1
+X introduc Y	X produc Y	0.0	1
+X administ to Y	X give to Y	0.0	1
+X give to Y	X administ to Y	0.0	1
+X provid Y	X obtain from x	0.0	1
+X control by Y	X control with Y	0.0	1
+X control with Y	X control by Y	0.0	1
+X control Y	X be in Y	0.0	1
+X be in Y	X control Y	0.0	1
+X complic Y	X result from Y	0.0	1
+X result from Y	X complic Y	0.0	1
+X infect with Y	X be in x	0.0	1
+X differ from Y	X resembl x	0.0	0
+X destroi Y	X kill by x	0.0	1
+X suggest Y	X present as x	0.0	1
+X combin with Y	X unit with Y	0.0	1
+X unit with Y	X combin with Y	0.0	1
+X treat by Y	X be against x	0.0	1
+X control with Y	X cure with Y	0.0	1
+X cure with Y	X control with Y	0.0	1
+X control by Y	X prevent x	0.0	1
+X differ from Y	X distinguish from Y	0.0	1
+X distinguish from Y	X differ from Y	0.0	1
+X correct Y	X us for Y	0.0	1
+X us for Y	X correct Y	0.0	1
+X need for Y	X manag with x	0.0	1
+X treat by Y	X control by Y	0.0	1
+X control by Y	X treat by Y	0.0	1
+X cure by Y	X be in x	0.0	1
+X present Y	X find in x	0.0	1
+X convert into Y	X metabol to Y	0.0	1
+X metabol to Y	X convert into Y	0.0	1
+X manifest by Y	X result from x	0.0	1
+X contract Y	X kill x	0.0	0
+X be in Y	X have Y	0.0	0
+X have Y	X be in Y	0.0	0
+X accompani Y	X follow x	0.0	1
+X us during Y	X give during Y	0.0	1
+X give during Y	X us during Y	0.0	1
+X combin with Y	X unit with x	0.0	1
+X contribut to Y	X caus by x	0.0	1
+X control with Y	X indic for x	0.0	1
+X lead to Y	X indic x	0.0	1
+X manifest by Y	X suggest x	0.0	1
+X treat with Y	X take for x	0.0	1
+X act as Y	X includ x	0.0	1
+X encount Y	X unit with x	0.0	1
+X develop from Y	X result in x	0.0	1
+X confound with Y	X confound with x	0.0	1
+X provid Y	X obtain with x	0.0	1
+X occur from Y	X produc x	0.0	1
+X consist of Y	X compos of Y	0.0	1
+X compos of Y	X consist of Y	0.0	1
+X character by Y	X see in x	0.0	1
+X control Y	X manag with x	0.0	1
+X indic Y	X character by x	0.0	1
+X convert Y	X break Y	0.0	1
+X break Y	X convert Y	0.0	1
+X respond to Y	X reliev with Y	0.0	1
+X reliev with Y	X respond to Y	0.0	1
+X aggrav Y	X caus by x	0.0	1
+X treat by Y	X requir for x	0.0	1
+X us for Y	X take for Y	0.0	1
+X take for Y	X us for Y	0.0	1
+X complic by Y	X caus by x	0.0	1
+X result from Y	X associ with x	0.0	1
+X caus by Y	X progress to x	0.0	1
+X unit with Y	X meet x	0.0	1
+X deriv from Y	X prepar from Y	0.0	1
+X prepar from Y	X deriv from Y	0.0	1
+X lead to Y	X result in Y	0.0	1
+X result in Y	X lead to Y	0.0	1
+X give Y	X produc by x	0.0	1
+X respond to Y	X us in x	0.0	1
+X associ with Y	X complic with x	0.0	1
+X us with Y	X combin with x	0.0	1
+X bring Y	X be for Y	0.0	1
+X be for Y	X bring Y	0.0	1
+X suggest Y	X involv x	0.0	1
+X indic for Y	X be for Y	0.0	1
+X be for Y	X indic for Y	0.0	1
+X be in Y	X complic with x	0.0	1
+X develop with Y	X accompani x	0.0	1
+X produc by Y	X caus by Y	0.0	1
+X caus by Y	X produc by Y	0.0	1
+X develop from Y	X caus x	0.0	1
+X us for Y	X us x	0.0	1
+X transmit through Y	X transmit by Y	0.0	1
+X transmit by Y	X transmit through Y	0.0	1
+X us for Y	X afford by x	0.0	1
+X give Y	X lead to Y	0.0	1
+X lead to Y	X give Y	0.0	1
+X unit with Y	X encount Y	0.0	1
+X encount Y	X unit with Y	0.0	1
+X reduc Y	X treat with x	0.0	1
+X us as Y	X us as x	0.0	1
+X character by Y	X find in x	0.0	1
+X decreas Y	X reduc Y	0.0	1
+X reduc Y	X decreas Y	0.0	1
+X reliev Y	X provid from Y	0.0	1
+X provid from Y	X reliev Y	0.0	1
+X attack Y	X occur in Y	0.0	1
+X occur in Y	X attack Y	0.0	1
+X take for Y	X treat with x	0.0	1
+X kill by Y	X kill x	0.0	1
+X progress to Y	X associ with Y	0.0	1
+X associ with Y	X progress to Y	0.0	1
+X caus by Y	X induc x	0.0	1
+X treat by Y	X cure by Y	0.0	1
+X cure by Y	X treat by Y	0.0	1
+X complic Y	X accompani by x	0.0	1
+X produc in Y	X produc by Y	0.0	1
+X produc by Y	X produc in Y	0.0	1
+X us in Y	X us as Y	0.0	1
+X us as Y	X us in Y	0.0	1
+X associ with Y	X distinguish from x	0.0	0
+X reduc Y	X prescrib for Y	0.0	1
+X prescrib for Y	X reduc Y	0.0	1
+X manag with Y	X requir for x	0.0	1
+X convert to Y	X form from x	0.0	1
+X fertil by Y	X inject into x	0.0	1
+X suggest Y	X have x	0.0	1
+X suggest Y	X begin with x	0.0	1
+X elimin Y	X respond to x	0.0	1
+X occur in Y	X affect with x	0.0	1
+X be for Y	X reliev by x	0.0	1
+X reliev Y	X be in Y	0.0	1
+X be in Y	X reliev Y	0.0	1
+X have Y	X carri Y	0.0	1
+X carri Y	X have Y	0.0	1
+X us in Y	X contain x	0.0	1
+X offer Y	X afford by x	0.0	1
+X control by Y	X allevi x	0.0	1
+X treat with Y	X suppress x	0.0	1
+X treat with Y	X reliev x	0.0	1
+X distinguish from Y	X associ with Y	0.0	0
+X associ with Y	X distinguish from Y	0.0	0
+X present with Y	X produc Y	0.0	1
+X produc Y	X present with Y	0.0	1
+X elimin Y	X us against Y	0.0	1
+X us against Y	X elimin Y	0.0	1
+X complic with Y	X associ with Y	0.0	1
+X associ with Y	X complic with Y	0.0	1
+X us for Y	X reserv for Y	0.0	1
+X reserv for Y	X us for Y	0.0	1
+X follow by Y	X succe to x	0.0	1
+X associ with Y	X contribut to Y	0.0	1
+X contribut to Y	X associ with Y	0.0	1
+X mask Y	X help Y	0.0	1
+X help Y	X mask Y	0.0	1
+X caus by Y	X attribut to Y	0.0	1
+X attribut to Y	X caus by Y	0.0	1
+X confound with Y	X differ from Y	0.0	1
+X differ from Y	X confound with Y	0.0	0
+X result in Y	X follow x	0.0	1
+X have Y	X us as Y	0.0	1
+X us as Y	X have Y	0.0	1
+X suggest Y	X follow x	0.0	1
+X be with Y	X us in x	0.0	1
+X control with Y	X need for x	0.0	1
+X control with Y	X reliev with Y	0.0	1
+X reliev with Y	X control with Y	0.0	1
+X us in Y	X take x	0.0	1
+X die from Y	X get Y	0.0	1
+X get Y	X die from Y	0.0	0
+X accompani Y	X occur with x	0.0	1
+X correct by Y	X treat with Y	0.0	1
+X treat with Y	X correct by Y	0.0	1
+X caus by Y	X present with x	0.0	1
+X elimin Y	X cure by x	0.0	1
+X reliev by Y	X allevi x	0.0	1
+X reduc Y	X reliev Y	0.0	1
+X reliev Y	X reduc Y	0.0	1
+X reliev Y	X improv Y	0.0	1
+X improv Y	X reliev Y	0.0	1
+X control by Y	X reliev x	0.0	1
+X caus by Y	X develop x	0.0	1
+X reliev Y	X reliev by x	0.0	1
+X accompani with Y	X associ with x	0.0	1
+X accompani Y	X associ with x	0.0	1
+X reliev by Y	X correct by Y	0.0	1
+X correct by Y	X reliev by Y	0.0	1
+X occur with Y	X accompani Y	0.0	1
+X accompani Y	X occur with Y	0.0	1
+X character by Y	X preced x	0.0	1
+X prescrib for Y	X treat by x	0.0	1
+X impli Y	X associ with x	0.0	1
+X confound with Y	X mistak for x	0.0	1
+X give for Y	X reliev Y	0.0	1
+X reliev Y	X give for Y	0.0	1
+X control by Y	X cure x	0.0	1
+X affect Y	X transmit to Y	0.0	1
+X transmit to Y	X affect Y	0.0	1
+X control by Y	X manag with Y	0.0	1
+X manag with Y	X control by Y	0.0	1
+X treat with Y	X correct x	0.0	1
+X reliev with Y	X take for x	0.0	1
+X respond to Y	X be for x	0.0	1
+X develop Y	X affect x	0.0	1
+X follow Y	X be in Y	0.0	1
+X be in Y	X follow Y	0.0	1
+X suggest Y	X result from Y	0.0	1
+X result from Y	X suggest Y	0.0	1
+X have Y	X obtain from x	0.0	1
+X suffer from Y	X occur in x	0.0	1
+X occur with Y	X caus Y	0.0	1
+X caus Y	X occur with Y	0.0	1
+X caus by Y	X follow by x	0.0	1
+X need for Y	X respond to x	0.0	1
+X achiev with Y	X requir for x	0.0	1
+X caus Y	X attend with Y	0.0	1
+X mean Y	X involv Y	0.0	1
+X involv Y	X mean Y	0.0	1
+X occur from Y	X result in x	0.0	1
+X licens for Y	X recommend for Y	0.0	1
+X recommend for Y	X licens for Y	0.0	1
+X result from Y	X indic Y	0.0	1
+X indic Y	X result from Y	0.0	1
+X transmit by Y	X carri by Y	0.0	1
+X carri by Y	X transmit by Y	0.0	1
+X result from Y	X suggest x	0.0	1
+X occur in Y	X suggest Y	0.0	1
+X suggest Y	X occur in Y	0.0	1
+X suggest Y	X occur in x	0.0	1
+X present as Y	X indic x	0.0	1
+X achiev with Y	X provid x	0.0	1
+X achiev with Y	X indic for x	0.0	1
+X manag with Y	X allevi x	0.0	1
+X lead to Y	X turn into Y	0.0	1
+X turn into Y	X lead to Y	0.0	1
+X penetr Y	X fertil by x	0.0	1
+X indic Y	X be in Y	0.0	1
+X be in Y	X indic Y	0.0	1
+X give to Y	X follow by x	0.0	1
+X fertil by Y	X penetr by Y	0.0	1
+X penetr by Y	X fertil by Y	0.0	1
+X associ with Y	X present with Y	0.0	1
+X present with Y	X associ with Y	0.0	1
+X control by Y	X provid from x	0.0	1
+X result from Y	X attribut to Y	0.0	1
+X attribut to Y	X result from Y	0.0	1
+X come from Y	X produc x	0.0	1
+X administ for Y	X be for Y	0.0	1
+X be for Y	X administ for Y	0.0	1
+X carri Y	X spread by x	0.0	1
+X result in Y	X caus by x	0.0	1
+X refer to Y	X impli Y	0.0	1
+X impli Y	X refer to Y	0.0	1
+X prescrib for Y	X us in Y	0.0	1
+X us in Y	X prescrib for Y	0.0	1
+X occur in Y	X be in Y	0.0	1
+X be in Y	X occur in Y	0.0	1
+X associ with Y	X manifest by Y	0.0	1
+X manifest by Y	X associ with Y	0.0	1
+X contain Y	X prepar from Y	0.0	1
+X prepar from Y	X contain Y	0.0	1
+X expos to Y	X protect from Y	0.0	0
+X protect from Y	X expos to Y	0.0	0
+X inhibit by Y	X inhibit x	0.0	1
+X control Y	X control with x	0.0	1
+X caus Y	X exacerb Y	0.0	1
+X exacerb Y	X caus Y	0.0	1
+X take Y	X give to x	0.0	1
+X produc by Y	X includ x	0.0	1
+X produc Y	X obtain from x	0.0	1
+X occur from Y	X caus x	0.0	1
+X result in Y	X accompani by Y	0.0	1
+X accompani by Y	X result in Y	0.0	1
+X simul Y	X confound with x	0.0	0
+X give to Y	X present with Y	0.0	1
+X present with Y	X give to Y	0.0	1
+X indic in Y	X indic for Y	0.0	1
+X indic for Y	X indic in Y	0.0	1
+X associ with Y	X present with x	0.0	1
+X requir Y	X prevent x	0.0	1
+X us as Y	X contain x	0.0	1
+X allevi Y	X control Y	0.0	1
+X control Y	X allevi Y	0.0	1
+X complic with Y	X complic x	0.0	1
+X accompani Y	X complic Y	0.0	1
+X complic Y	X accompani Y	0.0	1
+X allevi Y	X give for Y	0.0	1
+X give for Y	X allevi Y	0.0	1
+X caus Y	X occur with x	0.0	1
+X reliev by Y	X reliev with Y	0.0	1
+X reliev with Y	X reliev by Y	0.0	1
+X produc by Y	X produc x	0.0	1
+X develop for Y	X recommend for Y	0.0	1
+X recommend for Y	X develop for Y	0.0	1
+X associ with Y	X manifest by x	0.0	1
+X order for Y	X control by x	0.0	1
+X cure Y	X control by x	0.0	1
+X cover Y	X be against Y	0.0	1
+X be against Y	X cover Y	0.0	1
+X requir for Y	X need for Y	0.0	1
+X need for Y	X requir for Y	0.0	1
+X treat with Y	X reserv for x	0.0	1
+X suggest Y	X present with x	0.0	1
+X hydrolyz by Y	X hydrolyz x	0.0	1
+X suffer from Y	X be in x	0.0	1
+X control by Y	X be against x	0.0	1
+X reserv for Y	X treat by x	0.0	1
+X us for Y	X give with Y	0.0	1
+X give with Y	X us for Y	0.0	1
+X provid from Y	X control Y	0.0	1
+X control Y	X provid from Y	0.0	1
+X control Y	X order for Y	0.0	1
+X order for Y	X control Y	0.0	1
+X produc Y	X secret Y	0.0	1
+X secret Y	X produc Y	0.0	1
+X reserv for Y	X requir x	0.0	1
+X produc Y	X obtain with x	0.0	1
+X indic for Y	X provid by x	0.0	1
+X indic Y	X caus by Y	0.0	1
+X caus by Y	X indic Y	0.0	1
+X bring Y	X achiev with x	0.0	1
+X introduc Y	X introduc by x	0.0	1
+X be against Y	X produc x	0.0	0
+X produc Y	X aggrav Y	0.0	1
+X aggrav Y	X produc Y	0.0	1
+X treat with Y	X provid from x	0.0	1
+X die of Y	X suffer from Y	0.0	1
+X suffer from Y	X die of Y	0.0	0
+X character by Y	X indic x	0.0	1
+X caus by Y	X follow Y	0.0	1
+X follow Y	X caus by Y	0.0	1
+X obtain from Y	X produc x	0.0	1
+X consist of Y	X us as x	0.0	1
+X spread by Y	X transmit x	0.0	1
+X associ with Y	X result from x	0.0	1
+X present with Y	X suggest x	0.0	1
+X licens for Y	X us for Y	0.0	1
+X us for Y	X licens for Y	0.0	1
+X follow Y	X complic by x	0.0	1
+X manifest by Y	X caus Y	0.0	1
+X caus Y	X manifest by Y	0.0	1
+X be for Y	X provid by x	0.0	1
+X caus Y	X relat to x	0.0	1
+X occur in Y	X infect with x	0.0	1
+X erad Y	X treat with x	0.0	1
+X indic for Y	X prescrib for Y	0.0	1
+X prescrib for Y	X indic for Y	0.0	1
+X prevent Y	X produc Y	0.0	0
+X produc Y	X prevent Y	0.0	0
+X indic Y	X occur with x	0.0	1
+X penetr Y	X penetr by x	0.0	1
+X follow Y	X develop from Y	0.0	1
+X develop from Y	X follow Y	0.0	1
+X be after Y	X follow Y	0.0	1
+X follow Y	X be after Y	0.0	1
+X treat with Y	X reliev with Y	0.0	1
+X reliev with Y	X treat with Y	0.0	1
+X result from Y	X manifest as x	0.0	1
+X base on Y	X make from Y	0.0	1
+X make from Y	X base on Y	0.0	1
+X manag with Y	X help x	0.0	1
+X give Y	X indic for Y	0.0	1
+X indic for Y	X give Y	0.0	1
+X follow by Y	X accompani x	0.0	1
+X help Y	X reliev by x	0.0	1
+X caus Y	X aggrav Y	0.0	1
+X aggrav Y	X caus Y	0.0	1
+X includ Y	X refer to x	0.0	1
+X includ Y	X find in x	0.0	1
+X be against Y	X respond to x	0.0	1
+X develop Y	X transmit Y	0.0	1
+X transmit Y	X develop Y	0.0	1
+X complic Y	X complic with x	0.0	1
+X result in Y	X indic x	0.0	1
+X produc by Y	X releas x	0.0	1
+X result from Y	X lead to x	0.0	1
+X join with Y	X meet x	0.0	1
+X manag with Y	X prescrib for x	0.0	1
+X follow by Y	X altern with x	0.0	1
+X requir Y	X requir for x	0.0	1
+X metabol to Y	X form from x	0.0	1
+X give to Y	X follow x	0.0	1
+X us in Y	X develop for Y	0.0	1
+X develop for Y	X us in Y	0.0	1
+X obtain with Y	X bring x	0.0	1
+X decreas Y	X control Y	0.0	1
+X control Y	X decreas Y	0.0	1
+X erad Y	X kill Y	0.0	1
+X kill Y	X erad Y	0.0	1
+X follow by Y	X associ with Y	0.0	1
+X associ with Y	X follow by Y	0.0	1
+X respond to Y	X requir for x	0.0	1
+X join with Y	X meet Y	0.0	1
+X meet Y	X join with Y	0.0	1
+X result in Y	X occur after x	0.0	1
+X develop in Y	X affect with x	0.0	1
+X contain Y	X have Y	0.0	1
+X have Y	X contain Y	0.0	1
+X produc Y	X produc by x	0.0	1
+X prevent Y	X prescrib for Y	0.0	1
+X prescrib for Y	X prevent Y	0.0	1
+X altern with Y	X altern with x	0.0	1
+X correct by Y	X give for x	0.0	1
+X combin with Y	X join with Y	0.0	1
+X join with Y	X combin with Y	0.0	1
+X refer to Y	X includ x	0.0	1
+X treat with Y	X treat by Y	0.0	1
+X treat by Y	X treat with Y	0.0	1
+X us Y	X recommend for x	0.0	1
+X treat Y	X treat with x	0.0	1
+X accompani Y	X develop with x	0.0	1
+X destroi Y	X be against Y	0.0	1
+X be against Y	X destroi Y	0.0	1
+X suggest Y	X manifest by x	0.0	1
+X suggest Y	X see in Y	0.0	1
+X see in Y	X suggest Y	0.0	1
+X attribut to Y	X produc x	0.0	1
+X caus Y	X precipit by x	0.0	1
+X develop into Y	X turn to Y	0.0	1
+X turn to Y	X develop into Y	0.0	1
+X caus Y	X suggest Y	0.0	1
+X suggest Y	X caus Y	0.0	1
+X produc by Y	X lead to x	0.0	1
+X make from Y	X deriv from Y	0.0	1
+X deriv from Y	X make from Y	0.0	1
+X requir for Y	X us in Y	0.0	1
+X us in Y	X requir for Y	0.0	1
+X us for Y	X give Y	0.0	1
+X give Y	X us for Y	0.0	1
+X kill Y	X produc x	0.0	0
+X us as Y	X us for Y	0.0	1
+X us for Y	X us as Y	0.0	1
+X accompani Y	X mean x	0.0	1
+X order for Y	X treat by x	0.0	1
+X give Y	X treat with Y	0.0	1
+X treat with Y	X give Y	0.0	1
+X find in Y	X have x	0.0	1
+X lead to Y	X relat to x	0.0	1
+X mistak for Y	X confound with x	0.0	1
+X have Y	X occur in x	0.0	1
+X suggest Y	X lead to x	0.0	1
+X inject into Y	X fertil by x	0.0	1
+X afford by Y	X us for x	0.0	1
+X character by Y	X manifest by Y	0.0	1
+X manifest by Y	X character by Y	0.0	1
+X infect with Y	X carri Y	0.0	1
+X carri Y	X infect with Y	0.0	1
+X involv Y	X character by Y	0.0	1
+X character by Y	X involv Y	0.0	1
+X prevent Y	X requir x	0.0	1
+X us for Y	X provid Y	0.0	1
+X provid Y	X us for Y	0.0	1
+X deriv from Y	X kill Y	0.0	0
+X kill Y	X deriv from Y	0.0	0
+X treat by Y	X cure with Y	0.0	1
+X cure with Y	X treat by Y	0.0	1
+X afford by Y	X provid by Y	0.0	1
+X provid by Y	X afford by Y	0.0	1
+X progress to Y	X caus by x	0.0	1
+X produc by Y	X caus x	0.0	1
+X associ with Y	X occur after x	0.0	1
+X resembl Y	X distinguish from x	0.0	0
+X requir for Y	X order for Y	0.0	1
+X order for Y	X requir for Y	0.0	1
+X infect with Y	X have Y	0.0	1
+X have Y	X infect with Y	0.0	1
+X offer Y	X be for Y	0.0	1
+X be for Y	X offer Y	0.0	1
+X cure with Y	X control by Y	0.0	1
+X control by Y	X cure with Y	0.0	1
+X lead to Y	X progress to Y	0.0	1
+X progress to Y	X lead to Y	0.0	1
+X see in Y	X manifest by x	0.0	1
+X produc Y	X come from x	0.0	1
+X observ in Y	X be in Y	0.0	1
+X be in Y	X observ in Y	0.0	1
+X us for Y	X us during Y	0.0	1
+X us during Y	X us for Y	0.0	1
+X produc Y	X bring Y	0.0	1
+X bring Y	X produc Y	0.0	1
+X occur after Y	X associ with Y	0.0	1
+X reliev with Y	X allevi x	0.0	1
+X combin with Y	X join with x	0.0	1
+X need for Y	X prescrib for Y	0.0	1
+X prescrib for Y	X need for Y	0.0	1
+X requir Y	X correct with Y	0.0	1
+X correct with Y	X requir Y	0.0	1
+X transmit through Y	X spread by Y	0.0	1
+X spread by Y	X transmit through Y	0.0	1
+X manufactur Y	X produc by x	0.0	1
+X protect against Y	X prevent Y	0.0	1
+X prevent Y	X protect against Y	0.0	1
+X lead to Y	X develop into Y	0.0	1
+X develop into Y	X lead to Y	0.0	1
+X substitut for Y	X includ x	0.0	0
+X reliev by Y	X correct x	0.0	1
+X involv Y	X affect in x	0.0	1
+X cover Y	X kill Y	0.0	1
+X kill Y	X cover Y	0.0	1
+X kill by Y	X destroi x	0.0	1
+X treat by Y	X treat x	0.0	1
+X occur in Y	X suggest x	0.0	1
+X allevi Y	X help Y	0.0	1
+X help Y	X allevi Y	0.0	1
+X transmit Y	X transmit by x	0.0	1
+X produc Y	X be against x	0.0	0
+X kill Y	X control with x	0.0	1
+X us as Y	X consist of x	0.0	1
+X carri by Y	X transmit x	0.0	1
+X manifest by Y	X caus by x	0.0	1
+X mean Y	X defin as Y	0.0	1
+X defin as Y	X mean Y	0.0	1
+X caus Y	X occur during x	0.0	1
+X occur during Y	X occur in Y	0.0	1
+X occur in Y	X occur during Y	0.0	1
+X contract Y	X develop Y	0.0	1
+X develop Y	X contract Y	0.0	1
+X reliev with Y	X control x	0.0	1
+X result from Y	X character by x	0.0	1
+X give to Y	X us in Y	0.0	1
+X us in Y	X give to Y	0.0	1
+X reliev Y	X help with Y	0.0	1
+X help with Y	X reliev Y	0.0	1
+X follow by Y	X develop after x	0.0	1
+X transmit by Y	X spread by Y	0.0	1
+X spread by Y	X transmit by Y	0.0	1
+X afford Y	X provid Y	0.0	1
+X provid Y	X afford Y	0.0	1
+X prevent by Y	X cure by Y	0.0	1
+X cure by Y	X prevent by Y	0.0	1
+X fertil by Y	X enter x	0.0	1
+X kill Y	X die of x	0.0	1
+X us Y	X have Y	0.0	1
+X cover Y	X treat with x	0.0	1
+X manufactur Y	X produc Y	0.0	1
+X produc Y	X manufactur Y	0.0	1
+X resembl Y	X simul Y	0.0	1
+X simul Y	X resembl Y	0.0	1
+X carri by Y	X infect with x	0.0	1
+X predispos to Y	X lead to Y	0.0	1
+X lead to Y	X predispos to Y	0.0	1
+X prevent Y	X control by x	0.0	1
+X find in Y	X appear in Y	0.0	1
+X appear in Y	X find in Y	0.0	1
+X associ with Y	X give x	0.0	1
+X penetr by Y	X fertil x	0.0	1
+X relat to Y	X result from Y	0.0	1
+X result from Y	X relat to Y	0.0	1
+X confin to Y	X affect Y	0.0	1
+X caus Y	X follow x	0.0	1
+X give for Y	X manag with x	0.0	1
+X decreas Y	X respond to x	0.0	1
+X develop in Y	X occur in Y	0.0	1
+X occur in Y	X develop in Y	0.0	1
+X recommend for Y	X us x	0.0	1
+X kill Y	X respond to x	0.0	1
+X provid Y	X recommend for Y	0.0	1
+X recommend for Y	X provid Y	0.0	1
+X resembl Y	X differ from x	0.0	0
+X associ with Y	X accompani by x	0.0	1
+X prescrib for Y	X control with x	0.0	1
+X introduc Y	X make Y	0.0	1
+X make Y	X introduc Y	0.0	1
+X occur with Y	X accompani by x	0.0	1
+X carri Y	X spread Y	0.0	1
+X spread Y	X carri Y	0.0	1
+X suggest Y	X start with x	0.0	1
+X have Y	X character by Y	0.0	1
+X character by Y	X have Y	0.0	1
+X mask Y	X control with x	0.0	1
+X be with Y	X be in x	0.0	1
+X caus by Y	X produc x	0.0	1
+X accompani with Y	X accompani x	0.0	1
+X treat with Y	X treat x	0.0	1
+X protect from Y	X protect against Y	0.0	1
+X protect against Y	X protect from Y	0.0	1
+X suffer from Y	X attack with Y	0.0	1
+X attack with Y	X suffer from Y	0.0	1
+X reliev Y	X treat by x	0.0	1
+X find in Y	X develop x	0.0	1
+X afford by Y	X provid x	0.0	1
+X caus by Y	X predispos to x	0.0	1
+X follow by Y	X complic by Y	0.0	1
+X complic by Y	X follow by Y	0.0	1
+X produc Y	X accompani x	0.0	1
+X character by Y	X caus by x	0.0	1
+X control by Y	X control x	0.0	1
+X fertil Y	X penetr by x	0.0	1
+X treat with Y	X erad x	0.0	1
+X enter Y	X reach Y	0.0	1
+X reach Y	X enter Y	0.0	1
+X be in Y	X control by x	0.0	1
+X control by Y	X indic for x	0.0	1
+X us for Y	X give for Y	0.0	1
+X give for Y	X us for Y	0.0	1
+X provid Y	X produc Y	0.0	1
+X produc Y	X provid Y	0.0	1
+X give before Y	X start before Y	0.0	1
+X start before Y	X give before Y	0.0	1
+X defin as Y	X refer to Y	0.0	1
+X refer to Y	X defin as Y	0.0	1
+X lead to Y	X follow x	0.0	1
+X reduc Y	X protect from Y	0.0	1
+X protect from Y	X reduc Y	0.0	1
+X occur in Y	X have x	0.0	1
+X develop with Y	X associ with Y	0.0	1
+X associ with Y	X develop with Y	0.0	1
+X associ with Y	X develop with x	0.0	1
+X control with Y	X erad x	0.0	1
+X enter Y	X inject into Y	0.0	1
+X inject into Y	X enter Y	0.0	1
+X transmit Y	X infect with Y	0.0	1
+X infect with Y	X transmit Y	0.0	1
+X caus by Y	X manifest as x	0.0	1
+X treat Y	X treat by x	0.0	1
+X fertil Y	X enter Y	0.0	1
+X enter Y	X fertil Y	0.0	1
+X produc Y	X find Y	0.0	1
+X find Y	X produc Y	0.0	1
+X prescrib for Y	X control by x	0.0	1
+X produc Y	X see in x	0.0	1
+X find in Y	X see in Y	0.0	1
+X see in Y	X find in Y	0.0	1
+X mean Y	X associ with x	0.0	1
+X accompani by Y	X complic x	0.0	1
+X be against Y	X treat by x	0.0	1
+X enter Y	X get into Y	0.0	1
+X get into Y	X enter Y	0.0	1
+X develop for Y	X us for Y	0.0	1
+X us for Y	X develop for Y	0.0	1
+X join with Y	X combin with x	0.0	1
+X correct Y	X treat by x	0.0	1
+X give Y	X bring Y	0.0	1
+X bring Y	X give Y	0.0	1
+X produc Y	X achiev with x	0.0	1
+X manifest as Y	X associ with x	0.0	1
+X requir for Y	X respond to x	0.0	1
+X mistak for Y	X distinguish from Y	0.0	1
+X reliev by Y	X administ for x	0.0	1
+X reliev Y	X reliev with x	0.0	1
+X cure by Y	X reliev x	0.0	1
+X produc Y	X make by x	0.0	1
+X result from Y	X see in Y	0.0	1
+X see in Y	X result from Y	0.0	1
+X control by Y	X prescrib for x	0.0	1
+X occur in Y	X find in Y	0.0	1
+X find in Y	X occur in Y	0.0	1
+X predispos to Y	X caus by x	0.0	1
+X spread through Y	X transmit by Y	0.0	1
+X transmit by Y	X spread through Y	0.0	1
+X affect with Y	X affect x	0.0	1
+X isol from Y	X deriv from Y	0.0	1
+X deriv from Y	X isol from Y	0.0	1
+X associ with Y	X involv x	0.0	1
+X indic Y	X present as x	0.0	1
+X character by Y	X result in Y	0.0	1
+X result in Y	X character by Y	0.0	1
+X caus by Y	X character by x	0.0	1
+X allevi Y	X manag with x	0.0	1
+X need for Y	X order for Y	0.0	1
+X order for Y	X need for Y	0.0	1
+X contain Y	X find in x	0.0	1
+X includ Y	X us for x	0.0	1
+X manag with Y	X us for x	0.0	1
+X mask Y	X reliev by x	0.0	1
+X involv Y	X associ with Y	0.0	1
+X associ with Y	X involv Y	0.0	1
+X convert by Y	X convert x	0.0	1
+X help Y	X be in Y	0.0	1
+X be in Y	X help Y	0.0	1
+X produc by Y	X manufactur x	0.0	1
+X break Y	X hydrolyz Y	0.0	1
+X hydrolyz Y	X break Y	0.0	1
+X reduc Y	X indic for Y	0.0	1
+X indic for Y	X reduc Y	0.0	1
+X manag with Y	X need for x	0.0	1
+X provid by Y	X offer x	0.0	1
+X caus by Y	X character by Y	0.0	1
+X character by Y	X caus by Y	0.0	1
+X combin with Y	X includ x	0.0	1
+X control with Y	X prescrib for x	0.0	1
+X character by Y	X consist of Y	0.0	1
+X consist of Y	X character by Y	0.0	1
+X caus Y	X accompani with Y	0.0	1
+X cure by Y	X cure x	0.0	1
+X take Y	X us in x	0.0	1
+X control with Y	X us against x	0.0	1
+X character by Y	X present as Y	0.0	1
+X present as Y	X character by Y	0.0	1
+X affect by Y	X respond to Y	0.0	1
+X respond to Y	X affect by Y	0.0	1
+X transmit by Y	X transmit x	0.0	1
+X administ during Y	X us for Y	0.0	1
+X us for Y	X administ during Y	0.0	1
+X occur after Y	X lead to x	0.0	1
+X occur with Y	X caus x	0.0	1
+X convert to Y	X convert to x	0.0	0
+X form from Y	X deriv from Y	0.0	1
+X deriv from Y	X form from Y	0.0	1
+X afford Y	X be for Y	0.0	1
+X be for Y	X afford Y	0.0	1
+X decreas Y	X treat with x	0.0	1
+X metabol in Y	X metabol by Y	0.0	1
+X metabol by Y	X metabol in Y	0.0	1
+X prescrib for Y	X obtain with x	0.0	1
+X produc Y	X lead to Y	0.0	1
+X lead to Y	X produc Y	0.0	1
+X indic for Y	X be with x	0.0	1
+X substitut for Y	X substitut for x	0.0	1
+X suggest Y	X associ with x	0.0	1
+X indic Y	X lead to x	0.0	1
+X result from Y	X produc by Y	0.0	1
+X produc by Y	X result from Y	0.0	1
+X affect Y	X develop x	0.0	1
+X provid from Y	X treat with x	0.0	1
+X die of Y	X have Y	0.0	1
+X have Y	X die of Y	0.0	0
+X releas Y	X make Y	0.0	1
+X make Y	X releas Y	0.0	1
+X distinguish from Y	X character by x	0.0	0
+X distinguish from Y	X have x	0.0	0
+X consist of Y	X prepar from Y	0.0	1
+X prepar from Y	X consist of Y	0.0	1
+X provid by Y	X be for x	0.0	1
+X see in Y	X caus x	0.0	1
+X be in Y	X affect by x	0.0	1
+X indic Y	X result in x	0.0	1
+X produc in Y	X make x	0.0	1
+X develop from Y	X produc x	0.0	1
+X begin with Y	X indic x	0.0	1
+X encount Y	X meet x	0.0	1
+X requir Y	X reliev x	0.0	1
+X occur during Y	X character by x	0.0	1
+X be in Y	X describ as Y	0.0	1
+X describ as Y	X be in Y	0.0	1
+X confound with Y	X resembl Y	0.0	1
+X resembl Y	X confound with Y	0.0	0
+X licens for Y	X be for Y	0.0	1
+X be for Y	X licens for Y	0.0	1
+X distinguish from Y	X differ from x	0.0	1
+X respond to Y	X decreas x	0.0	1
+X introduc by Y	X make x	0.0	1
+X caus by Y	X accompani by x	0.0	1
+X control Y	X cure with x	0.0	1
+X offer Y	X provid by x	0.0	1
+X mask Y	X allevi Y	0.0	1
+X allevi Y	X mask Y	0.0	1
+X includ Y	X substitut for x	0.0	0
+X accompani by Y	X follow x	0.0	1
+X develop from Y	X lead to x	0.0	1
+X develop into Y	X associ with x	0.0	1
+X releas into Y	X secret into Y	0.0	1
+X secret into Y	X releas into Y	0.0	1
+X give Y	X prescrib for Y	0.0	1
+X prescrib for Y	X give Y	0.0	1
+X associ with Y	X occur x	0.0	0
+X result from Y	X contribut to x	0.0	1
+X us in Y	X respond to x	0.0	1
+X result in Y	X associ with x	0.0	1
+X character by Y	X caus x	0.0	1
+X overcom by Y	X reliev by Y	0.0	1
+X reliev by Y	X overcom by Y	0.0	1
+X induc Y	X caus by x	0.0	1
+X caus by Y	X relat to Y	0.0	1
+X relat to Y	X caus by Y	0.0	1
+X give Y	X recommend for Y	0.0	1
+X recommend for Y	X give Y	0.0	1
+X prescrib for Y	X manag with x	0.0	1
+X obtain with Y	X provid x	0.0	1
+X present with Y	X occur with x	0.0	1
+X treat with Y	X cover x	0.0	1
+X develop into Y	X progress to Y	0.0	1
+X progress to Y	X develop into Y	0.0	1
+X requir Y	X treat x	0.0	1
+X follow Y	X accompani by Y	0.0	1
+X accompani by Y	X follow Y	0.0	1
+X find Y	X invent Y	0.0	1
+X invent Y	X find Y	0.0	1
+X occur during Y	X be in Y	0.0	1
+X be in Y	X occur during Y	0.0	1
+X transmit through Y	X transmit x	0.0	1
+X help Y	X manag with x	0.0	1
+X us in Y	X need for Y	0.0	1
+X need for Y	X us in Y	0.0	1
+X cure with Y	X control x	0.0	1
+X allevi Y	X prescrib for Y	0.0	1
+X prescrib for Y	X allevi Y	0.0	1
+X character by Y	X occur in Y	0.0	1
+X occur in Y	X character by Y	0.0	1
+X carri Y	X occur in x	0.0	1
+X us for Y	X correct by x	0.0	1
+X treat with Y	X overcom by Y	0.0	1
+X overcom by Y	X treat with Y	0.0	1
+X develop with Y	X associ with x	0.0	1
+X transmit Y	X occur in x	0.0	1
+X be in Y	X contain x	0.0	1
+X associ with Y	X result in Y	0.0	1
+X result in Y	X associ with Y	0.0	1
+X provid Y	X provid by x	0.0	1
+X refer to Y	X caus by Y	0.0	1
+X caus by Y	X refer to Y	0.0	1
+X attack Y	X affect by x	0.0	1
+X affect Y	X be in Y	0.0	1
+X be in Y	X affect Y	0.0	1
+X prescrib for Y	X reliev with x	0.0	1
+X accompani Y	X follow by x	0.0	1
+X transmit Y	X be in x	0.0	1
+X us as Y	X make from x	0.0	1
+X indic for Y	X licens for Y	0.0	1
+X licens for Y	X indic for Y	0.0	1
+X provid by Y	X indic for x	0.0	1
+X associ with Y	X occur in x	0.0	1
+X character by Y	X occur in x	0.0	1
+X reliev by Y	X mask x	0.0	1
+X give for Y	X reliev with x	0.0	1
+X associ with Y	X occur in Y	0.0	1
+X occur in Y	X associ with Y	0.0	1
+X produc Y	X destroi x	0.0	0
+X produc Y	X offer Y	0.0	1
+X offer Y	X produc Y	0.0	1
+X penetr Y	X fertil Y	0.0	1
+X fertil Y	X penetr Y	0.0	1
+X occur with Y	X present with x	0.0	1
+X afford Y	X offer Y	0.0	1
+X offer Y	X afford Y	0.0	1
+X occur in Y	X present with Y	0.0	1
+X present with Y	X occur in Y	0.0	1
+X indic for Y	X control by x	0.0	1
+X manag with Y	X treat with Y	0.0	1
+X treat with Y	X manag with Y	0.0	1
+X give Y	X obtain with x	0.0	1
+X resembl Y	X confus with x	0.0	0
+X requir Y	X cure x	0.0	1
+X mistak for Y	X distinguish from x	0.0	1
+X make Y	X produc in x	0.0	1
+X convert to Y	X metabol to Y	0.0	1
+X metabol to Y	X convert to Y	0.0	1
+X find in Y	X character by x	0.0	1
+X be against Y	X control by x	0.0	1
+X be in Y	X manag with x	0.0	1
+X occur with Y	X present with Y	0.0	1
+X present with Y	X occur with Y	0.0	1
+X treat with Y	X recommend for x	0.0	1
+X encount Y	X meet Y	0.0	1
+X meet Y	X encount Y	0.0	1
+X affect Y	X involv Y	0.0	1
+X involv Y	X affect Y	0.0	1
+X requir for Y	X treat by x	0.0	1
+X requir Y	X reserv for x	0.0	1
+X caus Y	X character by x	0.0	1
+X recommend for Y	X provid by x	0.0	1
+X control with Y	X prevent x	0.0	1
+X character by Y	X occur during x	0.0	1
+X reliev Y	X us for Y	0.0	1
+X us for Y	X reliev Y	0.0	1
+X invent Y	X discov Y	0.0	1
+X discov Y	X invent Y	0.0	1
+X be in Y	X contain Y	0.0	0
+X contain Y	X be in Y	0.0	0
+X reduc Y	X control with x	0.0	1
+X decreas Y	X control with x	0.0	1
+X associ with Y	X result in x	0.0	1
+X follow Y	X accompani x	0.0	1
+X improv Y	X treat with x	0.0	1
+X develop into Y	X associ with Y	0.0	1
+X associ with Y	X develop into Y	0.0	1
+X mean Y	X caus x	0.0	1
+X elimin Y	X affect by x	0.0	1
+X help Y	X control with x	0.0	1
+X control with Y	X elimin x	0.0	1

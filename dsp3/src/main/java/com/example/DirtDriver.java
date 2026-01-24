@@ -1,12 +1,10 @@
 package com.example;
 
-import com.example.jobs.Step1_ExtractPredicates;
-import com.example.jobs.Step2_ComputeTotals;
-import com.example.jobs.Step3_JoinPSWWithPSTotals;
-import com.example.jobs.Step4_ComputeMI;
-import com.example.jobs.Step5_ComputeDenom;
-import com.example.jobs.Step6_IntersectionContrib;
-import com.example.jobs.Step7_FinalSimilarity;
+import com.example.jobs.Step1_ExtractAndTotals;
+import com.example.jobs.Step2_ComputeMI;
+import com.example.jobs.Step3_ComputeDenom;
+import com.example.jobs.Step4_IntersectionContrib;
+import com.example.jobs.Step5_FinalSimilarity;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -24,21 +22,17 @@ public class DirtDriver extends Configured implements Tool {
         if (fs.exists(p)) fs.delete(p, true);
     }
 
-    private static void ensureNotExists(Configuration conf, Path p) throws Exception {
-        deleteIfExists(conf, p);
-    }
-
     private static void usage() {
         System.err.println(
-                "Usage:\n" +
-                "  hadoop jar <jar> com.example.DirtDriver <input> <workDir> <positive> <negative> <reducers>\n\n" +
-                "Notes:\n" +
-                "  - <input> can be a single path OR multiple paths separated by commas.\n" +
-                "    Example: s3a://b1/p/,s3a://b2/p/,s3a://b3/p/\n\n" +
-                "Example:\n" +
-                "  hadoop jar target/dsp2-1.0.0.jar com.example.DirtDriver \\\n" +
-                "    s3a://BUCKET/input/biarcs/ s3a://BUCKET/output/run1/ \\\n" +
-                "    s3a://BUCKET/test/positive.txt s3a://BUCKET/test/negative.txt 50\n"
+            "Usage:\n" +
+            "  hadoop jar <jar> com.example.DirtDriver <input> <workDir> <positive> <negative> <reducers>\n\n" +
+            "Notes:\n" +
+            "  - <input> can be a single path OR multiple paths separated by commas.\n" +
+            "    Example: s3a://b1/p/,s3a://b2/p/,s3a://b3/p/\n\n" +
+            "Example:\n" +
+            "  hadoop jar target/dsp2-1.0.0.jar com.example.DirtDriver \\\n" +
+            "    s3a://BUCKET/input/biarcs/ s3a://BUCKET/output/run1/ \\\n" +
+            "    s3a://BUCKET/test/positive.txt s3a://BUCKET/test/negative.txt 50\n"
         );
     }
 
@@ -51,8 +45,6 @@ public class DirtDriver extends Configured implements Tool {
                 if (!a.isEmpty()) args.add(a);
             }
         }
-
-        System.out.println("ARGS = " + args);
 
         if (args.size() < 5) {
             usage();
@@ -82,72 +74,61 @@ public class DirtDriver extends Configured implements Tool {
         Path positive = new Path(positiveStr);
         Path negative = new Path(negativeStr);
 
-        Path out1 = new Path(workDir, "step1");
-        Path out2 = new Path(workDir, "step2");
-        Path out3 = new Path(workDir, "step3");
-        Path out4 = new Path(workDir, "step4");
-        Path out5 = new Path(workDir, "step5");
-        Path out6 = new Path(workDir, "step6");
-        Path out7 = new Path(workDir, "step7");
+        // outputs (5 steps)
+        Path out1 = new Path(workDir, "step1_totals");  // Sequence
+        Path out2 = new Path(workDir, "step2_mi");      // Text
+        Path out3 = new Path(workDir, "step3_denom");   // Sequence
+        Path out4 = new Path(workDir, "step4_pairs");   // Sequence
+        Path out5 = new Path(workDir, "step5_final");   // Text
 
-        ensureNotExists(conf, out1);
-        ensureNotExists(conf, out2);
-        ensureNotExists(conf, out3);
-        ensureNotExists(conf, out4);
-        ensureNotExists(conf, out5);
-        ensureNotExists(conf, out6);
-        ensureNotExists(conf, out7);
+        deleteIfExists(conf, out1);
+        deleteIfExists(conf, out2);
+        deleteIfExists(conf, out3);
+        deleteIfExists(conf, out4);
+        deleteIfExists(conf, out5);
 
         // ------------------------------------------------------------
         // INPUTS: single path OR comma-separated list of paths
         // ------------------------------------------------------------
-        String[] inputs = inputStr.split(",");
-        if (inputs.length == 0) {
+        String[] rawInputs = inputStr.split(",");
+        java.util.List<Path> inputPaths = new java.util.ArrayList<>();
+
+        for (String s : rawInputs) {
+            if (s == null) continue;
+            s = s.trim();
+            if (!s.isEmpty()) inputPaths.add(new Path(s));
+        }
+
+        if (inputPaths.isEmpty()) {
             System.err.println("ERROR: empty input");
             usage();
             return 1;
         }
 
-        Path firstInput = new Path(inputs[0].trim());
-
-        // Step 1
-        Job j1 = Step1_ExtractPredicates.buildJob(conf, firstInput, out1, reducers);
-
-        // Add remaining input paths to the same Job (Step1)
-        for (int i = 1; i < inputs.length; i++) {
-            String s = inputs[i].trim();
-            if (!s.isEmpty()) {
-                FileInputFormat.addInputPath(j1, new Path(s));
-            }
+        // Step 1: Extract + Totals (SequenceFile output)
+        Job j1 = Step1_ExtractAndTotals.buildJob(conf, inputPaths.get(0), out1, reducers);
+        for (int i = 1; i < inputPaths.size(); i++) {
+            FileInputFormat.addInputPath(j1, inputPaths.get(i));
         }
-
         if (!j1.waitForCompletion(true)) return 2;
 
-        // Step 2
-        Job j2 = Step2_ComputeTotals.buildJob(conf, out1, out2, reducers);
+        // Step 2: Compute MI (Sequence -> Text)
+        Job j2 = Step2_ComputeMI.buildJob(conf, out1, out2, positive, negative, reducers);
         if (!j2.waitForCompletion(true)) return 3;
 
-        // Step 3
-        Job j3 = Step3_JoinPSWWithPSTotals.buildJob(conf, out1, out2, out3, reducers);
+        // Step 3: Compute Denom (Text -> Sequence)
+        Job j3 = Step3_ComputeDenom.buildJob(conf, out2, out3, positive, negative, reducers);
         if (!j3.waitForCompletion(true)) return 4;
 
-        // Step 4
-        Job j4 = Step4_ComputeMI.buildJob(conf, out3, out2, out4, reducers);
+        // Step 4: Intersection Contrib (Text -> Sequence)
+        Job j4 = Step4_IntersectionContrib.buildJob(conf, out2, out4, positive, negative, reducers);
         if (!j4.waitForCompletion(true)) return 5;
 
-        // Step 5
-        Job j5 = Step5_ComputeDenom.buildJob(conf, out4, out5, positive, negative, reducers);
+        // Step 5: Final Similarity (Sequence + denom Sequence -> Text)
+        Job j5 = Step5_FinalSimilarity.buildJob(conf, out4, out3, out5, positive, negative, reducers);
         if (!j5.waitForCompletion(true)) return 6;
 
-        // Step 6
-        Job j6 = Step6_IntersectionContrib.buildJob(conf, out4, out6, positive, negative, reducers);
-        if (!j6.waitForCompletion(true)) return 7;
-
-        // Step 7
-        Job j7 = Step7_FinalSimilarity.buildJob(conf, out6, out5, out7, positive, negative, reducers);
-        if (!j7.waitForCompletion(true)) return 8;
-
-        System.out.println("DONE. Final output at: " + out7);
+        System.out.println("DONE. Final output at: " + out5);
         return 0;
     }
 
